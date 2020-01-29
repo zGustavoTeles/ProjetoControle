@@ -1,6 +1,5 @@
-package com.configuracoes;
+package com.adm;
 
-import com.informacao.Informacao;
 
 import nx.componentes.ArtButton;
 import totalcross.ui.dialog.MessageBox;
@@ -8,14 +7,14 @@ import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
 
-public class Configuracoes extends totalcross.ui.Window {
+public class Administrador extends totalcross.ui.Window {
 
-	private ArtButton		    btnInformacoes;
+	private ArtButton		    btnCadastrarEmpresa;
 	private ArtButton 			btnApagarDados;
-	private ArtButton			btnConfiguracaoUsuario;
+	private ArtButton			btnApagarEmpresa;
 	private ArtButton 			btnVoltar;
 
-	public Configuracoes() {
+	public Administrador() {
 		setBackColor(0x003366);
 		initUI();
 	}
@@ -24,19 +23,19 @@ public class Configuracoes extends totalcross.ui.Window {
 
 		try {
 
-			btnInformacoes = new ArtButton("INFORMAÇÕES");
-			add(btnInformacoes);
-			btnInformacoes.setRect(CENTER, TOP + 150, width - 200, PREFERRED + 80);
-			btnInformacoes.setBackColor(0x003366);
-			btnInformacoes.setForeColor(Color.WHITE);
+			btnCadastrarEmpresa = new ArtButton("CADASTRAR EMPRESA");
+			add(btnCadastrarEmpresa);
+			btnCadastrarEmpresa.setRect(CENTER, TOP + 150, width - 200, PREFERRED + 80);
+			btnCadastrarEmpresa.setBackColor(0x003366);
+			btnCadastrarEmpresa.setForeColor(Color.WHITE);
 			
-			btnConfiguracaoUsuario = new ArtButton("CONFIG. EMPRESA");
-			add(btnConfiguracaoUsuario);
-			btnConfiguracaoUsuario.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
-			btnConfiguracaoUsuario.setBackColor(0x003366);
-			btnConfiguracaoUsuario.setForeColor(Color.WHITE);
+			btnApagarEmpresa = new ArtButton("APAGAR EMPRESA");
+			add(btnApagarEmpresa);
+			btnApagarEmpresa.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
+			btnApagarEmpresa.setBackColor(0x003366);
+			btnApagarEmpresa.setForeColor(Color.WHITE);
 
-			btnApagarDados = new ArtButton("APAGAR DADOS");
+			btnApagarDados = new ArtButton("APAGAR DADOS DO SISTEMA ");
 			add(btnApagarDados);
 			btnApagarDados.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
 			btnApagarDados.setBackColor(0x003366);
@@ -67,17 +66,9 @@ public class Configuracoes extends totalcross.ui.Window {
 				if (evt.target == btnVoltar) {
 					unpop();
 
-				} else if (evt.target == btnInformacoes) {
-					Informacao informacao = new Informacao();
-					informacao.popup();
-
-				} else if (evt.target == btnApagarDados) {
-					VerificaDados verificaDados = new VerificaDados();
-					verificaDados.popup();
-					
-				} else if (evt.target == btnConfiguracaoUsuario) {
-					Empresa empresa = new Empresa();
-					empresa.popup();
+				}else if (evt.target == btnCadastrarEmpresa) {
+					CadastrarEmpresa cadastrarEmpresa = new CadastrarEmpresa();
+					cadastrarEmpresa.popup();
 				}
 
 			}

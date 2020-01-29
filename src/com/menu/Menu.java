@@ -1,7 +1,6 @@
 package com.menu;
 
 import com.adicionar.Adicionar;
-import com.configuracoes.ConfigUsuario;
 import com.configuracoes.Configuracoes;
 import com.estoque.Estoque;
 import com.relatorio.Relatorio;

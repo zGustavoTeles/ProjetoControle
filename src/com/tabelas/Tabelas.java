@@ -246,6 +246,15 @@ public class Tabelas {
 					lb.execute(sql);
 					lb.execute("create index vendaproduto01 ON vendaproduto(codigo,produto)");
 				}
+//------------------------------------------------------------------------------------------------------------------------------------------
+				if (!lb.exists("EMPRESA")) {
+
+					sql = " create table empresa ( " + "codigo int," + " nome char(40), " + " cnpj char(30), "
+						+ " usuario char(40) " + ")";
+
+					lb.execute(sql);
+					lb.execute("create index empresa01 ON empresa(codigo,nome)");
+				}
 				
 			} finally {
 				if (lb != null)
