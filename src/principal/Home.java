@@ -1,6 +1,7 @@
 package principal;
 
 import nx.componentes.ArtButton;
+import totalcross.sys.Convert;
 import totalcross.ui.Edit;
 import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
@@ -10,12 +11,9 @@ import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
 import totalcross.ui.image.*;
-
 import com.adm.ValidaAdm;
-import com.informacao.Informacao;
 import com.litebase.LitebasePack;
 import com.menu.Menu;
-import litebase.LitebaseConnection;
 import litebase.ResultSet;
 import com.tabelas.Tabelas;
 
@@ -40,10 +38,9 @@ public class Home extends MainWindow{
 		Tabelas tabelas = new Tabelas();
 		tabelas.criaTabelas();
 	}
-
-		
 		
 		public void initUI(){
+			
 		try {
 			
 			imgHome = new ImageControl(new Image("img/home.png"));
@@ -60,6 +57,7 @@ public class Home extends MainWindow{
 			add(editEmpresa = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
 			editEmpresa.setBackColor(Color.WHITE);
 			editEmpresa.setForeColor(0x003366);
+			editEmpresa.setEnabled(false);
 
 			lblCnpj = new Label("CNPJ: ");
 			add(lblCnpj);
@@ -70,6 +68,7 @@ public class Home extends MainWindow{
 			add(editCnpj = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
 			editCnpj.setBackColor(Color.WHITE);
 			editCnpj.setForeColor(0x003366);
+			editCnpj.setEnabled(false);
 			
 			lblUsuario = new Label("USUÁRIO: ");
 			add(lblUsuario);
@@ -80,6 +79,7 @@ public class Home extends MainWindow{
 			add(editUsuario = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
 			editUsuario.setBackColor(Color.WHITE);
 			editUsuario.setForeColor(0x003366);
+			editUsuario.setEditable(false);
 			
 			lblCodigo = new Label("CÓDIGO: ");
 			add(lblCodigo);
@@ -90,6 +90,7 @@ public class Home extends MainWindow{
 			add(editCodigo = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
 			editCodigo.setBackColor(Color.WHITE);
 			editCodigo.setForeColor(0x003366);
+			editCodigo.setEnabled(false);
 			
 			btnEntrar = new ArtButton("Entrar");
 			add(btnEntrar);
@@ -103,9 +104,10 @@ public class Home extends MainWindow{
 			btnAdm.setForeColor(Color.WHITE);
 			btnAdm.setRect(LEFT + 40, AFTER + 90, SCREENSIZE + 30, PREFERRED, editCodigo);
 			
+			buscaEmpresaCadastrada();
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!","Erro ao carregar a Tela");
+			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
 			msg.setBackColor(0x345D7E);
 			msg.setForeColor(Color.WHITE);
 			msg.popup();
@@ -113,7 +115,7 @@ public class Home extends MainWindow{
 		
 	}
 		
-		public void onEvent(Event evt) {
+	public void onEvent(Event evt) {
 		try {
 			switch (evt.type) {
 			case ControlEvent.PRESSED:
@@ -122,13 +124,14 @@ public class Home extends MainWindow{
 
 					if (editEmpresa.getText().equals("") || editCnpj.getText().equals("")
 							|| editUsuario.getText().equals("")) {
-						MessageBox msg = new MessageBox("Aviso!", "Preencha todos os campos");
+						MessageBox msg = new MessageBox("CONTROLE", "Preencha todos os campos");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
+
+					} else {					
 						
-					} else {
-						validaEmpresaInserida();
+						buscaEmpresaEscolhida(); 
 						Menu menu = new Menu();
 						menu.popup();
 					}
@@ -137,84 +140,44 @@ public class Home extends MainWindow{
 					ValidaAdm validaAdm = new ValidaAdm();
 					validaAdm.popup();
 
-				} 
+				}
 			}
-		}catch (Exception e) {
-				MessageBox msg = new MessageBox("Aviso!","Erro ao carregar a Tela");
-				msg.setBackColor(Color.WHITE);
-				msg.setForeColor(0x003366);
-				msg.popup();
-			}
-			
-			
+		} catch (Exception e) {
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
+			msg.setBackColor(Color.WHITE);
+			msg.setForeColor(0x003366);
+			msg.popup();
 		}
-//		public void carregaInformacoesEmpresa() {
-//			String sql = "";
-//			LitebasePack lb = null;
-//			ResultSet rs = null;
-//			
-//		try {
-//
-//			try {
-//				lb = new LitebasePack();
-//				sql = " SELECT * FROM EMPRESA " + " WHERE CODIGO = " + editBuscarEmpresa.getText();
-//
-//				rs = lb.executeQuery(sql);
-//				rs.first();
-//
-//				if (rs.getRowCount() == 0) {
-//					MessageBox msg = new MessageBox("Aviso!", "Empresa não Cadastrada");
-//					msg.setBackColor(Color.WHITE);
-//					msg.setForeColor(0x003366);
-//					msg.popup();
-//					editBuscarEmpresa.setText("");
-//					return;
-//				}
-//				
-//				editEmpresa.setText(rs.getString("NOME"));
-//				editCnpj.setText(rs.getString("CNPJ"));
-//				editUsuario.setText(rs.getString("USUARIO"));
-//
-//			} finally {
-//				if (lb != null)
-//					lb.closeAll();
-//			}
-//
-//		} catch (Exception e) {
-//			MessageBox msg = new MessageBox("Aviso!","Erro ao Buscar Empresa");
-//			msg.setBackColor(Color.WHITE);
-//			msg.setForeColor(0x003366);
-//			msg.popup();
-//			}
-//		}
-//		
-		
-		public void validaEmpresaInserida() {
-			String sql = "";
-			LitebasePack lb = null;
-			ResultSet rs = null;
-			
+
+	}
+
+	public void buscaEmpresaCadastrada(){
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
 		try {
 
 			try {
 				lb = new LitebasePack();
-				sql = " SELECT * FROM EMPRESA " + " WHERE CODIGO = " + editCodigo.getText();
+				sql = "SELECT * FROM EMPRESAESCOLHIDA ";
 
 				rs = lb.executeQuery(sql);
 				rs.first();
 
 				if (rs.getRowCount() == 0) {
-					MessageBox msg = new MessageBox("Aviso!", "Empresa não Cadastrada");
+					MessageBox msg = new MessageBox("CONTROLE", "Sistema não possui\n Empresa cadastrada");
 					msg.setBackColor(Color.WHITE);
 					msg.setForeColor(0x003366);
 					msg.popup();
-					editCodigo.setText("");	
-					editEmpresa.setText("");
-					editCnpj.setText("");
-					editUsuario.setText("");
-					
+
 					return;
 				}
+
+				editEmpresa.setText(rs.getString("NOME"));
+				editCnpj.setText(rs.getString("CNPJ"));
+				editUsuario.setText(rs.getString("USUARIO"));
+				editCodigo.setText(Convert.toString(rs.getInt("CODIGO")));
 
 			} finally {
 				if (lb != null)
@@ -222,14 +185,63 @@ public class Home extends MainWindow{
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!","Erro ao Buscar Empresa");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao Buscar Empresa");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
 			return;
-			}
 		}
-		
-		
+	}
+	
+	public void buscaEmpresaEscolhida(){
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
+		try {
+
+			try {
+				lb = new LitebasePack();
+				sql = "SELECT * FROM EMPRESAESCOLHIDA ";
+
+				rs = lb.executeQuery(sql);
+				rs.first();
+
+				if (rs.getRowCount() == 0) {
+					MessageBox msg = new MessageBox("CONTROLE", "Sistema não possui\n Empresa cadastrada");
+					msg.setBackColor(Color.WHITE);
+					msg.setForeColor(0x003366);
+					msg.popup();
+
+					return;
+				}
+				
+				if (!editCodigo.getText().equals((Convert.toString(rs.getInt("CODIGO"))))) {
+					MessageBox msg = new MessageBox("CONTROLE",
+							"Há uma nova empresa selecionada.\n " + " Iremos atualizar o Sistema");
+					msg.setBackColor(Color.WHITE);
+					msg.setForeColor(0x003366);
+					msg.popup();
+				}
+				
+				editEmpresa.setText(rs.getString("NOME"));
+				editCnpj.setText(rs.getString("CNPJ"));
+				editUsuario.setText(rs.getString("USUARIO"));
+				editCodigo.setText(Convert.toString(rs.getInt("CODIGO")));
+
+			} finally {
+				if (lb != null)
+					lb.closeAll();
+			}
+
+		} catch (Exception e) {
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao Buscar Empresa");
+			msg.setBackColor(Color.WHITE);
+			msg.setForeColor(0x003366);
+			msg.popup();
+			return;
+		}
+	}
+			
 	}
 

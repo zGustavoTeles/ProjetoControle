@@ -2,6 +2,7 @@ package com.adm;
 
 
 import nx.componentes.ArtButton;
+import principal.Home;
 import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
@@ -48,7 +49,7 @@ public class Administrador extends totalcross.ui.Window {
 			btnVoltar.setForeColor(Color.WHITE);
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro ao carregar a Tela");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x363636);
 			msg.popup();
@@ -69,12 +70,20 @@ public class Administrador extends totalcross.ui.Window {
 				}else if (evt.target == btnCadastrarEmpresa) {
 					CadastrarEmpresa cadastrarEmpresa = new CadastrarEmpresa();
 					cadastrarEmpresa.popup();
+					
+				} else if(evt.target == btnEscolherEmpresa) {
+					EscolherEmpresa escolherEmpresa = new EscolherEmpresa();
+					escolherEmpresa.popup();
+					
+				} else if(evt.target == btnApagarEmpresa) {
+					ApagarEmpresa apagarEmpresa = new ApagarEmpresa();
+					apagarEmpresa.popup();
 				}
 
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro no evento\n " + e);
+			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();

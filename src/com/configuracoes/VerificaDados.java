@@ -72,7 +72,7 @@ public class VerificaDados extends totalcross.ui.Window {
 			btnVoltar.setForeColor(Color.WHITE);
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro ao carregar a Tela");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -95,14 +95,14 @@ public class VerificaDados extends totalcross.ui.Window {
 					if (editUsuario.getText().equals("admin") && editSenha.getText().equals("123456")) {
 						deletaDados();
 
-						MessageBox msg = new MessageBox("Aviso!", "Dados deletados");
+						MessageBox msg = new MessageBox("CONTROLE", "Dados deletados");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
 						unpop();
 
 					} else if (editUsuario.getText().equals("") || editSenha.getText().equals(" ")) {
-						MessageBox msg = new MessageBox("Aviso!", "Todos os campos devem\n ser preenchidos");
+						MessageBox msg = new MessageBox("CONTROLE", "Todos os campos devem\n ser preenchidos");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
@@ -111,7 +111,7 @@ public class VerificaDados extends totalcross.ui.Window {
 						editUsuario.setText("");
 
 					} else {
-						MessageBox msg = new MessageBox("Aviso!", "Usuário ou senha incorretos");
+						MessageBox msg = new MessageBox("CONTROLE", "Usuário ou senha incorretos");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
@@ -124,7 +124,7 @@ public class VerificaDados extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro no evento\n " + e);
+			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -192,7 +192,7 @@ public class VerificaDados extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro " + e);
+			MessageBox msg = new MessageBox("CONTROLE", "Erro " + e);
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();

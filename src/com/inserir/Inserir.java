@@ -201,7 +201,7 @@ public class Inserir extends totalcross.ui.Window {
 			btnVoltar.setForeColor(Color.WHITE);
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro ao carregar a Tela");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -227,7 +227,7 @@ public class Inserir extends totalcross.ui.Window {
 						quantidadeInserida = editQuantidade.getText();
 
 						if (Convert.toInt(quantidadeInserida) > Convert.toInt(estoque)) {
-							MessageBox msg = new MessageBox("Aviso!",
+							MessageBox msg = new MessageBox("CONTROLE",
 									"Quantidade inserida\n maior que o limite\n do estoque ");
 							msg.setBackColor(Color.WHITE);
 							msg.setForeColor(0x003366);
@@ -237,7 +237,7 @@ public class Inserir extends totalcross.ui.Window {
 						efetuaVenda();
 						baixaEstoque();
 
-						MessageBox msg = new MessageBox("Aviso!", "Venda efetuada com sucesso ");
+						MessageBox msg = new MessageBox("CONTROLE!", "Venda efetuada com sucesso ");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
@@ -253,7 +253,7 @@ public class Inserir extends totalcross.ui.Window {
 
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro no evento\n " + e);
+			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -275,7 +275,7 @@ public class Inserir extends totalcross.ui.Window {
 			editTotal.setText(String.format("%.2f", total) + " $$");
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro no calculo\n do produto" + e);
+			MessageBox msg = new MessageBox("CONTROLE", "Erro no calculo\n do produto" + e);
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -314,7 +314,7 @@ public class Inserir extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro ao inserir\n produto ao estoque");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao inserir\n produto ao estoque");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -365,7 +365,7 @@ public class Inserir extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro ao dar\n baixa no estoque");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao dar\n baixa no estoque");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();

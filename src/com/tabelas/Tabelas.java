@@ -255,6 +255,15 @@ public class Tabelas {
 					lb.execute(sql);
 					lb.execute("create index empresa01 ON empresa(codigo,nome)");
 				}
+//--------------------------------------------------------------------------------------------------------------------------------------------
+				if (!lb.exists("EMPRESAESCOLHIDA")) {
+
+					sql = " create table empresaescolhida ( " + "codigo int," + " nome char(40), " + " cnpj char(30), "
+						+ " usuario char(40) " + ")";
+
+					lb.execute(sql);
+					lb.execute("create index empresaescolhida01 ON empresaescolhida(codigo,nome)");
+				}
 				
 			} finally {
 				if (lb != null)
@@ -262,7 +271,7 @@ public class Tabelas {
 			}
 
 		} catch (Exception e) {
-				MessageBox msg = new MessageBox("Aviso!","Erro " + e);
+				MessageBox msg = new MessageBox("CONTROLE","Erro " + e);
 				msg.setBackColor(Color.WHITE);
 				msg.setForeColor(0x424242);
 				msg.popup();

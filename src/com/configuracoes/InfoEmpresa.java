@@ -87,7 +87,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 //			consultarEmpresa();
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro ao carregar a Tela");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -111,7 +111,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro no evento\n " + e);
+			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -148,7 +148,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Ao Cadastrar Empresa" + e);
+			MessageBox msg = new MessageBox("CONTROLE!", "Ao Cadastrar Empresa" + e);
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();

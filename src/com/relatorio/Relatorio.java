@@ -96,7 +96,7 @@ public class Relatorio extends totalcross.ui.Window{
 			gridProdutos.setRect(Container.LEFT + 1, Container.AFTER + 10, Container.FILL - 1, Container.FIT, lblData);
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!","Erro ao carregar a Tela");
+			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -116,7 +116,7 @@ public class Relatorio extends totalcross.ui.Window{
 				} else if (evt.target == btnBuscar) {
 					if (editDataUm.getText().equals("") || editDataDois.getText().equals("")) {
 						
-						MessageBox msg = new MessageBox("Aviso!",
+						MessageBox msg = new MessageBox("CONTROLE",
 								"Preencha todos os campos\n de data à serem pesquisados");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
@@ -142,7 +142,7 @@ public class Relatorio extends totalcross.ui.Window{
 			}
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro no evento");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();

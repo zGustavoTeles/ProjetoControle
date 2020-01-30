@@ -132,7 +132,7 @@ public class Adicionar extends totalcross.ui.Window{
 	        btnVoltar.setForeColor(Color.WHITE);
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!","Erro ao carregar a Tela");
+			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -155,13 +155,13 @@ public class Adicionar extends totalcross.ui.Window{
 
 						adicionaProdutoEstoque();
 
-						MessageBox msg = new MessageBox("Aviso!", "Produto adicionado ao estoque");
+						MessageBox msg = new MessageBox("CONTROLE", "Produto adicionado ao estoque");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
 
 					} else {
-						MessageBox msg = new MessageBox("Aviso!", "Preencha todos os campos");
+						MessageBox msg = new MessageBox("CONTROLE", "Preencha todos os campos");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
@@ -171,7 +171,7 @@ public class Adicionar extends totalcross.ui.Window{
 			}
 			
 		}catch (Exception e) {
-				MessageBox msg = new MessageBox("Aviso!","Erro no evento");
+				MessageBox msg = new MessageBox("CONTROLE","Erro no evento");
 				msg.setBackColor(Color.WHITE);
 				msg.setForeColor(0x003366);
 				msg.popup();
@@ -217,7 +217,7 @@ public class Adicionar extends totalcross.ui.Window{
 			carregaCmbProduto();
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro ao inserir\n produto ao estoque");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao inserir\n produto ao estoque");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -251,7 +251,7 @@ public class Adicionar extends totalcross.ui.Window{
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("Aviso!", "Erro no evento");
+				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
 				msg.setBackColor(Color.WHITE);
 				msg.setForeColor(0x003366);
 				msg.popup();
@@ -287,7 +287,7 @@ public class Adicionar extends totalcross.ui.Window{
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("Aviso!", "Erro no evento");
+				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
 				msg.setBackColor(Color.WHITE);
 				msg.setForeColor(0x003366);
 				msg.popup();
@@ -315,14 +315,14 @@ public class Adicionar extends totalcross.ui.Window{
 						b[0] = rs.getString("DESCRICAO");
 						cmbMarca.add(b);
 						rs.next();
-					}
+					} 
 				} finally {
 					if (lb != null)
 						lb.closeAll();
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("Aviso!", "Erro no evento");
+				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
 				msg.setBackColor(Color.WHITE);
 				msg.setForeColor(0x003366);
 				msg.popup();
@@ -357,7 +357,7 @@ public class Adicionar extends totalcross.ui.Window{
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("Aviso!", "Erro no evento");
+				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
 				msg.setBackColor(Color.WHITE);
 				msg.setForeColor(0x003366);
 				msg.popup();

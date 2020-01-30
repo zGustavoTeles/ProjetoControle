@@ -99,7 +99,7 @@ public class Estoque extends totalcross.ui.Window{
 				Container.FILL - 1, Container.FIT, btnBuscar);
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!","Erro ao carregar a Tela");
+			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -127,7 +127,7 @@ public class Estoque extends totalcross.ui.Window{
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro no evento");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -165,7 +165,7 @@ public class Estoque extends totalcross.ui.Window{
 
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro no evento" + e);
+			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -199,7 +199,7 @@ public class Estoque extends totalcross.ui.Window{
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("Aviso!", "Erro no evento" + e);
+				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
 				msg.setBackColor(Color.WHITE);
 				msg.setForeColor(0x003366);
 				msg.popup();

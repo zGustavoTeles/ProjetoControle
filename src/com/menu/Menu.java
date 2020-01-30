@@ -67,7 +67,7 @@ public class Menu extends totalcross.ui.Window {
 			btnVoltar.setRect(CENTER, AFTER + 10, width - 200, PREFERRED + 80, btnConfiguracao);
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro ao carregar a Tela");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -107,7 +107,7 @@ public class Menu extends totalcross.ui.Window {
 
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro no evento");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();

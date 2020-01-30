@@ -1,6 +1,7 @@
 package com.adm;
 
 import nx.componentes.ArtButton;
+import principal.Home;
 import totalcross.ui.Edit;
 import totalcross.ui.Label;
 import totalcross.ui.dialog.MessageBox;
@@ -44,6 +45,7 @@ public class ValidaAdm extends totalcross.ui.Window {
 			editAdm.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblAdm);
 			editAdm.setBackColor(Color.WHITE);
 			editAdm.setForeColor(0x003366);
+			editAdm.setText("admin");
 
 			lblSenha = new Label("SENHA:       ");
 			add(lblSenha);
@@ -57,6 +59,7 @@ public class ValidaAdm extends totalcross.ui.Window {
 			editSenha.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblSenha);
 			editSenha.setBackColor(Color.WHITE);
 			editSenha.setForeColor(0x003366);
+			editSenha.setText("123456");
 
 			btnEntrar = new ArtButton("ENTRAR");
 			add(btnEntrar);
@@ -71,7 +74,7 @@ public class ValidaAdm extends totalcross.ui.Window {
 			btnVoltar.setForeColor(Color.WHITE);
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro ao carregar a Tela");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -96,7 +99,7 @@ public class ValidaAdm extends totalcross.ui.Window {
 						adm.popup();
 						
 					} else if (editAdm.getText().equals("") || editSenha.getText().equals(" ")) {
-						MessageBox msg = new MessageBox("Aviso!", "Todos os campos devem\n ser preenchidos");
+						MessageBox msg = new MessageBox("CONTROLE", "Todos os campos devem\n ser preenchidos");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
@@ -105,7 +108,7 @@ public class ValidaAdm extends totalcross.ui.Window {
 						editAdm.setText("");
 
 					} else {
-						MessageBox msg = new MessageBox("Aviso!", "Administrador ou senha incorretos");
+						MessageBox msg = new MessageBox("CONTROLE", "Administrador ou senha incorretos");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
@@ -118,7 +121,7 @@ public class ValidaAdm extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("Aviso!", "Erro no evento\n " + e);
+			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
