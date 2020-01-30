@@ -12,7 +12,7 @@ public class Configuracoes extends totalcross.ui.Window {
 
 	private ArtButton		    btnInformacoes;
 	private ArtButton 			btnApagarDados;
-	private ArtButton			btnConfiguracaoUsuario;
+	private ArtButton			btnConfigEmpresa;
 	private ArtButton 			btnVoltar;
 
 	public Configuracoes() {
@@ -30,11 +30,11 @@ public class Configuracoes extends totalcross.ui.Window {
 			btnInformacoes.setBackColor(0x003366);
 			btnInformacoes.setForeColor(Color.WHITE);
 			
-			btnConfiguracaoUsuario = new ArtButton("CONFIG. EMPRESA");
-			add(btnConfiguracaoUsuario);
-			btnConfiguracaoUsuario.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
-			btnConfiguracaoUsuario.setBackColor(0x003366);
-			btnConfiguracaoUsuario.setForeColor(Color.WHITE);
+			btnConfigEmpresa = new ArtButton("CONFIG. EMPRESA");
+			add(btnConfigEmpresa);
+			btnConfigEmpresa.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
+			btnConfigEmpresa.setBackColor(0x003366);
+			btnConfigEmpresa.setForeColor(Color.WHITE);
 
 			btnApagarDados = new ArtButton("APAGAR DADOS");
 			add(btnApagarDados);
@@ -75,9 +75,9 @@ public class Configuracoes extends totalcross.ui.Window {
 					VerificaDados verificaDados = new VerificaDados();
 					verificaDados.popup();
 					
-				} else if (evt.target == btnConfiguracaoUsuario) {
-					Empresa empresa = new Empresa();
-					empresa.popup();
+				} else if (evt.target == btnConfigEmpresa) {
+					InfoEmpresa alterarEmpresa = new InfoEmpresa();
+					alterarEmpresa.popup();
 				}
 
 			}

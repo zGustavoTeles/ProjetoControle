@@ -21,18 +21,19 @@ import com.tabelas.Tabelas;
 
 public class Home extends MainWindow{
 	
-		private Edit			editEmpresa;
-		private Edit			editCnpj;
-		private Edit            editUsuario;
-		private Edit			editBuscarEmpresa;
-		private Label			lblBuscarEmpresa;
-		private Label			lblEmpresa;
-		private Label           lblCnpj;
-		private Label			lblUsuario;
-		private ArtButton       btnAdm;
-		private ArtButton       btnEntrar;
-		private ArtButton		btnBuscar;
-		private ImageControl	imgHome;
+		public Edit				editEmpresa;
+		public Edit				editCnpj;
+		public Edit             editUsuario;
+		public Edit				editCodigo;
+		public Label			lblCodigo;
+		public Label			lblEmpresa;
+		public Label            lblCnpj;
+		public Label			lblUsuario;
+		public ArtButton        btnAdm;
+		public ArtButton        btnEntrar;
+		public ArtButton		btnBuscar;
+		public ImageControl		imgHome;
+		
 		
 	public Home() {
 		setBackColor(0x003366);
@@ -45,32 +46,16 @@ public class Home extends MainWindow{
 		public void initUI(){
 		try {
 			
-			lblBuscarEmpresa = new Label("CÓDIGO: ");
-			add(lblBuscarEmpresa);
-			lblBuscarEmpresa.setBackColor(0x003366);
-			lblBuscarEmpresa.setForeColor(Color.WHITE);
-			lblBuscarEmpresa.setRect(LEFT, TOP + 5, PREFERRED, PREFERRED);
-
-			add(editBuscarEmpresa = new Edit(), AFTER + 2, SAME, width - 200, PREFERRED, lblBuscarEmpresa);
-			editBuscarEmpresa.setBackColor(Color.WHITE);
-			editBuscarEmpresa.setForeColor(0x003366);
-			
-			btnBuscar = new ArtButton("BUSCAR");
-			add(btnBuscar);
-			btnBuscar.setRect(AFTER + 2, SAME, width - 450, PREFERRED, editBuscarEmpresa);
-			btnBuscar.setBackColor(0x003366);
-	        btnBuscar.setForeColor(Color.WHITE);
-			
 			imgHome = new ImageControl(new Image("img/home.png"));
 			imgHome.scaleToFit = true;
 			imgHome.centerImage = true;
-			add(imgHome, CENTER, AFTER + 10, SCREENSIZE + 50, PREFERRED);
+			add(imgHome, CENTER, TOP - 20, SCREENSIZE + 50, PREFERRED);
 
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);
 			lblEmpresa.setBackColor(0x003366);
 			lblEmpresa.setForeColor(Color.WHITE);
-			lblEmpresa.setRect(CENTER, AFTER + 30, PREFERRED, PREFERRED, imgHome);
+			lblEmpresa.setRect(CENTER, AFTER + 5, PREFERRED, PREFERRED, imgHome);
 
 			add(editEmpresa = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
 			editEmpresa.setBackColor(Color.WHITE);
@@ -96,17 +81,27 @@ public class Home extends MainWindow{
 			editUsuario.setBackColor(Color.WHITE);
 			editUsuario.setForeColor(0x003366);
 			
+			lblCodigo = new Label("CÓDIGO: ");
+			add(lblCodigo);
+			lblCodigo.setBackColor(0x003366);
+			lblCodigo.setForeColor(Color.WHITE);
+			lblCodigo.setRect(CENTER, AFTER + 20, PREFERRED, PREFERRED, editUsuario);
+			
+			add(editCodigo = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
+			editCodigo.setBackColor(Color.WHITE);
+			editCodigo.setForeColor(0x003366);
+			
 			btnEntrar = new ArtButton("Entrar");
 			add(btnEntrar);
 			btnEntrar.setBackColor(0x003366);
 			btnEntrar.setForeColor(Color.WHITE);
-			btnEntrar.setRect(RIGHT - 40, AFTER + 200, SCREENSIZE + 30, PREFERRED, editCnpj);
+			btnEntrar.setRect(RIGHT - 40, AFTER + 90, SCREENSIZE + 30, PREFERRED, editCodigo);
 
 			btnAdm = new ArtButton("Administrador");
 			add(btnAdm);
 			btnAdm.setBackColor(0x003366);
 			btnAdm.setForeColor(Color.WHITE);
-			btnAdm.setRect(LEFT + 40, AFTER + 200, SCREENSIZE + 30, PREFERRED, editCnpj);
+			btnAdm.setRect(LEFT + 40, AFTER + 90, SCREENSIZE + 30, PREFERRED, editCodigo);
 			
 			
 		} catch (Exception e) {
@@ -131,7 +126,9 @@ public class Home extends MainWindow{
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
+						
 					} else {
+						validaEmpresaInserida();
 						Menu menu = new Menu();
 						menu.popup();
 					}
@@ -140,18 +137,7 @@ public class Home extends MainWindow{
 					ValidaAdm validaAdm = new ValidaAdm();
 					validaAdm.popup();
 
-				} else if (evt.target == btnBuscar) {
-					if (editBuscarEmpresa.getText().equals("")) {
-
-						MessageBox msg = new MessageBox("Aviso!", " Insira o Código da Empresa");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
-						
-					} else {
-						carregaInformacoesEmpresa();
-					}
-				}
+				} 
 			}
 		}catch (Exception e) {
 				MessageBox msg = new MessageBox("Aviso!","Erro ao carregar a Tela");
@@ -162,7 +148,48 @@ public class Home extends MainWindow{
 			
 			
 		}
-		public void carregaInformacoesEmpresa() {
+//		public void carregaInformacoesEmpresa() {
+//			String sql = "";
+//			LitebasePack lb = null;
+//			ResultSet rs = null;
+//			
+//		try {
+//
+//			try {
+//				lb = new LitebasePack();
+//				sql = " SELECT * FROM EMPRESA " + " WHERE CODIGO = " + editBuscarEmpresa.getText();
+//
+//				rs = lb.executeQuery(sql);
+//				rs.first();
+//
+//				if (rs.getRowCount() == 0) {
+//					MessageBox msg = new MessageBox("Aviso!", "Empresa não Cadastrada");
+//					msg.setBackColor(Color.WHITE);
+//					msg.setForeColor(0x003366);
+//					msg.popup();
+//					editBuscarEmpresa.setText("");
+//					return;
+//				}
+//				
+//				editEmpresa.setText(rs.getString("NOME"));
+//				editCnpj.setText(rs.getString("CNPJ"));
+//				editUsuario.setText(rs.getString("USUARIO"));
+//
+//			} finally {
+//				if (lb != null)
+//					lb.closeAll();
+//			}
+//
+//		} catch (Exception e) {
+//			MessageBox msg = new MessageBox("Aviso!","Erro ao Buscar Empresa");
+//			msg.setBackColor(Color.WHITE);
+//			msg.setForeColor(0x003366);
+//			msg.popup();
+//			}
+//		}
+//		
+		
+		public void validaEmpresaInserida() {
 			String sql = "";
 			LitebasePack lb = null;
 			ResultSet rs = null;
@@ -171,7 +198,7 @@ public class Home extends MainWindow{
 
 			try {
 				lb = new LitebasePack();
-				sql = " SELECT * FROM EMPRESA " + " WHERE CODIGO = " + editBuscarEmpresa.getText();
+				sql = " SELECT * FROM EMPRESA " + " WHERE CODIGO = " + editCodigo.getText();
 
 				rs = lb.executeQuery(sql);
 				rs.first();
@@ -181,13 +208,13 @@ public class Home extends MainWindow{
 					msg.setBackColor(Color.WHITE);
 					msg.setForeColor(0x003366);
 					msg.popup();
-					editBuscarEmpresa.setText("");
+					editCodigo.setText("");	
+					editEmpresa.setText("");
+					editCnpj.setText("");
+					editUsuario.setText("");
+					
 					return;
 				}
-				
-				editEmpresa.setText(rs.getString("NOME"));
-				editCnpj.setText(rs.getString("CNPJ"));
-				editUsuario.setText(rs.getString("USUARIO"));
 
 			} finally {
 				if (lb != null)
@@ -199,8 +226,10 @@ public class Home extends MainWindow{
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
+			return;
 			}
 		}
+		
 		
 	}
 

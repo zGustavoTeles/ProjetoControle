@@ -53,7 +53,7 @@ public class Adicionar extends totalcross.ui.Window{
 			imgAdicionar = new ImageControl(new Image("img/adicionar.png"));
 			imgAdicionar.scaleToFit = true;
 			imgAdicionar.centerImage = true;
-			add(imgAdicionar, CENTER, TOP + 5, PREFERRED, PREFERRED, editValor);
+			add(imgAdicionar, CENTER, TOP + 5, PREFERRED, PREFERRED);
 			
 			lblCategoria = new Label("CATEGORIA:");
 			add(lblCategoria);

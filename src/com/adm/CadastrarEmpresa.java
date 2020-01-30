@@ -78,7 +78,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			
 			btnGerarCodigo = new ArtButton("CÓDIGO");
 			add(btnGerarCodigo);
-			btnGerarCodigo.setRect(LEFT, AFTER + 20, width - 450, PREFERRED, editUsuario);
+			btnGerarCodigo.setRect(LEFT, AFTER + 20, width - 400, PREFERRED, editUsuario);
 			btnGerarCodigo.setBackColor(0x003366);
 			btnGerarCodigo.setForeColor(Color.WHITE);	
 			
@@ -88,7 +88,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			
 			btnCadastrar = new ArtButton("CADASTRAR");
 			add(btnCadastrar);
-			btnCadastrar.setRect(CENTER, AFTER + 50, width - 400, PREFERRED, editSenha);
+			btnCadastrar.setRect(CENTER, AFTER + 50, width - 350, PREFERRED, editSenha);
 			btnCadastrar.setBackColor(0x009933);
 			btnCadastrar.setForeColor(Color.WHITE);		
 

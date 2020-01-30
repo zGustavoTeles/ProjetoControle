@@ -1,14 +1,22 @@
 package com.configuracoes;
 
+import java.awt.image.RescaleOp;
+
+import com.litebase.LitebasePack;
+
+import litebase.ResultSet;
 import nx.componentes.ArtButton;
+import principal.Home;
 import totalcross.ui.Edit;
+import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
 import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
+import totalcross.ui.image.Image;
 
-public class AlterarEmpresa extends totalcross.ui.Window {
+public class InfoEmpresa extends totalcross.ui.Window {
 
 	public Label                lblInformacao;
 	public Label 				lblEmpresa;
@@ -17,11 +25,10 @@ public class AlterarEmpresa extends totalcross.ui.Window {
 	public Edit					editUsuario;
 	public Edit 				editEmpresa;
 	public Edit 				editCnpj;
-	public ArtButton		    btnSalvar;
-	public ArtButton		    btnCadastrar;
+	public ImageControl			imgInfo;
 	public ArtButton 			btnVoltar;
 
-	public AlterarEmpresa() {
+	public InfoEmpresa() {
 		setBackColor(0x003366);
 		initUI();
 	}
@@ -32,20 +39,24 @@ public class AlterarEmpresa extends totalcross.ui.Window {
 			
 			lblInformacao = new Label("ATUALMENTE A EMPRESA CADASTRADA É: ");
 			add(lblInformacao);
-			lblInformacao.setRect(CENTER, TOP, PREFERRED, PREFERRED);
+			lblInformacao.setRect(CENTER, TOP + 2, PREFERRED, PREFERRED);
 			lblInformacao.setBackColor(0x003366);
 			lblInformacao.setForeColor(Color.WHITE);
+			
+			imgInfo = new ImageControl(new Image("img/info.png"));
+			imgInfo.scaleToFit = true;
+			imgInfo.centerImage = true;
+			add(imgInfo,  CENTER, AFTER - 20, SCREENSIZE + 50, PREFERRED, lblInformacao);
 			
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);
 			lblEmpresa.setBackColor(0x003366);
 			lblEmpresa.setForeColor(Color.WHITE);
-			lblEmpresa.setRect(LEFT, AFTER + 20, PREFERRED, PREFERRED, lblInformacao);
+			lblEmpresa.setRect(LEFT, AFTER + 20, PREFERRED, PREFERRED, imgInfo);
 
 			add(editEmpresa = new Edit(), LEFT, AFTER + 20, PREFERRED, PREFERRED, lblEmpresa);
 			editEmpresa.setBackColor(Color.WHITE);
 			editEmpresa.setForeColor(0x003366);
-			editEmpresa.setText("Umbrella");
 
 			lblCnpj = new Label("CNPJ: ");
 			add(lblCnpj);
@@ -56,7 +67,6 @@ public class AlterarEmpresa extends totalcross.ui.Window {
 			add(editCnpj = new Edit(), LEFT, AFTER + 20, PREFERRED, PREFERRED, lblCnpj);
 			editCnpj.setBackColor(Color.WHITE);
 			editCnpj.setForeColor(0x003366);
-			editCnpj.setText("59.291.534/0001-67");
 			
 			lblUsuario = new Label("USUÁRIO: ");
 			add(lblUsuario);
@@ -67,25 +77,14 @@ public class AlterarEmpresa extends totalcross.ui.Window {
 			add(editUsuario = new Edit(), LEFT, AFTER + 20, PREFERRED, PREFERRED);
 			editUsuario.setBackColor(Color.WHITE);
 			editUsuario.setForeColor(0x003366);
-			editUsuario.setText("admin");
-			
-			btnSalvar = new ArtButton("SALVAR");
-			add(btnSalvar);
-			btnSalvar.setRect(CENTER - 30, AFTER + 50, width - 400, PREFERRED, editUsuario);
-			btnSalvar.setBackColor(0x009933);
-			btnSalvar.setForeColor(Color.WHITE);
-			
-			btnCadastrar = new ArtButton("CADASTRAR");
-			add(btnCadastrar);
-			btnCadastrar.setRect(AFTER + 40, SAME, width - 400, PREFERRED, btnSalvar);
-			btnCadastrar.setBackColor(0xd12115);
-			btnCadastrar.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
 			btnVoltar.setRect(RIGHT, BOTTOM, width - 400, PREFERRED);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
+			
+//			consultarEmpresa();
 
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("Aviso!", "Erro ao carregar a Tela");
@@ -118,6 +117,42 @@ public class AlterarEmpresa extends totalcross.ui.Window {
 			msg.popup();
 		}
 
+	}
+	
+	public void consultarEmpresa() {
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			try {
+				Home home = new Home();
+
+				lb = new LitebasePack();
+
+				sql = " SELECT * FROM EMPRESA "
+					+ " WHERE CODIGO = " + home.editCodigo.getText();	
+
+				rs = lb.executeQuery(sql);
+				
+				editEmpresa.setText(rs.getString("NOME"));
+				editCnpj.setText(rs.getString("CNPJ"));
+				editUsuario.setText(rs.getString("USUARIO"));
+
+			} finally {
+				if(lb != null) {
+					lb.closeAll();	
+				}
+			}
+			
+			
+		} catch (Exception e) {
+			MessageBox msg = new MessageBox("Aviso!", "Ao Cadastrar Empresa" + e);
+			msg.setBackColor(Color.WHITE);
+			msg.setForeColor(0x003366);
+			msg.popup();
+		}
 	}
 
 }
