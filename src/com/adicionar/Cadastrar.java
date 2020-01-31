@@ -19,7 +19,7 @@ import totalcross.ui.gfx.Color;
 import totalcross.ui.image.Image;
 import totalcross.util.Date;
 
-public class Adicionar extends totalcross.ui.Window{
+public class Cadastrar extends totalcross.ui.Window{
 	
 	private Label 							lblCategoria;
 	private Label							lblProduto;
@@ -33,11 +33,11 @@ public class Adicionar extends totalcross.ui.Window{
 	private ComboBox						cmbDescricao;
 	private Edit                            editQuantidade;
 	private Edit 							editValor;
-	private ArtButton						btnAdicionar;
+	private ArtButton						btnCadastrar;
 	private ArtButton 						btnVoltar;
 	private ImageControl					imgAdicionar;
 
-	public Adicionar(){
+	public Cadastrar(){
 		 setBackColor(0x003366);
 		 initUI();
 		 carregaCmbCategoria();
@@ -119,11 +119,11 @@ public class Adicionar extends totalcross.ui.Window{
 			editValor.setBackColor(Color.WHITE);
 			editValor.setForeColor(0x003366);
 
-			btnAdicionar = new ArtButton("ADICIONAR");
-	        add(btnAdicionar);
-	        btnAdicionar.setRect(LEFT, BOTTOM, width - 400, PREFERRED);
-	        btnAdicionar.setBackColor(0x009933);
-	        btnAdicionar.setForeColor(Color.WHITE);
+			btnCadastrar = new ArtButton("CADASTRAR");
+	        add(btnCadastrar);
+	        btnCadastrar.setRect(LEFT, BOTTOM, width - 400, PREFERRED);
+	        btnCadastrar.setBackColor(0x009933);
+	        btnCadastrar.setForeColor(Color.WHITE);
 					    
 			btnVoltar = new ArtButton("VOLTAR");
 	        add(btnVoltar);
@@ -148,14 +148,14 @@ public class Adicionar extends totalcross.ui.Window{
 				if (evt.target == btnVoltar) {
 					unpop();
 
-				} else if (evt.target == btnAdicionar) {
+				} else if (evt.target == btnCadastrar) {
 
 					if (!editQuantidade.getText().equals("") && cmbCategoria.getSelectedItem() != null
 							&& cmbMarca.getSelectedItem() != null && cmbProduto.getSelectedItem() != null) {
 
-						adicionaProdutoEstoque();
+						cadastrarProdutoNoEstoque();
 
-						MessageBox msg = new MessageBox("CONTROLE", "Produto adicionado ao estoque");
+						MessageBox msg = new MessageBox("CONTROLE", "Produto cadastrado no estoque");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
@@ -180,7 +180,7 @@ public class Adicionar extends totalcross.ui.Window{
 			
 		}
 
-	public void adicionaProdutoEstoque() {
+	public void cadastrarProdutoNoEstoque() {
 		String sql = "";
 		LitebasePack lb = null;
 
@@ -217,7 +217,7 @@ public class Adicionar extends totalcross.ui.Window{
 			carregaCmbProduto();
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao inserir\n produto ao estoque");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao cadastrar\n produto ao estoque");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();

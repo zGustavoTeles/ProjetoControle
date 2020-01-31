@@ -72,8 +72,8 @@ public class Configuracoes extends totalcross.ui.Window {
 					informacao.popup();
 
 				} else if (evt.target == btnApagarDados) {
-					ApagarDados verificaDados = new ApagarDados();
-					verificaDados.popup();
+					ApagarDados apagarDados = new ApagarDados();
+					apagarDados.popup();
 					
 				} else if (evt.target == btnConfigEmpresa) {
 					InfoEmpresa alterarEmpresa = new InfoEmpresa();

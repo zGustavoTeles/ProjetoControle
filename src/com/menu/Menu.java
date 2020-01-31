@@ -1,6 +1,6 @@
 package com.menu;
 
-import com.adicionar.Adicionar;
+import com.adicionar.Cadastrar;
 import com.configuracoes.Configuracoes;
 import com.estoque.Estoque;
 import com.relatorio.Relatorio;
@@ -14,7 +14,7 @@ import totalcross.ui.gfx.Color;
 public class Menu extends totalcross.ui.Window {
 	
 	private ArtButton			 btnVenda;
-	private ArtButton 		     btnAdicionar;
+	private ArtButton 		     btnCadastrar;
 	private ArtButton		     btnEstoque;
 	private ArtButton    		 btnRelatorio;
 	private ArtButton 			 btnConfiguracao;
@@ -36,17 +36,17 @@ public class Menu extends totalcross.ui.Window {
 			btnVenda.setBackColor(0x003366);
 			btnVenda.setForeColor(Color.WHITE);
 
-			btnAdicionar = new ArtButton("ADICIONAR");
-			add(btnAdicionar);
-			btnAdicionar.setBackColor(0x003366);
-			btnAdicionar.setForeColor(Color.WHITE);
-			btnAdicionar.setRect(CENTER, AFTER + 10, width - 200, PREFERRED + 80, btnVenda);
+			btnCadastrar = new ArtButton("CADASTRAR");
+			add(btnCadastrar);
+			btnCadastrar.setBackColor(0x003366);
+			btnCadastrar.setForeColor(Color.WHITE);
+			btnCadastrar.setRect(CENTER, AFTER + 10, width - 200, PREFERRED + 80, btnVenda);
 
 			btnEstoque = new ArtButton("ESTOQUE");
 			add(btnEstoque);
 			btnEstoque.setBackColor(0x003366);
 			btnEstoque.setForeColor(Color.WHITE);
-			btnEstoque.setRect(CENTER, AFTER + 10, width - 200, PREFERRED + 80, btnAdicionar);
+			btnEstoque.setRect(CENTER, AFTER + 10, width - 200, PREFERRED + 80, btnCadastrar);
 
 			btnRelatorio = new ArtButton("RELATÓRIO");
 			add(btnRelatorio);
@@ -85,8 +85,8 @@ public class Menu extends totalcross.ui.Window {
 					Venda personagens = new Venda();
 					personagens.popup();
 
-				} else if (evt.target == btnAdicionar) {
-					Adicionar cartas = new Adicionar();
+				} else if (evt.target == btnCadastrar) {
+					Cadastrar cartas = new Cadastrar();
 					cartas.popup();
 
 				} else if (evt.target == btnEstoque) {
