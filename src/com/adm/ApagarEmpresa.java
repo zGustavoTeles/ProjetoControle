@@ -89,25 +89,21 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 					msg.popup();
 					unpop();
 					
-				}
-			break;
-			
-			case PenEvent.PEN_DOWN:
-
-			if(evt.target == cmbEmpresa) {
-				
-				cmbEmpresa.removeAll();
-				carregaCmbEmpresa();
-				
-			}
-			
-			break;
-			case ControlEvent.FOCUS_IN:
-				if (evt.target == cmbEmpresa) {
+				} else if (evt.target == cmbEmpresa) {
 					buscaCodigoEmpresa();
 				}
-			}
+				break;
 
+			case PenEvent.PEN_DOWN:
+
+				if (evt.target == cmbEmpresa) {
+
+					cmbEmpresa.removeAll();
+					carregaCmbEmpresa();
+
+				}
+			}
+			
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
 			msg.setBackColor(Color.WHITE);
