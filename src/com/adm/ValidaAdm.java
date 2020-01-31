@@ -45,7 +45,6 @@ public class ValidaAdm extends totalcross.ui.Window {
 			editAdm.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblAdm);
 			editAdm.setBackColor(Color.WHITE);
 			editAdm.setForeColor(0x003366);
-			editAdm.setText("admin");
 
 			lblSenha = new Label("SENHA:       ");
 			add(lblSenha);
@@ -59,7 +58,6 @@ public class ValidaAdm extends totalcross.ui.Window {
 			editSenha.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblSenha);
 			editSenha.setBackColor(Color.WHITE);
 			editSenha.setForeColor(0x003366);
-			editSenha.setText("123456");
 
 			btnEntrar = new ArtButton("ENTRAR");
 			add(btnEntrar);
@@ -94,7 +92,7 @@ public class ValidaAdm extends totalcross.ui.Window {
 
 				}
 				if (evt.target == btnEntrar) {
-					if (editAdm.getText().equals("admin") && editSenha.getText().equals("123456")) {
+					if (editAdm.getText().equals("admin") && editSenha.getText().equals("admin")) {
 						Administrador adm = new Administrador();
 						adm.popup();
 						

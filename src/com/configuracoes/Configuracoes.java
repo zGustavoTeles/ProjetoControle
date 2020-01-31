@@ -30,7 +30,7 @@ public class Configuracoes extends totalcross.ui.Window {
 			btnInformacoes.setBackColor(0x003366);
 			btnInformacoes.setForeColor(Color.WHITE);
 			
-			btnConfigEmpresa = new ArtButton("CONFIG. EMPRESA");
+			btnConfigEmpresa = new ArtButton("EMPRESA");
 			add(btnConfigEmpresa);
 			btnConfigEmpresa.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
 			btnConfigEmpresa.setBackColor(0x003366);
@@ -72,7 +72,7 @@ public class Configuracoes extends totalcross.ui.Window {
 					informacao.popup();
 
 				} else if (evt.target == btnApagarDados) {
-					VerificaDados verificaDados = new VerificaDados();
+					ApagarDados verificaDados = new ApagarDados();
 					verificaDados.popup();
 					
 				} else if (evt.target == btnConfigEmpresa) {
