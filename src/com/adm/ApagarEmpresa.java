@@ -17,6 +17,8 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 	private ComboBox			cmbEmpresa;
 	private ArtButton			btnApagar;
 	private ArtButton 			btnVoltar;  
+	
+	private int					codigoEmpresa = 0;
 
 	public ApagarEmpresa() {
 		setBackColor(0x003366);
@@ -98,6 +100,12 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 				carregaCmbEmpresa();
 				
 			}
+			
+			break;
+			case ControlEvent.FOCUS_IN:
+				if (evt.target == cmbEmpresa) {
+					buscaCodigoEmpresa();
+				}
 			}
 
 		} catch (Exception e) {
@@ -113,20 +121,20 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 			String sql = "";
 			LitebasePack lb = null;
 			ResultSet rs = null;
-
+ 
 			try {
 				try {
 					lb = new LitebasePack();
-					sql = " SELECT NOME FROM EMPRESA";
+					sql = " SELECT NOME, CODIGO FROM EMPRESA";
 
 					rs = lb.executeQuery(sql);
-					rs.first();
-					for (int i = 0; rs.getRowCount() > i; i++) {
-						String[] b = new String[1];
-						b[0] = rs.getString("NOME");
-						cmbEmpresa.add(b);
-						rs.next();
-					}
+					rs.first();			
+				for (int i = 0; rs.getRowCount() > i; i++) {
+					String[] b = new String[1];
+					b[0] = rs.getString("NOME");
+					cmbEmpresa.add(b);
+					rs.next();
+				}
 				} finally {
 					if (lb != null)
 						lb.closeAll();
@@ -145,17 +153,16 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 	public void apagarEmpresaDoSistema() {
 		String sql = "";
 		LitebasePack lb = null;
-		ResultSet rs = null;
 
 		try {
 
 			try {
 				lb = new LitebasePack();
 				
-				sql = " DELETE FROM EMPRESA " + " WHERE NOME = " + "'" + cmbEmpresa.getSelectedItem() + "'";
-				rs = lb.executeQuery(sql);
+				sql = " DELETE FROM EMPRESA " + " WHERE CODIGO = " + getCodigoEmpresa();
+				lb.executeUpdate(sql);
 				
-				sql = "DELETE FROM EMPRESAESCOLHIDA " + " WHERE NOME = " + "'" + cmbEmpresa.getSelectedItem() + "'";
+				sql = "DELETE FROM EMPRESAESCOLHIDA " + " WHERE CODIGO = " + getCodigoEmpresa();
 				lb.executeUpdate(sql);
 
 			} finally {
@@ -169,8 +176,45 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 			msg.setForeColor(0x003366);
 			msg.popup();
 			
-			return;
+			unpop();
 		}
+	}
+	
+	public void buscaCodigoEmpresa() {
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
+		try {
+			try {
+				lb = new LitebasePack();
+				sql = " SELECT CODIGO, NOME FROM EMPRESA "
+					+ " WHERE NOME = "	+ "'" + cmbEmpresa.getSelectedItem() + "'";
+
+				rs = lb.executeQuery(sql);
+				rs.first();			
+				setCodigoEmpresa(rs.getInt("CODIGO"));
+			} finally {
+				if (lb != null)
+					lb.closeAll();
+
+			}
+		} catch (Exception e) {
+			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
+			msg.setBackColor(Color.WHITE);
+			msg.setForeColor(0x003366);
+			msg.popup();
+
+		}
+
+	}
+
+	public int getCodigoEmpresa() {
+		return codigoEmpresa;
+	}
+
+	public void setCodigoEmpresa(int codigoEmpresa) {
+		this.codigoEmpresa = codigoEmpresa;
 	}
 
 }

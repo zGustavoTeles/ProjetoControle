@@ -30,6 +30,7 @@ public class Home extends MainWindow{
 		public ArtButton        btnAdm;
 		public ArtButton        btnEntrar;
 		public ArtButton		btnBuscar;
+		public ArtButton		btnAtualizar;
 		public ImageControl		imgHome;
 		
 		
@@ -43,16 +44,22 @@ public class Home extends MainWindow{
 			
 		try {
 			
+			btnAtualizar = new ArtButton("Atualizar");
+			add(btnAtualizar);
+			btnAtualizar.setBackColor(0xFFBF00);
+			btnAtualizar.setForeColor(Color.WHITE);
+			btnAtualizar.setRect(RIGHT - 4, TOP + 4, SCREENSIZE + 20, PREFERRED);
+			
 			imgHome = new ImageControl(new Image("img/home.png"));
 			imgHome.scaleToFit = true;
 			imgHome.centerImage = true;
-			add(imgHome, CENTER, TOP - 20, SCREENSIZE + 50, PREFERRED);
+			add(imgHome, CENTER, AFTER + 3, SCREENSIZE + 50, PREFERRED, btnAtualizar);
 
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);
 			lblEmpresa.setBackColor(0x003366);
 			lblEmpresa.setForeColor(Color.WHITE);
-			lblEmpresa.setRect(CENTER, AFTER + 5, PREFERRED, PREFERRED, imgHome);
+			lblEmpresa.setRect(CENTER, AFTER + 1, PREFERRED, PREFERRED, imgHome);
 
 			add(editEmpresa = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
 			editEmpresa.setBackColor(Color.WHITE);
@@ -96,13 +103,13 @@ public class Home extends MainWindow{
 			add(btnEntrar);
 			btnEntrar.setBackColor(0x003366);
 			btnEntrar.setForeColor(Color.WHITE);
-			btnEntrar.setRect(RIGHT - 40, AFTER + 90, SCREENSIZE + 30, PREFERRED, editCodigo);
+			btnEntrar.setRect(RIGHT - 40, AFTER + 50, SCREENSIZE + 30, PREFERRED, editCodigo);
 
 			btnAdm = new ArtButton("Administrador");
 			add(btnAdm);
 			btnAdm.setBackColor(0x003366);
 			btnAdm.setForeColor(Color.WHITE);
-			btnAdm.setRect(LEFT + 40, AFTER + 90, SCREENSIZE + 30, PREFERRED, editCodigo);
+			btnAdm.setRect(LEFT + 40, AFTER + 50, SCREENSIZE + 30, PREFERRED, editCodigo);
 			
 			buscaEmpresaCadastrada();
 			
@@ -129,9 +136,7 @@ public class Home extends MainWindow{
 						msg.setForeColor(0x003366);
 						msg.popup();
 
-					} else {					
-						
-						buscaEmpresaEscolhida(); 
+					} else {									 
 						Menu menu = new Menu();
 						menu.popup();
 					}
@@ -140,6 +145,8 @@ public class Home extends MainWindow{
 					ValidaAdm validaAdm = new ValidaAdm();
 					validaAdm.popup();
 
+				} else if (evt.target == btnAtualizar) {
+					buscaEmpresaCadastrada();
 				}
 			}
 		} catch (Exception e) {
@@ -192,56 +199,6 @@ public class Home extends MainWindow{
 			return;
 		}
 	}
-	
-	public void buscaEmpresaEscolhida(){
-		String sql = "";
-		LitebasePack lb = null;
-		ResultSet rs = null;
-
-		try {
-
-			try {
-				lb = new LitebasePack();
-				sql = "SELECT * FROM EMPRESAESCOLHIDA ";
-
-				rs = lb.executeQuery(sql);
-				rs.first();
-
-				if (rs.getRowCount() == 0) {
-					MessageBox msg = new MessageBox("CONTROLE", "Sistema não possui\n Empresa cadastrada");
-					msg.setBackColor(Color.WHITE);
-					msg.setForeColor(0x003366);
-					msg.popup();
-
-					return;
-				}
-				
-				if (!editCodigo.getText().equals((Convert.toString(rs.getInt("CODIGO"))))) {
-					MessageBox msg = new MessageBox("CONTROLE",
-							"Há uma nova empresa selecionada.\n " + " Iremos atualizar o Sistema");
-					msg.setBackColor(Color.WHITE);
-					msg.setForeColor(0x003366);
-					msg.popup();
-				}
-				
-				editEmpresa.setText(rs.getString("NOME"));
-				editCnpj.setText(rs.getString("CNPJ"));
-				editUsuario.setText(rs.getString("USUARIO"));
-				editCodigo.setText(Convert.toString(rs.getInt("CODIGO")));
-
-			} finally {
-				if (lb != null)
-					lb.closeAll();
-			}
-
-		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao Buscar Empresa");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
-			return;
-		}
-	}
 			
-	}
+}
 
