@@ -22,6 +22,8 @@ public class InfoEmpresa extends totalcross.ui.Window {
 	public Label 				lblEmpresa;
 	public Label 				lblCnpj;
 	public Label				lblUsuario;
+	public Label				lblCodigo;
+	public Edit 				editCodigo;
 	public Edit					editUsuario;
 	public Edit 				editEmpresa;
 	public Edit 				editCnpj;
@@ -46,15 +48,15 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			imgInfo = new ImageControl(new Image("img/info.png"));
 			imgInfo.scaleToFit = true;
 			imgInfo.centerImage = true;
-			add(imgInfo,  CENTER, AFTER - 20, SCREENSIZE + 50, PREFERRED, lblInformacao);
+			add(imgInfo,  CENTER, AFTER - 10, SCREENSIZE + 20, PREFERRED, lblInformacao);
 			
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);
 			lblEmpresa.setBackColor(0x003366);
 			lblEmpresa.setForeColor(Color.WHITE);
-			lblEmpresa.setRect(LEFT, AFTER + 20, PREFERRED, PREFERRED, imgInfo);
+			lblEmpresa.setRect(LEFT, AFTER + 10, PREFERRED, PREFERRED, imgInfo);
 
-			add(editEmpresa = new Edit(), LEFT, AFTER + 20, PREFERRED, PREFERRED, lblEmpresa);
+			add(editEmpresa = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED, lblEmpresa);
 			editEmpresa.setBackColor(Color.WHITE);
 			editEmpresa.setForeColor(0x003366);
 
@@ -62,9 +64,9 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			add(lblCnpj);
 			lblCnpj.setBackColor(0x003366);
 			lblCnpj.setForeColor(Color.WHITE);
-			lblCnpj.setRect(LEFT, AFTER + 20, PREFERRED, PREFERRED, editEmpresa);
+			lblCnpj.setRect(LEFT, AFTER + 10, PREFERRED, PREFERRED, editEmpresa);
 
-			add(editCnpj = new Edit(), LEFT, AFTER + 20, PREFERRED, PREFERRED, lblCnpj);
+			add(editCnpj = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED, lblCnpj);
 			editCnpj.setBackColor(Color.WHITE);
 			editCnpj.setForeColor(0x003366);
 			
@@ -72,11 +74,21 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			add(lblUsuario);
 			lblUsuario.setBackColor(0x003366);
 			lblUsuario.setForeColor(Color.WHITE);
-			lblUsuario.setRect(LEFT, AFTER + 20, PREFERRED, PREFERRED, editCnpj);
+			lblUsuario.setRect(LEFT, AFTER + 10, PREFERRED, PREFERRED, editCnpj);
 			
-			add(editUsuario = new Edit(), LEFT, AFTER + 20, PREFERRED, PREFERRED);
+			add(editUsuario = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED);
 			editUsuario.setBackColor(Color.WHITE);
 			editUsuario.setForeColor(0x003366);
+			
+			lblCodigo = new Label("CÓDIGO: ");
+			add(lblCodigo);
+			lblCodigo.setBackColor(0x003366);
+			lblCodigo.setForeColor(Color.WHITE);
+			lblCodigo.setRect(LEFT, AFTER + 10, PREFERRED, PREFERRED, editUsuario);
+			
+			add(editCodigo = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED);
+			editCodigo.setBackColor(Color.WHITE);
+			editCodigo.setForeColor(0x003366);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
