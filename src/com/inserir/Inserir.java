@@ -221,6 +221,15 @@ public class Inserir extends totalcross.ui.Window {
 
 				}
 				if (evt.target == btnVender) {
+
+					if (editQuantidade.getText().length() == 0) {
+						MessageBox msg = new MessageBox("CONTROLE", "Por favor insira\n uma quantidade");
+						msg.setBackColor(Color.WHITE);
+						msg.setForeColor(0x003366);
+						msg.popup();
+						return;
+					}
+
 					if (editQuantidade.getText().length() > 0) {
 
 						estoque = editEstoque.getText();
@@ -233,17 +242,9 @@ public class Inserir extends totalcross.ui.Window {
 							msg.setForeColor(0x003366);
 							msg.popup();
 							return;
-							
-						} 
-						
-						if (editQuantidade.getText().equals(" ")) {
-							MessageBox msg = new MessageBox("CONTROLE", "Por favor insira\n uma quantidade");
-							msg.setBackColor(Color.WHITE);
-							msg.setForeColor(0x003366);
-							msg.popup();
-							return;
+
 						}
-						
+
 						efetuaVenda();
 						baixaEstoque();
 
@@ -260,7 +261,6 @@ public class Inserir extends totalcross.ui.Window {
 					calculaTotalProduto();
 
 				}
-
 			}
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);

@@ -116,7 +116,19 @@ public class Estoque extends totalcross.ui.Window{
 				if (evt.target == btnVoltar) {
 					unpop();
 
-				} else if (evt.target == cmbCategoria) {
+				}else if (evt.target == btnBuscar) {
+					if (editBuscar.getText().equals("")) {
+						MessageBox msg = new MessageBox("Aviso!", "O campo de busca\n deve ser preenchido");
+						msg.setBackColor(Color.WHITE);
+						msg.setForeColor(0x003366);
+						msg.popup();
+						
+					} else {
+						gridProdutos.removeAllElements();
+						carregaGridProdutosBusca();
+					}
+					
+				}else if (evt.target == cmbCategoria) {
 					if (cmbCategoria.getItems() != null) {
 						gridProdutos.removeAllElements();
 						carregaGridProdutos();
@@ -209,5 +221,42 @@ public class Estoque extends totalcross.ui.Window{
 		}
 	}
 	
-	
+	public void carregaGridProdutosBusca() {
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
+		try {
+			try {
+				lb = new LitebasePack();
+				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO = " + "'" + editBuscar.getText() + "'";
+
+				rs = lb.executeQuery(sql);
+				rs.first();
+				for (int i = 0; rs.getRowCount() > i; i++) {
+					String[] b = new String[7];
+					b[0] = Convert.toString(rs.getInt("CODIGO"));
+					b[1] = rs.getString("PRODUTO");
+					b[2] = Convert.toString(rs.getInt("QUANTIDADE"));
+					b[3] = rs.getString("MARCA");
+					b[4] = rs.getString("CATEGORIA");
+					b[5] = rs.getString("DESCRICAO");
+					b[6] = rs.getString("VALOR");
+					gridProdutos.add(b);
+					rs.next();
+				}
+			} finally {
+				if (lb != null)
+					lb.closeAll();
+
+			}
+		} catch (Exception e) {
+			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
+			msg.setBackColor(Color.WHITE);
+			msg.setForeColor(0x003366);
+			msg.popup();
+
+		}
+
+	}		
 }

@@ -50,6 +50,7 @@ public class Informacao extends totalcross.ui.Window{
 					+ " análise mostrou uma utilização incorreta dos recursos da distribuidora, tanto de espaço físico, quanto de datas de "
 					+ " compras e tipos de produtos a serem comprados em cada momento. Baseados na análise dos dados e da situação são esboçados "
 					+ " algumas recomendações. ");
+			editInformacao.setEnabled(false);
 
 			btnVoltar = new ArtButton("VOLTAR");
 	        add(btnVoltar);

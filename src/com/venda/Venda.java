@@ -136,13 +136,17 @@ public class Venda extends totalcross.ui.Window{
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
+						
 					} else {
-
+						gridProdutos.removeAllElements();
+						carregaGridProdutosBusca();
 					}
+					
 				} else if (evt.target == cmbCategoria) {
 					if (cmbCategoria.getItems() != null) {
 						gridProdutos.removeAllElements();
 						carregaGridProdutos();
+						
 					} else {
 						return;
 					}
@@ -260,7 +264,7 @@ public class Venda extends totalcross.ui.Window{
 					rs.next();
 				}
 			} finally {
-				if (lb != null)
+ 				if (lb != null)
 					lb.closeAll();
 
 			}
