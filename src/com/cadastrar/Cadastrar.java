@@ -1,4 +1,4 @@
-package com.adicionar;
+package com.cadastrar;
 
 
 import java.util.Random;
@@ -121,7 +121,7 @@ public class Cadastrar extends totalcross.ui.Window{
 
 			btnCadastrar = new ArtButton("CADASTRAR");
 	        add(btnCadastrar);
-	        btnCadastrar.setRect(LEFT, BOTTOM, width - 400, PREFERRED);
+	        btnCadastrar.setRect(LEFT, BOTTOM, width - 390, PREFERRED);
 	        btnCadastrar.setBackColor(0x009933);
 	        btnCadastrar.setForeColor(Color.WHITE);
 					    

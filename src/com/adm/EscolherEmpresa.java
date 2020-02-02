@@ -49,7 +49,7 @@ public class EscolherEmpresa extends totalcross.ui.Window {
 			btnCadastrar = new ArtButton("CADASTRAR");
 			add(btnCadastrar);
 			btnCadastrar.setRect(RIGHT - 20, AFTER + 350, width - 300, PREFERRED, cmbEmpresa);
-			btnCadastrar.setBackColor(0xDF0101);
+			btnCadastrar.setBackColor(0xFF4000);
 			btnCadastrar.setForeColor(Color.WHITE);	
 
 			btnVoltar = new ArtButton("VOLTAR");

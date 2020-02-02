@@ -7,6 +7,7 @@ import com.litebase.LitebasePack;
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import principal.Home;
+import totalcross.sys.Convert;
 import totalcross.ui.Edit;
 import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
@@ -48,17 +49,18 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			imgInfo = new ImageControl(new Image("img/info.png"));
 			imgInfo.scaleToFit = true;
 			imgInfo.centerImage = true;
-			add(imgInfo,  CENTER, AFTER - 10, SCREENSIZE + 20, PREFERRED, lblInformacao);
+			add(imgInfo,  CENTER, AFTER + 30, PREFERRED, PREFERRED, lblInformacao);
 			
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);
 			lblEmpresa.setBackColor(0x003366);
 			lblEmpresa.setForeColor(Color.WHITE);
-			lblEmpresa.setRect(LEFT, AFTER + 10, PREFERRED, PREFERRED, imgInfo);
+			lblEmpresa.setRect(LEFT, AFTER + 30, PREFERRED, PREFERRED, imgInfo);
 
 			add(editEmpresa = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED, lblEmpresa);
 			editEmpresa.setBackColor(Color.WHITE);
 			editEmpresa.setForeColor(0x003366);
+			editEmpresa.setEnabled(false);
 
 			lblCnpj = new Label("CNPJ: ");
 			add(lblCnpj);
@@ -69,6 +71,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			add(editCnpj = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED, lblCnpj);
 			editCnpj.setBackColor(Color.WHITE);
 			editCnpj.setForeColor(0x003366);
+			editCnpj.setEnabled(false);
 			
 			lblUsuario = new Label("USUÁRIO: ");
 			add(lblUsuario);
@@ -79,6 +82,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			add(editUsuario = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED);
 			editUsuario.setBackColor(Color.WHITE);
 			editUsuario.setForeColor(0x003366);
+			editUsuario.setEnabled(false);
 			
 			lblCodigo = new Label("CÓDIGO: ");
 			add(lblCodigo);
@@ -89,6 +93,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			add(editCodigo = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED);
 			editCodigo.setBackColor(Color.WHITE);
 			editCodigo.setForeColor(0x003366);
+			editCodigo.setEnabled(false);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
@@ -96,7 +101,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 			
-//			consultarEmpresa();
+			consultarEmpresa();
 
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
@@ -119,7 +124,6 @@ public class InfoEmpresa extends totalcross.ui.Window {
 
 				}
 
-
 			}
 
 		} catch (Exception e) {
@@ -139,18 +143,17 @@ public class InfoEmpresa extends totalcross.ui.Window {
 		try {
 			
 			try {
-				Home home = new Home();
 
 				lb = new LitebasePack();
 
-				sql = " SELECT * FROM EMPRESA "
-					+ " WHERE CODIGO = " + home.editCodigo.getText();	
+				sql = " SELECT * FROM EMPRESAESCOLHIDA ";
 
 				rs = lb.executeQuery(sql);
 				
 				editEmpresa.setText(rs.getString("NOME"));
 				editCnpj.setText(rs.getString("CNPJ"));
 				editUsuario.setText(rs.getString("USUARIO"));
+				editCodigo.setText(Convert.toString(rs.getInt("CODIGO")));
 
 			} finally {
 				if(lb != null) {

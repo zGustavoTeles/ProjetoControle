@@ -39,7 +39,7 @@ public class ApagarDados extends totalcross.ui.Window {
 			lblAviso.setBackColor(0x003366);
 			lblAviso.setForeColor(Color.WHITE);
 			
-			lblEmpresa = new Label("EMPRESA:   ");
+			lblEmpresa = new Label("EMPRESA:    ");
 			add(lblEmpresa);
 			lblEmpresa.setRect(LEFT + 150, CENTER - 100, PREFERRED, PREFERRED);
 			lblEmpresa.setBackColor(0x003366);

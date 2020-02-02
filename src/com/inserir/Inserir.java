@@ -190,7 +190,7 @@ public class Inserir extends totalcross.ui.Window {
 
 			btnVender = new ArtButton("VENDER");
 			add(btnVender);
-			btnVender.setRect(CENTER, AFTER + 50, width - 420, PREFERRED, editTotal);
+			btnVender.setRect(CENTER, AFTER + 50, width - 300, PREFERRED, editTotal);
 			btnVender.setBackColor(0x009933);
 			btnVender.setForeColor(Color.WHITE);
 
@@ -233,7 +233,17 @@ public class Inserir extends totalcross.ui.Window {
 							msg.setForeColor(0x003366);
 							msg.popup();
 							return;
+							
+						} 
+						
+						if (editQuantidade.getText().equals(" ")) {
+							MessageBox msg = new MessageBox("CONTROLE", "Por favor insira\n uma quantidade");
+							msg.setBackColor(Color.WHITE);
+							msg.setForeColor(0x003366);
+							msg.popup();
+							return;
 						}
+						
 						efetuaVenda();
 						baixaEstoque();
 

@@ -95,6 +95,7 @@ public class Home extends MainWindow{
 			lblCodigo.setRect(CENTER, AFTER + 20, PREFERRED, PREFERRED, editUsuario);
 			
 			add(editCodigo = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
+			editCodigo.setMode(TAB_ONLY_BORDER);
 			editCodigo.setBackColor(Color.WHITE);
 			editCodigo.setForeColor(0x003366);
 			editCodigo.setEnabled(false);

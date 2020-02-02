@@ -1,6 +1,6 @@
 package com.menu;
 
-import com.adicionar.Cadastrar;
+import com.cadastrar.Cadastrar;
 import com.configuracoes.Configuracoes;
 import com.estoque.Estoque;
 import com.relatorio.Relatorio;

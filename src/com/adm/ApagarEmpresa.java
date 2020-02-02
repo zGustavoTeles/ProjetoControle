@@ -41,7 +41,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 			
 			btnApagar = new ArtButton("APAGAR");
 			add(btnApagar);
-			btnApagar.setRect(CENTER, AFTER + 350, width - 350, PREFERRED, cmbEmpresa);
+			btnApagar.setRect(CENTER, AFTER + 350, width - 300, PREFERRED, cmbEmpresa);
 			btnApagar.setBackColor(0xDF0101);
 			btnApagar.setForeColor(Color.WHITE);	
 
