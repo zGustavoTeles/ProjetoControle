@@ -282,7 +282,7 @@ public class Inserir extends totalcross.ui.Window {
 
 			total = valorProduto * quantidade;
 			Convert.toString(total);
-			editTotal.setText(String.format("%.2f", total) + " $$");
+			editTotal.setText( total + " $$");
 
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE", "Erro no calculo\n do produto" + e);
