@@ -60,7 +60,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			add(editEmpresa = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED, lblEmpresa);
 			editEmpresa.setBackColor(Color.WHITE);
 			editEmpresa.setForeColor(0x003366);
-			editEmpresa.setEnabled(false);
+			editEmpresa.setEditable(false);
 
 			lblCnpj = new Label("CNPJ: ");
 			add(lblCnpj);
@@ -71,7 +71,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			add(editCnpj = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED, lblCnpj);
 			editCnpj.setBackColor(Color.WHITE);
 			editCnpj.setForeColor(0x003366);
-			editCnpj.setEnabled(false);
+			editCnpj.setEditable(false);
 			
 			lblUsuario = new Label("USUÁRIO: ");
 			add(lblUsuario);
@@ -82,7 +82,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			add(editUsuario = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED);
 			editUsuario.setBackColor(Color.WHITE);
 			editUsuario.setForeColor(0x003366);
-			editUsuario.setEnabled(false);
+			editUsuario.setEditable(false);
 			
 			lblCodigo = new Label("CÓDIGO: ");
 			add(lblCodigo);
@@ -93,7 +93,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			add(editCodigo = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED);
 			editCodigo.setBackColor(Color.WHITE);
 			editCodigo.setForeColor(0x003366);
-			editCodigo.setEnabled(false);
+			editCodigo.setEditable(false);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);

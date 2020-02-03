@@ -64,7 +64,7 @@ public class Home extends MainWindow{
 			add(editEmpresa = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
 			editEmpresa.setBackColor(Color.WHITE);
 			editEmpresa.setForeColor(0x003366);
-			editEmpresa.setEnabled(false);
+			editEmpresa.setEditable(false);
 
 			lblCnpj = new Label("CNPJ: ");
 			add(lblCnpj);
@@ -75,7 +75,7 @@ public class Home extends MainWindow{
 			add(editCnpj = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
 			editCnpj.setBackColor(Color.WHITE);
 			editCnpj.setForeColor(0x003366);
-			editCnpj.setEnabled(false);
+			editCnpj.setEditable(false);
 			
 			lblUsuario = new Label("USUÁRIO: ");
 			add(lblUsuario);
@@ -98,7 +98,7 @@ public class Home extends MainWindow{
 			editCodigo.setMode(TAB_ONLY_BORDER);
 			editCodigo.setBackColor(Color.WHITE);
 			editCodigo.setForeColor(0x003366);
-			editCodigo.setEnabled(false);
+			editCodigo.setEditable(false);
 			
 			btnEntrar = new ArtButton("Entrar");
 			add(btnEntrar);

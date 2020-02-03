@@ -50,7 +50,7 @@ public class ApagarDados extends totalcross.ui.Window {
 			editEmpresa.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblEmpresa);
 			editEmpresa.setBackColor(Color.WHITE);
 			editEmpresa.setForeColor(0x003366);
-			editEmpresa.setEnabled(false);
+			editEmpresa.setEditable(false);
 
 			lblCodigo = new Label("CÓDIGO:       ");
 			add(lblCodigo);

@@ -57,6 +57,7 @@ public class Estoque extends totalcross.ui.Window{
 			
 			editBuscar = new Edit();
 			add(editBuscar);
+			editBuscar.capitalise = (Edit.ALL_UPPER);
 			editBuscar.setRect(LEFT, AFTER + 5, width - 130, PREFERRED, lblBuscar);
 			editBuscar.setBackColor(Color.WHITE);
 			editBuscar.setForeColor(0x003366);

@@ -15,7 +15,6 @@ import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.event.GridEvent;
-import totalcross.ui.event.PenEvent;
 import totalcross.ui.gfx.Color;
 
 public class Venda extends totalcross.ui.Window{
@@ -65,6 +64,7 @@ public class Venda extends totalcross.ui.Window{
 			
 			editBuscar = new Edit();
 			add(editBuscar);
+			editBuscar.capitalise = (Edit.ALL_UPPER);
 			editBuscar.setRect(LEFT, AFTER + 5, width - 130, PREFERRED, lblBuscar);
 			editBuscar.setBackColor(Color.WHITE);
 			editBuscar.setForeColor(0x003366);
