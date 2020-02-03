@@ -155,13 +155,13 @@ public class Cadastrar extends totalcross.ui.Window{
 
 						cadastrarProdutoNoEstoque();
 
-						MessageBox msg = new MessageBox("CONTROLE", "Produto cadastrado no estoque");
+						MessageBox msg = new MessageBox("CONTROLE", "Produto cadastrado\n no estoque");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
 
 					} else {
-						MessageBox msg = new MessageBox("CONTROLE", "Preencha todos os campos");
+						MessageBox msg = new MessageBox("CONTROLE", "Preencha todos\n os campos");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();

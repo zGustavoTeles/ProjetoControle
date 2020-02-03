@@ -118,7 +118,7 @@ public class Estoque extends totalcross.ui.Window{
 
 				}else if (evt.target == btnBuscar) {
 					if (editBuscar.getText().equals("")) {
-						MessageBox msg = new MessageBox("Aviso!", "O campo de busca\n deve ser preenchido");
+						MessageBox msg = new MessageBox("CONTROLE", "O campo de busca\n deve ser preenchido");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
@@ -155,7 +155,7 @@ public class Estoque extends totalcross.ui.Window{
 		try {
 			try {
 				lb = new LitebasePack();
-				sql = " SELECT * FROM ESTOQUE WHERE CATEGORIA = " + "'" + cmbCategoria.getSelectedItem() + "'";
+				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " + "'%" + editBuscar.getText() + "%'";
 
 				rs = lb.executeQuery(sql);
 				rs.first();
@@ -229,7 +229,7 @@ public class Estoque extends totalcross.ui.Window{
 		try {
 			try {
 				lb = new LitebasePack();
-				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO = " + "'" + editBuscar.getText() + "'";
+				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " + "'%" + editBuscar.getText() + "%'";
 
 				rs = lb.executeQuery(sql);
 				rs.first();
