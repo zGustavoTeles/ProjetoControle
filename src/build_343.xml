@@ -143,7 +143,7 @@ target: deploy
 			<arg file="Home.jar" />
 			<arg file="*.jpg" />
 			<arg file="*.png" />
-			<arg line="${extra.args} /r 4D544C4241F94FC94D2DB08B" />
+			<arg line="${extra.args} /r 5443444B53D06B8DF06BF983" />
 			<arg line="${platforms}" />
 		</java>
 	</target>
