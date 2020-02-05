@@ -1,10 +1,7 @@
 package com.estoque;
 
-import java.nio.charset.CodingErrorAction;
-
+import com.inserir.Inserir;
 import com.litebase.LitebasePack;
-
-import litebase.PreparedStatement;
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
@@ -16,6 +13,7 @@ import totalcross.ui.Label;
 import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
+import totalcross.ui.event.GridEvent;
 import totalcross.ui.gfx.Color;
 
 public class Estoque extends totalcross.ui.Window{
@@ -24,9 +22,14 @@ public class Estoque extends totalcross.ui.Window{
 	private Label						    lblProduto;
 	private ArtButton 						btnVoltar;
 	private ArtButton						btnBuscar;
+	private ArtButton						btnRemover;
 	private	ComboBox						cmbCategoria;
 	private Edit							editBuscar;
 	private Grid							gridProdutos;
+	
+	public static String					codigo = "";
+	public static String					quantidade = "";
+	public static String					produto = "";
 	
 	public Estoque(){
 		 setBackColor(0x003366);
@@ -48,7 +51,6 @@ public class Estoque extends totalcross.ui.Window{
 			add(cmbCategoria);
 			cmbCategoria.setRect(LEFT, AFTER + 5, FILL + 5, PREFERRED, lblProduto);
 			
-			
 			lblBuscar = new Label("BUSCAR");
 			add(lblBuscar);
 			lblBuscar.setRect(LEFT,AFTER + 5, PREFERRED, PREFERRED, cmbCategoria);
@@ -67,6 +69,12 @@ public class Estoque extends totalcross.ui.Window{
 			btnBuscar.setRect(AFTER + 1, SAME, width - 400, PREFERRED, editBuscar);
 			btnBuscar.setBackColor(0x003366);
 	        btnBuscar.setForeColor(Color.WHITE);
+	        
+	        btnRemover = new ArtButton("REMOVER");
+            add(btnRemover);
+            btnRemover.setRect(LEFT, BOTTOM, width - 400, PREFERRED);
+            btnRemover.setBackColor(0xDF0101);
+            btnRemover.setForeColor(Color.WHITE);
 	            
             btnVoltar = new ArtButton("VOLTAR");
             add(btnVoltar);
@@ -74,7 +82,7 @@ public class Estoque extends totalcross.ui.Window{
             btnVoltar.setBackColor(0x003366);
             btnVoltar.setForeColor(Color.WHITE);
             
-            int gridWidths[] = new int[7];
+            int gridWidths[] = new int[8];
 			gridWidths[0] = 30;
 			gridWidths[1] = 100;
 			gridWidths[2] = 40;
@@ -82,9 +90,10 @@ public class Estoque extends totalcross.ui.Window{
 			gridWidths[4] = 100;
 			gridWidths[5] = 10;
 			gridWidths[6] = 5;
+			gridWidths[7] = 100;
 
-		String[] caps = { "COD.", "PRODUTO", "QNT", "MARCA", "CATEGORIA","DESC", " VALOR"};
-		int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT};
+		String[] caps = { "COD.", "PRODUTO", "QNT", "MARCA", "CATEGORIA","DESC", " VALOR", "ENTRADA"};
+		int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT};
 		gridProdutos = new Grid(caps, gridWidths, aligns, false);
 		add(gridProdutos);
 		gridProdutos.setBackColor(Color.WHITE);
@@ -117,7 +126,23 @@ public class Estoque extends totalcross.ui.Window{
 				if (evt.target == btnVoltar) {
 					unpop();
 
-				}else if (evt.target == btnBuscar) {
+				}else if(evt.target == btnRemover) {
+					
+					if (gridProdutos.getSelectedItem() != null) {
+
+						gridProdutos.removeAllElements();
+						RemoverProduto removerProduto = new RemoverProduto();
+						removerProduto.popup();
+
+					} else {
+						MessageBox msg = new MessageBox("CONTROLE", "Deve-se selecionar\n um item");
+						msg.setBackColor(Color.WHITE);
+						msg.setForeColor(0x003366);
+						msg.popup();
+					}
+
+				}
+				else if (evt.target == btnBuscar) {
 					if (editBuscar.getText().equals("")) {
 						MessageBox msg = new MessageBox("CONTROLE", "O campo de busca\n deve ser preenchido");
 						msg.setBackColor(Color.WHITE);
@@ -136,6 +161,24 @@ public class Estoque extends totalcross.ui.Window{
 					} else {
 						return;
 					}
+				}
+				break;
+			case GridEvent.SELECTED_EVENT:
+				if (evt.target == gridProdutos) {
+
+					try {
+						
+						codigo = gridProdutos.getSelectedItem()[0];
+						produto = gridProdutos.getSelectedItem()[1];
+						quantidade = gridProdutos.getSelectedItem()[2];
+
+					} catch (Exception e) {
+						MessageBox msg = new MessageBox("CONTROLE", "Clique em um Item");
+						msg.setBackColor(Color.WHITE);
+						msg.setForeColor(0x003366);
+						msg.popup();
+					}
+
 				}
 			}
 
@@ -156,12 +199,12 @@ public class Estoque extends totalcross.ui.Window{
 		try {
 			try {
 				lb = new LitebasePack();
-				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " + "'%" + editBuscar.getText() + "%'";
+				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " + "'" + cmbCategoria.getSelectedItem() + "'";
 
 				rs = lb.executeQuery(sql);
 				rs.first();
 				for (int i = 0; rs.getRowCount() > i; i++) {
-					String[] b = new String[7];
+					String[] b = new String[8];
 					b[0] = Convert.toString(rs.getInt("CODIGO"));
 					b[1] = rs.getString("PRODUTO");
 					b[2] = Convert.toString(rs.getInt("QUANTIDADE"));
@@ -169,6 +212,7 @@ public class Estoque extends totalcross.ui.Window{
 					b[4] = rs.getString("CATEGORIA");
 					b[5] = rs.getString("DESCRICAO");
 					b[6] = rs.getString("VALOR");
+					b[7] = rs.getString("DATAENTRADA");
 					gridProdutos.add(b);
 					rs.next();
 				}

@@ -2,6 +2,7 @@ package principal;
 
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
+import totalcross.sys.Settings;
 import totalcross.ui.Edit;
 import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
@@ -38,6 +39,8 @@ public class Home extends MainWindow{
 		setBackColor(0x003366);
 		Tabelas tabelas = new Tabelas();
 		tabelas.criaTabelas();
+		
+//		Settings.resizableWindow = true;
 	}
 		
 		public void initUI(){
