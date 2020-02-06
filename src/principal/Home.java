@@ -140,9 +140,8 @@ public class Home extends MainWindow{
 						msg.setForeColor(0x003366);
 						msg.popup();
 
-					} else {									 
-						Menu menu = new Menu();
-						menu.popup();
+					} else {
+						validaEmpresa();
 					}
 
 				} else if (evt.target == btnAdm) {
@@ -202,6 +201,49 @@ public class Home extends MainWindow{
 			msg.popup();
 			return;
 		}
+	}
+	
+	public void validaEmpresa() {
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
+		try {
+
+			try {
+				lb = new LitebasePack();
+				sql = "SELECT * FROM EMPRESAESCOLHIDA "
+				    + " WHERE CODIGO = " + editCodigo.getText();
+
+				rs = lb.executeQuery(sql);
+				rs.first();
+
+				if (rs.getRowCount() == 0) {
+					MessageBox msg = new MessageBox("CONTROLE",
+							"Essa empresa não esta mais\n cadastrada no Sistema. Por favor\n clique em Atualizar para\n procurarmos uma empresa\n cadastrada.");
+					msg.setBackColor(Color.WHITE);
+					msg.setForeColor(0x003366);
+					msg.popup();
+
+					return;
+				}else {
+					Menu menu = new Menu();
+					menu.popup();
+				}
+
+			} finally {
+				if (lb != null)
+					lb.closeAll();
+			}
+
+		} catch (Exception e) {
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao Buscar Empresa");
+			msg.setBackColor(Color.WHITE);
+			msg.setForeColor(0x003366);
+			msg.popup();
+			return;
+		}
+		
 	}
 			
 }

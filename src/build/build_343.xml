@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
-<project name="ProjetoControle" default="* DEBUG" basedir=".">
+<project name="build.ProjetoControle" default="* DEBUG" basedir=".">
 
 	<description>
   Sample build file for TotalCross applications.
@@ -35,7 +35,7 @@ target: init
 
 		<!-- Platforms to deploy. E.G.: -palm -wince -win32
        Note: only -palm -iphone are supported under linux -->
-		<property name="platforms" value="-android -wince " />
+		<property name="platforms" value="-android " />
 
 		<!-- The target directory where the files will be created. -->
 		<property name="target.dir" value="." />
@@ -114,21 +114,30 @@ target: deploy
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 	<target name="* DEBUG" if="app.name" depends="make-jar" description="Deploy a TotalCross application">
-		<echo message="Deploy the ${app.name}" />
-		<!-- Caminho da classe que extende a MainWindow -->
-		<java classname="tc.Deploy" fork="yes" dir="${target.dir}">
-			<classpath>
-				<pathelement location="${sdk.root}/dist/tc.jar" />
-
-			</classpath>
-			<arg file="Home.jar" />
-			<arg file="*.jpg" />
-			<arg file="*.png" />
-			<arg file="*.gif" />
-			<arg line="${extra.args}" />
-			<arg line="${platforms}" />
-		</java>
-	</target>
+			<echo message="Deploy the ${app.name}" />
+			<!-- Caminho da classe que extende a MainWindow -->
+			<java classname="tc.Deploy" fork="yes" dir="${target.dir}">
+				<classpath>
+					<pathelement location="${sdk.root}/dist/tc.jar" />
+				</classpath>
+				<arg file="Principal.jar" />
+				<arg file="*.jpg" />
+				<arg file="*.gif" />
+				<arg file="*.png" />
+				<arg file="*.bmp" />
+				<arg file="*.pdb" />
+				<arg file="*.db" />
+				<arg file="*.dbo" />
+				<arg file="*.idk" />
+				<arg file="*.idr" />
+				<arg file="*.zip" />
+				<arg file="*.CAB" />
+				<arg file="*.bat" />
+				<arg file="*.ini" />
+				<arg line="${extra.args}" />
+				<arg line="${platforms}" />
+			</java>
+		</target>
 
 
 	<target name="CHAVE" if="app.name" depends="make-jar" description="Deploy a TotalCross application">
@@ -138,10 +147,10 @@ target: deploy
 		<java classname="tc.Deploy" fork="yes" dir="${target.dir}">
 			<classpath>
 				<pathelement location="${sdk.root}/dist/tc.jar" />
-
+				<pathelement location="${litebase.root}/dist/litebase.jar"/>
 			</classpath>
 			<arg file="Home.jar" />
-			<arg file="*.jpg" />
+			<arg file="*.jpg" /> 
 			<arg file="*.png" />
 			<arg line="${extra.args} /r 5443444B53D06B8DF06BF983" />
 			<arg line="${platforms}" />
