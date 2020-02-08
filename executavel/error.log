@@ -1,0 +1,20 @@
+
+opening for read tcapp.prop
+#0 - the file given: tcapp.prop
+#1 - dataPath: tcapp.prop
+#2 - MainWindow's path from current folder: principal/tcapp.prop
+#3 - classpath
+#4 - jar file
+#4b - C:/Users/Administrador/AppData/Local/Temp/e4jBA81.tmp_dir1581104194/tc.jar
+file not found
+
+
+opening for read img/home.png
+#0 - the file given: img/home.png
+#1 - dataPath: img/home.png
+#2 - MainWindow's path from current folder: principal/img/home.png
+#3 - classpath
+#4 - jar file
+#4b - C:/Users/Administrador/AppData/Local/Temp/e4jBA81.tmp_dir1581104194/tc.jar
+file not found
+

@@ -2,7 +2,6 @@ package principal;
 
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
-import totalcross.sys.Settings;
 import totalcross.ui.Edit;
 import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
@@ -39,7 +38,6 @@ public class Home extends MainWindow{
 		setBackColor(0x003366);
 		Tabelas tabelas = new Tabelas();
 		tabelas.criaTabelas();
-		
 //		Settings.resizableWindow = true;
 	}
 		
@@ -53,16 +51,16 @@ public class Home extends MainWindow{
 			btnAtualizar.setForeColor(Color.WHITE);
 			btnAtualizar.setRect(RIGHT - 4, TOP + 4, SCREENSIZE + 20, PREFERRED);
 			
-			imgHome = new ImageControl(new Image("img/home.png"));
-			imgHome.scaleToFit = true;
-			imgHome.centerImage = true;
-			add(imgHome, CENTER, AFTER + 3, SCREENSIZE + 50, PREFERRED, btnAtualizar);
+//			imgHome = new ImageControl(new Image("img/home.png"));
+//			imgHome.scaleToFit = true;
+//			imgHome.centerImage = true;
+//			add(imgHome, CENTER, AFTER + 3, SCREENSIZE + 50, PREFERRED, btnAtualizar);
 
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);
 			lblEmpresa.setBackColor(0x003366);
 			lblEmpresa.setForeColor(Color.WHITE);
-			lblEmpresa.setRect(CENTER, AFTER + 1, PREFERRED, PREFERRED, imgHome);
+			lblEmpresa.setRect(CENTER, AFTER + 1, PREFERRED, PREFERRED, btnAtualizar);
 
 			add(editEmpresa = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
 			editEmpresa.setBackColor(Color.WHITE);
@@ -118,7 +116,7 @@ public class Home extends MainWindow{
 			buscaEmpresaCadastrada();
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro" + e);
 			msg.setBackColor(0x345D7E);
 			msg.setForeColor(Color.WHITE);
 			msg.popup();
@@ -140,9 +138,8 @@ public class Home extends MainWindow{
 						msg.setForeColor(0x003366);
 						msg.popup();
 
-					} else {									 
-						Menu menu = new Menu();
-						menu.popup();
+					} else {
+						validaEmpresa();
 					}
 
 				} else if (evt.target == btnAdm) {
@@ -154,7 +151,7 @@ public class Home extends MainWindow{
 				}
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro na validação" + e);
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -202,6 +199,49 @@ public class Home extends MainWindow{
 			msg.popup();
 			return;
 		}
+	}
+	
+	public void validaEmpresa() {
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
+		try {
+
+			try {
+				lb = new LitebasePack();
+				sql = "SELECT * FROM EMPRESAESCOLHIDA "
+				    + " WHERE CODIGO = " + editCodigo.getText();
+
+				rs = lb.executeQuery(sql);
+				rs.first();
+
+				if (rs.getRowCount() == 0) {
+					MessageBox msg = new MessageBox("CONTROLE",
+							"Essa empresa não esta mais\n cadastrada no Sistema. Por favor\n clique em Atualizar para\n procurarmos uma empresa\n cadastrada.");
+					msg.setBackColor(Color.WHITE);
+					msg.setForeColor(0x003366);
+					msg.popup();
+
+					return;
+				}else {
+					Menu menu = new Menu();
+					menu.popup();
+				}
+
+			} finally {
+				if (lb != null)
+					lb.closeAll();
+			}
+
+		} catch (Exception e) {
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao Buscar Empresa");
+			msg.setBackColor(Color.WHITE);
+			msg.setForeColor(0x003366);
+			msg.popup();
+			return;
+		}
+		
 	}
 			
 }

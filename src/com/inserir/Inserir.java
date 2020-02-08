@@ -281,8 +281,7 @@ public class Inserir extends totalcross.ui.Window {
 			quantidade = Convert.toInt(quantidadeString);
 
 			total = valorProduto * quantidade;
-			Convert.toString(total);
-			editTotal.setText( total + " $$");
+			editTotal.setText( Convert.toCurrencyString(total, 2) + " $$");
 
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE", "Erro no calculo\n do produto" + e);

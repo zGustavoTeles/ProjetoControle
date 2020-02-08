@@ -15,6 +15,7 @@ import totalcross.ui.Label;
 import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
+import totalcross.ui.event.PenEvent;
 import totalcross.ui.gfx.Color;
 import totalcross.ui.image.Image;
 import totalcross.util.Date;
@@ -37,13 +38,10 @@ public class Cadastrar extends totalcross.ui.Window{
 	private ArtButton 						btnVoltar;
 	private ImageControl					imgAdicionar;
 
-	public Cadastrar(){
-		 setBackColor(0x003366);
-		 initUI();
-		 carregaCmbCategoria();
-		 carregaCmbDescricao();
-		 carregaCmbMarca();
-		 carregaCmbProduto();
+	public Cadastrar() {
+		setBackColor(0x003366);
+		initUI();
+		carregaCmbCategoria();
 	}
 	
 	public void initUI() {
@@ -166,8 +164,16 @@ public class Cadastrar extends totalcross.ui.Window{
 						msg.setForeColor(0x003366);
 						msg.popup();
 					}
-				
+
+				} else if (evt.target == cmbCategoria) {
+					cmbMarca.removeAll();
+					cmbProduto.removeAll();
+					carregaCmbDescricao();
+					carregaCmbMarca();
+					carregaCmbProduto();
+
 				}
+
 			}
 			
 		}catch (Exception e) {
@@ -235,7 +241,8 @@ public class Cadastrar extends totalcross.ui.Window{
 			try {
 				try {
 					lb = new LitebasePack();
-					sql = " SELECT PRODUTO FROM PRODUTO";
+					sql = " SELECT PRODUTO, CATEGORIA FROM PRODUTO "
+						+ " WHERE CATEGORIA = " + "'" + cmbCategoria.getSelectedItem() + "'";;
 
 					rs = lb.executeQuery(sql);
 					rs.first();
@@ -306,7 +313,8 @@ public class Cadastrar extends totalcross.ui.Window{
 			try {
 				try {
 					lb = new LitebasePack();
-					sql = " SELECT DESCRICAO FROM MARCA";
+					sql = " SELECT DESCRICAO, CATEGORIA FROM MARCA "
+						+ " WHERE CATEGORIA = " + "'" + cmbCategoria.getSelectedItem() + "'";;
 
 					rs = lb.executeQuery(sql);
 					rs.first();
@@ -341,7 +349,7 @@ public class Cadastrar extends totalcross.ui.Window{
 			try {
 				try {
 					lb = new LitebasePack();
-					sql = " SELECT DESCRICAO FROM DESCRICAO";
+					sql = " SELECT DESCRICAO FROM DESCRICAO ";
 
 					rs = lb.executeQuery(sql);
 					rs.first();

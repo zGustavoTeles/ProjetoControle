@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
+<!--
 
-<project name="ProjetoControle" default="* DEBUG" basedir=".">
+// $Id: deploy.xml,v 1.1 2009/04/29 12:29:15 rogerio Exp $
+
+-->
+
+<project name="BUILD_COTROLE" default="* DEBUG" basedir=".">
 
 	<description>
   Sample build file for TotalCross applications.
@@ -22,27 +27,29 @@ target: init
 	<target name="init">
 
 		<!-- The SDK root -->
-		<property name="sdk.root" value="C:\TotalCross3 344"/>
+		<property name="sdk.root" value="C:\TotalCross3 344" />
 
-		<!-- The JDK root 
-		<property name="jdk.root"   value="C:\Sun\SDK\jdk"/>-->
+		
+		<!-- The Litebase root -->
 
-		<!-- Path to apple certificate -->
+		<!-- The JDK root -->
+		<property name="jdk.root" value="C:\Sun\SDK\jdk" />
 
 		<!-- The Application name -->
 		<property name="app.name" value="CONTROLE" />
 		<property name="jar.name" value="principal.Home.jar" />
+		
 
 		<!-- Platforms to deploy. E.G.: -palm -wince -win32
        Note: only -palm -iphone are supported under linux -->
-		<property name="platforms" value="-android -wince " />
+		<property name="platforms" value="-android -wince -win32 -wp8" />
 
 		<!-- The target directory where the files will be created. -->
 		<property name="target.dir" value="." />
-		<property name="res" value="./res" />
 
 		<!-- Any extra arguments you want to pass to the deployer -->
-		<property name="extra.args" value="/p /v /n CONTROLE"/>
+		<!-- <property name="extra.args" value="/k /v /n ARTVENDAS-DUAL /r 5443444B53D06B8DF06BF983"/> -->
+		<property name="extra.args" value="/p /v /n CONTROLE" />
 
 
 
@@ -68,7 +75,6 @@ target: clean
 			<include name="**/*.java" />
 			<classpath>
 				<pathelement location="${sdk.root}/dist/tc.jar" />
-
 				<pathelement location="${jdk.root}/tools.jar" />
 			</classpath>
 		</javac>
@@ -102,7 +108,7 @@ target: clean
 ================================= -->
 	<target name="make-jar" depends="build">
 		<jar jarfile="Home.jar">
-			<fileset dir="${target.dir}" includes="**/*.class **/*.jpg **/*.png **/*.gif" />
+			<fileset dir="${target.dir}" includes="**/*.class *.jpg **/*.png" />
 		</jar>
 	</target>
 
@@ -119,26 +125,21 @@ target: deploy
 		<java classname="tc.Deploy" fork="yes" dir="${target.dir}">
 			<classpath>
 				<pathelement location="${sdk.root}/dist/tc.jar" />
-
 			</classpath>
 			<arg file="Home.jar" />
 			<arg file="*.jpg" />
 			<arg file="*.png" />
-			<arg file="*.gif" />
 			<arg line="${extra.args}" />
 			<arg line="${platforms}" />
 		</java>
 	</target>
 
-
 	<target name="CHAVE" if="app.name" depends="make-jar" description="Deploy a TotalCross application">
-
 		<echo message="Deploy the ${app.name}" />
 		<!-- Caminho da classe que extende a MainWindow -->
 		<java classname="tc.Deploy" fork="yes" dir="${target.dir}">
 			<classpath>
 				<pathelement location="${sdk.root}/dist/tc.jar" />
-
 			</classpath>
 			<arg file="Home.jar" />
 			<arg file="*.jpg" />
@@ -147,6 +148,5 @@ target: deploy
 			<arg line="${platforms}" />
 		</java>
 	</target>
-
-
+	
 </project>
