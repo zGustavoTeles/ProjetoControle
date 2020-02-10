@@ -39,7 +39,6 @@ public class Venda extends totalcross.ui.Window{
 	public Venda(){
 		 setBackColor(0x003366);
 		 initUI();
-		 carregaCmbCategoria();
 	}
 	
 	public void initUI() {
@@ -144,6 +143,7 @@ public class Venda extends totalcross.ui.Window{
 					
 				} else if (evt.target == cmbCategoria) {
 					if (cmbCategoria.getItems() != null) {
+						editBuscar.setText("");
 						gridProdutos.removeAllElements();
 						carregaGridProdutos();
 						
@@ -153,7 +153,6 @@ public class Venda extends totalcross.ui.Window{
 
 				} else if (evt.target == btnInserir) {
 					if (gridProdutos.getSelectedItem() != null) {
-
 						gridProdutos.removeAllElements();
 						Inserir inserir = new Inserir();
 						inserir.popup();
@@ -165,6 +164,12 @@ public class Venda extends totalcross.ui.Window{
 						msg.popup();
 					}
 
+				}
+				  break;
+			case ControlEvent.FOCUS_IN :
+				if (evt.target == cmbCategoria) {
+					cmbCategoria.removeAll();
+					carregaCmbCategoria();
 				}
 			}
 			switch (evt.type) {

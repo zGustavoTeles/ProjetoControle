@@ -31,6 +31,7 @@ public class Home extends MainWindow{
 		public ArtButton        btnEntrar;
 		public ArtButton		btnBuscar;
 		public ArtButton		btnAtualizar;
+		public ArtButton        btnSair;
 		public ImageControl		imgHome;
 		
 		
@@ -49,18 +50,24 @@ public class Home extends MainWindow{
 			add(btnAtualizar);
 			btnAtualizar.setBackColor(0xFFBF00);
 			btnAtualizar.setForeColor(Color.WHITE);
-			btnAtualizar.setRect(RIGHT - 4, TOP + 4, SCREENSIZE + 20, PREFERRED);
+			btnAtualizar.setRect(LEFT + 4, TOP + 4, SCREENSIZE + 20, PREFERRED);
 			
-//			imgHome = new ImageControl(new Image("img/home.png"));
-//			imgHome.scaleToFit = true;
-//			imgHome.centerImage = true;
-//			add(imgHome, CENTER, AFTER + 3, SCREENSIZE + 50, PREFERRED, btnAtualizar);
+			btnSair = new ArtButton("Sair");
+			add(btnSair);
+			btnSair.setBackColor(0xA9A9A9);
+			btnSair.setForeColor(Color.WHITE);
+			btnSair.setRect(RIGHT - 4, TOP + 4, SCREENSIZE + 20, PREFERRED);
+			
+			imgHome = new ImageControl(new Image("img/home.png"));
+			imgHome.scaleToFit = true;
+			imgHome.centerImage = true;
+			add(imgHome, CENTER, AFTER + 3, SCREENSIZE + 50, PREFERRED, btnAtualizar);
 
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);
 			lblEmpresa.setBackColor(0x003366);
 			lblEmpresa.setForeColor(Color.WHITE);
-			lblEmpresa.setRect(CENTER, AFTER + 1, PREFERRED, PREFERRED, btnAtualizar);
+			lblEmpresa.setRect(CENTER, AFTER + 1, PREFERRED, PREFERRED, imgHome);
 
 			add(editEmpresa = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
 			editEmpresa.setBackColor(Color.WHITE);
@@ -148,6 +155,9 @@ public class Home extends MainWindow{
 
 				} else if (evt.target == btnAtualizar) {
 					buscaEmpresaCadastrada();
+					
+				}else if(evt.target == btnSair) {
+					Home.exit(0);
 				}
 			}
 		} catch (Exception e) {

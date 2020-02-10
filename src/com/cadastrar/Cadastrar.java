@@ -42,6 +42,7 @@ public class Cadastrar extends totalcross.ui.Window{
 		setBackColor(0x003366);
 		initUI();
 		carregaCmbCategoria();
+		carregaCmbDescricao();
 	}
 	
 	public void initUI() {
@@ -168,7 +169,6 @@ public class Cadastrar extends totalcross.ui.Window{
 				} else if (evt.target == cmbCategoria) {
 					cmbMarca.removeAll();
 					cmbProduto.removeAll();
-					carregaCmbDescricao();
 					carregaCmbMarca();
 					carregaCmbProduto();
 

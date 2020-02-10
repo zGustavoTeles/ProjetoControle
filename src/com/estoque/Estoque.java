@@ -34,7 +34,6 @@ public class Estoque extends totalcross.ui.Window{
 	public Estoque(){
 		 setBackColor(0x003366);
 		 initUI();
-		 carregaCmbCategoria();
 	}
 	
 	public void initUI() {
@@ -154,8 +153,10 @@ public class Estoque extends totalcross.ui.Window{
 						carregaGridProdutosBusca();
 					}
 					
-				}else if (evt.target == cmbCategoria) {
+				}
+				else if (evt.target == cmbCategoria) {
 					if (cmbCategoria.getItems() != null) {
+						editBuscar.setText("");
 						gridProdutos.removeAllElements();
 						carregaGridProdutos();
 					} else {
@@ -180,6 +181,12 @@ public class Estoque extends totalcross.ui.Window{
 					}
 
 				}
+		    break;
+			case ControlEvent.FOCUS_IN :
+				if (evt.target == cmbCategoria) {
+					cmbCategoria.removeAll();
+					carregaCmbCategoria();
+				}
 			}
 
 		} catch (Exception e) {
@@ -199,7 +206,7 @@ public class Estoque extends totalcross.ui.Window{
 		try {
 			try {
 				lb = new LitebasePack();
-				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " + "'" + cmbCategoria.getSelectedItem() + "'";
+				sql = " SELECT * FROM ESTOQUE WHERE CATEGORIA = " + "'" + cmbCategoria.getSelectedItem() + "'";
 
 				rs = lb.executeQuery(sql);
 				rs.first();
