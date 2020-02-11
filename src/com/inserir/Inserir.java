@@ -190,7 +190,7 @@ public class Inserir extends totalcross.ui.Window {
 
 			btnVender = new ArtButton("VENDER");
 			add(btnVender);
-			btnVender.setRect(CENTER, AFTER + 50, width - 300, PREFERRED, editTotal);
+			btnVender.setRect(CENTER, AFTER + 50, width - 400, PREFERRED, editTotal);
 			btnVender.setBackColor(0x009933);
 			btnVender.setForeColor(Color.WHITE);
 

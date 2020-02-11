@@ -42,13 +42,13 @@ public class EscolherEmpresa extends totalcross.ui.Window {
 
 			btnSalvar = new ArtButton("SALVAR");
 			add(btnSalvar);
-			btnSalvar.setRect(LEFT + 20, AFTER + 350, width - 300, PREFERRED, cmbEmpresa);
+			btnSalvar.setRect(LEFT + 20, AFTER + 350, width - 400, PREFERRED, cmbEmpresa);
 			btnSalvar.setBackColor(0x009933);
 			btnSalvar.setForeColor(Color.WHITE);		
 			
 			btnCadastrar = new ArtButton("CADASTRAR");
 			add(btnCadastrar);
-			btnCadastrar.setRect(RIGHT - 20, AFTER + 350, width - 300, PREFERRED, cmbEmpresa);
+			btnCadastrar.setRect(RIGHT - 20, AFTER + 350, width - 400, PREFERRED, cmbEmpresa);
 			btnCadastrar.setBackColor(0xFF4000);
 			btnCadastrar.setForeColor(Color.WHITE);	
 
