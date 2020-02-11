@@ -112,13 +112,13 @@ public class Home extends MainWindow{
 			add(btnEntrar);
 			btnEntrar.setBackColor(0x003366);
 			btnEntrar.setForeColor(Color.WHITE);
-			btnEntrar.setRect(RIGHT - 40, AFTER + 50, SCREENSIZE + 30, PREFERRED, editCodigo);
+			btnEntrar.setRect(RIGHT - 40, BOTTOM, SCREENSIZE + 30, PREFERRED, editCodigo);
 
 			btnAdm = new ArtButton("Administrador");
 			add(btnAdm);
 			btnAdm.setBackColor(0x003366);
 			btnAdm.setForeColor(Color.WHITE);
-			btnAdm.setRect(LEFT + 40, AFTER + 50, SCREENSIZE + 30, PREFERRED, editCodigo);
+			btnAdm.setRect(LEFT + 40, BOTTOM, SCREENSIZE + 30, PREFERRED, editCodigo);
 			
 			buscaEmpresaCadastrada();
 			

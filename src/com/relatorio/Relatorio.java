@@ -44,7 +44,7 @@ public class Relatorio extends totalcross.ui.Window{
 
 			editDataUm = new Edit();
 			add(editDataUm);
-			editDataUm.setRect(AFTER + 2, SAME, width - 330, PREFERRED, lblData);
+			editDataUm.setRect(AFTER + 2, SAME, SCREENSIZE - 4, PREFERRED, lblData);
 			editDataUm.setBackColor(Color.WHITE);
 			editDataUm.setForeColor(0x003366);
 
@@ -56,13 +56,13 @@ public class Relatorio extends totalcross.ui.Window{
 
 			editDataDois = new Edit();
 			add(editDataDois);
-			editDataDois.setRect(AFTER + 2, SAME, width - 330, PREFERRED, lblA);
+			editDataDois.setRect(AFTER + 2, SAME, SCREENSIZE - 4, PREFERRED, lblA);
 			editDataDois.setBackColor(Color.WHITE);
 			editDataDois.setForeColor(0x003366);
 
 			btnBuscar = new ArtButton("BUSCAR");
 			add(btnBuscar);
-			btnBuscar.setRect(AFTER + 5 , SAME, width - 400, PREFERRED, editDataDois);
+			btnBuscar.setRect(AFTER + 5 , SAME, SCREENSIZE - 4, PREFERRED, editDataDois);
 			btnBuscar.setBackColor(0x003366);
 			btnBuscar.setForeColor(Color.WHITE);
 

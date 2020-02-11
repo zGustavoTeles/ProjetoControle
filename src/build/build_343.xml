@@ -5,7 +5,7 @@
 
 -->
 
-<project name="BUILD_COTROLE" default="* DEBUG" basedir=".">
+<project name="BUILD_CONTROLE" default="* DEBUG" basedir=".">
 
 	<description>
   Sample build file for TotalCross applications.
@@ -29,7 +29,7 @@ target: init
 		<!-- The SDK root -->
 		<property name="sdk.root" value="C:\TotalCross3 344" />
 
-		
+
 		<!-- The Litebase root -->
 
 		<!-- The JDK root -->
@@ -38,7 +38,7 @@ target: init
 		<!-- The Application name -->
 		<property name="app.name" value="CONTROLE" />
 		<property name="jar.name" value="principal.Home.jar" />
-		
+
 
 		<!-- Platforms to deploy. E.G.: -palm -wince -win32
        Note: only -palm -iphone are supported under linux -->
@@ -48,9 +48,7 @@ target: init
 		<property name="target.dir" value="." />
 
 		<!-- Any extra arguments you want to pass to the deployer -->
-		<!-- <property name="extra.args" value="/k /v /n ARTVENDAS-DUAL /r 5443444B53D06B8DF06BF983"/> -->
 		<property name="extra.args" value="/p /v /n CONTROLE" />
-
 
 
 	</target>
@@ -83,7 +81,7 @@ target: clean
 				<exclude name="**/*.java" />
 				<exclude name="build/" />
 				<exclude name="dist/" />
-				<exclude name="icons/" />
+				<exclude name="icon/" />
 				<exclude name="exec/" />
 				<exclude name="*.pdb" />
 				<exclude name="*.db" />
@@ -144,9 +142,9 @@ target: deploy
 			<arg file="Home.jar" />
 			<arg file="*.jpg" />
 			<arg file="*.png" />
-			<arg line="${extra.args} /r 5443444B53D06B8DF06BF983" />
+			<arg line="${extra.args} /r 5443444B03CA07FBBE00A9AA" />
 			<arg line="${platforms}" />
 		</java>
 	</target>
-	
+
 </project>
