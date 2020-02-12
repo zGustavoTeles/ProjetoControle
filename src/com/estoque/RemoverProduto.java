@@ -95,13 +95,13 @@ public class RemoverProduto extends totalcross.ui.Window {
 			
 			btnRemover = new ArtButton("REMOVER");
 			add(btnRemover);
-			btnRemover.setRect(CENTER, AFTER + 50, width - 350, PREFERRED, editQuantidade);
+			btnRemover.setRect(CENTER, AFTER + 50, SCREENSIZE - 4, PREFERRED, editQuantidade);
 			btnRemover.setBackColor(0xDF0101);
 			btnRemover.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
-			btnVoltar.setRect(RIGHT, BOTTOM, width - 400, PREFERRED);
+			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 			

@@ -28,7 +28,7 @@ public class ValidaAdm extends totalcross.ui.Window {
 
 		try {
 			
-			lblAviso = new Label("POR FAVOR INSIRA O ADMINISTRADOR E A SENHA\n PARA ENTRAR NO SISTEMA COMO ADM");
+			lblAviso = new Label("POR FAVOR INSIRA O ADMINISTRADOR\n E A SENHA PARA ENTRAR NO SISTEMA\n COMO ADM");
 			add(lblAviso);
 			lblAviso.setRect(CENTER, TOP, PREFERRED, PREFERRED);
 			lblAviso.setBackColor(0x003366);
@@ -61,13 +61,13 @@ public class ValidaAdm extends totalcross.ui.Window {
 
 			btnEntrar = new ArtButton("ENTRAR");
 			add(btnEntrar);
-			btnEntrar.setRect(CENTER, AFTER + 50, width - 400, PREFERRED, editSenha);
+			btnEntrar.setRect(CENTER, AFTER + 50, SCREENSIZE - 5, PREFERRED, editSenha);
 			btnEntrar.setBackColor(0x009933);
 			btnEntrar.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
-			btnVoltar.setRect(RIGHT, BOTTOM, width - 400, PREFERRED);
+			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 

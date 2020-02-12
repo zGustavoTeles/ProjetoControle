@@ -1,6 +1,5 @@
 package com.estoque;
 
-import com.inserir.Inserir;
 import com.litebase.LitebasePack;
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
@@ -65,19 +64,19 @@ public class Estoque extends totalcross.ui.Window{
 
 			btnBuscar = new ArtButton("BUSCAR");
 			add(btnBuscar);
-			btnBuscar.setRect(AFTER + 1, SAME, width - 400, PREFERRED, editBuscar);
+			btnBuscar.setRect(AFTER + 1, SAME, SCREENSIZE - 5, PREFERRED, editBuscar);
 			btnBuscar.setBackColor(0x003366);
 	        btnBuscar.setForeColor(Color.WHITE);
 	        
 	        btnRemover = new ArtButton("REMOVER");
             add(btnRemover);
-            btnRemover.setRect(LEFT, BOTTOM, width - 400, PREFERRED);
+            btnRemover.setRect(LEFT, BOTTOM, SCREENSIZE - 4, PREFERRED);
             btnRemover.setBackColor(0xDF0101);
             btnRemover.setForeColor(Color.WHITE);
 	            
             btnVoltar = new ArtButton("VOLTAR");
             add(btnVoltar);
-            btnVoltar.setRect(RIGHT, BOTTOM, width - 400, PREFERRED);
+            btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
             btnVoltar.setBackColor(0x003366);
             btnVoltar.setForeColor(Color.WHITE);
             

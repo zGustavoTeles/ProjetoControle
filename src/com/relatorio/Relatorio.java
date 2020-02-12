@@ -62,13 +62,13 @@ public class Relatorio extends totalcross.ui.Window{
 
 			btnBuscar = new ArtButton("BUSCAR");
 			add(btnBuscar);
-			btnBuscar.setRect(AFTER + 5 , SAME, SCREENSIZE - 4, PREFERRED, editDataDois);
+			btnBuscar.setRect(AFTER + 5 , SAME, SCREENSIZE - 5, PREFERRED, editDataDois);
 			btnBuscar.setBackColor(0x003366);
 			btnBuscar.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
-			btnVoltar.setRect(RIGHT, BOTTOM, width - 400, PREFERRED);
+			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 

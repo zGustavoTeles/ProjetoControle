@@ -120,13 +120,13 @@ public class Cadastrar extends totalcross.ui.Window{
 
 			btnCadastrar = new ArtButton("CADASTRAR");
 	        add(btnCadastrar);
-	        btnCadastrar.setRect(LEFT, BOTTOM, width - 390, PREFERRED);
+	        btnCadastrar.setRect(LEFT, BOTTOM, SCREENSIZE - 2, PREFERRED);
 	        btnCadastrar.setBackColor(0x009933);
 	        btnCadastrar.setForeColor(Color.WHITE);
 					    
 			btnVoltar = new ArtButton("VOLTAR");
 	        add(btnVoltar);
-	        btnVoltar.setRect(RIGHT, BOTTOM, width - 400, PREFERRED);
+	        btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
 	        btnVoltar.setBackColor(0x003366);
 	        btnVoltar.setForeColor(Color.WHITE);
 

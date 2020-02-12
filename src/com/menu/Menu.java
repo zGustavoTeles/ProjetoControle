@@ -32,7 +32,7 @@ public class Menu extends totalcross.ui.Window {
 
 			btnVenda = new ArtButton("VENDA");
 			add(btnVenda);
-			btnVenda.setRect(CENTER, TOP + 30, width - 200, PREFERRED + 80);
+			btnVenda.setRect(CENTER, TOP + 150, width - 200, PREFERRED + 80);
 			btnVenda.setBackColor(0x003366);
 			btnVenda.setForeColor(Color.WHITE);
 

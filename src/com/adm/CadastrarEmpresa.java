@@ -40,7 +40,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 
 		try {
 			
-			lblAviso = new Label("POR FAVOR PREENCHA TODOS OS CAMPOS\n PARA CADASTRAR UMA NOVA EMPRESA:");
+			lblAviso = new Label("POR FAVOR PREENCHA TODOS OS\n CAMPOS PARA CADASTRAR UMA\n NOVA EMPRESA:");
 			add(lblAviso);
 			lblAviso.setRect(CENTER, TOP, PREFERRED, PREFERRED);
 			lblAviso.setBackColor(0x003366);
@@ -78,7 +78,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			
 			btnGerarCodigo = new ArtButton("CÓDIGO");
 			add(btnGerarCodigo);
-			btnGerarCodigo.setRect(LEFT, AFTER + 20, width - 400, PREFERRED, editUsuario);
+			btnGerarCodigo.setRect(LEFT, AFTER + 20, SCREENSIZE - 5, PREFERRED, editUsuario);
 			btnGerarCodigo.setBackColor(0x003366);
 			btnGerarCodigo.setForeColor(Color.WHITE);	
 			
@@ -88,13 +88,13 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			
 			btnCadastrar = new ArtButton("CADASTRAR");
 			add(btnCadastrar);
-			btnCadastrar.setRect(CENTER, AFTER + 50, width - 400, PREFERRED, editSenha);
+			btnCadastrar.setRect(CENTER, AFTER + 50, width - 450, PREFERRED, editSenha);
 			btnCadastrar.setBackColor(0x009933);
 			btnCadastrar.setForeColor(Color.WHITE);		
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
-			btnVoltar.setRect(RIGHT, BOTTOM, width - 400, PREFERRED);
+			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 

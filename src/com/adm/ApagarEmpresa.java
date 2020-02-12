@@ -29,7 +29,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 
 		try {
 			
-			lblAviso = new Label("POR FAVOR SELECIONE A EMPRESA QUE DESEJA\n APAGAR DO SISTEMA SISTEMA:");
+			lblAviso = new Label("POR FAVOR SELECIONE A EMPRESA\n QUE DESEJA APAGAR DO\n SISTEMA SISTEMA:");
 			add(lblAviso);
 			lblAviso.setRect(CENTER, TOP + 2, PREFERRED, PREFERRED);
 			lblAviso.setBackColor(0x003366);
@@ -41,13 +41,13 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 			
 			btnApagar = new ArtButton("APAGAR");
 			add(btnApagar);
-			btnApagar.setRect(CENTER, AFTER + 350, width - 400, PREFERRED, cmbEmpresa);
+			btnApagar.setRect(CENTER, AFTER + 350, width - 450, PREFERRED, cmbEmpresa);
 			btnApagar.setBackColor(0xDF0101);
 			btnApagar.setForeColor(Color.WHITE);	
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
-			btnVoltar.setRect(RIGHT, BOTTOM, width - 400, PREFERRED);
+			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 

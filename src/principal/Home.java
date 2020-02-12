@@ -11,6 +11,8 @@ import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
 import totalcross.ui.image.*;
+
+import com.adm.Administrador;
 import com.adm.ValidaAdm;
 import com.litebase.LitebasePack;
 import com.menu.Menu;
@@ -50,13 +52,13 @@ public class Home extends MainWindow{
 			add(btnAtualizar);
 			btnAtualizar.setBackColor(0xFFBF00);
 			btnAtualizar.setForeColor(Color.WHITE);
-			btnAtualizar.setRect(LEFT + 4, TOP + 4, SCREENSIZE + 20, PREFERRED);
+			btnAtualizar.setRect(LEFT + 5, TOP + 15, SCREENSIZE + 20, PREFERRED);
 			
 			btnSair = new ArtButton("Sair");
 			add(btnSair);
 			btnSair.setBackColor(0xA9A9A9);
 			btnSair.setForeColor(Color.WHITE);
-			btnSair.setRect(RIGHT - 4, TOP + 4, SCREENSIZE + 20, PREFERRED);
+			btnSair.setRect(RIGHT - 5, TOP + 15, SCREENSIZE + 20, PREFERRED);
 			
 			imgHome = new ImageControl(new Image("img/home.png"));
 			imgHome.scaleToFit = true;
@@ -108,17 +110,23 @@ public class Home extends MainWindow{
 			editCodigo.setForeColor(0x003366);
 			editCodigo.setEditable(false);
 			
-			btnEntrar = new ArtButton("Entrar");
+			btnEntrar = new ArtButton("ENTRAR");
 			add(btnEntrar);
 			btnEntrar.setBackColor(0x003366);
 			btnEntrar.setForeColor(Color.WHITE);
-			btnEntrar.setRect(RIGHT - 40, BOTTOM, SCREENSIZE + 30, PREFERRED, editCodigo);
+			btnEntrar.setRect(RIGHT - 40, BOTTOM - 10, SCREENSIZE + 30, PREFERRED, editCodigo);
 
-			btnAdm = new ArtButton("Administrador");
+//			btnAdm = new ArtButton("Administrador");
+//			add(btnAdm);
+//			btnAdm.setBackColor(0x003366);
+//			btnAdm.setForeColor(Color.WHITE);
+//			btnAdm.setRect(LEFT + 40, BOTTOM - 10, SCREENSIZE + 30, PREFERRED, editCodigo);
+			
+			btnAdm = new ArtButton("CADASTRAR");
 			add(btnAdm);
 			btnAdm.setBackColor(0x003366);
 			btnAdm.setForeColor(Color.WHITE);
-			btnAdm.setRect(LEFT + 40, BOTTOM, SCREENSIZE + 30, PREFERRED, editCodigo);
+			btnAdm.setRect(LEFT + 40, BOTTOM - 10, SCREENSIZE + 30, PREFERRED, editCodigo);
 			
 			buscaEmpresaCadastrada();
 			
@@ -140,18 +148,22 @@ public class Home extends MainWindow{
 
 					if (editEmpresa.getText().equals("") || editCnpj.getText().equals("")
 							|| editUsuario.getText().equals("")) {
-						MessageBox msg = new MessageBox("CONTROLE", "Preencha todos os campos");
+						MessageBox msg = new MessageBox("CONTROLE", "Deve-se cadastrar\n uma empresa");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
 
 					} else {
 						validaEmpresa();
+						Menu menu = new Menu();
+						menu.popup();
 					}
 
 				} else if (evt.target == btnAdm) {
-					ValidaAdm validaAdm = new ValidaAdm();
-					validaAdm.popup();
+//					ValidaAdm validaAdm = new ValidaAdm();
+//					validaAdm.popup();
+					Administrador adm = new Administrador();
+					adm.popup();
 
 				} else if (evt.target == btnAtualizar) {
 					buscaEmpresaCadastrada();
@@ -234,11 +246,8 @@ public class Home extends MainWindow{
 					msg.popup();
 
 					return;
-				}else {
-					Menu menu = new Menu();
-					menu.popup();
 				}
-
+				
 			} finally {
 				if (lb != null)
 					lb.closeAll();
