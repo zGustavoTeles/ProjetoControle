@@ -29,7 +29,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 
 		try {
 			
-			lblAviso = new Label("POR FAVOR SELECIONE A EMPRESA\n QUE DESEJA APAGAR DO\n SISTEMA SISTEMA:");
+			lblAviso = new Label("POR FAVOR SELECIONE A EMPRESA QUE DESEJA\n APAGAR DO SISTEMA SISTEMA:");
 			add(lblAviso);
 			lblAviso.setRect(CENTER, TOP + 2, PREFERRED, PREFERRED);
 			lblAviso.setBackColor(0x003366);
@@ -74,7 +74,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 
 					if (cmbEmpresa.getSelectedIndex() == -1) {
 
-						MessageBox msg = new MessageBox("CONTROLE", "Selecione uma Empresa");
+						MessageBox msg = new MessageBox("CONTROLE", "Selecione uma empresa");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
@@ -83,7 +83,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 					}
 
 					apagarEmpresaDoSistema();
-					MessageBox msg = new MessageBox("CONTROLE", "Empresa apagada\n do Sistema");
+					MessageBox msg = new MessageBox("CONTROLE", "Empresa apagada\n do sistema");
 					msg.setBackColor(Color.WHITE);
 					msg.setForeColor(0x003366);
 					msg.popup();

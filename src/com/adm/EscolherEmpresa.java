@@ -30,7 +30,7 @@ public class EscolherEmpresa extends totalcross.ui.Window {
 
 		try {
 			
-			lblAviso = new Label("POR FAVOR SELECIONE A EMPRESA\n QUE DESEJA TORNAR PADRÃO\n PARA O SISTEMA:");
+			lblAviso = new Label("POR FAVOR SELECIONE A EMPRESA QUE DESEJA\n TORNAR PADRÃO PARA O SISTEMA:");
 			add(lblAviso);
 			lblAviso.setRect(CENTER, TOP + 2, PREFERRED, PREFERRED);
 			lblAviso.setBackColor(0x003366);
@@ -84,7 +84,7 @@ public class EscolherEmpresa extends totalcross.ui.Window {
 
 					if (cmbEmpresa.getSelectedIndex() == -1) {
 
-						MessageBox msg = new MessageBox("CONTROLE", "Selecione uma Empresa");
+						MessageBox msg = new MessageBox("CONTROLE", "Selecione uma empresa");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
@@ -93,7 +93,7 @@ public class EscolherEmpresa extends totalcross.ui.Window {
 					}
 
 					selecionaEmpresaSistema();
-					MessageBox msg = new MessageBox("CONTROLE", "Empresa selecionada\n para o Sistema");
+					MessageBox msg = new MessageBox("CONTROLE", "empresa selecionada\n para o Sistema");
 					msg.setBackColor(Color.WHITE);
 					msg.setForeColor(0x003366);
 					msg.popup();

@@ -40,7 +40,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 
 		try {
 			
-			lblAviso = new Label("POR FAVOR PREENCHA TODOS OS\n CAMPOS PARA CADASTRAR UMA\n NOVA EMPRESA:");
+			lblAviso = new Label("POR FAVOR PREENCHA TODOS OS CAMPOS PARA\n CADASTRAR UMA NOVA EMPRESA:");
 			add(lblAviso);
 			lblAviso.setRect(CENTER, TOP, PREFERRED, PREFERRED);
 			lblAviso.setBackColor(0x003366);
@@ -128,7 +128,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 					} else {
 						cadastrarNovaEmpresa();
 
-						MessageBox msg = new MessageBox("Aviso!", "Empresa Cadastrada\n com Sucesso!");
+						MessageBox msg = new MessageBox("Aviso!", "Empresa cadastrada\n com Sucesso!");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();

@@ -16,6 +16,8 @@ import com.adm.Administrador;
 import com.adm.ValidaAdm;
 import com.litebase.LitebasePack;
 import com.menu.Menu;
+import com.sun.xml.internal.bind.util.Which;
+
 import litebase.ResultSet;
 import com.tabelas.Tabelas;
 
@@ -48,30 +50,18 @@ public class Home extends MainWindow{
 			
 		try {
 			
-			btnAtualizar = new ArtButton("Atualizar");
-			add(btnAtualizar);
-			btnAtualizar.setBackColor(0xFFBF00);
-			btnAtualizar.setForeColor(Color.WHITE);
-			btnAtualizar.setRect(LEFT + 5, TOP + 15, SCREENSIZE + 20, PREFERRED);
-			
-			btnSair = new ArtButton("Sair");
-			add(btnSair);
-			btnSair.setBackColor(0xA9A9A9);
-			btnSair.setForeColor(Color.WHITE);
-			btnSair.setRect(RIGHT - 5, TOP + 15, SCREENSIZE + 20, PREFERRED);
-			
 			imgHome = new ImageControl(new Image("img/home.png"));
 			imgHome.scaleToFit = true;
 			imgHome.centerImage = true;
-			add(imgHome, CENTER, AFTER + 3, SCREENSIZE + 50, PREFERRED, btnAtualizar);
+			add(imgHome, CENTER, TOP - 15, SCREENSIZE + 50, PREFERRED, btnAtualizar);
 
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);
 			lblEmpresa.setBackColor(0x003366);
 			lblEmpresa.setForeColor(Color.WHITE);
-			lblEmpresa.setRect(CENTER, AFTER + 1, PREFERRED, PREFERRED, imgHome);
+			lblEmpresa.setRect(CENTER, AFTER - 10, PREFERRED, PREFERRED, imgHome);
 
-			add(editEmpresa = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
+			add(editEmpresa = new Edit(), LEFT, AFTER + 1, PREFERRED, PREFERRED);
 			editEmpresa.setBackColor(Color.WHITE);
 			editEmpresa.setForeColor(0x003366);
 			editEmpresa.setEditable(false);
@@ -80,31 +70,31 @@ public class Home extends MainWindow{
 			add(lblCnpj);
 			lblCnpj.setBackColor(0x003366);
 			lblCnpj.setForeColor(Color.WHITE);
-			lblCnpj.setRect(CENTER, AFTER + 20, PREFERRED, PREFERRED, editEmpresa);
+			lblCnpj.setRect(CENTER, AFTER + 5, PREFERRED, PREFERRED, editEmpresa);
 
-			add(editCnpj = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
+			add(editCnpj = new Edit(), LEFT, AFTER + 1, PREFERRED, PREFERRED);
 			editCnpj.setBackColor(Color.WHITE);
 			editCnpj.setForeColor(0x003366);
 			editCnpj.setEditable(false);
 			
-			lblUsuario = new Label("USUÁRIO: ");
-			add(lblUsuario);
-			lblUsuario.setBackColor(0x003366);
-			lblUsuario.setForeColor(Color.WHITE);
-			lblUsuario.setRect(CENTER, AFTER + 20, PREFERRED, PREFERRED, editCnpj);
-			
-			add(editUsuario = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
-			editUsuario.setBackColor(Color.WHITE);
-			editUsuario.setForeColor(0x003366);
-			editUsuario.setEditable(false);
+//			lblUsuario = new Label("USUÁRIO: ");
+//			add(lblUsuario);
+//			lblUsuario.setBackColor(0x003366);
+//			lblUsuario.setForeColor(Color.WHITE);
+//			lblUsuario.setRect(CENTER, AFTER + 20, PREFERRED, PREFERRED, editCnpj);
+//			
+//			add(editUsuario = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
+//			editUsuario.setBackColor(Color.WHITE);
+//			editUsuario.setForeColor(0x003366);
+//			editUsuario.setEditable(false);
 			
 			lblCodigo = new Label("CÓDIGO: ");
 			add(lblCodigo);
 			lblCodigo.setBackColor(0x003366);
 			lblCodigo.setForeColor(Color.WHITE);
-			lblCodigo.setRect(CENTER, AFTER + 20, PREFERRED, PREFERRED, editUsuario);
+			lblCodigo.setRect(CENTER, AFTER + 5, PREFERRED, PREFERRED, editCnpj);
 			
-			add(editCodigo = new Edit(), LEFT, AFTER + 4, PREFERRED, PREFERRED);
+			add(editCodigo = new Edit(), LEFT, AFTER + 1, PREFERRED, PREFERRED);
 			editCodigo.setMode(TAB_ONLY_BORDER);
 			editCodigo.setBackColor(Color.WHITE);
 			editCodigo.setForeColor(0x003366);
@@ -114,7 +104,7 @@ public class Home extends MainWindow{
 			add(btnEntrar);
 			btnEntrar.setBackColor(0x003366);
 			btnEntrar.setForeColor(Color.WHITE);
-			btnEntrar.setRect(RIGHT - 40, BOTTOM - 10, SCREENSIZE + 30, PREFERRED, editCodigo);
+			btnEntrar.setRect(CENTER, AFTER + 70, SCREENSIZE + 100, PREFERRED + 20, editCodigo);
 
 //			btnAdm = new ArtButton("Administrador");
 //			add(btnAdm);
@@ -126,7 +116,19 @@ public class Home extends MainWindow{
 			add(btnAdm);
 			btnAdm.setBackColor(0x003366);
 			btnAdm.setForeColor(Color.WHITE);
-			btnAdm.setRect(LEFT + 40, BOTTOM - 10, SCREENSIZE + 30, PREFERRED, editCodigo);
+			btnAdm.setRect(CENTER,AFTER + 10, SCREENSIZE + 100, PREFERRED + 20, btnEntrar);
+			
+			btnAtualizar = new ArtButton("ATUALIZAR");
+			add(btnAtualizar);
+			btnAtualizar.setBackColor(0xFFBF00);
+			btnAtualizar.setForeColor(Color.WHITE);
+			btnAtualizar.setRect(CENTER,AFTER + 10, SCREENSIZE + 100, PREFERRED + 20, btnAdm);
+			
+			btnSair = new ArtButton("SAIR");
+			add(btnSair);
+			btnSair.setBackColor(0xDF0101);
+			btnSair.setForeColor(Color.WHITE);
+			btnSair.setRect(CENTER,AFTER + 10, SCREENSIZE + 100, PREFERRED + 20, btnAtualizar);
 			
 			buscaEmpresaCadastrada();
 			
@@ -152,6 +154,16 @@ public class Home extends MainWindow{
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
+						
+						MessageBox msg2 = new MessageBox("CONTROLE", "Se você já efetuou o cadastro\n clique em 'ESCOLHER EMPRESA' na aba\n de cadastro para torna-la\n padrão para o sistema ");
+						msg2.setBackColor(Color.WHITE);
+						msg2.setForeColor(0x003366);
+						msg2.popup();
+						
+						MessageBox msg3 = new MessageBox("CONTROLE", "Se você já efetuou\n todos os passos então\n clique em 'Atualizar'\n para buscarmos a empresa\n selecionada para o sistema");
+						msg3.setBackColor(Color.WHITE);
+						msg3.setForeColor(0x003366);
+						msg3.popup();
 
 					} else {
 						validaEmpresa();
@@ -196,7 +208,7 @@ public class Home extends MainWindow{
 				rs.first();
 
 				if (rs.getRowCount() == 0) {
-					MessageBox msg = new MessageBox("CONTROLE", "Sistema não possui\n Empresa cadastrada");
+					MessageBox msg = new MessageBox("CONTROLE", "Sistema não possui\n empresa cadastrada");
 					msg.setBackColor(Color.WHITE);
 					msg.setForeColor(0x003366);
 					msg.popup();
@@ -215,7 +227,7 @@ public class Home extends MainWindow{
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao Buscar Empresa");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao buscar empresa");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
@@ -254,7 +266,7 @@ public class Home extends MainWindow{
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao Buscar Empresa");
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao buscar empresa");
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
