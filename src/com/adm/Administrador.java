@@ -1,8 +1,12 @@
 package com.adm;
 
 
+import com.litebase.LitebasePack;
+
+import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import principal.Home;
+import totalcross.sys.Convert;
 import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
@@ -65,6 +69,7 @@ public class Administrador extends totalcross.ui.Window {
 			case ControlEvent.PRESSED:
 
 				if (evt.target == btnVoltar) {
+					buscaEmpresaCadastrada();
 					unpop();
 
 				}else if (evt.target == btnCadastrarEmpresa) {
@@ -89,6 +94,48 @@ public class Administrador extends totalcross.ui.Window {
 			msg.popup();
 		}
 
+	}
+	
+	public void buscaEmpresaCadastrada(){
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
+		try {
+
+			try {
+				lb = new LitebasePack();
+				sql = "SELECT * FROM EMPRESAESCOLHIDA ";
+
+				rs = lb.executeQuery(sql);
+				rs.first();
+
+				if (rs.getRowCount() == 0) {
+					MessageBox msg = new MessageBox("CONTROLE", "Sistema não possui\n empresa cadastrada");
+					msg.setBackColor(Color.WHITE);
+					msg.setForeColor(0x003366);
+					msg.popup();
+
+					return;
+				}
+
+				Home.editEmpresa.setText(rs.getString("NOME"));
+				Home.editCnpj.setText(rs.getString("CNPJ"));
+				Home.editUsuario.setText(rs.getString("USUARIO"));
+				Home.editCodigo.setText(Convert.toString(rs.getInt("CODIGO")));
+
+			} finally {
+				if (lb != null)
+					lb.closeAll();
+			}
+
+		} catch (Exception e) {
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao buscar empresa");
+			msg.setBackColor(Color.WHITE);
+			msg.setForeColor(0x003366);
+			msg.popup();
+			return;
+		}
 	}
 
 }

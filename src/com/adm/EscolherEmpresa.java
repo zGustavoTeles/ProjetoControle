@@ -18,7 +18,6 @@ public class EscolherEmpresa extends totalcross.ui.Window {
 	private Label				lblAviso;
 	private ComboBox			cmbEmpresa;
 	private ArtButton		    btnSalvar;
-	private ArtButton			btnCadastrar;
 	private ArtButton 			btnVoltar;
 
 	public EscolherEmpresa() {
@@ -42,15 +41,9 @@ public class EscolherEmpresa extends totalcross.ui.Window {
 
 			btnSalvar = new ArtButton("SALVAR");
 			add(btnSalvar);
-			btnSalvar.setRect(LEFT + 20, AFTER + 350, width - 450, PREFERRED, cmbEmpresa);
+			btnSalvar.setRect(CENTER, AFTER + 350, width - 450, PREFERRED, cmbEmpresa);
 			btnSalvar.setBackColor(0x009933);
 			btnSalvar.setForeColor(Color.WHITE);		
-			
-			btnCadastrar = new ArtButton("CADASTRAR");
-			add(btnCadastrar);
-			btnCadastrar.setRect(RIGHT - 20, AFTER + 350, width - 450, PREFERRED, cmbEmpresa);
-			btnCadastrar.setBackColor(0xFF4000);
-			btnCadastrar.setForeColor(Color.WHITE);	
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
@@ -77,9 +70,6 @@ public class EscolherEmpresa extends totalcross.ui.Window {
 				if (evt.target == btnVoltar) {
 					unpop();
 
-				} else if(evt.target == btnCadastrar) { 
-					CadastrarEmpresa cadastrarEmpresa = new CadastrarEmpresa();
-					cadastrarEmpresa.popup();
 				} else if (evt.target == btnSalvar) {
 
 					if (cmbEmpresa.getSelectedIndex() == -1) {
@@ -98,18 +88,18 @@ public class EscolherEmpresa extends totalcross.ui.Window {
 					msg.setForeColor(0x003366);
 					msg.popup();
 					unpop();
-					
+
 				}
-			break;
-			
+				break;
+
 			case PenEvent.PEN_DOWN:
 
-			if(evt.target == cmbEmpresa) {
-				
-				cmbEmpresa.removeAll();
-				carregaCmbEmpresa();
-				
-			}
+				if (evt.target == cmbEmpresa) {
+
+					cmbEmpresa.removeAll();
+					carregaCmbEmpresa();
+
+				}
 			}
 
 		} catch (Exception e) {
