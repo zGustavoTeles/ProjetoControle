@@ -65,6 +65,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			add(editCnpj = new Edit(), LEFT, AFTER + 20, PREFERRED, PREFERRED, lblCnpj);
 			editCnpj.setBackColor(Color.WHITE);
 			editCnpj.setForeColor(0x003366);
+			editCnpj.setValidChars("0 1 2 3 4 5 6 7 8 9 /");
 			
 			lblUsuario = new Label("USUÁRIO: ");
 			add(lblUsuario);
