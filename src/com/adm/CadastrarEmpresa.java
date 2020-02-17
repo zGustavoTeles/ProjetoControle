@@ -40,7 +40,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 
 		try {
 			
-			lblAviso = new Label("POR FAVOR PREENCHA TODOS OS CAMPOS PARA\n CADASTRAR UMA NOVA EMPRESA:");
+			lblAviso = new Label("POR FAVOR PREENCHA TODOS OS CAMPOS PARA\n CADASTRAR UMA EMPRESA PARA O SISTEMA:");
 			add(lblAviso);
 			lblAviso.setRect(CENTER, TOP, PREFERRED, PREFERRED);
 			lblAviso.setBackColor(0x003366);
@@ -89,7 +89,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			
 			btnCadastrar = new ArtButton("CADASTRAR");
 			add(btnCadastrar);
-			btnCadastrar.setRect(CENTER, AFTER + 50, width - 450, PREFERRED, editSenha);
+			btnCadastrar.setRect(CENTER, AFTER + 50, width - 400, PREFERRED, editSenha);
 			btnCadastrar.setBackColor(0x009933);
 			btnCadastrar.setForeColor(Color.WHITE);		
 
@@ -164,6 +164,11 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			try {
 
 				lb = new LitebasePack();
+
+				sql = "DELETE EMPRESA";
+
+				lb.executeUpdate(sql);
+				
 
 				sql = "INSERT INTO EMPRESA " + "(" + " CODIGO, NOME, CNPJ, USUARIO " + ")" + " VALUES " + "( '" + editCodigo.getText()
 						+ "' , '" + editEmpresa.getText() + "', '" + editCnpj.getText() + "', '" + editUsuario.getText()

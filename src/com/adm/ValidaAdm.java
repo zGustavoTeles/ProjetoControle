@@ -93,7 +93,7 @@ public class ValidaAdm extends totalcross.ui.Window {
 				}
 				if (evt.target == btnEntrar) {
 					if (editAdm.getText().equals("admin") && editSenha.getText().equals("admin")) {
-						Administrador adm = new Administrador();
+						Cadastrar adm = new Cadastrar();
 						adm.popup();
 						
 					} else if (editAdm.getText().equals("") || editSenha.getText().equals(" ")) {

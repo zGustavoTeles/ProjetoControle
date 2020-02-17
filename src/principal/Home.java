@@ -12,7 +12,7 @@ import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
 import totalcross.ui.image.*;
 
-import com.adm.Administrador;
+import com.adm.Cadastrar;
 import com.adm.ValidaAdm;
 import com.litebase.LitebasePack;
 import com.menu.Menu;
@@ -54,7 +54,7 @@ public class Home extends MainWindow{
 			imgHome = new ImageControl(new Image("img/home.png"));
 			imgHome.scaleToFit = true;
 			imgHome.centerImage = true;
-			add(imgHome, CENTER, TOP, SCREENSIZE + 50, PREFERRED, btnAtualizar);
+			add(imgHome, CENTER, TOP - 10, SCREENSIZE + 50, PREFERRED, btnAtualizar);
 
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);
@@ -105,25 +105,19 @@ public class Home extends MainWindow{
 			add(btnEntrar);
 			btnEntrar.setBackColor(0x003366);
 			btnEntrar.setForeColor(Color.WHITE);
-			btnEntrar.setRect(CENTER, AFTER + 100, SCREENSIZE + 100, PREFERRED + 35, editCodigo);
-
-//			btnAdm = new ArtButton("Administrador");
-//			add(btnAdm);
-//			btnAdm.setBackColor(0x003366);
-//			btnAdm.setForeColor(Color.WHITE);
-//			btnAdm.setRect(LEFT + 40, BOTTOM - 10, SCREENSIZE + 30, PREFERRED, editCodigo);
+			btnEntrar.setRect(CENTER, AFTER + 70, SCREENSIZE + 100, PREFERRED + 25, editCodigo);
 			
 			btnCadastrar = new ArtButton("CADASTRAR");
 			add(btnCadastrar);
 			btnCadastrar.setBackColor(0x003366);
 			btnCadastrar.setForeColor(Color.WHITE);
-			btnCadastrar.setRect(CENTER,AFTER, SCREENSIZE + 100, PREFERRED + 35, btnEntrar);
+			btnCadastrar.setRect(CENTER,AFTER, SCREENSIZE + 100, PREFERRED + 25, btnEntrar);
 			
 			btnSair = new ArtButton("SAIR");
 			add(btnSair);
 			btnSair.setBackColor(0xDF0101);
 			btnSair.setForeColor(Color.WHITE);
-			btnSair.setRect(CENTER,AFTER, SCREENSIZE + 100, PREFERRED + 35, btnCadastrar);
+			btnSair.setRect(CENTER,AFTER, SCREENSIZE + 100, PREFERRED + 25, btnCadastrar);
 			
 			buscaEmpresaCadastrada();
 			
@@ -162,13 +156,8 @@ public class Home extends MainWindow{
 					}
 
 				} else if (evt.target == btnCadastrar) {
-//					ValidaAdm validaAdm = new ValidaAdm();
-//					validaAdm.popup();
-					Administrador adm = new Administrador();
+					Cadastrar adm = new Cadastrar();
 					adm.popup();
-
-				} else if (evt.target == btnAtualizar) {
-					buscaEmpresaCadastrada();
 					
 				}else if(evt.target == btnSair) {
 					Home.exit(0);
@@ -192,7 +181,7 @@ public class Home extends MainWindow{
 
 			try {
 				lb = new LitebasePack();
-				sql = "SELECT * FROM EMPRESAESCOLHIDA ";
+				sql = "SELECT * FROM EMPRESA ";
 
 				rs = lb.executeQuery(sql);
 				rs.first();
@@ -234,7 +223,7 @@ public class Home extends MainWindow{
 
 			try {
 				lb = new LitebasePack();
-				sql = "SELECT * FROM EMPRESAESCOLHIDA "
+				sql = "SELECT * FROM EMPRESA "
 				    + " WHERE CODIGO = " + editCodigo.getText();
 
 				rs = lb.executeQuery(sql);

@@ -12,14 +12,13 @@ import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
 
-public class Administrador extends totalcross.ui.Window {
+public class Cadastrar extends totalcross.ui.Window {
 
 	private ArtButton		    btnCadastrarEmpresa;
 	private ArtButton 			btnApagarEmpresa;
-	private ArtButton			btnEscolherEmpresa;
 	private ArtButton 			btnVoltar;
 
-	public Administrador() {
+	public Cadastrar() {
 		setBackColor(0x003366);
 		initUI();
 	}
@@ -34,12 +33,6 @@ public class Administrador extends totalcross.ui.Window {
 			btnCadastrarEmpresa.setBackColor(0x003366);
 			btnCadastrarEmpresa.setForeColor(Color.WHITE);
 			
-			btnEscolherEmpresa = new ArtButton("ESCOLHER EMPRESA");
-			add(btnEscolherEmpresa);
-			btnEscolherEmpresa.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
-			btnEscolherEmpresa.setBackColor(0x003366);
-			btnEscolherEmpresa.setForeColor(Color.WHITE);
-
 			btnApagarEmpresa = new ArtButton("APAGAR EMPRESA");
 			add(btnApagarEmpresa);
 			btnApagarEmpresa.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
@@ -75,11 +68,7 @@ public class Administrador extends totalcross.ui.Window {
 				}else if (evt.target == btnCadastrarEmpresa) {
 					CadastrarEmpresa cadastrarEmpresa = new CadastrarEmpresa();
 					cadastrarEmpresa.popup();
-					
-				} else if(evt.target == btnEscolherEmpresa) {
-					EscolherEmpresa escolherEmpresa = new EscolherEmpresa();
-					escolherEmpresa.popup();
-					
+
 				} else if(evt.target == btnApagarEmpresa) {
 					ApagarEmpresa apagarEmpresa = new ApagarEmpresa();
 					apagarEmpresa.popup();
@@ -105,7 +94,7 @@ public class Administrador extends totalcross.ui.Window {
 
 			try {
 				lb = new LitebasePack();
-				sql = "SELECT * FROM EMPRESAESCOLHIDA ";
+				sql = "SELECT * FROM EMPRESA ";
 
 				rs = lb.executeQuery(sql);
 				rs.first();

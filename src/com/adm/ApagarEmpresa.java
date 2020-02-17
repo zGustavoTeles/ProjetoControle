@@ -41,7 +41,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 			
 			btnApagar = new ArtButton("APAGAR");
 			add(btnApagar);
-			btnApagar.setRect(CENTER, AFTER + 350, width - 450, PREFERRED, cmbEmpresa);
+			btnApagar.setRect(CENTER, AFTER + 350, width - 400, PREFERRED, cmbEmpresa);
 			btnApagar.setBackColor(0xDF0101);
 			btnApagar.setForeColor(Color.WHITE);	
 
@@ -156,9 +156,6 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 				lb = new LitebasePack();
 				
 				sql = " DELETE FROM EMPRESA " + " WHERE CODIGO = " + getCodigoEmpresa();
-				lb.executeUpdate(sql);
-				
-				sql = "DELETE FROM EMPRESAESCOLHIDA " + " WHERE CODIGO = " + getCodigoEmpresa();
 				lb.executeUpdate(sql);
 
 			} finally {
