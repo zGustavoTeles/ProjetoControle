@@ -67,13 +67,13 @@ public class ApagarDados extends totalcross.ui.Window {
 
 			btnApagar = new ArtButton("APAGAR");
 			add(btnApagar);
-			btnApagar.setRect(CENTER, AFTER + 50, width - 450, PREFERRED, editCodigo);
+			btnApagar.setRect(CENTER, AFTER + 80, width - 400, PREFERRED, editCodigo);
 			btnApagar.setBackColor(0xDF0101);
 			btnApagar.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
-			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
+			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 			
@@ -189,6 +189,13 @@ public class ApagarDados extends totalcross.ui.Window {
 
 					lb.executeUpdate(sql);
 				}
+//------------------------------------------------------------------------------------------------------------------------------------------
+				if (lb.exists("EMPRESA")) {
+
+					sql = " DROP TABLE empresa ";
+
+					lb.executeUpdate(sql);
+				}
 
 			} finally {
 				if (lb != null)
@@ -213,7 +220,7 @@ public class ApagarDados extends totalcross.ui.Window {
 
 			try {
 				lb = new LitebasePack();
-				sql = "SELECT NOME, CODIGO FROM EMPRESAESCOLHIDA";
+				sql = "SELECT NOME, CODIGO FROM EMPRESA";
 				
 				rs = lb.executeQuery(sql);
 				rs.first();

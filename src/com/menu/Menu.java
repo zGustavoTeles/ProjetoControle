@@ -1,6 +1,6 @@
 package com.menu;
 
-import com.cadastrar.Cadastrar;
+import com.cadastrar.CadastrarProduto;
 import com.configuracoes.Configuracoes;
 import com.estoque.Estoque;
 import com.relatorio.Relatorio;
@@ -32,7 +32,7 @@ public class Menu extends totalcross.ui.Window {
 
 			btnVenda = new ArtButton("VENDA");
 			add(btnVenda);
-			btnVenda.setRect(CENTER, TOP + 150, width - 200, PREFERRED + 80);
+			btnVenda.setRect(CENTER, TOP + 50, width - 200, PREFERRED + 80);
 			btnVenda.setBackColor(0x003366);
 			btnVenda.setForeColor(Color.WHITE);
 
@@ -86,7 +86,7 @@ public class Menu extends totalcross.ui.Window {
 					personagens.popup();
 
 				} else if (evt.target == btnCadastrar) {
-					Cadastrar cartas = new Cadastrar();
+					CadastrarProduto cartas = new CadastrarProduto();
 					cartas.popup();
 
 				} else if (evt.target == btnEstoque) {

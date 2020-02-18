@@ -3,10 +3,9 @@ package com.inserir;
 import java.util.Random;
 
 import com.litebase.LitebasePack;
-import com.sun.glass.events.KeyEvent;
 import com.teclado.Teclado;
 import com.venda.Venda;
-
+import totalcross.ui.ComboBox;
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
@@ -38,9 +37,10 @@ public class Inserir extends totalcross.ui.Window {
 	private Edit 				 editValor;
 	private Edit				 editQuantidade;
 	private Edit 				 editTotal;
-	private ArtButton 			 btnVender;
+	private ArtButton 			 btnInserir;
 	private ArtButton 			 btnVoltar;
-
+	private ComboBox			 cmbTipoPagamento;
+	
 	public double 				 valorProduto = 0.0;
 	public double				 total = 0.0;
 	public int 				     quantidade = 0;
@@ -64,7 +64,7 @@ public class Inserir extends totalcross.ui.Window {
 			
 			lblCategoria = new Label("CATEGORIA:   ");
 			add(lblCategoria);
-			lblCategoria.setRect(LEFT + 150, CENTER - 250, PREFERRED, PREFERRED);
+			lblCategoria.setRect(LEFT + 150, CENTER - 280, PREFERRED, PREFERRED);
 			lblCategoria.setBackColor(0x003366);
 			lblCategoria.setForeColor(Color.WHITE);
 
@@ -187,18 +187,25 @@ public class Inserir extends totalcross.ui.Window {
 			editTotal.setForeColor(Color.WHITE);
 			editTotal.setText(Venda.valor + "$");
 			editTotal.setEnabled(false);
+			
+			cmbTipoPagamento = new ComboBox();
+			add(cmbTipoPagamento);
+			cmbTipoPagamento.setRect(LEFT + 150, AFTER + 15, FILL - 140, PREFERRED, editTotal);
 
-			btnVender = new ArtButton("VENDER");
-			add(btnVender);
-			btnVender.setRect(CENTER, AFTER + 50, SCREENSIZE - 5, PREFERRED, editTotal);
-			btnVender.setBackColor(0x009933);
-			btnVender.setForeColor(Color.WHITE);
+			btnInserir = new ArtButton("INSERIR");
+			add(btnInserir);
+			btnInserir.setRect(CENTER, AFTER + 50, SCREENSIZE - 5, PREFERRED + 13, cmbTipoPagamento);
+			btnInserir.setBackColor(0x009933);
+			btnInserir.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
-			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
+			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
+			
+			carregaCmbTipoPagamento();
+			cmbTipoPagamento.setSelectedIndex(0);
 
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
@@ -220,7 +227,7 @@ public class Inserir extends totalcross.ui.Window {
 					unpop();
 
 				}
-				if (evt.target == btnVender) {
+				if (evt.target == btnInserir) {
 
 					if (editQuantidade.getText().length() == 0) {
 						MessageBox msg = new MessageBox("CONTROLE", "Por favor insira\n uma quantidade");
@@ -245,14 +252,14 @@ public class Inserir extends totalcross.ui.Window {
 
 						}
 
-						efetuaVenda();
-						baixaEstoque();
+						insereProdutoNoCarrinho();
 
-						MessageBox msg = new MessageBox("CONTROLE!", "Venda efetuada com sucesso ");
+						MessageBox msg = new MessageBox("CONTROLE!", "Produto inserido\n no carrinho ");
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
 
+						Venda.btnCarrinho.setEnabled(true);
 						unpop();
 					}
 
@@ -292,30 +299,63 @@ public class Inserir extends totalcross.ui.Window {
 
 	}
 	
-	public void efetuaVenda() {
+	public void insereProdutoNoCarrinho() {
 
 		String sql = "";
 		LitebasePack lb = null;
+		ResultSet rs = null;
 
 		try {
 			try {
-				Random random = new Random();
-				int codigo = random.nextInt(900);
-				String dataVenda;
-				Date year = new Date();
-				Date month = new Date();
-				Date day = new Date();
-
-				dataVenda = Date.formatDate(year.getYear(), month.getMonth(), day.getDay());
-
+				
 				lb = new LitebasePack();
+				
+				sql = "SELECT CODIGO FROM VENDAPRODUTOTEMP";
+				rs = lb.executeQuery(sql);
+				rs.first();
+				
+				if (rs.getRowCount() == 0) {
 
-				sql = "INSERT INTO VENDAPRODUTO " + "(" + " CODIGO, PRODUTO, MARCA, VALOR, QUANTIDADE, " + " DATAVENDA "
-						+ ")" + " VALUES " + "( '" + codigo + "' , '" + editProduto.getText() + "', '"
-						+ editMarca.getText() + "', '" + editTotal.getText() + "', '" + editQuantidade.getText()
-						+ "', '" + dataVenda + "'" + ")";
+					Random random = new Random();
+					int codigo = random.nextInt(900);
+					String dataVenda;
+					Date year = new Date();
+					Date month = new Date();
+					Date day = new Date();
 
-				lb.executeUpdate(sql);
+					dataVenda = Date.formatDate(year.getYear(), month.getMonth(), day.getDay());
+
+					sql = "INSERT INTO VENDAPRODUTOTEMP " + "(" + " CODIGO, PRODUTO, VALOR, QUANTIDADE, "
+							+ " CATEGORIA, MARCA, DESCRICAO, TIPOPAGAMENTO, DATASAIDA " + ")" + " VALUES " 
+							+ "( '" + codigo + "' , '" + editProduto.getText()
+	                        + "', '" + editTotal.getText() + "', '"
+							+ editQuantidade.getText() + "', '" + editCategoria.getText() + "','" 
+							+ editMarca.getText() + "', '"+ editDescricao.getText() 
+							+ "', '" + cmbTipoPagamento.getSelectedItem() + "', '" + dataVenda + "'" + ")";
+
+					lb.executeUpdate(sql);
+
+				}else {
+					
+					int codigo = rs.getInt("CODIGO");
+					String dataVenda;
+					Date year = new Date();
+					Date month = new Date();
+					Date day = new Date();
+
+					dataVenda = Date.formatDate(year.getYear(), month.getMonth(), day.getDay());
+
+					sql = "INSERT INTO VENDAPRODUTOTEMP " + "(" + " CODIGO, PRODUTO, VALOR, QUANTIDADE, "
+							+ " CATEGORIA, MARCA, DESCRICAO, TIPOPAGAMENTO, DATASAIDA " + ")" + " VALUES " 
+							+ "( '" + codigo + "' , '" + editProduto.getText()
+	                        + "', '" + editTotal.getText() + "', '"
+							+ editQuantidade.getText() + "', '" + editCategoria.getText() + "','" 
+							+ editMarca.getText() + "', '"+ editDescricao.getText() 
+							+ "', '" + cmbTipoPagamento.getSelectedItem() + "', '" + dataVenda + "'" + ")";
+
+					lb.executeUpdate(sql);
+					
+				}
 
 			} finally {
 				if (lb != null)
@@ -331,53 +371,38 @@ public class Inserir extends totalcross.ui.Window {
 
 	}
 	
-	public void baixaEstoque() {
-		String sql = "";
-		LitebasePack lb = null;
-		ResultSet rs = null;
-
-		try {
+	public void carregaCmbTipoPagamento() {
+		{
+			String sql = "";
+			LitebasePack lb = null;
+			ResultSet rs = null;
 
 			try {
-				lb = new LitebasePack();
+				try {
+					lb = new LitebasePack();
+					sql = " SELECT DESCRICAO FROM TIPOPAGAMENTO";
 
-				sql = "SELECT QUANTIDADE, CODIGO, DATAENTRADA FROM ESTOQUE " + " WHERE CODIGO = "
-						+ editCodigo.getText();
-				rs = lb.executeQuery(sql);
+					rs = lb.executeQuery(sql);
+					rs.first();
+					for (int i = 0; rs.getRowCount() > i; i++) {
+						String[] b = new String[1];
+						b[0] = rs.getString("DESCRICAO");
+						cmbTipoPagamento.add(b);
+						rs.next();
+					}
+				} finally {
+					if (lb != null)
+						lb.closeAll();
 
-				qntEstoqueCalculo = rs.getInt("QUANTIDADE");
-				dataEntrada = rs.getString("DATAENTRADA");
-				quantidadeVendida = editQuantidade.getText();
+				}
+			} catch (Exception e) {
+				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
+				msg.setBackColor(Color.WHITE);
+				msg.setForeColor(0x003366);
+				msg.popup();
 
-				quantidadeEstoque = qntEstoqueCalculo - Convert.toInt(quantidadeVendida);
-
-				Date year = new Date();
-				Date month = new Date();
-				Date day = new Date();
-				dataEntrada = Date.formatDate(year.getYear(), month.getMonth(), day.getDay());
-
-				sql = "DELETE FROM ESTOQUE WHERE CODIGO = " + editCodigo.getText();
-
-				lb.executeUpdate(sql);
-
-				sql = "INSERT INTO ESTOQUE " + "(" + " CODIGO, PRODUTO, VALOR, QUANTIDADE, CATEGORIA, MARCA, DESCRICAO,"
-						+ " DATAENTRADA " + ")" + " VALUES " + "( '" + editCodigo.getText() + "' , '"
-						+ editProduto.getText() + "', '" + editValor.getText() + "', '" + quantidadeEstoque + "', '"
-						+ editCategoria.getText() + "', '" + editMarca.getText() + "', '" + editDescricao.getText()
-						+ "', '" + dataEntrada + "'" + ")";
-
-				lb.executeUpdate(sql);
-
-			} finally {
-				if (lb != null)
-					lb.closeAll();
 			}
 
-		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao dar\n baixa no estoque");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
 		}
 	}
 

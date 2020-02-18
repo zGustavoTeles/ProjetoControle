@@ -1,11 +1,13 @@
 package com.venda;
 
+import com.bottom.BottomImg;
+import com.carrinho.Carrinho;
 import com.inserir.Inserir;
 import com.litebase.LitebasePack;
-
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
+import totalcross.ui.Button;
 import totalcross.ui.ComboBox;
 import totalcross.ui.Container;
 import totalcross.ui.Edit;
@@ -16,6 +18,7 @@ import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.event.GridEvent;
 import totalcross.ui.gfx.Color;
+import totalcross.ui.image.Image;
 
 public class Venda extends totalcross.ui.Window{
 	
@@ -27,7 +30,8 @@ public class Venda extends totalcross.ui.Window{
 	private ComboBox						cmbCategoria;
 	private Edit							editBuscar;
 	public Grid							    gridProdutos;
-
+	
+	public static Button					btnCarrinho;
 	public static String					codigo = "";
 	public static String					produto = "";
 	public static String					quantidade = "";
@@ -76,16 +80,20 @@ public class Venda extends totalcross.ui.Window{
 	            
             btnVoltar = new ArtButton("VOLTAR");
             add(btnVoltar);
-            btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
+            btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
             btnVoltar.setBackColor(0x003366);
             btnVoltar.setForeColor(Color.WHITE);
             
             btnInserir = new ArtButton("INSERIR");
             add(btnInserir);
-            btnInserir.setRect(LEFT, BOTTOM, SCREENSIZE - 6, PREFERRED);
+            btnInserir.setRect(LEFT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
             btnInserir.setBackColor(0x009933);
             btnInserir.setForeColor(Color.WHITE);
             
+            btnCarrinho = BottomImg.imageOnly(new Image("img/carrinho.png"));
+			add(btnCarrinho, AFTER + 5, BOTTOM, SCREENSIZE + 16, PREFERRED, btnInserir);
+			btnCarrinho.setEnabled(false);
+
             int gridWidths[] = new int[7];
 				gridWidths[0] = 40;
 				gridWidths[1] = 50;
@@ -108,7 +116,7 @@ public class Venda extends totalcross.ui.Window{
 			gridProdutos.boldCheck = false;
 			gridProdutos.setRect(Container.LEFT + 1, Container.AFTER + 10,
 					Container.FILL - 1, Container.FIT, btnBuscar);
-                   
+			
 
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
@@ -164,6 +172,9 @@ public class Venda extends totalcross.ui.Window{
 						msg.popup();
 					}
 
+				} else if (evt.target == btnCarrinho) {
+					Carrinho carrinho = new Carrinho();
+					carrinho.popup();
 				}
 				  break;
 			case ControlEvent.FOCUS_IN :

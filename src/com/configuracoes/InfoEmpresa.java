@@ -97,7 +97,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
-			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
+			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 			
@@ -146,7 +146,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 
 				lb = new LitebasePack();
 
-				sql = " SELECT * FROM EMPRESAESCOLHIDA ";
+				sql = " SELECT * FROM EMPRESA ";
 
 				rs = lb.executeQuery(sql);
 				

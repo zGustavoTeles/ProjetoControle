@@ -11,6 +11,9 @@ import totalcross.ui.gfx.Color;
 public class Informacao extends totalcross.ui.Window{
 	
     private Label 							lblInformacao;
+    private Label							lblVersao;
+    private Label							lblSobre;
+    private Label							lblCopyright;
     private MultiEdit						editInformacao;
 	private ArtButton 						btnVoltar;
 	private int 							linha = 6;
@@ -51,10 +54,29 @@ public class Informacao extends totalcross.ui.Window{
 					+ " compras e tipos de produtos a serem comprados em cada momento. Baseados na análise dos dados e da situação são esboçados "
 					+ " algumas recomendações. ");
 			editInformacao.setEditable(false);
+			
+			
+			lblCopyright = new Label("Copyright©2020-Todos os direitos reservados");
+			add(lblCopyright);
+			lblCopyright.setRect(LEFT, AFTER + 10, PREFERRED, PREFERRED, editInformacao);
+			lblCopyright.setBackColor(0x003366);
+			lblCopyright.setForeColor(Color.WHITE);  
+			
+			lblSobre = new Label("CONTROLE-PC");
+			add(lblSobre);
+			lblSobre.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, lblCopyright);
+			lblSobre.setBackColor(0x003366);
+			lblSobre.setForeColor(Color.WHITE);
+			
+			lblVersao = new Label("VERSÃO: 1.0");
+			add(lblVersao);
+			lblVersao.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, lblSobre);
+			lblVersao.setBackColor(0x003366);
+			lblVersao.setForeColor(Color.WHITE);  
 
 			btnVoltar = new ArtButton("VOLTAR");
 	        add(btnVoltar);
-	        btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
+	        btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
 	        btnVoltar.setBackColor(0x003366);
 	        btnVoltar.setForeColor(Color.WHITE);
 

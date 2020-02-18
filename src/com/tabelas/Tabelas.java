@@ -678,12 +678,24 @@ public class Tabelas {
 //-----------------------------------------------------------------------------------------------------------------------------------------
 				if (!lb.exists("VENDAPRODUTO")) {
 
-					sql = " create table vendaproduto ( " + "codigo int," + " produto char(40), " + " marca char(20), " 
-					    + " valor char(10), "
-						+ " quantidade int, " + "datavenda date" + ")";
+					sql = " create table vendaproduto ( " + "codigo int," + " produto char(40), " + " valor char(10), "
+							+ " quantidade int, " + "categoria char(20)," + " marca char(20), " + "descricao char(40),"
+							+ "tipopagamento char(20)," + "datasaida date"
+							+ ")";
 
 					lb.execute(sql);
 					lb.execute("create index vendaproduto01 ON vendaproduto(codigo,produto)");
+				}
+//------------------------------------------------------------------------------------------------------------------------------------------
+				if (!lb.exists("VENDAPRODUTOTEMP")) {
+
+					sql = " create table vendaprodutoTemp ( " + "codigo int," + " produto char(40), " + " valor char(10), "
+							+ " quantidade int, " + "categoria char(20)," + " marca char(20), " + "descricao char(40),"
+							+ "tipopagamento char(20)," + "datasaida date"
+							+ ")";
+
+					lb.execute(sql);
+					lb.execute("create index vendaprodutoTemp01 ON vendaprodutoTemp(codigo,produto)");
 				}
 //------------------------------------------------------------------------------------------------------------------------------------------
 				if (!lb.exists("EMPRESA")) {
@@ -695,13 +707,23 @@ public class Tabelas {
 					lb.execute("create index empresa01 ON empresa(codigo,nome)");
 				}
 //--------------------------------------------------------------------------------------------------------------------------------------------
-				if (!lb.exists("EMPRESAESCOLHIDA")) {
+				if (!lb.exists("TIPOPAGAMENTO")) {
 
-					sql = " create table empresaescolhida ( " + "codigo int," + " nome char(40), " + " cnpj char(30), "
-						+ " usuario char(40) " + ")";
+					sql = " create table tipopagamento ( " + "codigo int," + " descricao char(40) " + ")";
 
 					lb.execute(sql);
-					lb.execute("create index empresaescolhida01 ON empresaescolhida(codigo,nome)");
+					lb.execute("create index tipopagamento01 ON tipopagamento(codigo,descricao)");
+
+					sql = " INSERT INTO tipopagamento (codigo, descricao)" 
+					    + " VALUES " + " ('01', 'DINHEIRO')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO tipopagamento (codigo, descricao)" 
+					    + " VALUES " + " ('02', 'CARTAO')";
+
+					lb.executeUpdate(sql);
+
 				}
 				
 			} finally {

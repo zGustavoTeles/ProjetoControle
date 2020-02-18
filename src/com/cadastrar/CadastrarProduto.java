@@ -20,7 +20,7 @@ import totalcross.ui.gfx.Color;
 import totalcross.ui.image.Image;
 import totalcross.util.Date;
 
-public class Cadastrar extends totalcross.ui.Window{
+public class CadastrarProduto extends totalcross.ui.Window{
 	
 	private Label 							lblCategoria;
 	private Label							lblProduto;
@@ -38,7 +38,7 @@ public class Cadastrar extends totalcross.ui.Window{
 	private ArtButton 						btnVoltar;
 	private ImageControl					imgAdicionar;
 
-	public Cadastrar() {
+	public CadastrarProduto() {
 		setBackColor(0x003366);
 		initUI();
 		carregaCmbCategoria();
@@ -120,13 +120,13 @@ public class Cadastrar extends totalcross.ui.Window{
 
 			btnCadastrar = new ArtButton("CADASTRAR");
 	        add(btnCadastrar);
-	        btnCadastrar.setRect(LEFT, BOTTOM, SCREENSIZE - 2, PREFERRED);
+	        btnCadastrar.setRect(LEFT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
 	        btnCadastrar.setBackColor(0x009933);
 	        btnCadastrar.setForeColor(Color.WHITE);
 					    
 			btnVoltar = new ArtButton("VOLTAR");
 	        add(btnVoltar);
-	        btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
+	        btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
 	        btnVoltar.setBackColor(0x003366);
 	        btnVoltar.setForeColor(Color.WHITE);
 
