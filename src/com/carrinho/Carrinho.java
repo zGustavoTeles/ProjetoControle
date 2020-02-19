@@ -26,9 +26,10 @@ public class Carrinho extends totalcross.ui.Window{
 	public Button					        btnCarrinho;
 	
 	public int 					 			quantidadeEstoque = 0;
-	public int 								qntEstoqueCalculo = 0;
+	public int 						        qntEstoqueCalculo = 0;
 	public int  				 			quantidadeVendida = 0;
-	public String 				 			dataEntrada = "";
+	public int								codigo = 0;
+	public Date 				 			dataEntrada;
 	
 	public int 								codigoTemp;
 	public String							produtoTemp;
@@ -37,7 +38,7 @@ public class Carrinho extends totalcross.ui.Window{
 	public String							categoriaTemp;
 	public String							marcaTemp;
 	public String                           descricaoTemp;
-	public String							TipoVenda;
+	public String							tipoPagamento;
 	public Date								dataSaidaTemp;
 		
 	public Carrinho(){
@@ -180,9 +181,13 @@ public class Carrinho extends totalcross.ui.Window{
 	}
 	
 	public void baixaEstoque() {
-		String sql = "";
-		LitebasePack lb = null;
-		ResultSet rs = null;
+		String sql 			= "";
+		LitebasePack lb     = null;
+		ResultSet rs 		= null;
+		
+		String sql2 		= "";
+		ResultSet rs2 		= null;
+		LitebasePack lb2 	= null;
 
 		try {
 
@@ -192,7 +197,7 @@ public class Carrinho extends totalcross.ui.Window{
 				sql = "SELECT * FROM VENDAPRODUTOTEMP";
 				
 				rs = lb.executeQuery(sql);
-				rs.first();
+				rs.beforeFirst();
 				
 				if (rs.next()) {
 					codigoTemp = rs.getInt("CODIGO");
@@ -202,24 +207,28 @@ public class Carrinho extends totalcross.ui.Window{
 					categoriaTemp = rs.getString("CATEGORIA");
 					marcaTemp = rs.getString("MARCA");
 					descricaoTemp = rs.getString("DESCRICAO");
+					tipoPagamento = rs.getString("TIPOPAGAMENTO");
 					dataSaidaTemp = rs.getDate("DATASAIDA");
+					
+					lb2 = new LitebasePack();
+					sql2 = " SELECT QUANTIDADE, CODIGO, DATAENTRADA FROM ESTOQUE ";
 
-					sql = " SELECT QUANTIDADE, CODIGO, DATAENTRADA FROM ESTOQUE " + " WHERE CODIGO = " + codigoTemp;
-
-					rs = lb.executeQuery(sql);
-
-					qntEstoqueCalculo = rs.getInt("QUANTIDADE");
-					dataEntrada = rs.getString("DATAENTRADA");
+					rs2 = lb2.executeQuery(sql2);
+					rs2.first();
+					
+					qntEstoqueCalculo = rs2.getInt("QUANTIDADE");
+					dataEntrada = rs2.getDate("DATAENTRADA");
+					codigo = rs2.getInt("CODIGO");
 					quantidadeVendida = quantidadeTemp;
 
 					quantidadeEstoque = qntEstoqueCalculo - quantidadeVendida;
 
-					sql = "DELETE FROM ESTOQUE WHERE CODIGO = " + codigoTemp;
+					sql = "DELETE FROM ESTOQUE WHERE CODIGO = " + codigo;
 
 					lb.executeUpdate(sql);
 
 					sql = "INSERT INTO 	ESTOQUE " + "(" + " CODIGO, PRODUTO, MARCA, VALOR, QUANTIDADE, "
-							+ " CATEGORIA, MARCA, DESCRICAO, DATASAIDA " + ")" + " VALUES " + "( '" + codigoTemp
+							+ " CATEGORIA, MARCA, DESCRICAO, DATAENTRADA " + ")" + " VALUES " + "( '" + codigo
 							+ "' , '" + produtoTemp + "', '" + marcaTemp + "', '" + valorTemp + "', '"
 							+ quantidadeEstoque + "', '" + categoriaTemp + "','" + marcaTemp + "', '" + descricaoTemp
 							+ "', '" + dataEntrada + "'" + ")";
@@ -264,12 +273,13 @@ public class Carrinho extends totalcross.ui.Window{
 					categoriaTemp = rs.getString("CATEGORIA");
 					marcaTemp = rs.getString("MARCA");
 					descricaoTemp = rs.getString("DESCRICAO");
+					tipoPagamento = rs.getString("TIPOPAGAMENTO");
 					dataSaidaTemp = rs.getDate("DATASAIDA");
 
 					sql = "INSERT INTO VENDAPRODUTO " + "(" + " CODIGO, PRODUTO, VALOR, QUANTIDADE, "
-							+ " CATEGORIA, MARCA, DESCRICAO, DATASAIDA " + ")" + " VALUES " + "( '" + codigoTemp
+							+ " CATEGORIA, MARCA, DESCRICAO,TIPOPAGAMENTO, DATASAIDA " + ")" + " VALUES " + "( '" + codigoTemp
 							+ "' , '" + produtoTemp + "', '" + valorTemp + "', '" + quantidadeTemp + "', '"
-							+ categoriaTemp + "','" + marcaTemp + "', '" + descricaoTemp + "', '" + dataSaidaTemp + "'"
+							+ categoriaTemp + "','" + marcaTemp + "', '" + descricaoTemp + "', '" + tipoPagamento + "', '" + dataSaidaTemp + "'"
 							+ ")";
 
 					lb.executeUpdate(sql);
