@@ -689,7 +689,7 @@ public class Tabelas {
 //------------------------------------------------------------------------------------------------------------------------------------------
 				if (!lb.exists("VENDAPRODUTOTEMP")) {
 
-					sql = " create table vendaprodutoTemp ( " + "codigo int," + " produto char(40), " + " valor char(10), "
+					sql = " create table vendaprodutoTemp ( " + "codigo int," +  "codigoProd int," + " produto char(40), " + " valor char(10), "
 							+ " quantidade int, " + "categoria char(20)," + " marca char(20), " + "descricao char(40),"
 							+ "tipopagamento char(20)," + "datasaida date"
 							+ ")";

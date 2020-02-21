@@ -105,6 +105,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			editQuantidade.setRect(LEFT, AFTER + 5, FILL + 5, PREFERRED, lblQuantidade);
 			editQuantidade.setBackColor(Color.WHITE);
 			editQuantidade.setForeColor(0x003366);
+			editQuantidade.setValidChars("0 1 2 3 4 5 6 7 8 9");
 			
 			lblValor = new Label("VALOR: ");
 			add(lblValor);
@@ -117,6 +118,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			editValor.setRect(LEFT, AFTER + 5, FILL + 5, PREFERRED, lblValor);
 			editValor.setBackColor(Color.WHITE);
 			editValor.setForeColor(0x003366);
+			editValor.setValidChars("0 1 2 3 4 5 6 7 8 9 , .");
 
 			btnCadastrar = new ArtButton("CADASTRAR");
 	        add(btnCadastrar);
@@ -129,7 +131,9 @@ public class CadastrarProduto extends totalcross.ui.Window{
 	        btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
 	        btnVoltar.setBackColor(0x003366);
 	        btnVoltar.setForeColor(Color.WHITE);
-
+	        
+	        reposition();
+	        
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);

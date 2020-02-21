@@ -94,7 +94,9 @@ public class Relatorio extends totalcross.ui.Window{
 			gridProdutos.canClickSelectAll = true;
 			gridProdutos.boldCheck = false;
 			gridProdutos.setRect(Container.LEFT + 1, Container.AFTER + 10, Container.FILL - 1, Container.FIT, lblData);
-
+			
+			reposition();
+			
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);

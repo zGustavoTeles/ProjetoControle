@@ -117,7 +117,8 @@ public class Venda extends totalcross.ui.Window{
 			gridProdutos.setRect(Container.LEFT + 1, Container.AFTER + 10,
 					Container.FILL - 1, Container.FIT, btnBuscar);
 			
-
+			reposition();
+			
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);
@@ -162,9 +163,9 @@ public class Venda extends totalcross.ui.Window{
 				} else if (evt.target == btnInserir) {
 					if (gridProdutos.getSelectedItem() != null) {
 						gridProdutos.removeAllElements();
-						Inserir inserir = new Inserir();
-						inserir.popup();
-
+						
+						validaProdutoCarrinho();
+						
 					} else {
 						MessageBox msg = new MessageBox("CONTROLE", "Deve-se selecionar\n um item");
 						msg.setBackColor(Color.WHITE);
@@ -223,6 +224,7 @@ public class Venda extends totalcross.ui.Window{
 
 		try {
 			try {
+				
 				lb = new LitebasePack();
 				sql = " SELECT * FROM ESTOQUE WHERE CATEGORIA = " + "'" + cmbCategoria.getSelectedItem() + "'";
 
@@ -240,6 +242,7 @@ public class Venda extends totalcross.ui.Window{
 					gridProdutos.add(b);
 					rs.next();
 				}
+
 			} finally {
 				if (lb != null)
 					lb.closeAll();
@@ -327,6 +330,49 @@ public class Venda extends totalcross.ui.Window{
 			}
 
 		}
+	}
+	
+	public void validaProdutoCarrinho() {
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
+		try {
+
+			try {
+
+				lb = new LitebasePack();
+
+				sql = "SELECT * FROM VENDAPRODUTOTEMP WHERE CODIGO = " + codigo;
+
+				rs = lb.executeQuery(sql);
+				rs.first();
+
+				if (rs.getRowCount() == 0) {
+					Inserir inserir = new Inserir();
+					inserir.popup();
+
+				} else {
+					MessageBox msg = new MessageBox("CONTROLE",
+							"Esse produto encontra-se\n no carrinho. Por favor\n finalize a venda para\n inseri-lo novamente");
+					msg.setBackColor(Color.WHITE);
+					msg.setForeColor(0x003366);
+					msg.popup();
+				}
+
+			} finally {
+				if (lb != null) {
+					lb.closeAll();
+				}
+			}
+
+		} catch (Exception e) {
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao validar\n produto no carrinho" + e);
+			msg.setBackColor(Color.WHITE);
+			msg.setForeColor(0x003366);
+			msg.popup();
+		}
+
 	}
 	
 }

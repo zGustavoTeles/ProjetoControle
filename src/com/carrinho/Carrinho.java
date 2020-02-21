@@ -3,9 +3,12 @@ package com.carrinho;
 
 import com.bottom.BottomImg;
 import com.litebase.LitebasePack;
+import com.venda.Venda;
+
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
+import totalcross.sys.Settings;
 import totalcross.ui.Button;
 import totalcross.ui.Container;
 import totalcross.ui.Grid;
@@ -29,18 +32,20 @@ public class Carrinho extends totalcross.ui.Window{
 	public int 						        qntEstoqueCalculo = 0;
 	public int  				 			quantidadeVendida = 0;
 	public int								codigo = 0;
-	public Date 				 			dataEntrada;
-	
 	public int 								codigoTemp;
+	public Date 				 			dataEntrada;
+	public String							dataString;
+	public String							dataSaidaString;
+	
 	public String							produtoTemp;
 	public String							valorTemp;
-	public int   							quantidadeTemp;
 	public String							categoriaTemp;
 	public String							marcaTemp;
 	public String                           descricaoTemp;
 	public String							tipoPagamento;
 	public Date								dataSaidaTemp;
-		
+	public int   							quantidadeTemp;
+	
 	public Carrinho(){
 		 setBackColor(0x003366);
 		 initUI();
@@ -95,6 +100,8 @@ public class Carrinho extends totalcross.ui.Window{
 			gridCarrinho.setRect(Container.LEFT + 1, Container.AFTER + 10,
 					Container.FILL - 1, Container.FIT, btnCarrinho);
 			
+			reposition();
+			
             carregaGridProdutos();
 
 		} catch (Exception e) {
@@ -120,12 +127,13 @@ public class Carrinho extends totalcross.ui.Window{
 
 					baixaEstoque();
 					salvaInfoVenda();
-
+					
 					MessageBox msg = new MessageBox("CONTROLE", "Venda efetuada\n com sucesso");
 					msg.setBackColor(Color.WHITE);
 					msg.setForeColor(0x003366);
 					msg.popup();
-
+					
+					Venda.btnCarrinho.setEnabled(false);
 					unpop();
 				}
 
@@ -149,7 +157,8 @@ public class Carrinho extends totalcross.ui.Window{
 			try {
 				lb = new LitebasePack();
 				sql = " SELECT * FROM VENDAPRODUTOTEMP";
-
+				
+				gridCarrinho.removeAllElements();
 				rs = lb.executeQuery(sql);
 				rs.first();
 				for (int i = 0; rs.getRowCount() > i; i++) {
@@ -199,7 +208,7 @@ public class Carrinho extends totalcross.ui.Window{
 				rs = lb.executeQuery(sql);
 				rs.beforeFirst();
 				
-				if (rs.next()) {
+				while (rs.next()) {
 					codigoTemp = rs.getInt("CODIGO");
 					produtoTemp = rs.getString("PRODUTO");
 					valorTemp = rs.getString("VALOR");
@@ -218,6 +227,9 @@ public class Carrinho extends totalcross.ui.Window{
 					
 					qntEstoqueCalculo = rs2.getInt("QUANTIDADE");
 					dataEntrada = rs2.getDate("DATAENTRADA");
+					
+					dataString = dataEntrada.toString(Settings.DATE_YMD);
+									
 					codigo = rs2.getInt("CODIGO");
 					quantidadeVendida = quantidadeTemp;
 
@@ -231,7 +243,7 @@ public class Carrinho extends totalcross.ui.Window{
 							+ " CATEGORIA, MARCA, DESCRICAO, DATAENTRADA " + ")" + " VALUES " + "( '" + codigo
 							+ "' , '" + produtoTemp + "', '" + marcaTemp + "', '" + valorTemp + "', '"
 							+ quantidadeEstoque + "', '" + categoriaTemp + "','" + marcaTemp + "', '" + descricaoTemp
-							+ "', '" + dataEntrada + "'" + ")";
+							+ "', '" + dataString + "'" + ")";
 
 					lb.executeUpdate(sql);
 
@@ -263,9 +275,9 @@ public class Carrinho extends totalcross.ui.Window{
 				sql = "SELECT * FROM VENDAPRODUTOTEMP WHERE CODIGO = " + codigoTemp;
 				
 				rs = lb.executeQuery(sql);
-				rs.first();
+				rs.beforeFirst();
 				
-				if (rs.next()) {
+				while (rs.next()) {
 					codigoTemp = rs.getInt("CODIGO");
 					produtoTemp = rs.getString("PRODUTO");
 					valorTemp = rs.getString("VALOR");
@@ -275,16 +287,22 @@ public class Carrinho extends totalcross.ui.Window{
 					descricaoTemp = rs.getString("DESCRICAO");
 					tipoPagamento = rs.getString("TIPOPAGAMENTO");
 					dataSaidaTemp = rs.getDate("DATASAIDA");
-
+					
+					dataSaidaString = dataSaidaTemp.toString(Settings.DATE_YMD);
+					
 					sql = "INSERT INTO VENDAPRODUTO " + "(" + " CODIGO, PRODUTO, VALOR, QUANTIDADE, "
 							+ " CATEGORIA, MARCA, DESCRICAO,TIPOPAGAMENTO, DATASAIDA " + ")" + " VALUES " + "( '" + codigoTemp
 							+ "' , '" + produtoTemp + "', '" + valorTemp + "', '" + quantidadeTemp + "', '"
-							+ categoriaTemp + "','" + marcaTemp + "', '" + descricaoTemp + "', '" + tipoPagamento + "', '" + dataSaidaTemp + "'"
+							+ categoriaTemp + "','" + marcaTemp + "', '" + descricaoTemp + "', '" + tipoPagamento + "', '" + dataSaidaString + "'"
 							+ ")";
 
 					lb.executeUpdate(sql);
 
 				}
+				
+				sql = "DELETE VENDAPRODUTOTEMP WHERE CODIGO = " + codigoTemp;
+
+				lb.executeUpdate(sql);
 
 			} finally {
 				if (lb != null)

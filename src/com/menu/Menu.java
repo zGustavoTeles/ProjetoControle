@@ -65,7 +65,9 @@ public class Menu extends totalcross.ui.Window {
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 			btnVoltar.setRect(CENTER, AFTER + 10, width - 200, PREFERRED + 80, btnConfiguracao);
-
+			
+			reposition();
+			
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);

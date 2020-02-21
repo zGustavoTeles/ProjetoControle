@@ -43,6 +43,7 @@ public class Inserir extends totalcross.ui.Window {
 	
 	public double 				 valorProduto = 0.0;
 	public double				 total = 0.0;
+	public int				     qntEstoqueFinal = 0;
 	public int 				     quantidade = 0;
 	public int 					 quantidadeEstoque = 0;
 	public int 					 qntEstoqueCalculo = 0;
@@ -158,6 +159,7 @@ public class Inserir extends totalcross.ui.Window {
 			editQuantidade.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblQuantidade);
 			editQuantidade.setBackColor(Color.WHITE);
 			editQuantidade.setForeColor(0x003366);
+			editQuantidade.setValidChars("0 1 2 3 4 5 6 7 8 9");
 			editQuantidade.setText("1");
 
 			lblValor = new Label("VALOR:            ");
@@ -204,9 +206,11 @@ public class Inserir extends totalcross.ui.Window {
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 			
+			reposition();
+			
 			carregaCmbTipoPagamento();
 			cmbTipoPagamento.setSelectedIndex(0);
-
+			
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);
@@ -267,6 +271,9 @@ public class Inserir extends totalcross.ui.Window {
 				if (editQuantidade.getText().length() > 0) {
 					calculaTotalProduto();
 
+				} else if (editQuantidade.getText().length() == 0) {
+					editEstoque.setText(Venda.quantidade);
+					editTotal.setText("");
 				}
 			}
 		} catch (Exception e) {
@@ -282,13 +289,18 @@ public class Inserir extends totalcross.ui.Window {
 
 		try {
 
+			estoque = Venda.quantidade;
+			quantidadeInserida = editQuantidade.getText();
+			qntEstoqueFinal = Convert.toInt(estoque) - Convert.toInt(quantidadeInserida);
+
 			String quantidadeString = "";
 			quantidadeString = editQuantidade.getText();
 			valorProduto = Convert.toDouble(Venda.valor.replace(",", "."));
 			quantidade = Convert.toInt(quantidadeString);
 
 			total = valorProduto * quantidade;
-			editTotal.setText( Convert.toCurrencyString(total, 2) + " $$");
+			editTotal.setText(Convert.toCurrencyString(total, 2));
+			editEstoque.setText(Convert.toString(qntEstoqueFinal));
 
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE", "Erro no calculo\n do produto" + e);

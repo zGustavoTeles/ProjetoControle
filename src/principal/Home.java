@@ -2,6 +2,7 @@ package principal;
 
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
+import totalcross.sys.Settings;
 import totalcross.ui.Edit;
 import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
@@ -118,6 +119,8 @@ public class Home extends MainWindow{
 			btnSair.setBackColor(0xDF0101);
 			btnSair.setForeColor(Color.WHITE);
 			btnSair.setRect(CENTER,AFTER, SCREENSIZE + 100, PREFERRED + 25, btnCadastrar);
+			
+			reposition();
 			
 			buscaEmpresaCadastrada();
 			

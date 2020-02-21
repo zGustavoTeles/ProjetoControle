@@ -101,6 +101,8 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 			
+			reposition();
+			
 			consultarEmpresa();
 
 		} catch (Exception e) {

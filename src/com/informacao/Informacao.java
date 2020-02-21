@@ -79,7 +79,9 @@ public class Informacao extends totalcross.ui.Window{
 	        btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
 	        btnVoltar.setBackColor(0x003366);
 	        btnVoltar.setForeColor(Color.WHITE);
-
+	        
+	        reposition();
+	        
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);

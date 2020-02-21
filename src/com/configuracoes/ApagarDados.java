@@ -77,6 +77,8 @@ public class ApagarDados extends totalcross.ui.Window {
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 			
+			reposition();
+			
 			setEmpresa();
 			
 		} catch (Exception e) {
