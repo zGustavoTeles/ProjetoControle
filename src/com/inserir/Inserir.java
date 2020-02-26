@@ -187,7 +187,7 @@ public class Inserir extends totalcross.ui.Window {
 			editTotal.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblTotal);
 			editTotal.setBackColor(0x003366);
 			editTotal.setForeColor(Color.WHITE);
-			editTotal.setText(Venda.valor + "$");
+			editTotal.setText(Venda.valor);
 			editTotal.setEnabled(false);
 			
 			cmbTipoPagamento = new ComboBox();
@@ -337,11 +337,11 @@ public class Inserir extends totalcross.ui.Window {
 
 					dataVenda = Date.formatDate(year.getYear(), month.getMonth(), day.getDay());
 
-					sql = "INSERT INTO VENDAPRODUTOTEMP " + "(" + " CODIGO, PRODUTO, VALOR, QUANTIDADE, "
+					sql = "INSERT INTO VENDAPRODUTOTEMP " + "(" + " CODIGO, PRODUTO, VALOR, QUANTIDADE, CODIGOPROD, "
 							+ " CATEGORIA, MARCA, DESCRICAO, TIPOPAGAMENTO, DATASAIDA " + ")" + " VALUES " 
 							+ "( '" + codigo + "' , '" + editProduto.getText()
 	                        + "', '" + editTotal.getText() + "', '"
-							+ editQuantidade.getText() + "', '" + editCategoria.getText() + "','" 
+							+ editQuantidade.getText() + "', '" + editCodigo.getText() + "','" + editCategoria.getText() + "','" 
 							+ editMarca.getText() + "', '"+ editDescricao.getText() 
 							+ "', '" + cmbTipoPagamento.getSelectedItem() + "', '" + dataVenda + "'" + ")";
 
@@ -357,11 +357,11 @@ public class Inserir extends totalcross.ui.Window {
 
 					dataVenda = Date.formatDate(year.getYear(), month.getMonth(), day.getDay());
 
-					sql = "INSERT INTO VENDAPRODUTOTEMP " + "(" + " CODIGO, PRODUTO, VALOR, QUANTIDADE, "
+					sql = "INSERT INTO VENDAPRODUTOTEMP " + "(" + " CODIGO, PRODUTO, VALOR, QUANTIDADE, CODIGOPROD, "
 							+ " CATEGORIA, MARCA, DESCRICAO, TIPOPAGAMENTO, DATASAIDA " + ")" + " VALUES " 
 							+ "( '" + codigo + "' , '" + editProduto.getText()
 	                        + "', '" + editTotal.getText() + "', '"
-							+ editQuantidade.getText() + "', '" + editCategoria.getText() + "','" 
+							+ editQuantidade.getText() + "', '" + editCodigo.getText() + "','" + editCategoria.getText() + "','" 
 							+ editMarca.getText() + "', '"+ editDescricao.getText() 
 							+ "', '" + cmbTipoPagamento.getSelectedItem() + "', '" + dataVenda + "'" + ")";
 

@@ -119,6 +119,8 @@ public class Venda extends totalcross.ui.Window{
 			
 			reposition();
 			
+			habilitaCarrinho();
+			
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
 			msg.setBackColor(Color.WHITE);
@@ -340,10 +342,14 @@ public class Venda extends totalcross.ui.Window{
 		try {
 
 			try {
+				
+				if (codigo.equals("")) {
+					return;
+				}
 
 				lb = new LitebasePack();
 
-				sql = "SELECT * FROM VENDAPRODUTOTEMP WHERE CODIGO = " + codigo;
+				sql = "SELECT * FROM VENDAPRODUTOTEMP WHERE CODIGOPROD = " + codigo;
 
 				rs = lb.executeQuery(sql);
 				rs.first();
@@ -358,6 +364,44 @@ public class Venda extends totalcross.ui.Window{
 					msg.setBackColor(Color.WHITE);
 					msg.setForeColor(0x003366);
 					msg.popup();
+				}
+
+			} finally {
+				if (lb != null) {
+					lb.closeAll();
+				}
+			}
+
+		} catch (Exception e) {
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao validar\n produto no carrinho" + e);
+			msg.setBackColor(Color.WHITE);
+			msg.setForeColor(0x003366);
+			msg.popup();
+		}
+
+	}
+	
+	public void habilitaCarrinho() {
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
+		try {
+
+			try {
+
+				lb = new LitebasePack();
+
+				sql = "SELECT * FROM VENDAPRODUTOTEMP";
+
+				rs = lb.executeQuery(sql);
+				rs.first();
+
+				if (rs.getRowCount() == 0) {
+					return;
+
+				} else {
+					btnCarrinho.setEnabled(true);
 				}
 
 			} finally {

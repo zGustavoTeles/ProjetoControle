@@ -32,6 +32,7 @@ public class Carrinho extends totalcross.ui.Window{
 	public int 						        qntEstoqueCalculo = 0;
 	public int  				 			quantidadeVendida = 0;
 	public int								codigo = 0;
+	public int								codigoProdTemp = 0;
 	public int 								codigoTemp;
 	public Date 				 			dataEntrada;
 	public String							dataString;
@@ -76,18 +77,19 @@ public class Carrinho extends totalcross.ui.Window{
             btnVender.setBackColor(0x009933);
             btnVender.setForeColor(Color.WHITE);
 
-            int gridWidths[] = new int[8];
-				gridWidths[0] = 40;
+            int gridWidths[] = new int[9];
+				gridWidths[0] = 10;
 				gridWidths[1] = 50;
-				gridWidths[2] = 40;
-				gridWidths[3] = 100;
-				gridWidths[4] = 100;
-				gridWidths[5] = 10;
-				gridWidths[6] = 10;
-				gridWidths[7] = 5;
+				gridWidths[2] = 10;
+				gridWidths[3] = 50;
+				gridWidths[4] = 10;
+				gridWidths[5] = 50;
+				gridWidths[6] = 20;
+				gridWidths[7] = 50;
+				gridWidths[8] = 20;
 	
-			String[] caps = { "COD.", "PRODUTO", "QNT", "MARCA", "CATEGORIA","DESC", "PAGAMENTO", " VALOR"};
-			int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT};
+			String[] caps = { "COD.", "PRODUTO", "QNT", "COD.PROD.", "MARCA", "CAT.","DESC.", "PAG.", " TOTAL"};
+			int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT};
 			gridCarrinho = new Grid(caps, gridWidths, aligns, false);
 			add(gridCarrinho);
 			gridCarrinho.setBackColor(Color.WHITE);
@@ -162,15 +164,16 @@ public class Carrinho extends totalcross.ui.Window{
 				rs = lb.executeQuery(sql);
 				rs.first();
 				for (int i = 0; rs.getRowCount() > i; i++) {
-					String[] b = new String[8];
+					String[] b = new String[9];
 					b[0] = Convert.toString(rs.getInt("CODIGO"));
 					b[1] = rs.getString("PRODUTO");
 					b[2] = Convert.toString(rs.getInt("QUANTIDADE"));
-					b[3] = rs.getString("MARCA");
-					b[4] = rs.getString("CATEGORIA");
-					b[5] = rs.getString("DESCRICAO");
-					b[6] = rs.getString("TIPOPAGAMENTO");
-					b[7] = rs.getString("VALOR");
+					b[3] = Convert.toString(rs.getInt("CODIGOPROD"));
+					b[4] = rs.getString("MARCA");
+					b[5] = rs.getString("CATEGORIA");
+					b[6] = rs.getString("DESCRICAO");
+					b[7] = rs.getString("TIPOPAGAMENTO");
+					b[8] = rs.getString("VALOR");
 					gridCarrinho.add(b);
 					rs.next();
 				}
@@ -212,6 +215,7 @@ public class Carrinho extends totalcross.ui.Window{
 					codigoTemp = rs.getInt("CODIGO");
 					produtoTemp = rs.getString("PRODUTO");
 					valorTemp = rs.getString("VALOR");
+					codigoProdTemp = rs.getInt("CODIGOPROD");
 					quantidadeTemp = rs.getInt("QUANTIDADE");
 					categoriaTemp = rs.getString("CATEGORIA");
 					marcaTemp = rs.getString("MARCA");
@@ -235,12 +239,12 @@ public class Carrinho extends totalcross.ui.Window{
 
 					quantidadeEstoque = qntEstoqueCalculo - quantidadeVendida;
 
-					sql = "DELETE FROM ESTOQUE WHERE CODIGO = " + codigo;
+					sql = "DELETE FROM ESTOQUE WHERE CODIGO = " + codigoProdTemp;
 
 					lb.executeUpdate(sql);
 
 					sql = "INSERT INTO 	ESTOQUE " + "(" + " CODIGO, PRODUTO, MARCA, VALOR, QUANTIDADE, "
-							+ " CATEGORIA, MARCA, DESCRICAO, DATAENTRADA " + ")" + " VALUES " + "( '" + codigo
+							+ " CATEGORIA, MARCA, DESCRICAO, DATAENTRADA " + ")" + " VALUES " + "( '" + codigoProdTemp
 							+ "' , '" + produtoTemp + "', '" + marcaTemp + "', '" + valorTemp + "', '"
 							+ quantidadeEstoque + "', '" + categoriaTemp + "','" + marcaTemp + "', '" + descricaoTemp
 							+ "', '" + dataString + "'" + ")";
@@ -281,6 +285,7 @@ public class Carrinho extends totalcross.ui.Window{
 					codigoTemp = rs.getInt("CODIGO");
 					produtoTemp = rs.getString("PRODUTO");
 					valorTemp = rs.getString("VALOR");
+					codigoProdTemp = rs.getInt("CODIGOPROD");
 					quantidadeTemp = rs.getInt("QUANTIDADE");
 					categoriaTemp = rs.getString("CATEGORIA");
 					marcaTemp = rs.getString("MARCA");
@@ -290,9 +295,9 @@ public class Carrinho extends totalcross.ui.Window{
 					
 					dataSaidaString = dataSaidaTemp.toString(Settings.DATE_YMD);
 					
-					sql = "INSERT INTO VENDAPRODUTO " + "(" + " CODIGO, PRODUTO, VALOR, QUANTIDADE, "
+					sql = "INSERT INTO VENDAPRODUTO " + "(" + " CODIGO, PRODUTO, VALOR, CODIGOPROD, QUANTIDADE, "
 							+ " CATEGORIA, MARCA, DESCRICAO,TIPOPAGAMENTO, DATASAIDA " + ")" + " VALUES " + "( '" + codigoTemp
-							+ "' , '" + produtoTemp + "', '" + valorTemp + "', '" + quantidadeTemp + "', '"
+							+ "' , '" + produtoTemp + "', '" + valorTemp + "', '" +  codigoProdTemp + "', '" + quantidadeTemp + "', '"
 							+ categoriaTemp + "','" + marcaTemp + "', '" + descricaoTemp + "', '" + tipoPagamento + "', '" + dataSaidaString + "'"
 							+ ")";
 
