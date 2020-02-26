@@ -335,7 +335,7 @@ public class Venda extends totalcross.ui.Window{
 	}
 	
 	public void validaProdutoCarrinho() {
-		String sql = "";
+ 		String sql = "";
 		LitebasePack lb = null;
 		ResultSet rs = null;
 
@@ -343,10 +343,10 @@ public class Venda extends totalcross.ui.Window{
 
 			try {
 				
-				if (codigo.equals("")) {
+				if(gridProdutos.getSelectedItem()[0].equals("")) {
 					return;
 				}
-
+				
 				lb = new LitebasePack();
 
 				sql = "SELECT * FROM VENDAPRODUTOTEMP WHERE CODIGOPROD = " + codigo;
@@ -366,13 +366,15 @@ public class Venda extends totalcross.ui.Window{
 					msg.popup();
 				}
 
-			} finally {
+			}
+			finally {
 				if (lb != null) {
 					lb.closeAll();
 				}
 			}
 
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE", "Erro ao validar\n produto no carrinho" + e);
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
@@ -411,7 +413,7 @@ public class Venda extends totalcross.ui.Window{
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao validar\n produto no carrinho" + e);
+			MessageBox msg = new MessageBox("CONTROLE", "Erro ao habilitar\n produto no carrinho" + e);
 			msg.setBackColor(Color.WHITE);
 			msg.setForeColor(0x003366);
 			msg.popup();
