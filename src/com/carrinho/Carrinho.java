@@ -1,10 +1,11 @@
 package com.carrinho;
 
 
+import com.auxiliares.Auxiliares;
 import com.bottom.BottomImg;
+import com.inserir.Inserir;
 import com.litebase.LitebasePack;
 import com.venda.Venda;
-
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
@@ -13,9 +14,11 @@ import totalcross.ui.Button;
 import totalcross.ui.Container;
 import totalcross.ui.Grid;
 import totalcross.ui.Label;
+import totalcross.ui.MainWindow;
 import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
+import totalcross.ui.event.GridEvent;
 import totalcross.ui.gfx.Color;
 import totalcross.ui.image.Image;
 import totalcross.util.Date;
@@ -23,8 +26,12 @@ import totalcross.util.Date;
 public class Carrinho extends totalcross.ui.Window{
 	
 	private Label							lblCarrinho;
+	private Label							lblQuantidade;
+	private Label							lblTotal;
 	private ArtButton 						btnVoltar;
 	private ArtButton						btnVender;
+	private ArtButton						btnAlterar;
+	private ArtButton						btnRemover;
 	public Grid							    gridCarrinho;
 	public Button					        btnCarrinho;
 	
@@ -34,6 +41,8 @@ public class Carrinho extends totalcross.ui.Window{
 	public int								codigo = 0;
 	public int								codigoProdTemp = 0;
 	public int 								codigoTemp;
+	public int								quantidadeCarrinho = 0;
+	public double							totalCarrinho = 0.0;
 	public Date 				 			dataEntrada;
 	public String							dataString;
 	public String							dataSaidaString;
@@ -47,6 +56,11 @@ public class Carrinho extends totalcross.ui.Window{
 	public Date								dataSaidaTemp;
 	public int   							quantidadeTemp;
 	
+	public static String					codigoProduto = "";
+	public static String					quantidadeProduto = "";
+	public static String					tipoPagamentoProduto = "";
+	public static String					totalProduto = "";
+	
 	public Carrinho(){
 		 setBackColor(0x003366);
 		 initUI();
@@ -56,6 +70,18 @@ public class Carrinho extends totalcross.ui.Window{
 		
 		try {
 					
+			lblQuantidade = new Label("");
+			add(lblQuantidade);
+			lblQuantidade.setRect(LEFT + 2, TOP + 5, PREFERRED, PREFERRED);
+			lblQuantidade.setBackColor(0x003366);
+			lblQuantidade.setForeColor(Color.WHITE);
+			
+			lblTotal = new Label("");
+			add(lblTotal);
+			lblTotal.setRect(LEFT + 2, AFTER + 5, PREFERRED, PREFERRED, lblQuantidade);
+			lblTotal.setBackColor(0x003366);
+			lblTotal.setForeColor(Color.WHITE);
+			
 			lblCarrinho = new Label("CARRINHO:");
 			add(lblCarrinho);
 			lblCarrinho.setRect(CENTER, TOP + 5, PREFERRED, PREFERRED);
@@ -76,6 +102,18 @@ public class Carrinho extends totalcross.ui.Window{
             btnVender.setRect(LEFT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
             btnVender.setBackColor(0x009933);
             btnVender.setForeColor(Color.WHITE);
+            
+            btnAlterar = new ArtButton("ALTERAR");
+            add(btnAlterar);
+            btnAlterar.setRect(AFTER + 5, SAME, SCREENSIZE - 5, PREFERRED + 13, btnVender);
+            btnAlterar.setBackColor(0xDF7401);
+            btnAlterar.setForeColor(Color.WHITE);
+            
+            btnRemover = new ArtButton("REMOVER");
+            add(btnRemover);
+            btnRemover.setRect(AFTER + 5, SAME, SCREENSIZE - 5, PREFERRED + 13, btnAlterar);
+            btnRemover.setBackColor(0xDF0101);
+            btnRemover.setForeColor(Color.WHITE);
 
             int gridWidths[] = new int[9];
 				gridWidths[0] = 10;
@@ -88,7 +126,7 @@ public class Carrinho extends totalcross.ui.Window{
 				gridWidths[7] = 50;
 				gridWidths[8] = 20;
 	
-			String[] caps = { "COD.", "PRODUTO", "QNT", "COD.PROD.", "MARCA", "CAT.","DESC.", "PAG.", " TOTAL"};
+			String[] caps = { "COD.", "PRODUTO", "QNT", "COD.P..", "MARCA", "CAT.","DESC.", "PAG.", " TOTAL"};
 			int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT};
 			gridCarrinho = new Grid(caps, gridWidths, aligns, false);
 			add(gridCarrinho);
@@ -100,11 +138,12 @@ public class Carrinho extends totalcross.ui.Window{
 			gridCarrinho.canClickSelectAll = true;
 			gridCarrinho.boldCheck = false;
 			gridCarrinho.setRect(Container.LEFT + 1, Container.AFTER + 10,
-					Container.FILL - 1, Container.FIT, btnCarrinho);
+					Container.FILL - 1, Container.FIT, lblTotal);
 			
 			reposition();
 			
             carregaGridProdutos();
+            calculaItensCarrinho();
 
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
@@ -126,17 +165,53 @@ public class Carrinho extends totalcross.ui.Window{
 					unpop();
 
 				} else if (evt.target == btnVender) {
+					String[] ArtButtonArray = { "Sim", "Não" };
+					
+					int i = Auxiliares.artMsgbox("CONTROLE", "Deseja finalizar a venda?", ArtButtonArray);
+					
+					if (i == 1) {
+						return;
+						
+					} else {
 
-					baixaEstoque();
-					salvaInfoVenda();
-					
-					MessageBox msg = new MessageBox("CONTROLE", "Venda efetuada\n com sucesso");
-					msg.setBackColor(Color.WHITE);
-					msg.setForeColor(0x003366);
-					msg.popup();
-					
-					Venda.btnCarrinho.setEnabled(false);
-					unpop();
+						baixaEstoque();
+						salvaInfoVenda();
+						
+						Auxiliares.artMsgbox("CONTROLE", "Venda efetuada com sucesso!");
+						
+						Venda.btnCarrinho.setEnabled(false);
+						unpop();
+					}
+				}else if(evt.target == btnAlterar) {
+					if (gridCarrinho.getSelectedItem() != null) {						
+							AlterarItem alterarItem = new AlterarItem();
+							alterarItem.popup();
+							
+					} else {
+						
+						Auxiliares.artMsgbox("CONTROLE", "Deve-se selecionar um item para Alterar");
+					}
+				}
+
+			}
+			switch (evt.type) {
+			case GridEvent.SELECTED_EVENT:
+				if (evt.target == gridCarrinho) {
+
+					try {
+						
+						quantidadeProduto = gridCarrinho.getSelectedItem()[2];
+						codigoProduto = gridCarrinho.getSelectedItem()[3];
+						tipoPagamentoProduto = gridCarrinho.getSelectedItem()[7];
+						totalProduto = gridCarrinho.getSelectedItem()[8];
+
+					} catch (Exception e) {
+						MessageBox msg = new MessageBox("CONTROLE", "Clique em um Item");
+						msg.setBackColor(Color.WHITE);
+						msg.setForeColor(0x003366);
+						msg.popup();
+					}
+
 				}
 
 			}
@@ -320,6 +395,53 @@ public class Carrinho extends totalcross.ui.Window{
 			msg.setForeColor(0x003366);
 			msg.popup();
 		}
+	}
+	
+	public void calculaItensCarrinho() throws Exception {
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
+		try {
+
+			try {
+
+				lb = new LitebasePack();
+				sql = "SELECT QUANTIDADE FROM VENDAPRODUTOTEMP ";
+
+				rs = lb.executeQuery(sql);
+				rs.beforeFirst();
+
+				while (rs.next()) {
+
+					quantidadeCarrinho += rs.getInt("QUANTIDADE");
+					lblQuantidade.setText("QUANTIDADE: " + Convert.toString(quantidadeCarrinho));
+				}
+
+				sql = "SELECT VALOR FROM VENDAPRODUTOTEMP ";
+
+				rs = lb.executeQuery(sql);
+				rs.beforeFirst();
+
+				while (rs.next()) {
+					
+					totalCarrinho += Convert.toDouble(rs.getString("VALOR").replace(",", "."));
+					lblTotal.setText("TOTAL: " + Convert.toCurrencyString(totalCarrinho, 2) + " $$");
+				}
+
+			} catch (Exception e) {
+				MessageBox msg = new MessageBox("CONTROLE", "Erro ao calcular\n itens no carrinho");
+				msg.setBackColor(Color.WHITE);
+				msg.setForeColor(0x003366);
+				msg.popup();
+			}
+
+		} finally {
+			if (lb != null) {
+				lb.closeAll();
+			}
+		}
+
 	}
 	
 }

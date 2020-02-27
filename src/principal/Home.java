@@ -55,13 +55,13 @@ public class Home extends MainWindow{
 			imgHome = new ImageControl(new Image("img/home.png"));
 			imgHome.scaleToFit = true;
 			imgHome.centerImage = true;
-			add(imgHome, CENTER, TOP - 10, SCREENSIZE + 50, PREFERRED, btnAtualizar);
+			add(imgHome, CENTER, TOP + 20, SCREENSIZE + 50, PREFERRED, btnAtualizar);
 
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);
 			lblEmpresa.setBackColor(0x003366);
 			lblEmpresa.setForeColor(Color.WHITE);
-			lblEmpresa.setRect(CENTER, AFTER, PREFERRED, PREFERRED, imgHome);
+			lblEmpresa.setRect(CENTER, AFTER + 20, PREFERRED, PREFERRED, imgHome);
 
 			add(editEmpresa = new Edit(), LEFT, AFTER + 1, PREFERRED, PREFERRED);
 			editEmpresa.setBackColor(Color.WHITE);
@@ -116,7 +116,7 @@ public class Home extends MainWindow{
 			
 			btnSair = new ArtButton("SAIR");
 			add(btnSair);
-			btnSair.setBackColor(0xDF0101);
+			btnSair.setBackColor(0xDF7401);
 			btnSair.setForeColor(Color.WHITE);
 			btnSair.setRect(CENTER,AFTER, SCREENSIZE + 100, PREFERRED + 25, btnCadastrar);
 			
@@ -146,11 +146,6 @@ public class Home extends MainWindow{
 						msg.setBackColor(Color.WHITE);
 						msg.setForeColor(0x003366);
 						msg.popup();
-						
-						MessageBox msg2 = new MessageBox("CONTROLE", "Se você já efetuou o cadastro\n clique em 'ESCOLHER EMPRESA' na aba\n de cadastro para torna-la\n padrão para o sistema ");
-						msg2.setBackColor(Color.WHITE);
-						msg2.setForeColor(0x003366);
-						msg2.popup();
 
 					} else {
 						validaEmpresa();
@@ -159,8 +154,8 @@ public class Home extends MainWindow{
 					}
 
 				} else if (evt.target == btnCadastrar) {
-					Cadastrar adm = new Cadastrar();
-					adm.popup();
+					Cadastrar cadastrar = new Cadastrar();
+					cadastrar.popup();
 					
 				}else if(evt.target == btnSair) {
 					Home.exit(0);
@@ -258,4 +253,3 @@ public class Home extends MainWindow{
 	}
 			
 }
-

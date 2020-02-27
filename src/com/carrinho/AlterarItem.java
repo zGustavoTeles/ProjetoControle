@@ -1,4 +1,4 @@
-package com.inserir;
+package com.carrinho;
 
 import java.util.Random;
 
@@ -17,7 +17,7 @@ import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
 import totalcross.util.Date;
 
-public class Inserir extends totalcross.ui.Window {
+public class AlterarItem extends totalcross.ui.Window {
 
 	private Label				 lblProduto;
 	private Label 				 lblEstoque;
@@ -37,7 +37,7 @@ public class Inserir extends totalcross.ui.Window {
 	private Edit 				 editValor;
 	private Edit				 editQuantidade;
 	private Edit 				 editTotal;
-	private ArtButton 			 btnInserir;
+	private ArtButton 			 btnAlterar;
 	private ArtButton 			 btnVoltar;
 	private ComboBox			 cmbTipoPagamento;
 	
@@ -51,10 +51,13 @@ public class Inserir extends totalcross.ui.Window {
 	public String 				 dataEntrada = "";
 	public String				 estoque = "";
 	public String 				 quantidadeInserida = "";
+	
+	public String				valorTemp = "";
+	public int					quantidadeTemp = 0;
 
 	public Teclado teclado;
 
-	public Inserir() {
+	public AlterarItem() {
 		setBackColor(0x003366);
 		initUI();
 	}
@@ -74,7 +77,6 @@ public class Inserir extends totalcross.ui.Window {
 			editCategoria.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblCategoria);
 			editCategoria.setBackColor(0x003366);
 			editCategoria.setForeColor(Color.WHITE);
-			editCategoria.setText(Venda.categoria);
 			editCategoria.setEnabled(false);
 			
 			lblMarca = new Label("MARCA:          ");
@@ -88,7 +90,6 @@ public class Inserir extends totalcross.ui.Window {
 			editMarca.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblMarca);
 			editMarca.setBackColor(0x003366);
 			editMarca.setForeColor(Color.WHITE);
-			editMarca.setText(Venda.marca);
 			editMarca.setEnabled(false);
 			
 			lblDescricao = new Label("DESCRICAO:   ");
@@ -102,7 +103,6 @@ public class Inserir extends totalcross.ui.Window {
 			editDescricao.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblDescricao);
 			editDescricao.setBackColor(0x003366);
 			editDescricao.setForeColor(Color.WHITE);
-			editDescricao.setText(Venda.descricao);
 			editDescricao.setEnabled(false);		
 
 			lblProduto = new Label("PRODUTO:      ");
@@ -116,7 +116,6 @@ public class Inserir extends totalcross.ui.Window {
 			editProduto.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblProduto);
 			editProduto.setBackColor(0x003366);
 			editProduto.setForeColor(Color.WHITE);
-			editProduto.setText(Venda.produto);
 			editProduto.setEnabled(false);
 
 			lblCodigo = new Label("CÓDIGO:          ");
@@ -130,7 +129,6 @@ public class Inserir extends totalcross.ui.Window {
 			editCodigo.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblCodigo);
 			editCodigo.setBackColor(0x003366);
 			editCodigo.setForeColor(Color.WHITE);
-			editCodigo.setText(Venda.codigo);
 			editCodigo.setEnabled(false);
 
 			lblEstoque = new Label("ESTOQUE:       ");
@@ -144,7 +142,6 @@ public class Inserir extends totalcross.ui.Window {
 			editEstoque.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblEstoque);
 			editEstoque.setBackColor(0x003366);
 			editEstoque.setForeColor(Color.WHITE);
-			editEstoque.setText(Venda.quantidade);
 			editEstoque.setEnabled(false);
 
 			lblQuantidade = new Label("QUANTIDADE: ");
@@ -160,7 +157,7 @@ public class Inserir extends totalcross.ui.Window {
 			editQuantidade.setBackColor(Color.WHITE);
 			editQuantidade.setForeColor(0x003366);
 			editQuantidade.setValidChars("0 1 2 3 4 5 6 7 8 9");
-			editQuantidade.setText("1");
+			editQuantidade.setText(Carrinho.quantidadeProduto);
 
 			lblValor = new Label("VALOR:            ");
 			add(lblValor);
@@ -173,32 +170,31 @@ public class Inserir extends totalcross.ui.Window {
 			editValor.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblValor);
 			editValor.setBackColor(0x003366);
 			editValor.setForeColor(Color.WHITE);
-			editValor.setText(Venda.valor);
 			editValor.setEnabled(false);
 
 			lblTotal = new Label("TOTAL:            ");
 			add(lblTotal);
 			lblTotal.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editValor);
 			lblTotal.setBackColor(0x003366);
-			lblTotal.setForeColor(Color.WHITE);
+			lblTotal.setForeColor(Color.WHITE);	
 
 			editTotal = new Edit();
 			add(editTotal);
 			editTotal.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblTotal);
 			editTotal.setBackColor(0x003366);
 			editTotal.setForeColor(Color.WHITE);
-			editTotal.setText(Venda.valor);
+			editTotal.setText(Carrinho.totalProduto);
 			editTotal.setEnabled(false);
 			
 			cmbTipoPagamento = new ComboBox();
 			add(cmbTipoPagamento);
 			cmbTipoPagamento.setRect(LEFT + 150, AFTER + 15, FILL - 140, PREFERRED, editTotal);
 
-			btnInserir = new ArtButton("INSERIR");
-			add(btnInserir);
-			btnInserir.setRect(CENTER, AFTER + 50, SCREENSIZE - 5, PREFERRED + 13, cmbTipoPagamento);
-			btnInserir.setBackColor(0x009933);
-			btnInserir.setForeColor(Color.WHITE);
+			btnAlterar = new ArtButton("ALTERAR");
+			add(btnAlterar);
+			btnAlterar.setRect(CENTER, AFTER + 50, SCREENSIZE - 5, PREFERRED + 13, cmbTipoPagamento);
+			btnAlterar.setBackColor(0x009933);
+			btnAlterar.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
@@ -209,7 +205,14 @@ public class Inserir extends totalcross.ui.Window {
 			reposition();
 			
 			carregaCmbTipoPagamento();
-			cmbTipoPagamento.setSelectedIndex(0);
+			
+			if (Carrinho.tipoPagamentoProduto.equals("DINHEIRO")) {
+				cmbTipoPagamento.setSelectedIndex(0);
+			} else {
+				cmbTipoPagamento.setSelectedIndex(1);
+			}
+			
+			carregaInfoItem();
 			
 		} catch (Exception e) {
 			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
@@ -231,7 +234,7 @@ public class Inserir extends totalcross.ui.Window {
 					unpop();
 
 				}
-				if (evt.target == btnInserir) {
+				if (evt.target == btnAlterar) {
 
 					if (editQuantidade.getText().length() == 0) {
 						MessageBox msg = new MessageBox("CONTROLE", "Por favor insira\n uma quantidade");
@@ -246,7 +249,7 @@ public class Inserir extends totalcross.ui.Window {
 						estoque = editEstoque.getText();
 						quantidadeInserida = editQuantidade.getText();
 
-						if (Convert.toInt(quantidadeInserida) > Convert.toInt(Venda.quantidade)) {
+						if (Convert.toInt(quantidadeInserida) > Convert.toInt(estoque)) {
 							MessageBox msg = new MessageBox("CONTROLE",
 									"Quantidade inserida\n maior que o limite\n do estoque ");
 							msg.setBackColor(Color.WHITE);
@@ -272,7 +275,7 @@ public class Inserir extends totalcross.ui.Window {
 					calculaTotalProduto();
 
 				} else if (editQuantidade.getText().length() == 0) {
-					editEstoque.setText(Venda.quantidade);
+					editEstoque.setText(Convert.toString(quantidadeTemp));
 					editTotal.setText("");
 				}
 			}
@@ -289,13 +292,13 @@ public class Inserir extends totalcross.ui.Window {
 
 		try {
 
-			estoque = Venda.quantidade;
+			estoque = Convert.toString(quantidadeTemp);
 			quantidadeInserida = editQuantidade.getText();
 			qntEstoqueFinal = Convert.toInt(estoque) - Convert.toInt(quantidadeInserida);
 
 			String quantidadeString = "";
 			quantidadeString = editQuantidade.getText();
-			valorProduto = Convert.toDouble(Venda.valor.replace(",", "."));
+			valorProduto = Convert.toDouble(valorTemp.replace(",", "."));
 			quantidade = Convert.toInt(quantidadeString);
 
 			total = valorProduto * quantidade;
@@ -416,6 +419,46 @@ public class Inserir extends totalcross.ui.Window {
 			}
 
 		}
+	}
+	
+	public void carregaInfoItem() {
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
+		try {
+			try {
+				lb = new LitebasePack();
+				sql = " SELECT * FROM ESTOQUE " 
+				    + " WHERE CODIGO = " + Carrinho.codigoProduto;
+
+				rs = lb.executeQuery(sql);
+				rs.first();
+
+				editCategoria.setText(rs.getString("CATEGORIA"));
+				editCodigo.setText(Convert.toString(rs.getInt("CODIGO")));
+				editDescricao.setText(rs.getString("DESCRICAO"));
+				editEstoque.setText(Convert.toString(rs.getInt("QUANTIDADE")));
+				editMarca.setText(rs.getString("MARCA"));
+				editProduto.setText(rs.getString("PRODUTO"));
+				editValor.setText(rs.getString("VALOR"));
+
+				valorTemp = rs.getString("VALOR");
+				quantidadeTemp = rs.getInt("QUANTIDADE");
+
+			} finally {
+				if (lb != null)
+					lb.closeAll();
+
+			}
+		} catch (Exception e) {
+			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
+			msg.setBackColor(Color.WHITE);
+			msg.setForeColor(0x003366);
+			msg.popup();
+
+		}
+
 	}
 
 }

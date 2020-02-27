@@ -163,11 +163,23 @@ public class Venda extends totalcross.ui.Window{
 					}
 
 				} else if (evt.target == btnInserir) {
-					if (gridProdutos.getSelectedItem() != null) {
-						gridProdutos.removeAllElements();
-						
-						validaProdutoCarrinho();
-						
+					if (gridProdutos.getSelectedItem() != null) {						
+						boolean prodAdicionado = false;
+						prodAdicionado = validaProdutoCarrinho(prodAdicionado);
+
+						if (prodAdicionado == false) {
+							gridProdutos.removeAllElements();
+							Inserir inserir = new Inserir();
+							inserir.popup();
+						} else {
+
+							MessageBox msg = new MessageBox("CONTROLE",
+									"Esse produto encontra-se\n no carrinho. Por favor\n finalize a venda para\n inseri-lo novamente");
+							msg.setBackColor(Color.WHITE);
+							msg.setForeColor(0x003366);
+							msg.popup();
+						}
+
 					} else {
 						MessageBox msg = new MessageBox("CONTROLE", "Deve-se selecionar\n um item");
 						msg.setBackColor(Color.WHITE);
@@ -176,6 +188,7 @@ public class Venda extends totalcross.ui.Window{
 					}
 
 				} else if (evt.target == btnCarrinho) {
+					gridProdutos.removeAllElements();
 					Carrinho carrinho = new Carrinho();
 					carrinho.popup();
 				}
@@ -334,7 +347,7 @@ public class Venda extends totalcross.ui.Window{
 		}
 	}
 	
-	public void validaProdutoCarrinho() {
+	public boolean validaProdutoCarrinho(boolean prodAdicionado) {
  		String sql = "";
 		LitebasePack lb = null;
 		ResultSet rs = null;
@@ -342,11 +355,7 @@ public class Venda extends totalcross.ui.Window{
 		try {
 
 			try {
-				
-				if(gridProdutos.getSelectedItem()[0].equals("")) {
-					return;
-				}
-				
+
 				lb = new LitebasePack();
 
 				sql = "SELECT * FROM VENDAPRODUTOTEMP WHERE CODIGOPROD = " + codigo;
@@ -355,15 +364,11 @@ public class Venda extends totalcross.ui.Window{
 				rs.first();
 
 				if (rs.getRowCount() == 0) {
-					Inserir inserir = new Inserir();
-					inserir.popup();
+					return prodAdicionado = false;
 
 				} else {
-					MessageBox msg = new MessageBox("CONTROLE",
-							"Esse produto encontra-se\n no carrinho. Por favor\n finalize a venda para\n inseri-lo novamente");
-					msg.setBackColor(Color.WHITE);
-					msg.setForeColor(0x003366);
-					msg.popup();
+					
+					return prodAdicionado = true;
 				}
 
 			}
@@ -380,6 +385,7 @@ public class Venda extends totalcross.ui.Window{
 			msg.setForeColor(0x003366);
 			msg.popup();
 		}
+		return prodAdicionado;
 
 	}
 	
