@@ -2,6 +2,7 @@ package com.inserir;
 
 import java.util.Random;
 
+import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
 import com.teclado.Teclado;
 import com.venda.Venda;
@@ -212,10 +213,7 @@ public class Inserir extends totalcross.ui.Window {
 			cmbTipoPagamento.setSelectedIndex(0);
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela inserir\n" + e);
 
 		}
 
@@ -234,10 +232,7 @@ public class Inserir extends totalcross.ui.Window {
 				if (evt.target == btnInserir) {
 
 					if (editQuantidade.getText().length() == 0) {
-						MessageBox msg = new MessageBox("CONTROLE", "Por favor insira\n uma quantidade");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Por favor insira uma quantidade!");
 						return;
 					}
 
@@ -247,24 +242,27 @@ public class Inserir extends totalcross.ui.Window {
 						quantidadeInserida = editQuantidade.getText();
 
 						if (Convert.toInt(quantidadeInserida) > Convert.toInt(Venda.quantidade)) {
-							MessageBox msg = new MessageBox("CONTROLE",
-									"Quantidade inserida\n maior que o limite\n do estoque ");
-							msg.setBackColor(Color.WHITE);
-							msg.setForeColor(0x003366);
-							msg.popup();
+							Auxiliares.artMsgbox("CONTROLE", "Quantidade inserida maior que o limite do estoque!");
 							return;
 
 						}
 
-						insereProdutoNoCarrinho();
+						String[] ArtButtonArray = { "Sim", "Não" };
 
-						MessageBox msg = new MessageBox("CONTROLE!", "Produto inserido\n no carrinho ");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja inserir o produto no carrinho?", ArtButtonArray);
 
-						Venda.btnCarrinho.setEnabled(true);
-						unpop();
+						if (i == 1) {
+							return;
+
+						} else {
+
+							insereProdutoNoCarrinho();
+
+							Auxiliares.artMsgbox("CONTROLE", "Produto inserido no carrinho!");
+
+							Venda.btnCarrinho.setEnabled(true);
+							unpop();
+						}
 					}
 
 				}
@@ -277,10 +275,7 @@ public class Inserir extends totalcross.ui.Window {
 				}
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela inserir\n" + e);
 		}
 
 	}
@@ -295,18 +290,15 @@ public class Inserir extends totalcross.ui.Window {
 
 			String quantidadeString = "";
 			quantidadeString = editQuantidade.getText();
-			valorProduto = Convert.toDouble(Venda.valor.replace(",", "."));
+			valorProduto = Convert.toDouble(Venda.valor.replace(".", "."));
 			quantidade = Convert.toInt(quantidadeString);
 
 			total = valorProduto * quantidade;
-			editTotal.setText(Convert.toCurrencyString(total, 2));
+			editTotal.setText(Convert.toString(total, 2));
 			editEstoque.setText(Convert.toString(qntEstoqueFinal));
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no calculo\n do produto" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro no calculo do produto\n" + e);
 		}
 
 	}
@@ -375,10 +367,7 @@ public class Inserir extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao inserir\n produto ao estoque");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao inserir produto estoque\n" + e);
 		}
 
 	}
@@ -408,10 +397,7 @@ public class Inserir extends totalcross.ui.Window {
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
-				msg.setBackColor(Color.WHITE);
-				msg.setForeColor(0x003366);
-				msg.popup();
+				Auxiliares.artMsgbox("ERRO", "Erro carregaCmbTipoPagamento\n" + e);
 
 			}
 

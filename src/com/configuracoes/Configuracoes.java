@@ -1,5 +1,6 @@
 package com.configuracoes;
 
+import com.auxiliares.Auxiliares;
 import com.informacao.Informacao;
 
 import nx.componentes.ArtButton;
@@ -51,10 +52,7 @@ public class Configuracoes extends totalcross.ui.Window {
 			reposition();
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x363636);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela configuracoes\n" + e);
 
 		}
 
@@ -85,10 +83,7 @@ public class Configuracoes extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela configuracoes\n" + e);
 		}
 
 	}

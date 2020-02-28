@@ -1,19 +1,15 @@
 package com.adm;
 
 import java.util.Random;
-
+import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
-
-import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
 import totalcross.ui.Edit;
 import totalcross.ui.Label;
-import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
-import totalcross.util.Date;
 
 public class CadastrarEmpresa extends totalcross.ui.Window {
 
@@ -40,7 +36,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 
 		try {
 			
-			lblAviso = new Label("POR FAVOR PREENCHA TODOS OS CAMPOS PARA\n CADASTRAR UMA EMPRESA PARA O SISTEMA:");
+			lblAviso = new Label("POR FAVOR PREENCHA TODOS OS CAMPOS PARA\n EFETUAR O CADASTRO:");
 			add(lblAviso);
 			lblAviso.setRect(CENTER, TOP, PREFERRED, PREFERRED);
 			lblAviso.setBackColor(0x003366);
@@ -102,10 +98,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			reposition();
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao construir tela cadastrarEmpresa\n" + e);
 
 		}
 
@@ -123,20 +116,23 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 				} else if (evt.target == btnCadastrar) {
 					if (editEmpresa.getText().equals("") || editCnpj.getText().equals("")
 							|| editUsuario.getText().equals("")) {
-						MessageBox msg = new MessageBox("Aviso!", "Preencha todos os campos");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Preencha todos os campos!");
 						
 					} else {
-						cadastrarNovaEmpresa();
-
-						MessageBox msg = new MessageBox("Aviso!", "Empresa cadastrada\n com Sucesso!");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
 						
-						unpop();
+						String[] ArtButtonArray = { "Sim", "Não" };
+
+						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja cadastrar essa empresa?", ArtButtonArray);
+
+						if (i == 1) {
+							return;
+
+						} else {
+							cadastrarNovaEmpresa();
+
+							Auxiliares.artMsgbox("CONTROLE", "Empresa cadastrada com sucesso!");							
+							unpop();
+						}
 					}
 					
 				} else if (evt.target == btnGerarCodigo) {
@@ -149,10 +145,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação de cadastroEmpresa\n" + e);
 		}
 
 	}
@@ -186,10 +179,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Ao Cadastrar Empresa" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao efetuar o cadastro\n" + e);
 		}
 	}
 

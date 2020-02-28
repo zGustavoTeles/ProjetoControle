@@ -1,5 +1,6 @@
 package com.venda;
 
+import com.auxiliares.Auxiliares;
 import com.bottom.BottomImg;
 import com.carrinho.Carrinho;
 import com.inserir.Inserir;
@@ -122,11 +123,8 @@ public class Venda extends totalcross.ui.Window{
 			habilitaCarrinho();
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
-
+			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela venda\n" + e);
+			
 		}
 		
 	}
@@ -142,10 +140,7 @@ public class Venda extends totalcross.ui.Window{
 
 				} else if (evt.target == btnBuscar) {
 					if (editBuscar.getText().equals("")) {
-						MessageBox msg = new MessageBox("CONTROLE", "O campo de busca\n deve ser preenchido");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "O campo de busca deve ser preenchido!");
 						
 					} else {
 						gridProdutos.removeAllElements();
@@ -173,18 +168,12 @@ public class Venda extends totalcross.ui.Window{
 							inserir.popup();
 						} else {
 
-							MessageBox msg = new MessageBox("CONTROLE",
-									"Esse produto encontra-se\n no carrinho. Por favor\n finalize a venda para\n inseri-lo novamente");
-							msg.setBackColor(Color.WHITE);
-							msg.setForeColor(0x003366);
-							msg.popup();
+							Auxiliares.artMsgbox("CONTROLE",
+									"Esse produto encontra-se no carrinho. Por favor\n finalize a venda para inseri-lo novamente");
 						}
 
 					} else {
-						MessageBox msg = new MessageBox("CONTROLE", "Deve-se selecionar\n um item");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Deve-se selecionar um item!");
 					}
 
 				} else if (evt.target == btnCarrinho) {
@@ -214,20 +203,14 @@ public class Venda extends totalcross.ui.Window{
 						valor = gridProdutos.getSelectedItem()[6];
 
 					} catch (Exception e) {
-						MessageBox msg = new MessageBox("CONTROLE", "Clique em um Item");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Clique em um Item!");
 					}
 
 				}
 
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela venda\n" + e);
 		}
 
 	}
@@ -264,10 +247,7 @@ public class Venda extends totalcross.ui.Window{
 
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao carregarGridProdutos\n" + e);
 
 		}
 
@@ -303,10 +283,7 @@ public class Venda extends totalcross.ui.Window{
 
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao carregaGridProdutosBusca\n" + e);
 
 		}
 
@@ -337,10 +314,7 @@ public class Venda extends totalcross.ui.Window{
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
-				msg.setBackColor(Color.WHITE);
-				msg.setForeColor(0x003366);
-				msg.popup();
+				Auxiliares.artMsgbox("ERRO", "Erro ao carregaCmbCategoria\n" + e);
 
 			}
 
@@ -380,10 +354,7 @@ public class Venda extends totalcross.ui.Window{
 
 		} 
 		catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao validar\n produto no carrinho" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro validaProdutoCarrinho\n" + e);
 		}
 		return prodAdicionado;
 
@@ -419,10 +390,7 @@ public class Venda extends totalcross.ui.Window{
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao habilitar\n produto no carrinho" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao habilitaCarrinho\n" + e);
 		}
 
 	}

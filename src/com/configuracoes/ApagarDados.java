@@ -1,5 +1,6 @@
 package com.configuracoes;
 
+import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
 
 import litebase.ResultSet;
@@ -82,10 +83,7 @@ public class ApagarDados extends totalcross.ui.Window {
 			setEmpresa();
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela apagarDados\n" + e);
 
 		}
 
@@ -103,26 +101,29 @@ public class ApagarDados extends totalcross.ui.Window {
 				}
 				if (evt.target == btnApagar) {
 					if (editCodigo.getText().equals(Convert.toString(getCodigoEmpresa()))) {
-						deletaDados();
 
-						MessageBox msg = new MessageBox("CONTROLE", "Dados deletados");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
-						unpop();
+						String[] ArtButtonArray = { "Sim", "Não" };
+
+						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja apagar os dados do sistema?", ArtButtonArray);
+
+						if (i == 1) {
+							return;
+
+						} else {
+
+							deletaDados();
+
+							Auxiliares.artMsgbox("CONTROLE", "Dados deletados!");
+							unpop();
+							unpop();
+							unpop();
+						}
 
 					} else if (editCodigo.getText().equals("")) {
-						MessageBox msg = new MessageBox("CONTROLE", "Por favor digite um código");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Por favor digite um código!");
 
 					} else {
-						MessageBox msg = new MessageBox("CONTROLE", "Código da empresa incorreto");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
-						
+						Auxiliares.artMsgbox("CONTROLE", "Código da empresa incorreto!");						
 						editCodigo.setText("");
 					}
 				}
@@ -130,10 +131,7 @@ public class ApagarDados extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela ApagarDados\n" + e);
 		}
 
 	}
@@ -192,6 +190,13 @@ public class ApagarDados extends totalcross.ui.Window {
 					lb.executeUpdate(sql);
 				}
 //------------------------------------------------------------------------------------------------------------------------------------------
+				if (lb.exists("VENDAPRODUTOTEMP")) {
+
+					sql = " DROP TABLE vendaprodutotemp ";
+
+					lb.executeUpdate(sql);
+				}
+//------------------------------------------------------------------------------------------------------------------------------------------
 				if (lb.exists("EMPRESA")) {
 
 					sql = " DROP TABLE empresa ";
@@ -205,10 +210,7 @@ public class ApagarDados extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao deletarDados\n" + e);
 		}
 
 	}
@@ -237,10 +239,7 @@ public class ApagarDados extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro setEmpresa\n" + e);
 		}
 	}
 

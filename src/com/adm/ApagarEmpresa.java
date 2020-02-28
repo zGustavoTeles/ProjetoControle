@@ -1,5 +1,6 @@
 package com.adm;
 
+import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
@@ -54,11 +55,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 			reposition();
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
-
+			Auxiliares.artMsgbox("ERRO", "Erro ao construir a tela ApagarEmpresa\n" + e);
 		}
 
 	}
@@ -76,21 +73,24 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 
 					if (cmbEmpresa.getSelectedIndex() == -1) {
 
-						MessageBox msg = new MessageBox("CONTROLE", "Selecione uma empresa");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Selecione uma empresa!");
 						return;
+					}
+
+					String[] ArtButtonArray = { "Sim", "Não" };
+
+					int i = Auxiliares.artMsgbox("CONTROLE", "Deseja apagar essa empresa?", ArtButtonArray);
+
+					if (i == 1) {
+						return;
+
+					} else {
+
+						apagarEmpresaDoSistema();
+						Auxiliares.artMsgbox("CONTROLE", "Empresa apagada do sistema!");
 
 					}
 
-					apagarEmpresaDoSistema();
-					MessageBox msg = new MessageBox("CONTROLE", "Empresa apagada\n do sistema");
-					msg.setBackColor(Color.WHITE);
-					msg.setForeColor(0x003366);
-					msg.popup();
-					unpop();
-					
 				} else if (evt.target == cmbEmpresa) {
 					buscaCodigoEmpresa();
 				}
@@ -107,10 +107,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 			}
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação evento apagarEmpresa\n " + e);
 		}
 
 	}
@@ -139,10 +136,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
-				msg.setBackColor(Color.WHITE);
-				msg.setForeColor(0x003366);
-				msg.popup();
+				Auxiliares.artMsgbox("ERRO", "Erro ao carregar cmbEmpresa\n" + e);
 
 			}
 
@@ -166,11 +160,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao Apagar Empresa\n do Sistema");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
-			
+			Auxiliares.artMsgbox("ERRO", "Erro ao apagar Empresa do sistema\n"+ e);			
 			unpop();
 		}
 	}
@@ -195,10 +185,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao buscar codigoEmpresa\n" + e);
 
 		}
 

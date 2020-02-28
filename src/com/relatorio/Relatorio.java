@@ -1,7 +1,7 @@
 package com.relatorio;
 
 import com.agenda.Agenda;
-
+import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
@@ -72,16 +72,17 @@ public class Relatorio extends totalcross.ui.Window{
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 
-			int gridWidths[] = new int[6];
+			int gridWidths[] = new int[7];
 			gridWidths[0] = 100;
 			gridWidths[1] = 2;
 			gridWidths[2] = 100;
-			gridWidths[3] = 120;
+			gridWidths[3] = 100;
 			gridWidths[4] = 8;
 			gridWidths[5] = 5;
+			gridWidths[6] = 5;
 
-			String[] caps = { "DATA", "COD", "DESCRICAO", "MARCA", "QNT", "VALOR" };
-			int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT };
+			String[] caps = { "DATA", "COD.V", "PRODUTO", "MARCA", "DESC.", "QNT", "VALOR" };
+			int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT };
 			gridProdutos = new Grid(caps, gridWidths, aligns, false);
 			add(gridProdutos);
 			gridProdutos.setBackColor(Color.WHITE);
@@ -98,10 +99,7 @@ public class Relatorio extends totalcross.ui.Window{
 			reposition();
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela relatorio\n" + e);
 
 		}
 		
@@ -118,11 +116,8 @@ public class Relatorio extends totalcross.ui.Window{
 				} else if (evt.target == btnBuscar) {
 					if (editDataUm.getText().equals("") || editDataDois.getText().equals("")) {
 						
-						MessageBox msg = new MessageBox("CONTROLE",
-								"Preencha todos os campos\n de data à serem pesquisados");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE",
+								"Preencha todos os campos de data à serem pesquisados!");
 						return;
 						
 					} else {
@@ -144,10 +139,7 @@ public class Relatorio extends totalcross.ui.Window{
 			}
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela relatorio\n" + e);
 		}
 
 	}
@@ -163,19 +155,21 @@ public class Relatorio extends totalcross.ui.Window{
 				gridProdutos.removeAllElements();
 
 				lb = new LitebasePack();
-				sql = " SELECT * FROM VENDAPRODUTO WHERE DATAVENDA >= " + "'" + editDataUm.getText() + "'"
-					+ " AND DATAVENDA<= " + "'" + editDataDois.getText() + "'";
+				sql = " SELECT * FROM VENDAPRODUTO "
+					+ " WHERE DATASAIDA >= " + "'" + editDataUm.getText() + "'"
+					+ " AND DATASAIDA<= " + "'" + editDataDois.getText() + "'";
 
 				rs = lb.executeQuery(sql);
 				rs.first();
 				for (int i = 0; rs.getRowCount() > i; i++) {
-					String[] b = new String[6];
-					b[0] = rs.getString("DATAVENDA");
+					String[] b = new String[7];
+					b[0] = rs.getString("DATASAIDA");
 					b[1] = Convert.toString(rs.getInt("CODIGO"));
 					b[2] = rs.getString("PRODUTO");
 					b[3] = rs.getString("MARCA");
-					b[4] = Convert.toString(rs.getInt("QUANTIDADE"));
-					b[5] = rs.getString("VALOR");
+					b[4] = rs.getString("DESCRICAO");
+					b[5] = Convert.toString(rs.getInt("QUANTIDADE"));
+					b[6] = rs.getString("VALOR") + " $$";
 					gridProdutos.add(b);
 					rs.next();
 				}
@@ -187,6 +181,7 @@ public class Relatorio extends totalcross.ui.Window{
 			}
 
 		} catch (Exception e) {
+			Auxiliares.artMsgbox("ERRO", "Erro ao pesquisaVendasPorPeriodo\n" + e);
 
 		}
 

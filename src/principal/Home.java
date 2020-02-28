@@ -15,6 +15,7 @@ import totalcross.ui.image.*;
 
 import com.adm.Cadastrar;
 import com.adm.ValidaAdm;
+import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
 import com.menu.Menu;
 import com.sun.xml.internal.bind.util.Which;
@@ -125,10 +126,7 @@ public class Home extends MainWindow{
 			buscaEmpresaCadastrada();
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro" + e);
-			msg.setBackColor(0x345D7E);
-			msg.setForeColor(Color.WHITE);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao construir a tela principal\n" + e);
 		}	
 		
 	}
@@ -142,13 +140,11 @@ public class Home extends MainWindow{
 
 					if (editEmpresa.getText().equals("") || editCnpj.getText().equals("")
 							|| editUsuario.getText().equals("")) {
-						MessageBox msg = new MessageBox("CONTROLE", "Deve-se cadastrar\n uma empresa");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Deve-se cadastrar uma empresa!");
 
 					} else {
-						validaEmpresa();
+						boolean empresaCadastrada = false;
+						empresaCadastrada = validaEmpresa(empresaCadastrada);
 						Menu menu = new Menu();
 						menu.popup();
 					}
@@ -162,10 +158,7 @@ public class Home extends MainWindow{
 				}
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro na validação" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela principal\n" + e);
 		}
 
 	}
@@ -185,11 +178,7 @@ public class Home extends MainWindow{
 				rs.first();
 
 				if (rs.getRowCount() == 0) {
-					MessageBox msg = new MessageBox("CONTROLE", "Sistema não possui\n empresa cadastrada");
-					msg.setBackColor(Color.WHITE);
-					msg.setForeColor(0x003366);
-					msg.popup();
-
+					Auxiliares.artMsgbox("CONTROLE", "Sistema não possui empresa cadastrada!");
 					return;
 				}
 
@@ -204,15 +193,12 @@ public class Home extends MainWindow{
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao buscar empresa");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao buscar empresa\n" + e);
 			return;
 		}
 	}
 	
-	public void validaEmpresa() {
+	public boolean validaEmpresa(boolean empresaCadastrada) {
 		String sql = "";
 		LitebasePack lb = null;
 		ResultSet rs = null;
@@ -221,6 +207,16 @@ public class Home extends MainWindow{
 
 			try {
 				lb = new LitebasePack();
+				
+				if (!lb.exists("EMPRESA")) {
+
+					sql = " create table empresa ( " + "codigo int," + " nome char(40), " + " cnpj char(30), "
+						+ " usuario char(40) " + ")";
+
+					lb.execute(sql);
+					lb.execute("create index empresa01 ON empresa(codigo,nome)");
+				}
+				
 				sql = "SELECT * FROM EMPRESA "
 				    + " WHERE CODIGO = " + editCodigo.getText();
 
@@ -228,14 +224,15 @@ public class Home extends MainWindow{
 				rs.first();
 
 				if (rs.getRowCount() == 0) {
-					MessageBox msg = new MessageBox("CONTROLE",
-							"Essa empresa não esta mais\n cadastrada no Sistema. Por favor\n clique em Atualizar para\n procurarmos uma empresa\n cadastrada.");
-					msg.setBackColor(Color.WHITE);
-					msg.setForeColor(0x003366);
-					msg.popup();
-
-					return;
+					Auxiliares.artMsgbox("CONTROLE", "Sistema não possui empresa cadastrada!");
+					editEmpresa.setText("");
+					editCnpj.setText("");
+					editUsuario.setText("");
+					editCodigo.setText("");
+					return empresaCadastrada = false;
 				}
+				
+				return empresaCadastrada = true;
 				
 			} finally {
 				if (lb != null)
@@ -243,11 +240,8 @@ public class Home extends MainWindow{
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao buscar empresa");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
-			return;
+			Auxiliares.artMsgbox("ERRO", "Erro ao buscar empresa\n" + e);
+			return empresaCadastrada;
 		}
 		
 	}

@@ -1,5 +1,6 @@
 package com.estoque;
 
+import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
@@ -106,10 +107,7 @@ public class RemoverProduto extends totalcross.ui.Window {
 			btnVoltar.setForeColor(Color.WHITE);
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela removerProduto\n" + e);
 
 		}
 
@@ -128,47 +126,45 @@ public class RemoverProduto extends totalcross.ui.Window {
 				if (evt.target == btnRemover) {
 
 					if (editQuantidade.getText().equals("")) {
-						MessageBox msg = new MessageBox("CONTROLE", "Por favor digite\n uma quantidade");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Por favor digite uma quantidade!");
 
 						return;
 
 					} else if (Convert.toInt(editQuantidade.getText()) == 0) {
-						MessageBox msg = new MessageBox("CONTROLE", "Quantidade inválida");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Quantidade inválida!");
 						editQuantidade.setText("");
 						
 						return;
 
 					} 
 					else if (Convert.toInt(editQuantidade.getText()) > Convert.toInt(Estoque.quantidade)) {
-						MessageBox msg = new MessageBox("CONTROLE", "Quantidade inserida maior\n que a quantidade no estoque");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Quantidade inserida maior que a quantidade\n em estoque!");
 						editQuantidade.setText("");
 						
 						return;
 
 					} else {
-						removeProdutoEstoque();
-						
-						if (Convert.toInt(editEstoque.getText()) == 0 
-								|| Convert.toInt(editEstoque.getText()) < 0) {
 
-							deletaProdutoEstoque();
+						String[] ArtButtonArray = { "Sim", "Não" };
+
+						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja remover " + editQuantidade.getText() +" quantidade do produto do estoque?", ArtButtonArray);
+
+						if (i == 1) {
+							return;
+
+						} else {
+
+							removeProdutoEstoque();
+
+							if (Convert.toInt(editEstoque.getText()) == 0 || Convert.toInt(editEstoque.getText()) < 0) {
+
+								deletaProdutoEstoque();
+							}
+
+							Auxiliares.artMsgbox("CONTROLE", "Produto removido do estoque!");
+
+							unpop();
 						}
-						
-						MessageBox msg = new MessageBox("CONTROLE", "Produto removido\n do estoque");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
-
-						unpop();
 					}
 				}
 				
@@ -186,10 +182,7 @@ public class RemoverProduto extends totalcross.ui.Window {
 			}			
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela removerProduto\n" + e);
 		}
 
 	}
@@ -214,10 +207,7 @@ public class RemoverProduto extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro deletaProdutoEstoque\n" + e);
 		}
 
 	}
@@ -244,10 +234,7 @@ public class RemoverProduto extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro removeProdutoEstoque\n" + e);
 		}
 
 	}
@@ -261,10 +248,7 @@ public class RemoverProduto extends totalcross.ui.Window {
 			editEstoque.setText(Convert.toString(total));
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no calculo\n do produto" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao calcularQuantidade\n" + e);
 		}
 
 	}

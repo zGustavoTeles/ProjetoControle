@@ -1,5 +1,7 @@
 package com.informacao;
 
+import com.auxiliares.Auxiliares;
+
 import nx.componentes.ArtButton;
 import totalcross.ui.Label;
 import totalcross.ui.MultiEdit;
@@ -83,10 +85,7 @@ public class Informacao extends totalcross.ui.Window{
 	        reposition();
 	        
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela informacao\n" + e);
 
 		}
 		
@@ -101,14 +100,10 @@ public class Informacao extends totalcross.ui.Window{
 				}
 			}
 		}catch (Exception e) {
-				MessageBox msg = new MessageBox("CONTROLE","Erro no evento");
-				msg.setBackColor(Color.WHITE);
-				msg.setForeColor(0x003366);
-				msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela informacao\n" + e);
 			}
 			
 			
 		}
-	
 	
 }

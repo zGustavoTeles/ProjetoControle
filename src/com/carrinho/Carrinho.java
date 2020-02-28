@@ -3,6 +3,7 @@ package com.carrinho;
 
 import com.auxiliares.Auxiliares;
 import com.bottom.BottomImg;
+import com.estoque.RemoverProduto;
 import com.inserir.Inserir;
 import com.litebase.LitebasePack;
 import com.venda.Venda;
@@ -64,6 +65,7 @@ public class Carrinho extends totalcross.ui.Window{
 	public Carrinho(){
 		 setBackColor(0x003366);
 		 initUI();
+		 
 	}
 	
 	public void initUI() {
@@ -146,10 +148,7 @@ public class Carrinho extends totalcross.ui.Window{
             calculaItensCarrinho();
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela carrinho\n" + e);
 
 		}
 		
@@ -189,8 +188,20 @@ public class Carrinho extends totalcross.ui.Window{
 							
 					} else {
 						
-						Auxiliares.artMsgbox("CONTROLE", "Deve-se selecionar um item para Alterar");
+						Auxiliares.artMsgbox("CONTROLE", "Deve-se selecionar um item para alterar!");
 					}
+				}else if(evt.target == btnRemover) {
+					
+					if (gridCarrinho.getSelectedItem() != null) {
+
+						gridCarrinho.removeAllElements();
+						RemoveProdutoCarrinho removerProdutoCarrinho = new RemoveProdutoCarrinho();
+						removerProdutoCarrinho.popup();
+
+					} else {
+						Auxiliares.artMsgbox("CONTROLE", "Deve-se selecionar um item para remover!");
+					}
+
 				}
 
 			}
@@ -206,10 +217,7 @@ public class Carrinho extends totalcross.ui.Window{
 						totalProduto = gridCarrinho.getSelectedItem()[8];
 
 					} catch (Exception e) {
-						MessageBox msg = new MessageBox("CONTROLE", "Clique em um Item");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Clique em um Item!");
 					}
 
 				}
@@ -217,10 +225,7 @@ public class Carrinho extends totalcross.ui.Window{
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela carrinho\n" + e);
 		}
 
 	}
@@ -258,10 +263,7 @@ public class Carrinho extends totalcross.ui.Window{
 
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao carregaGridProdutos carrinho\n" + e);
 
 		}
 
@@ -334,10 +336,7 @@ public class Carrinho extends totalcross.ui.Window{
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao dar\n baixa no estoque");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro baixaEstoque\n" + e);
 		}
 	}
 	
@@ -390,10 +389,7 @@ public class Carrinho extends totalcross.ui.Window{
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao dar\n baixa no estoque");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro salvaInfoVenda\n" + e);
 		}
 	}
 	
@@ -415,8 +411,9 @@ public class Carrinho extends totalcross.ui.Window{
 				while (rs.next()) {
 
 					quantidadeCarrinho += rs.getInt("QUANTIDADE");
-					lblQuantidade.setText("QUANTIDADE: " + Convert.toString(quantidadeCarrinho));
 				}
+				
+				lblQuantidade.setText("QUANTIDADE: " + Convert.toString(quantidadeCarrinho));
 
 				sql = "SELECT VALOR FROM VENDAPRODUTOTEMP ";
 
@@ -425,15 +422,13 @@ public class Carrinho extends totalcross.ui.Window{
 
 				while (rs.next()) {
 					
-					totalCarrinho += Convert.toDouble(rs.getString("VALOR").replace(",", "."));
-					lblTotal.setText("TOTAL: " + Convert.toCurrencyString(totalCarrinho, 2) + " $$");
+					totalCarrinho += Convert.toDouble(rs.getString("VALOR"));					
 				}
+				
+				lblTotal.setText("TOTAL: " + Convert.toCurrencyString(totalCarrinho, 2).replace(",", ".") + " $$");
 
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("CONTROLE", "Erro ao calcular\n itens no carrinho");
-				msg.setBackColor(Color.WHITE);
-				msg.setForeColor(0x003366);
-				msg.popup();
+				Auxiliares.artMsgbox("ERRO", "Erro calculaItensCarrinho\n" + e);
 			}
 
 		} finally {

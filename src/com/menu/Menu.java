@@ -1,5 +1,6 @@
 package com.menu;
 
+import com.auxiliares.Auxiliares;
 import com.cadastrar.CadastrarProduto;
 import com.configuracoes.Configuracoes;
 import com.estoque.Estoque;
@@ -69,10 +70,7 @@ public class Menu extends totalcross.ui.Window {
 			reposition();
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao construir tela menu\n" + e);
 
 		}
 
@@ -109,10 +107,7 @@ public class Menu extends totalcross.ui.Window {
 
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação do menu\n" + e);
 		}
 
 	}

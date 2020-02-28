@@ -3,6 +3,7 @@ package com.cadastrar;
 
 import java.util.Random;
 
+import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
 
 import litebase.ResultSet;
@@ -118,7 +119,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			editValor.setRect(LEFT, AFTER + 5, FILL + 5, PREFERRED, lblValor);
 			editValor.setBackColor(Color.WHITE);
 			editValor.setForeColor(0x003366);
-			editValor.setValidChars("0 1 2 3 4 5 6 7 8 9 , .");
+			editValor.setValidChars("0 1 2 3 4 5 6 7 8 9 .");
 
 			btnCadastrar = new ArtButton("CADASTRAR");
 	        add(btnCadastrar);
@@ -135,10 +136,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 	        reposition();
 	        
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao construir a tela cadastrarProduto\n" + e);
 
 		}
 		
@@ -156,18 +154,33 @@ public class CadastrarProduto extends totalcross.ui.Window{
 					if (!editQuantidade.getText().equals("") && cmbCategoria.getSelectedItem() != null
 							&& cmbMarca.getSelectedItem() != null && cmbProduto.getSelectedItem() != null) {
 
-						cadastrarProdutoNoEstoque();
+						if (editValor.getText().equals(".0") || editValor.getText().equals(".1")
+								|| editValor.getText().equals(".2") || editValor.getText().equals(".3")
+								|| editValor.getText().equals(".4") || editValor.getText().equals(".5")
+								|| editValor.getText().equals(".6") || editValor.getText().equals(".7")
+								|| editValor.getText().equals(".8") || editValor.getText().equals(".9")) {
 
-						MessageBox msg = new MessageBox("CONTROLE", "Produto cadastrado\n no estoque");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+							Auxiliares.artMsgbox("CONTROLE",
+									"Valor inserido incorreto!\n tente '2.23', por exemplo... ");
+							return;
+						}
+
+						String[] ArtButtonArray = { "Sim", "Não" };
+
+						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja cadastrar o produto no estoque?", ArtButtonArray);
+
+						if (i == 1) {
+							return;
+
+						} else {
+
+							cadastrarProdutoNoEstoque();
+
+							Auxiliares.artMsgbox("CONTROLE", "Produto cadastrado no estoque!");
+						}
 
 					} else {
-						MessageBox msg = new MessageBox("CONTROLE", "Preencha todos\n os campos");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Preencha todos os campos!");
 					}
 
 				} else if (evt.target == cmbCategoria) {
@@ -181,10 +194,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			}
 			
 		}catch (Exception e) {
-				MessageBox msg = new MessageBox("CONTROLE","Erro no evento");
-				msg.setBackColor(Color.WHITE);
-				msg.setForeColor(0x003366);
-				msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela cadastrarProduto\n" + e);
 			}
 			
 			
@@ -227,10 +237,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			carregaCmbProduto();
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao cadastrar\n produto ao estoque");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao cadastrarProdutoNoEstoque\n" + e);
 			return;
 		}
 
@@ -262,10 +269,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
-				msg.setBackColor(Color.WHITE);
-				msg.setForeColor(0x003366);
-				msg.popup();
+				Auxiliares.artMsgbox("ERRO", "Erro ao carregaCmbProduto\n" + e);
 
 			}
 
@@ -298,10 +302,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
-				msg.setBackColor(Color.WHITE);
-				msg.setForeColor(0x003366);
-				msg.popup();
+				Auxiliares.artMsgbox("ERRO", "Erro ao carregaCmbCategoria\n" + e);
 
 			}
 
@@ -334,10 +335,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
-				msg.setBackColor(Color.WHITE);
-				msg.setForeColor(0x003366);
-				msg.popup();
+				Auxiliares.artMsgbox("ERRO", "Erro ao carregaCmbMarca\n" + e);
 
 			}
 
@@ -369,10 +367,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
-				msg.setBackColor(Color.WHITE);
-				msg.setForeColor(0x003366);
-				msg.popup();
+				Auxiliares.artMsgbox("ERRO", "Erro ao carregaCmbDescricao\n" + e);
 
 			}
 

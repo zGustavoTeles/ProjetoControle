@@ -1,17 +1,14 @@
 package com.configuracoes;
 
-import java.awt.image.RescaleOp;
 
+import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
-
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
-import principal.Home;
 import totalcross.sys.Convert;
 import totalcross.ui.Edit;
 import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
-import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
@@ -106,10 +103,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			consultarEmpresa();
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela infoEmpresa\n" + e);
 
 		}
 
@@ -129,10 +123,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela infoEmpresa\n" + e);
 		}
 
 	}
@@ -165,10 +156,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE!", "Ao Cadastrar Empresa" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro consultarEmpresa\n" + e);
 		}
 	}
 

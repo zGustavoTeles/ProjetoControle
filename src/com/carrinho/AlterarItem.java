@@ -2,6 +2,7 @@ package com.carrinho;
 
 import java.util.Random;
 
+import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
 import com.teclado.Teclado;
 import com.venda.Venda;
@@ -143,7 +144,7 @@ public class AlterarItem extends totalcross.ui.Window {
 			editEstoque.setBackColor(0x003366);
 			editEstoque.setForeColor(Color.WHITE);
 			editEstoque.setEnabled(false);
-
+			
 			lblQuantidade = new Label("QUANTIDADE: ");
 			add(lblQuantidade);
 			lblQuantidade.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, lblEstoque);
@@ -215,10 +216,7 @@ public class AlterarItem extends totalcross.ui.Window {
 			carregaInfoItem();
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela alterarItem\n" + e);
 
 		}
 
@@ -234,13 +232,11 @@ public class AlterarItem extends totalcross.ui.Window {
 					unpop();
 
 				}
+				
 				if (evt.target == btnAlterar) {
 
 					if (editQuantidade.getText().length() == 0) {
-						MessageBox msg = new MessageBox("CONTROLE", "Por favor insira\n uma quantidade");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Por favor insira uma quantidade!");
 						return;
 					}
 
@@ -249,25 +245,29 @@ public class AlterarItem extends totalcross.ui.Window {
 						estoque = editEstoque.getText();
 						quantidadeInserida = editQuantidade.getText();
 
-						if (Convert.toInt(quantidadeInserida) > Convert.toInt(estoque)) {
-							MessageBox msg = new MessageBox("CONTROLE",
-									"Quantidade inserida\n maior que o limite\n do estoque ");
-							msg.setBackColor(Color.WHITE);
-							msg.setForeColor(0x003366);
-							msg.popup();
+						if (Convert.toInt(quantidadeInserida) > quantidadeTemp) {
+							Auxiliares.artMsgbox("CONTROLE",
+									"Quantidade inserida maior que a quantidade\n em estoque!");
 							return;
 
 						}
 
-						insereProdutoNoCarrinho();
+						String[] ArtButtonArray = { "Sim", "Não" };
 
-						MessageBox msg = new MessageBox("CONTROLE!", "Produto inserido\n no carrinho ");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja alterar o item?", ArtButtonArray);
 
-						Venda.btnCarrinho.setEnabled(true);
-						unpop();
+						if (i == 1) {
+							return;
+
+						} else {
+
+							insereProdutoNoCarrinho();
+
+							Auxiliares.artMsgbox("CONTROLE", "Produto inserido no carrinho!");
+
+							unpop();
+							unpop();
+						}
 					}
 
 				}
@@ -280,10 +280,7 @@ public class AlterarItem extends totalcross.ui.Window {
 				}
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela alterarItem\n" + e);
 		}
 
 	}
@@ -298,18 +295,15 @@ public class AlterarItem extends totalcross.ui.Window {
 
 			String quantidadeString = "";
 			quantidadeString = editQuantidade.getText();
-			valorProduto = Convert.toDouble(valorTemp.replace(",", "."));
+			valorProduto = Convert.toDouble(valorTemp.replace(".", "."));
 			quantidade = Convert.toInt(quantidadeString);
 
 			total = valorProduto * quantidade;
-			editTotal.setText(Convert.toCurrencyString(total, 2));
+			editTotal.setText(Convert.toString(total, 2));
 			editEstoque.setText(Convert.toString(qntEstoqueFinal));
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no calculo\n do produto" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("CONTROLE", "Erro no calculo do produto" + e);
 		}
 
 	}
@@ -325,34 +319,18 @@ public class AlterarItem extends totalcross.ui.Window {
 				
 				lb = new LitebasePack();
 				
-				sql = "SELECT CODIGO FROM VENDAPRODUTOTEMP";
+				sql = "SELECT CODIGO, CODIGOPROD FROM VENDAPRODUTOTEMP";
 				rs = lb.executeQuery(sql);
 				rs.first();
-				
-				if (rs.getRowCount() == 0) {
-
-					Random random = new Random();
-					int codigo = random.nextInt(900);
-					String dataVenda;
-					Date year = new Date();
-					Date month = new Date();
-					Date day = new Date();
-
-					dataVenda = Date.formatDate(year.getYear(), month.getMonth(), day.getDay());
-
-					sql = "INSERT INTO VENDAPRODUTOTEMP " + "(" + " CODIGO, PRODUTO, VALOR, QUANTIDADE, CODIGOPROD, "
-							+ " CATEGORIA, MARCA, DESCRICAO, TIPOPAGAMENTO, DATASAIDA " + ")" + " VALUES " 
-							+ "( '" + codigo + "' , '" + editProduto.getText()
-	                        + "', '" + editTotal.getText() + "', '"
-							+ editQuantidade.getText() + "', '" + editCodigo.getText() + "','" + editCategoria.getText() + "','" 
-							+ editMarca.getText() + "', '"+ editDescricao.getText() 
-							+ "', '" + cmbTipoPagamento.getSelectedItem() + "', '" + dataVenda + "'" + ")";
-
-					lb.executeUpdate(sql);
-
-				}else {
-					
+									
 					int codigo = rs.getInt("CODIGO");
+					int codigoProduto = rs.getInt("CODIGOPROD");
+					
+					sql = "DELETE VENDAPRODUTOTEMP "
+						+ " WHERE CODIGOPROD = " + codigoProduto;
+					
+					lb.executeUpdate(sql);
+
 					String dataVenda;
 					Date year = new Date();
 					Date month = new Date();
@@ -369,8 +347,6 @@ public class AlterarItem extends totalcross.ui.Window {
 							+ "', '" + cmbTipoPagamento.getSelectedItem() + "', '" + dataVenda + "'" + ")";
 
 					lb.executeUpdate(sql);
-					
-				}
 
 			} finally {
 				if (lb != null)
@@ -378,10 +354,7 @@ public class AlterarItem extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao inserir\n produto ao estoque");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro insereProdutoNoCarrinho\n" + e);
 		}
 
 	}
@@ -411,10 +384,7 @@ public class AlterarItem extends totalcross.ui.Window {
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
-				msg.setBackColor(Color.WHITE);
-				msg.setForeColor(0x003366);
-				msg.popup();
+				Auxiliares.artMsgbox("ERRO", "Erro carregaCmbTipoPagamento\n" + e);
 
 			}
 
@@ -452,10 +422,7 @@ public class AlterarItem extends totalcross.ui.Window {
 
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro carregaInfoItem\n" + e);
 
 		}
 

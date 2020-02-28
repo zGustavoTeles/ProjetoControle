@@ -1,6 +1,7 @@
 package com.adm;
 
 
+import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
 
 import litebase.ResultSet;
@@ -48,10 +49,7 @@ public class Cadastrar extends totalcross.ui.Window {
 			reposition();
 			
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x363636);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao construir o menu cadastro\n" + e);
 
 		}
 
@@ -79,10 +77,7 @@ public class Cadastrar extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento\n " + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("CONTROLE", "Erro na validação do menu cadastro\n " + e);
 		}
 
 	}
@@ -102,10 +97,7 @@ public class Cadastrar extends totalcross.ui.Window {
 				rs.first();
 
 				if (rs.getRowCount() == 0) {
-					MessageBox msg = new MessageBox("CONTROLE", "Sistema não possui\n empresa cadastrada");
-					msg.setBackColor(Color.WHITE);
-					msg.setForeColor(0x003366);
-					msg.popup();
+					Auxiliares.artMsgbox("CONTROLE", "Sistema não possui empresa cadastrada!");
 
 					return;
 				}
@@ -121,10 +113,8 @@ public class Cadastrar extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro ao buscar empresa");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro ao buscar empresa\n" + e);
+			
 			return;
 		}
 	}

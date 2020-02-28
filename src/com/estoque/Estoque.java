@@ -1,5 +1,6 @@
 package com.estoque;
 
+import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
@@ -109,10 +110,7 @@ public class Estoque extends totalcross.ui.Window{
 		reposition();
 		
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE","Erro ao carregar a Tela");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela Estoque\n" + e);
 
 		}
 		
@@ -135,19 +133,13 @@ public class Estoque extends totalcross.ui.Window{
 						removerProduto.popup();
 
 					} else {
-						MessageBox msg = new MessageBox("CONTROLE", "Deve-se selecionar\n um item");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Deve-se selecionar um item!");
 					}
 
 				}
 				else if (evt.target == btnBuscar) {
 					if (editBuscar.getText().equals("")) {
-						MessageBox msg = new MessageBox("CONTROLE", "O campo de busca\n deve ser preenchido");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "O campo de busca deve ser preenchido!");
 						
 					} else {
 						gridProdutos.removeAllElements();
@@ -175,10 +167,7 @@ public class Estoque extends totalcross.ui.Window{
 						quantidade = gridProdutos.getSelectedItem()[2];
 
 					} catch (Exception e) {
-						MessageBox msg = new MessageBox("CONTROLE", "Clique em um Item");
-						msg.setBackColor(Color.WHITE);
-						msg.setForeColor(0x003366);
-						msg.popup();
+						Auxiliares.artMsgbox("CONTROLE", "Clique em um Item!");
 					}
 
 				}
@@ -191,10 +180,7 @@ public class Estoque extends totalcross.ui.Window{
 			}
 
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento");
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela Estoque\n" + e);
 		}
 
 	}
@@ -230,10 +216,7 @@ public class Estoque extends totalcross.ui.Window{
 
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro carregaGridProdutos\n" + e);
 
 		}
 
@@ -264,10 +247,7 @@ public class Estoque extends totalcross.ui.Window{
 
 				}
 			} catch (Exception e) {
-				MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
-				msg.setBackColor(Color.WHITE);
-				msg.setForeColor(0x003366);
-				msg.popup();
+				Auxiliares.artMsgbox("ERRO", "Erro carregaCmbCategoria\n" + e);
 
 			}
 
@@ -304,10 +284,7 @@ public class Estoque extends totalcross.ui.Window{
 
 			}
 		} catch (Exception e) {
-			MessageBox msg = new MessageBox("CONTROLE", "Erro no evento" + e);
-			msg.setBackColor(Color.WHITE);
-			msg.setForeColor(0x003366);
-			msg.popup();
+			Auxiliares.artMsgbox("ERRO", "Erro carregaGridProdutosBusca\n" + e);
 
 		}
 
