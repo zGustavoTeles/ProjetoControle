@@ -62,7 +62,7 @@ public class Home extends MainWindow{
 			add(lblEmpresa);
 			lblEmpresa.setBackColor(0x003366);
 			lblEmpresa.setForeColor(Color.WHITE);
-			lblEmpresa.setRect(CENTER, AFTER + 20, PREFERRED, PREFERRED, imgHome);
+			lblEmpresa.setRect(CENTER, AFTER + 50, PREFERRED, PREFERRED, imgHome);
 
 			add(editEmpresa = new Edit(), LEFT, AFTER + 1, PREFERRED, PREFERRED);
 			editEmpresa.setBackColor(Color.WHITE);
@@ -103,23 +103,23 @@ public class Home extends MainWindow{
 			editCodigo.setForeColor(0x003366);
 			editCodigo.setEditable(false);
 			
-			btnEntrar = new ArtButton("ENTRAR");
-			add(btnEntrar);
-			btnEntrar.setBackColor(0x003366);
-			btnEntrar.setForeColor(Color.WHITE);
-			btnEntrar.setRect(CENTER, AFTER + 70, SCREENSIZE + 100, PREFERRED + 25, editCodigo);
+			btnSair = new ArtButton("SAIR");
+			add(btnSair);
+			btnSair.setBackColor(0xDF7401);
+			btnSair.setForeColor(Color.WHITE);
+			btnSair.setRect(CENTER,BOTTOM, SCREENSIZE + 100, PREFERRED + 25, btnCadastrar);
 			
 			btnCadastrar = new ArtButton("CADASTRAR");
 			add(btnCadastrar);
 			btnCadastrar.setBackColor(0x003366);
 			btnCadastrar.setForeColor(Color.WHITE);
-			btnCadastrar.setRect(CENTER,AFTER, SCREENSIZE + 100, PREFERRED + 25, btnEntrar);
+			btnCadastrar.setRect(CENTER,BEFORE, SCREENSIZE + 100, PREFERRED + 25, btnSair);
 			
-			btnSair = new ArtButton("SAIR");
-			add(btnSair);
-			btnSair.setBackColor(0xDF7401);
-			btnSair.setForeColor(Color.WHITE);
-			btnSair.setRect(CENTER,AFTER, SCREENSIZE + 100, PREFERRED + 25, btnCadastrar);
+			btnEntrar = new ArtButton("ENTRAR");
+			add(btnEntrar);
+			btnEntrar.setBackColor(0x003366);
+			btnEntrar.setForeColor(Color.WHITE);
+			btnEntrar.setRect(CENTER, BEFORE, SCREENSIZE + 100, PREFERRED + 25, btnCadastrar);
 			
 			reposition();
 			
@@ -145,18 +145,32 @@ public class Home extends MainWindow{
 					} else {
 						boolean empresaCadastrada = false;
 						empresaCadastrada = validaEmpresa(empresaCadastrada);
-						Menu menu = new Menu();
-						menu.popup();
+						if (empresaCadastrada == true) {
+							Menu menu = new Menu();
+							menu.popup();
+						}
 					}
 
 				} else if (evt.target == btnCadastrar) {
 					Cadastrar cadastrar = new Cadastrar();
 					cadastrar.popup();
-					
-				}else if(evt.target == btnSair) {
-					Home.exit(0);
+
+				} else if (evt.target == btnSair) {
+
+					String[] ArtButtonArray = { "Sim", "Não" };
+
+					int i = Auxiliares.artMsgbox("CONTROLE", "Deseja inserir o produto no carrinho?", ArtButtonArray);
+
+					if (i == 1) {
+						return;
+
+					} else {
+						Home.exit(0);
+
+					}
 				}
 			}
+
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela principal\n" + e);
 		}

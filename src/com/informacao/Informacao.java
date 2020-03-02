@@ -60,11 +60,12 @@ public class Informacao extends totalcross.ui.Window{
 			
 			lblCopyright = new Label("Copyright©2020-Todos os direitos reservados");
 			add(lblCopyright);
-			lblCopyright.setRect(LEFT, AFTER + 10, PREFERRED, PREFERRED, editInformacao);
+			lblCopyright.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, editInformacao);
 			lblCopyright.setBackColor(0x003366);
 			lblCopyright.setForeColor(Color.WHITE);  
 			
-			lblSobre = new Label("CONTROLE-PC");
+//			lblSobre = new Label("CONTROLE-PC");
+			lblSobre = new Label("CONTROLE-MOBILE");
 			add(lblSobre);
 			lblSobre.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, lblCopyright);
 			lblSobre.setBackColor(0x003366);

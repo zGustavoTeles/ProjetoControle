@@ -68,13 +68,13 @@ public class ApagarDados extends totalcross.ui.Window {
 
 			btnApagar = new ArtButton("APAGAR");
 			add(btnApagar);
-			btnApagar.setRect(CENTER, AFTER + 80, width - 400, PREFERRED, editCodigo);
+			btnApagar.setRect(CENTER, AFTER + 80, width - 350, PREFERRED, editCodigo);
 			btnApagar.setBackColor(0xDF0101);
 			btnApagar.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
-			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
+			btnVoltar.setRect(RIGHT, BOTTOM, width - 350, PREFERRED);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 			

@@ -64,17 +64,18 @@ public class ArtMessageBox extends Window {
 			if (titulo.equalsIgnoreCase("CONTROLE")) {
 				lblTitulo.setForeColor(0x345D7E);
 				btnOk.setForeColor(Color.WHITE);
-				btnOk.setBackColor(0x345D7E);
+				btnOk.setBackColor(0x04B431);
 				
 			} else if (titulo.equalsIgnoreCase("ERRO")) {
-				lblTitulo.setForeColor(Color.RED);
-				btnOk.setForeColor(Color.RED);
-				btnOk.setBackColor(0x345D7E);
+				lblTitulo.setForeColor(0xDF0101);
+				btnOk.setForeColor(0xDF0101);
+				btnOk.setBackColor(0xDF0101);
 
+				
 			} else {
 				lblTitulo.setForeColor(0x345D7E);
 				btnOk.setForeColor(Color.WHITE);
-				btnOk.setBackColor(0x345D7E);
+				btnOk.setBackColor(0x04B431);
 			}
 			setBorderStyle(BORDER_SIMPLE);
 			btnSim = new Button("");
@@ -94,8 +95,8 @@ public class ArtMessageBox extends Window {
 			rl = new Ruler();
 			rl.setForeColor(0x345D7E);
 			setBorderStyle(BORDER_SIMPLE);
-			btnSim.setBackColor(0x345D7E);
-			btnNao.setBackColor(0x345D7E);
+			btnSim.setBackColor(0x04B431);
+			btnNao.setBackColor(0xDF0101);
 			btnSim.setForeColor(Color.WHITE);
 			btnNao.setForeColor(Color.WHITE);
 
