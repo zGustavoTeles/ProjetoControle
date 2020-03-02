@@ -23,6 +23,7 @@ public class Inserir extends totalcross.ui.Window {
 	private Label				 lblProduto;
 	private Label 				 lblEstoque;
 	private Label 			     lblValor;
+	private Label                lblAviso;
 	private Label 				 lblQuantidade;
 	private Label				 lblTotal;
 	private Label   			 lblCodigo;
@@ -64,21 +65,27 @@ public class Inserir extends totalcross.ui.Window {
 
 		try {
 			
+			lblAviso = new Label(" POR FAVOR INSIRA A QUANTIDADE DO PRODUTO\n QUE DESEJA INSERIR NO CARRINHO:");
+			add(lblAviso);
+			lblAviso.setRect(CENTER, TOP, PREFERRED, PREFERRED);
+			lblAviso.setBackColor(0x003366);
+			lblAviso.setForeColor(Color.WHITE);
+			
 			lblCategoria = new Label("CATEGORIA:   ");
 			add(lblCategoria);
-			lblCategoria.setRect(LEFT + 150, CENTER - 280, PREFERRED, PREFERRED);
+			lblCategoria.setRect(LEFT + 150, CENTER - 120, PREFERRED, PREFERRED);
 			lblCategoria.setBackColor(0x003366);
 			lblCategoria.setForeColor(Color.WHITE);
 
 			editCategoria = new Edit();
 			add(editCategoria);
 			editCategoria.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblCategoria);
-			editCategoria.setBackColor(0x003366);
-			editCategoria.setForeColor(Color.WHITE);
+			editCategoria.setBackColor(Color.WHITE);
+			editCategoria.setForeColor(0x003366);
 			editCategoria.setText(Venda.categoria);
-			editCategoria.setEnabled(false);
+			editCategoria.setEditable(false);
 			
-			lblMarca = new Label("MARCA:          ");
+			lblMarca = new Label("MARCA:           ");
 			add(lblMarca);
 			lblMarca.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editCategoria);
 			lblMarca.setBackColor(0x003366);
@@ -87,10 +94,10 @@ public class Inserir extends totalcross.ui.Window {
 			editMarca = new Edit();
 			add(editMarca);
 			editMarca.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblMarca);
-			editMarca.setBackColor(0x003366);
-			editMarca.setForeColor(Color.WHITE);
+			editMarca.setBackColor(Color.WHITE);
+			editMarca.setForeColor(0x003366);
 			editMarca.setText(Venda.marca);
-			editMarca.setEnabled(false);
+			editMarca.setEditable(false);
 			
 			lblDescricao = new Label("DESCRICAO:   ");
 			add(lblDescricao);
@@ -101,10 +108,10 @@ public class Inserir extends totalcross.ui.Window {
 			editDescricao = new Edit();
 			add(editDescricao);
 			editDescricao.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblDescricao);
-			editDescricao.setBackColor(0x003366);
-			editDescricao.setForeColor(Color.WHITE);
+			editDescricao.setBackColor(Color.WHITE);
+			editDescricao.setForeColor(0x003366);
 			editDescricao.setText(Venda.descricao);
-			editDescricao.setEnabled(false);		
+			editDescricao.setEditable(false);		
 
 			lblProduto = new Label("PRODUTO:      ");
 			add(lblProduto);
@@ -115,10 +122,10 @@ public class Inserir extends totalcross.ui.Window {
 			editProduto = new Edit();
 			add(editProduto);
 			editProduto.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblProduto);
-			editProduto.setBackColor(0x003366);
-			editProduto.setForeColor(Color.WHITE);
+			editProduto.setBackColor(Color.WHITE);
+			editProduto.setForeColor(0x003366);
 			editProduto.setText(Venda.produto);
-			editProduto.setEnabled(false);
+			editProduto.setEditable(false);
 
 			lblCodigo = new Label("CÓDIGO:          ");
 			add(lblCodigo);
@@ -129,10 +136,10 @@ public class Inserir extends totalcross.ui.Window {
 			editCodigo = new Edit();
 			add(editCodigo);
 			editCodigo.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblCodigo);
-			editCodigo.setBackColor(0x003366);
-			editCodigo.setForeColor(Color.WHITE);
+			editCodigo.setBackColor(Color.WHITE);
+			editCodigo.setForeColor(0x003366);
 			editCodigo.setText(Venda.codigo);
-			editCodigo.setEnabled(false);
+			editCodigo.setEditable(false);
 
 			lblEstoque = new Label("ESTOQUE:       ");
 			add(lblEstoque);
@@ -143,10 +150,10 @@ public class Inserir extends totalcross.ui.Window {
 			editEstoque = new Edit();
 			add(editEstoque);
 			editEstoque.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblEstoque);
-			editEstoque.setBackColor(0x003366);
-			editEstoque.setForeColor(Color.WHITE);
+			editEstoque.setBackColor(Color.WHITE);
+			editEstoque.setForeColor(0x003366);
 			editEstoque.setText(Venda.quantidade);
-			editEstoque.setEnabled(false);
+			editEstoque.setEditable(false);
 
 			lblQuantidade = new Label("QUANTIDADE: ");
 			add(lblQuantidade);
@@ -172,10 +179,10 @@ public class Inserir extends totalcross.ui.Window {
 			editValor = new Edit();
 			add(editValor);
 			editValor.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblValor);
-			editValor.setBackColor(0x003366);
-			editValor.setForeColor(Color.WHITE);
+			editValor.setBackColor(Color.WHITE);
+			editValor.setForeColor(0x003366);
 			editValor.setText(Venda.valor);
-			editValor.setEnabled(false);
+			editValor.setEditable(false);
 
 			lblTotal = new Label("TOTAL:            ");
 			add(lblTotal);
@@ -186,10 +193,10 @@ public class Inserir extends totalcross.ui.Window {
 			editTotal = new Edit();
 			add(editTotal);
 			editTotal.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblTotal);
-			editTotal.setBackColor(0x003366);
-			editTotal.setForeColor(Color.WHITE);
+			editTotal.setBackColor(Color.WHITE);
+			editTotal.setForeColor(0x003366);
 			editTotal.setText(Venda.valor);
-			editTotal.setEnabled(false);
+			editTotal.setEditable(false);
 			
 			cmbTipoPagamento = new ComboBox();
 			add(cmbTipoPagamento);
@@ -211,6 +218,8 @@ public class Inserir extends totalcross.ui.Window {
 			
 			carregaCmbTipoPagamento();
 			cmbTipoPagamento.setSelectedIndex(0);
+			
+			editQuantidade.requestFocus();
 			
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela inserir\n" + e);

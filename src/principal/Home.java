@@ -159,7 +159,7 @@ public class Home extends MainWindow{
 
 					String[] ArtButtonArray = { "Sim", "Não" };
 
-					int i = Auxiliares.artMsgbox("CONTROLE", "Deseja inserir o produto no carrinho?", ArtButtonArray);
+					int i = Auxiliares.artMsgbox("CONTROLE", "Deseja sair do sistema?", ArtButtonArray);
 
 					if (i == 1) {
 						return;

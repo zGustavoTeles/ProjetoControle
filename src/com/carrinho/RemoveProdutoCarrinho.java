@@ -43,7 +43,7 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 
 		try {
 			
-			lblAviso = new Label(" INSIRA A QUANTIDADE DO PRODUTO\n QUE DESEJA REMOVER DO CARRINHO:");
+			lblAviso = new Label(" POR FAVOR INSIRA A QUANTIDADE DO PRODUTO\n QUE DESEJA REMOVER DO CARRINHO:");
 			add(lblAviso);
 			lblAviso.setRect(CENTER, TOP, PREFERRED, PREFERRED);
 			lblAviso.setBackColor(0x003366);
@@ -130,6 +130,8 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 			reposition();
 			
 			carregaInfoItem();
+			
+			editQuantidade.requestFocus();
 			
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela removerProduto carrinho\n" + e);

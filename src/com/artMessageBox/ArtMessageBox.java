@@ -67,8 +67,8 @@ public class ArtMessageBox extends Window {
 				btnOk.setBackColor(0x04B431);
 				
 			} else if (titulo.equalsIgnoreCase("ERRO")) {
-				lblTitulo.setForeColor(0xDF0101);
-				btnOk.setForeColor(0xDF0101);
+				lblTitulo.setForeColor(Color.WHITE);
+				btnOk.setForeColor(Color.WHITE);
 				btnOk.setBackColor(0xDF0101);
 
 				

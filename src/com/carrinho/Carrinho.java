@@ -14,6 +14,7 @@ import totalcross.sys.Settings;
 import totalcross.ui.Button;
 import totalcross.ui.Container;
 import totalcross.ui.Grid;
+import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
 import totalcross.ui.MainWindow;
 import totalcross.ui.dialog.MessageBox;
@@ -34,7 +35,7 @@ public class Carrinho extends totalcross.ui.Window{
 	private ArtButton						btnAlterar;
 	private ArtButton						btnRemover;
 	public Grid							    gridCarrinho;
-	public Button					        btnCarrinho;
+	public ImageControl					    imgCarrinho;
 	
 	public int 					 			quantidadeEstoque = 0;
 	public int 						        qntEstoqueCalculo = 0;
@@ -84,15 +85,17 @@ public class Carrinho extends totalcross.ui.Window{
 			lblTotal.setBackColor(0x003366);
 			lblTotal.setForeColor(Color.WHITE);
 			
+			imgCarrinho = new ImageControl(new Image("img/carrinho.png"));
+			imgCarrinho.scaleToFit = true;
+			imgCarrinho.centerImage = true;
+			add(imgCarrinho, RIGHT - 5, TOP, SCREENSIZE + 16, PREFERRED);
+			
 			lblCarrinho = new Label("CARRINHO:");
 			add(lblCarrinho);
-			lblCarrinho.setRect(CENTER, TOP + 5, PREFERRED, PREFERRED);
+			lblCarrinho.setRect(BEFORE - 4, TOP + 5, PREFERRED, PREFERRED, imgCarrinho);
 			lblCarrinho.setBackColor(0x003366);
 			lblCarrinho.setForeColor(Color.WHITE);
-			
-			btnCarrinho = BottomImg.imageOnly(new Image("img/carrinho.png"));
-			add(btnCarrinho, AFTER + 2, TOP, SCREENSIZE + 16, PREFERRED, lblCarrinho);
-			
+
 			btnVoltar = new ArtButton("VOLTAR");
             add(btnVoltar);
             btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
@@ -146,7 +149,7 @@ public class Carrinho extends totalcross.ui.Window{
 			
             carregaGridProdutos();
             calculaItensCarrinho();
-
+            
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela carrinho\n" + e);
 
@@ -183,7 +186,7 @@ public class Carrinho extends totalcross.ui.Window{
 					}
 				}else if(evt.target == btnAlterar) {
 					if (gridCarrinho.getSelectedItem() != null) {						
-							AlterarItem alterarItem = new AlterarItem();
+							AlterarProdutoCarrinho alterarItem = new AlterarProdutoCarrinho();
 							alterarItem.popup();
 							
 					} else {
@@ -192,9 +195,7 @@ public class Carrinho extends totalcross.ui.Window{
 					}
 				}else if(evt.target == btnRemover) {
 					
-					if (gridCarrinho.getSelectedItem() != null) {
-
-						gridCarrinho.removeAllElements();
+					if (gridCarrinho.getSelectedItem() != null) {						
 						RemoveProdutoCarrinho removerProdutoCarrinho = new RemoveProdutoCarrinho();
 						removerProdutoCarrinho.popup();
 
