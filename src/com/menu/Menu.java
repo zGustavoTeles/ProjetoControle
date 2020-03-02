@@ -65,7 +65,7 @@ public class Menu extends totalcross.ui.Window {
 			add(btnConfiguracao);
 			btnConfiguracao.setBackColor(0x003366);
 			btnConfiguracao.setForeColor(Color.WHITE);
-			btnConfiguracao.setRect(CENTER, BEFORE - 15, width - 200, SCREENSIZE + 15, btnVoltar);
+			btnConfiguracao.setRect(CENTER, AFTER + 15, width - 200, SCREENSIZE + 15, btnRelatorio);
 
 			reposition();
 			

@@ -76,7 +76,7 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 			
 			lblCategoria = new Label("CATEGORIA:   ");
 			add(lblCategoria);
-			lblCategoria.setRect(LEFT + 150, CENTER - 120, PREFERRED, PREFERRED);
+			lblCategoria.setRect(LEFT + 150, AFTER + 70, PREFERRED, PREFERRED, lblAviso);
 			lblCategoria.setBackColor(0x003366);
 			lblCategoria.setForeColor(Color.WHITE);
 
@@ -159,7 +159,6 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 			lblQuantidade.setForeColor(Color.WHITE);
 
 			editQuantidade = new Edit();
-			editQuantidade.setMode(BORDER_LOWERED);
 			add(editQuantidade);
 			editQuantidade.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblQuantidade);
 			editQuantidade.setBackColor(Color.WHITE);
@@ -180,7 +179,7 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 			editValor.setForeColor(0x003366);
 			editValor.setEditable(false);
 
-			lblTotal = new Label("TOTAL:             ");
+			lblTotal = new Label("TOTAL:            ");
 			add(lblTotal);
 			lblTotal.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editValor);
 			lblTotal.setBackColor(0x003366);
@@ -200,13 +199,13 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 
 			btnAlterar = new ArtButton("ALTERAR");
 			add(btnAlterar);
-			btnAlterar.setRect(CENTER, AFTER + 50, SCREENSIZE - 5, PREFERRED + 13, cmbTipoPagamento);
+			btnAlterar.setRect(CENTER, AFTER + 50, SCREENSIZE - 4, PREFERRED + 15, cmbTipoPagamento);
 			btnAlterar.setBackColor(0x009933);
 			btnAlterar.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
-			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
+			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 			
@@ -263,7 +262,8 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 
 						String[] ArtButtonArray = { "Sim", "Não" };
 
-						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja alterar o item?", ArtButtonArray);
+						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja alterar este produto inserindo "
+								+ editQuantidade.getText() + "\nunidade(s) no carrinho?", ArtButtonArray);
 
 						if (i == 1) {
 							return;

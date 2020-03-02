@@ -73,7 +73,7 @@ public class Inserir extends totalcross.ui.Window {
 			
 			lblCategoria = new Label("CATEGORIA:   ");
 			add(lblCategoria);
-			lblCategoria.setRect(LEFT + 150, CENTER - 120, PREFERRED, PREFERRED);
+			lblCategoria.setRect(LEFT + 150, AFTER + 70, PREFERRED, PREFERRED, lblAviso);
 			lblCategoria.setBackColor(0x003366);
 			lblCategoria.setForeColor(Color.WHITE);
 
@@ -162,13 +162,11 @@ public class Inserir extends totalcross.ui.Window {
 			lblQuantidade.setForeColor(Color.WHITE);
 
 			editQuantidade = new Edit();
-			editQuantidade.setMode(BORDER_LOWERED);
 			add(editQuantidade);
 			editQuantidade.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblQuantidade);
 			editQuantidade.setBackColor(Color.WHITE);
 			editQuantidade.setForeColor(0x003366);
 			editQuantidade.setValidChars("0 1 2 3 4 5 6 7 8 9");
-			editQuantidade.setText("1");
 
 			lblValor = new Label("VALOR:            ");
 			add(lblValor);
@@ -258,7 +256,8 @@ public class Inserir extends totalcross.ui.Window {
 
 						String[] ArtButtonArray = { "Sim", "Não" };
 
-						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja inserir o produto no carrinho?", ArtButtonArray);
+						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja inserir " + editQuantidade.getText()
+								+ " unidade(s) deste produto\nno carrinho?", ArtButtonArray);
 
 						if (i == 1) {
 							return;

@@ -42,7 +42,7 @@ public class RemoverProduto extends totalcross.ui.Window {
 			
 			lblProduto = new Label("PRODUTO:      ");
 			add(lblProduto);
-			lblProduto.setRect(LEFT + 150, CENTER - 150, PREFERRED, PREFERRED);
+			lblProduto.setRect(LEFT + 150, AFTER + 70, PREFERRED, PREFERRED, lblAviso);
 			lblProduto.setBackColor(0x003366);
 			lblProduto.setForeColor(Color.WHITE);
 
@@ -102,9 +102,13 @@ public class RemoverProduto extends totalcross.ui.Window {
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
-			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
+			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
+			
+			reposition();
+			
+			editQuantidade.requestFocus();
 			
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela removerProduto\n" + e);
@@ -147,7 +151,9 @@ public class RemoverProduto extends totalcross.ui.Window {
 
 						String[] ArtButtonArray = { "Sim", "Não" };
 
-						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja remover " + editQuantidade.getText() +" quantidade do produto do estoque?", ArtButtonArray);
+						int i = Auxiliares.artMsgbox("CONTROLE",
+								"Deseja remover " + editQuantidade.getText() + " unidade(s) deste produto do estoque?",
+								ArtButtonArray);
 
 						if (i == 1) {
 							return;

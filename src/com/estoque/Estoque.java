@@ -71,13 +71,13 @@ public class Estoque extends totalcross.ui.Window{
 	        
 	        btnRemover = new ArtButton("REMOVER");
             add(btnRemover);
-            btnRemover.setRect(LEFT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
+            btnRemover.setRect(LEFT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
             btnRemover.setBackColor(0xDF0101);
             btnRemover.setForeColor(Color.WHITE);
 	            
             btnVoltar = new ArtButton("VOLTAR");
             add(btnVoltar);
-            btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
+            btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
             btnVoltar.setBackColor(0x003366);
             btnVoltar.setForeColor(Color.WHITE);
             

@@ -81,13 +81,13 @@ public class Venda extends totalcross.ui.Window{
 	            
             btnVoltar = new ArtButton("VOLTAR");
             add(btnVoltar);
-            btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
+            btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
             btnVoltar.setBackColor(0x003366);
             btnVoltar.setForeColor(Color.WHITE);
             
             btnInserir = new ArtButton("INSERIR");
             add(btnInserir);
-            btnInserir.setRect(LEFT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
+            btnInserir.setRect(LEFT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
             btnInserir.setBackColor(0x009933);
             btnInserir.setForeColor(Color.WHITE);
             

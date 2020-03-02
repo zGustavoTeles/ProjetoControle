@@ -48,7 +48,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
-			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
+			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 			

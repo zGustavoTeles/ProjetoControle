@@ -58,28 +58,27 @@ public class Informacao extends totalcross.ui.Window{
 			editInformacao.setEditable(false);
 			
 			
-			lblCopyright = new Label("Copyright©2020-Todos os direitos reservados");
+			lblCopyright = new Label(Auxiliares.DESCRICAO);
 			add(lblCopyright);
 			lblCopyright.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, editInformacao);
 			lblCopyright.setBackColor(0x003366);
 			lblCopyright.setForeColor(Color.WHITE);  
 			
-//			lblSobre = new Label("CONTROLE-PC");
-			lblSobre = new Label("CONTROLE-MOBILE");
+			lblSobre = new Label("Sobre: " + Auxiliares.NOMESISTEMA);
 			add(lblSobre);
-			lblSobre.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, lblCopyright);
+			lblSobre.setRect(LEFT, AFTER, PREFERRED, PREFERRED, lblCopyright);
 			lblSobre.setBackColor(0x003366);
 			lblSobre.setForeColor(Color.WHITE);
 			
-			lblVersao = new Label("VERSÃO: 1.0");
+			lblVersao = new Label("Versão: " + Auxiliares.VERSAO);
 			add(lblVersao);
-			lblVersao.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, lblSobre);
+			lblVersao.setRect(LEFT, AFTER, PREFERRED, PREFERRED, lblSobre);
 			lblVersao.setBackColor(0x003366);
 			lblVersao.setForeColor(Color.WHITE);  
 
 			btnVoltar = new ArtButton("VOLTAR");
 	        add(btnVoltar);
-	        btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
+	        btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
 	        btnVoltar.setBackColor(0x003366);
 	        btnVoltar.setForeColor(Color.WHITE);
 	        

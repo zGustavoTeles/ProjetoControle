@@ -3,23 +3,23 @@ package principal;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
 import totalcross.sys.Settings;
+import totalcross.ui.Container;
 import totalcross.ui.Edit;
 import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
 import totalcross.ui.MainWindow;
+import totalcross.ui.UIColors;
 import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
 import totalcross.ui.image.*;
-
 import com.adm.Cadastrar;
 import com.adm.ValidaAdm;
 import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
 import com.menu.Menu;
 import com.sun.xml.internal.bind.util.Which;
-
 import litebase.ResultSet;
 import com.tabelas.Tabelas;
 
@@ -43,10 +43,21 @@ public class Home extends MainWindow{
 		
 		
 	public Home() {
+		
+		super("CONTROLE", TAB_ONLY_BORDER);
+		
 		setBackColor(0x003366);
 		Tabelas tabelas = new Tabelas();
 		tabelas.criaTabelas();
+		
+		Settings.applicationId   = "CTRL";
+		Settings.appDescription  = "CONTROLE";
+		Settings.appVersion 	 = Auxiliares.VERSAO;
+		Settings.useNewFont 	 = Settings.fingerTouch = true;		
+		Settings.dateFormat 	 = Settings.DATE_DMY;
+		
 //		Settings.resizableWindow = true;
+		
 	}
 		
 		public void initUI(){
@@ -259,5 +270,27 @@ public class Home extends MainWindow{
 		}
 		
 	}
+	
+//------------> TITLE APP <-------------	
+//	super("ARTVENDAS_IN", TAB_ONLY_BORDER);
+//	 //super("ARTVENDAS_IN_II", TAB_ONLY_BORDER);
+//	LitebasePack lb = null;
+//	try {
+//		lb = new LitebasePack();
+//		lb.CheckAllTables();
+//	} catch (Exception e) {
+//		Auxiliares.artMsgbox("ERRO" + e.getMessage());
+//	} finally {
+//		if (lb != null)
+//			lb.closeAll();
+//	}
+//
+//	setBackColor(Color.WHITE);
+//	UIColors.controlsBack = Color.WHITE;
+//
+//	// Instantiate the screens
+//
+//	UIColors.controlsBack = Color.WHITE;
+//	Settings.uiAdjustmentsBasedOnFontHeight = true;
 			
 }

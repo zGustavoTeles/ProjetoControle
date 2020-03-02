@@ -51,7 +51,7 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 			
 			lblProduto = new Label("PRODUTO:      ");
 			add(lblProduto);
-			lblProduto.setRect(LEFT + 150, CENTER - 120, PREFERRED, PREFERRED);
+			lblProduto.setRect(LEFT + 150, AFTER + 70, PREFERRED, PREFERRED, lblAviso);
 			lblProduto.setBackColor(0x003366);
 			lblProduto.setForeColor(Color.WHITE);
 
@@ -117,13 +117,13 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 			
 			btnRemover = new ArtButton("REMOVER");
 			add(btnRemover);
-			btnRemover.setRect(CENTER, AFTER + 50, SCREENSIZE - 4, PREFERRED, editTotal);
+			btnRemover.setRect(CENTER, AFTER + 50, SCREENSIZE - 4, PREFERRED + 15, editTotal);
 			btnRemover.setBackColor(0xDF0101);
 			btnRemover.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
-			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED);
+			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
 			
@@ -173,7 +173,8 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 
 						String[] ArtButtonArray = { "Sim", "Não" };
 
-						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja remover " + editQuantidade.getText() + " quantidade do produto do carrinho?", ArtButtonArray);
+						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja remover " + editQuantidade.getText()
+								+ " unidade(s) deste produto\ndo carrinho?", ArtButtonArray);
 
 						if (i == 1) {
 							return;

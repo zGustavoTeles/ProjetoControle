@@ -98,25 +98,25 @@ public class Carrinho extends totalcross.ui.Window{
 
 			btnVoltar = new ArtButton("VOLTAR");
             add(btnVoltar);
-            btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
+            btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 5, PREFERRED + 15);
             btnVoltar.setBackColor(0x003366);
             btnVoltar.setForeColor(Color.WHITE);
             
             btnVender = new ArtButton("VENDER");
             add(btnVender);
-            btnVender.setRect(LEFT, BOTTOM, SCREENSIZE - 5, PREFERRED + 13);
+            btnVender.setRect(LEFT, BOTTOM, SCREENSIZE - 5, PREFERRED + 15);
             btnVender.setBackColor(0x009933);
             btnVender.setForeColor(Color.WHITE);
             
             btnAlterar = new ArtButton("ALTERAR");
             add(btnAlterar);
-            btnAlterar.setRect(AFTER + 5, SAME, SCREENSIZE - 5, PREFERRED + 13, btnVender);
+            btnAlterar.setRect(AFTER + 5, SAME, SCREENSIZE - 5, PREFERRED + 15, btnVender);
             btnAlterar.setBackColor(0xDF7401);
             btnAlterar.setForeColor(Color.WHITE);
             
             btnRemover = new ArtButton("REMOVER");
             add(btnRemover);
-            btnRemover.setRect(AFTER + 5, SAME, SCREENSIZE - 5, PREFERRED + 13, btnAlterar);
+            btnRemover.setRect(AFTER + 5, SAME, SCREENSIZE - 5, PREFERRED + 15, btnAlterar);
             btnRemover.setBackColor(0xDF0101);
             btnRemover.setForeColor(Color.WHITE);
 
@@ -169,8 +169,10 @@ public class Carrinho extends totalcross.ui.Window{
 				} else if (evt.target == btnVender) {
 					String[] ArtButtonArray = { "Sim", "Não" };
 					
-					int i = Auxiliares.artMsgbox("CONTROLE", "Deseja finalizar a venda?", ArtButtonArray);
-					
+					int i = Auxiliares.artMsgbox("CONTROLE",
+							"Deseja finalizar a venda?\n" + lblQuantidade.getText() + "\n" + lblTotal.getText(),
+							ArtButtonArray);
+
 					if (i == 1) {
 						return;
 						
@@ -179,8 +181,9 @@ public class Carrinho extends totalcross.ui.Window{
 						baixaEstoque();
 						salvaInfoVenda();
 						
-						Auxiliares.artMsgbox("CONTROLE", "Venda efetuada com sucesso!");
-						
+						Auxiliares.artMsgbox("CONTROLE",
+								"Venda efetuada com sucesso!\n" + lblQuantidade.getText() + "\n" + lblTotal.getText());
+
 						Venda.btnCarrinho.setEnabled(false);
 						unpop();
 					}
@@ -320,14 +323,24 @@ public class Carrinho extends totalcross.ui.Window{
 					sql = "DELETE FROM ESTOQUE WHERE CODIGO = " + codigoProdTemp;
 
 					lb.executeUpdate(sql);
+					
+					if (quantidadeEstoque == 0 || quantidadeEstoque < 0) {
+						
+						sql = " DELETE FROM ESTOQUE " 
+					        + " WHERE CODIGO = " + codigoProdTemp;
 
-					sql = "INSERT INTO 	ESTOQUE " + "(" + " CODIGO, PRODUTO, MARCA, VALOR, QUANTIDADE, "
-							+ " CATEGORIA, MARCA, DESCRICAO, DATAENTRADA " + ")" + " VALUES " + "( '" + codigoProdTemp
-							+ "' , '" + produtoTemp + "', '" + marcaTemp + "', '" + valorTemp + "', '"
-							+ quantidadeEstoque + "', '" + categoriaTemp + "','" + marcaTemp + "', '" + descricaoTemp
-							+ "', '" + dataString + "'" + ")";
+						lb.executeUpdate(sql);
+						
+					} else {
 
-					lb.executeUpdate(sql);
+						sql = "INSERT INTO 	ESTOQUE " + "(" + " CODIGO, PRODUTO, MARCA, VALOR, QUANTIDADE, "
+								+ " CATEGORIA, MARCA, DESCRICAO, DATAENTRADA " + ")" + " VALUES " + "( '"
+								+ codigoProdTemp + "' , '" + produtoTemp + "', '" + marcaTemp + "', '" + valorTemp
+								+ "', '" + quantidadeEstoque + "', '" + categoriaTemp + "','" + marcaTemp + "', '"
+								+ descricaoTemp + "', '" + dataString + "'" + ")";
+
+						lb.executeUpdate(sql);
+					}
 
 				}
 				
