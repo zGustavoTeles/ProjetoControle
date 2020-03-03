@@ -55,17 +55,17 @@ public class Menu extends totalcross.ui.Window {
 			btnRelatorio.setForeColor(Color.WHITE);
 			btnRelatorio.setRect(CENTER, AFTER + 15, width - 200, SCREENSIZE + 15, btnEstoque);
 			
-			btnVoltar = new ArtButton("VOLTAR");
-			add(btnVoltar);
-			btnVoltar.setBackColor(0x003366);
-			btnVoltar.setForeColor(Color.WHITE);
-			btnVoltar.setRect(CENTER, BOTTOM - 5, width - 200, SCREENSIZE + 15);
-
 			btnConfiguracao = new ArtButton("CONFIGURAÇÃO");
 			add(btnConfiguracao);
 			btnConfiguracao.setBackColor(0x003366);
 			btnConfiguracao.setForeColor(Color.WHITE);
 			btnConfiguracao.setRect(CENTER, AFTER + 15, width - 200, SCREENSIZE + 15, btnRelatorio);
+			
+			btnVoltar = new ArtButton("VOLTAR");
+			add(btnVoltar);
+			btnVoltar.setBackColor(0x003366);
+			btnVoltar.setForeColor(Color.WHITE);
+			btnVoltar.setRect(CENTER, AFTER + 15, width - 200, SCREENSIZE + 15, btnConfiguracao);
 
 			reposition();
 			
