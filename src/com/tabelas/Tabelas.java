@@ -24,507 +24,723 @@ public class Tabelas {
 //---------------------------------------------------------------------------------------------------------------------------------------					
 					if (!lb.exists("MARCA")) {
 
-						sql = " create table marca ( " + "codigo int," + " descricao char(40), " + "categoria char(30)" + ")";
+						sql = " create table marca ( " + "codigo int," + " descricao char(40), " + "categoria char(30)," 
+						    + "codigoprod int" + ")";
 
 					lb.execute(sql);
-					lb.execute("create index marca01 ON marca(codigo,descricao, categoria)");
+					lb.execute("create index marca01 ON marca(codigo,descricao, categoria, codigoprod)");
 					
 //------------------REFRIGERANTES---------------------------------------------------------------------------------------------------------	
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('01', 'COCA-COLA', 'REFRIGERANTES')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('01', 'COCA-COLA', 'REFRIGERANTE', '01')";
 
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('02', 'FANTA', 'REFRIGERANTES')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('02', 'FANTA', 'REFRIGERANTE', '01')";
 
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('03', 'PEPSI', 'REFRIGERANTES')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('03', 'JAÓ', 'REFRIGERANTE', '01')";
 
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('04', 'GUARANA KUAT', 'REFRIGERANTES')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('04', 'GUARANA KUAT', 'REFRIGERANTE', '01')";
 
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('05', 'SUKITA', 'REFRIGERANTES')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('05', 'SUKITA', 'REFRIGERANTE', '01')";
 
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('06', 'DOLLY', 'REFRIGERANTES')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('06', 'DOLLY', 'REFRIGERANTE', '01')";
 
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('07', 'GUARANA ANTÁRCTICA','REFRIGERANTES')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('07', 'GUARANA ANTÁRCTICA','REFRIGERANTE', '01')";
 
 					lb.executeUpdate(sql);
 					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('08', 'MINEIRO','REFRIGERANTE', '01')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('09', 'SODA','REFRIGERANTE', '01')";
+
+					lb.executeUpdate(sql);
+					
+//------------------AGUA-----------------------------------------------------------------------------------------------------------
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('10', 'AGUA-MINERAL','AGUA', '28')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('11', 'AGUA-TONICA','AGUA', '28')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('12', 'AGUA-COM-GAS','AGUA', '28')";
+
+					lb.executeUpdate(sql);
+
 //------------------SUCOS-----------------------------------------------------------------------------------------------------------					
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('08', 'SUVALAN', 'SUCOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('13', 'SUVALAN', 'SUCO', '02')";
 
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('09', 'MAGUARY LIFE','SUCOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('14', 'MAGUARY LIFE','SUCO', '02')";
 
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('10', 'DO BEM INTEGRAL', 'SUCOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('15', 'DO BEM INTEGRAL', 'SUCO', '02')";
 
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('11', 'DEL VALLE 100% SUCO', 'SUCOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('16', 'DEL VALLE 100% SUCO', 'SUCO', '02')";
 
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('12', 'SUFRESH 100% SUCO', 'SUCOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('17', 'SUFRESH 100% SUCO', 'SUCO', '02')";
 
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('13', 'TIAL 100% SUCO', 'SUCOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('18', 'TIAL 100% SUCO', 'SUCO', '02')";
 
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('14', 'NOVA ALIANÇA 100% SUCO', 'SUCOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('19', 'NOVA ALIANÇA 100% SUCO', 'SUCO', '02')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('15', 'CERES 100% JUICE BLEND', 'SUCOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('20', 'CERES 100% JUICE BLEND', 'SUCO', '02')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('16', 'LINHA 100% JANDAIA', 'SUCOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('21', 'LINHA 100% JANDAIA', 'SUCO', '02')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('17', 'CAMPO LARGO LARANJA INTEGRAL', 'SUCOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('22', 'CAMPO LARGO LARANJA INTEGRAL', 'SUCO', '02')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('18', 'LA FRUIT', 'SUCOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('23', 'LA FRUIT', 'SUCO', '02')";
 					
 					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('24', 'TAMPICO', 'SUCO', '02')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('25', 'SULPER', 'SUCO', '02')";
+					
+					lb.executeUpdate(sql);
+					
 //------------------VODKA-----------------------------------------------------------------------------------------------------------					
-									
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('19', 'SMIENOFF', 'VODKAS')";
+						
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('26', 'RUSTOFF', 'BEBIDA-ALCOOLICA', '03')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('20', 'ABSOLUT', 'VODKAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('27', 'KISLLA', 'BEBIDA-ALCOOLICA', '03')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('21', 'GREY GOOSE', 'VODKAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('28', 'SMIENOFF', 'BEBIDA-ALCOOLICA', '03')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('22', 'STOLI CHNAYA', 'VODKAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('29', 'ABSOLUT', 'BEBIDA-ALCOOLICA', '03')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('23', 'SVEDKA','VODKAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('30', 'GREY GOOSE', 'BEBIDA-ALCOOLICA', '03')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('24', 'SKYY', 'VODKAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('31', 'STOLI CHNAYA', 'BEBIDA-ALCOOLICA', '03')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('25', 'CÎROC','VODKAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('32', 'SVEDKA','BEBIDA-ALCOOLICA', '03')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('26', 'FINLANDIA','VODKAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('33', 'SKYY', 'BEBIDA-ALCOOLICA', '03')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('34', 'CÎROC','BEBIDA-ALCOOLICA', '03')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('35', 'FINLANDIA','BEBIDA-ALCOOLICA', '03')";
 					
 					lb.executeUpdate(sql);
 					
 //------------------CERVEJA---------------------------------------------------------------------------------------------------------					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('27', 'STELLA', 'CERVEJAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('36', 'ITAIPAVA', 'BEBIDA-ALCOOLICA', '04')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('28', 'ANTARTICA', 'CERVEJAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('37', 'EISENBAHAN', 'BEBIDA-ALCOOLICA', '04')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('29', 'KAISER', 'CERVEJAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('38', 'IMPERIO', 'BEBIDA-ALCOOLICA', '04')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('30', 'BAVARIA', 'CERVEJAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('39', 'PETRA', 'BEBIDA-ALCOOLICA', '04')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('31', 'SOL', 'CERVEJAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('40', 'SCHIN', 'BEBIDA-ALCOOLICA', '04')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('32', 'BRAHMA','CERVEJAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('41', 'SOL', 'BEBIDA-ALCOOLICA', '04')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('33', 'COORS LIGHT', 'CERVEJAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('42', 'CARACU', 'BEBIDA-ALCOOLICA', '04')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('34', 'HEINEKEN', 'CERVEJAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('43', 'STELLA', 'BEBIDA-ALCOOLICA', '04')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('35', 'SKOL','CERVEJAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('44', 'ANTARTICA', 'BEBIDA-ALCOOLICA', '04')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('36', 'CORONA', 'CERVEJAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('45', 'KAISER', 'BEBIDA-ALCOOLICA', '04')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('37', 'BUD LIGHT', 'CERVEJAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('46', 'BAVARIA', 'BEBIDA-ALCOOLICA', '04')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('38', 'YANJING','CERVEJAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('47', 'SOL', 'BEBIDA-ALCOOLICA', '04')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('39', 'BUDWEISER', 'CERVEJAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('48', 'BRAHMA','BEBIDA-ALCOOLICA', '04')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('49', 'COORS LIGHT', 'BEBIDA-ALCOOLICA', '04')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('50', 'HEINEKEN', 'BEBIDA-ALCOOLICA', '04')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('51', 'SKOL','BEBIDA-ALCOOLICA', '04')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('52', 'CORONA', 'BEBIDA-ALCOOLICA', '04')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('53', 'BUD LIGHT', 'BEBIDA-ALCOOLICA', '04')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('54', 'YANJING','BEBIDA-ALCOOLICA', '04')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('55', 'BUDWEISER', 'BEBIDA-ALCOOLICA', '04')";
 					
 					lb.executeUpdate(sql);
 //------------------VINHO------------------------------------------------------------------------------------------------------------					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('40', 'CONCHA Y TORO', 'VINHOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('56', 'CATUABA', 'BEBIDA-ALCOOLICA', '05')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('41', 'BAREFOOT', 'VINHOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('57', 'CATUABA SELVAGEM PINA COLADA', 'BEBIDA-ALCOOLICA', '05')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('42', 'E&J GALLO WINERY', 'VINHOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('58', 'QUINTA DO MORGADO BORDO SUAVE', 'BEBIDA-ALCOOLICA', '05')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('43', 'ROBERT MONDAVI', 'VINHOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('59', 'MIORANZA', 'BEBIDA-ALCOOLICA', '05')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('44', 'CANTINA DA SERRA', 'VINHOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('60', 'CONCHA Y TORO', 'BEBIDA-ALCOOLICA', '05')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('45', 'PÉRGOLA', 'VINHOS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('61', 'BAREFOOT', 'BEBIDA-ALCOOLICA', '05')";
 					
 					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('62', 'E&J GALLO WINERY', 'BEBIDA-ALCOOLICA', '05')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('63', 'ROBERT MONDAVI', 'BEBIDA-ALCOOLICA', '05')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('64', 'CANTINA DA SERRA', 'BEBIDA-ALCOOLICA', '05')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('65', 'PÉRGOLA', 'BEBIDA-ALCOOLICA', '05')";
+					
+					lb.executeUpdate(sql);
+//------------------PINGAS-------------------------------------------------------------------------------------------------------------
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('66', 'CACHACA 29', 'BEBIDA-ALCOOLICA', '29')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('67', 'CACHACA 51', 'BEBIDA-ALCOOLICA', '29')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('68', 'CACHACA DA ROÇA', 'BEBIDA-ALCOOLICA', '29')";
+			
+					lb.executeUpdate(sql);
+					
 //------------------WHISKY-------------------------------------------------------------------------------------------------------------
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('46', 'JOHNNIE WALKER', 'WHISKYS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('69', 'JOHNNIE WALKER', 'BEBIDA-ALCOOLICA', '06')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('47', 'JACK DANIELS', 'WHISKYS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('70', 'JACK DANIELS', 'BEBIDA-ALCOOLICA', '06')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('48', 'CHIVAS REGAL', 'WHISKYS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('71', 'CHIVAS REGAL', 'BEBIDA-ALCOOLICA', '06')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('49', 'BALLANTINES', 'WHISKYS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('72', 'BALLANTINES', 'BEBIDA-ALCOOLICA', '06')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('50', 'JIM BEAM', 'WHISKYS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('73', 'JIM BEAM', 'BEBIDA-ALCOOLICA', '06')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('51', 'JAMESON', 'WHISKYS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('74', 'JAMESON', 'BEBIDA-ALCOOLICA', '06')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('52', 'SUNTORY WHISKY', 'WHISKYS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('75', 'SUNTORY WHISKY', 'BEBIDA-ALCOOLICA', '06')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('53', 'CROWN ROYAL', 'WHISKYS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('76', 'CROWN ROYAL', 'BEBIDA-ALCOOLICA', '06')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('54', 'DEWARS', 'WHISKYS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('77', 'DEWARS', 'BEBIDA-ALCOOLICA', '06')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('55', 'GRANTS', 'WHISKYS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('78', 'GRANTS', 'BEBIDA-ALCOOLICA', '06')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('56', 'J&B', 'WHISKYS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('79', 'J&B', 'BEBIDA-ALCOOLICA', '06')";
 					
 					lb.executeUpdate(sql);
 //------------------CONHAQUES----------------------------------------------------------------------------------------------------------
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('57', 'HENNESSY', 'CONHAQUES')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('80', 'HENNESSY', 'BEBIDA-ALCOOLICA', '07')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('58', 'MARTELL', 'CONHAQUES')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('81', 'MARTELL', 'BEBIDA-ALCOOLICA', '07')";
 					
 					lb.executeUpdate(sql);
 //------------------COQUITEIS-------------------------------------------------------------------------------------------------------------
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('59', 'OLD FASHIONED', 'COQUITEIS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('82', 'OLD FASHIONED', 'BEBIDA-ALCOOLICA', '08')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('60', 'NEGRONI', 'COQUITEIS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('83', 'NEGRONI', 'BEBIDA-ALCOOLICA', '08')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('61', 'MANHATTAN', 'COQUITEIS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('84', 'MANHATTAN', 'BEBIDA-ALCOOLICA', '08')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('62', 'DAIQUIRI', 'COQUITEIS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('85', 'DAIQUIRI', 'BEBIDA-ALCOOLICA', '08')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('63', 'DRY MARTINI', 'COQUITEIS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('86', 'DRY MARTINI', 'BEBIDA-ALCOOLICA', '08')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('64', 'WHISKEY SOUR', 'COQUITEIS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('87', 'WHISKEY SOUR', 'BEBIDA-ALCOOLICA', '08')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('65', 'MARGARITA', 'COQUITEIS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('88', 'MARGARITA', 'BEBIDA-ALCOOLICA', '08')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('66', 'SAZERAC', 'COQUITEIS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('89', 'SAZERAC', 'BEBIDA-ALCOOLICA', '08')";
 					
 					lb.executeUpdate(sql);
 //------------------CHAMPANHES-----------------------------------------------------------------------------------------------------------
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('67', 'MOET & CHANDON', 'CHAMPANHES')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('90', 'MOET & CHANDON', 'BEBIDA-ALCOOLICA', '09')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('68', 'VEUVE CLICQUOT', 'CHAMPANHES')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('91', 'VEUVE CLICQUOT', 'BEBIDA-ALCOOLICA', '09')";
 					
 					lb.executeUpdate(sql);
 //------------------TEQUILAS--------------------------------------------------------------------------------------------------------------
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('69', 'PATRÓN', 'TEQUILAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('92', 'PATRÓN', 'BEBIDA-ALCOOLICA', '10')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('70', 'JOSÉ CUERVO', 'TEQUILAS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('93', 'JOSÉ CUERVO', 'BEBIDA-ALCOOLICA', '10')";
 					
 					lb.executeUpdate(sql);
 //------------------GIMS------------------------------------------------------------------------------------------------------------------
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('71', 'TANQUERAY', 'GIMS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('94', 'TANQUERAY', 'BEBIDA-ALCOOLICA', '11')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('72', 'GORDONS', 'GIMS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('95', 'GORDONS', 'BEBIDA-ALCOOLICA', '11')";
 					
 					lb.executeUpdate(sql);
 //------------------RUM-------------------------------------------------------------------------------------------------------------------					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('73', 'BACARDI','RUMS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('96', 'BACARDI','BEBIDA-ALCOOLICA', '12')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('74', 'CAPTAIN MORGAN', 'RUMS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('97', 'CAPTAIN MORGAN', 'BEBIDA-ALCOOLICA', '12')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('75', 'MALIBU', 'RUMS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('98', 'MALIBU', 'BEBIDA-ALCOOLICA', '12')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('76', 'HAVANA CLUB', 'RUMS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('99', 'HAVANA CLUB', 'BEBIDA-ALCOOLICA', '12')";
 					
 					lb.executeUpdate(sql);
 //------------------LICOR------------------------------------------------------------------------------------------------------------------
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('77', 'BAILEYS', 'LICORS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('100', 'BAILEYS', 'BEBIDA-ALCOOLICA', '13')";
 					
 					lb.executeUpdate(sql);
 					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('78', 'RICARD', 'LICORS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('101', 'RICARD', 'BEBIDA-ALCOOLICA', '13')";
 					
 					lb.executeUpdate(sql);
-//------------------DIGESTIVO-----------------------------------------------------------------------------------------------------------------
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('79', 'FERNET-BRANCA', 'DIGESTIVOS')";
-					
-					lb.executeUpdate(sql);
-					
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('80', 'JAGERMEISTER', 'DIGESTIVOS')";
-					
-					lb.executeUpdate(sql);
+
 //------------------VERMOUTH------------------------------------------------------------------------------------------------------------------
-					sql = " INSERT INTO marca (codigo, descricao, categoria)" + " VALUES "
-							+ " ('81', 'MARTINI', 'VERMOUTHS')";
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('102', 'MARTINI', 'BEBIDA-ALCOOLICA', '14')";
+					
+					lb.executeUpdate(sql);
+					
+					
+//-----------------DIVERSOS-------------------------------------------------------------------------------------------------------------------
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('103', 'CRONY CHURRASCO DIVERSOS', 'ALIMENTACAO', '15')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('104', 'CRONY CEBOLA E SALSA DIVERSOS', 'ALIMENTACAO', '15')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('105', 'CRONY ORIGINAL DIVERSOS', 'ALIMENTACAO', '15')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('106', 'REFINATA FRANGO DIVERSOS', 'ALIMENTACAO', '16')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('107', 'REFINATA COSTELINHA DIVERSOS', 'ALIMENTACAO', '16')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('108', 'PETICITOS CALABRESA DIVERSOS', 'ALIMENTACAO', '16')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('109', 'PETICITOS BARBECUE DIVERSOS', 'ALIMENTACAO', '16')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('110', 'PETICITOS CARNE DE SOL DIVERSOS', 'ALIMENTACAO', '16')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('111', 'PETICITOS CHURRASCO DIVERSOS', 'ALIMENTACAO', '16')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('112', 'PETICITOS QUEIJO DIVERSOS', 'ALIMENTACAO', '16')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('113', 'PETICITOS PIMENTA DIVERSOS', 'ALIMENTACAO', '16')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('114', 'SARDINHA TOMATE DIVERSOS', 'ALIMENTACAO', '17')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('115', 'SARDINHA OLEO DIVERSOS', 'ALIMENTACAO', '17')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('116', 'SALSINHA DIVERSOS', 'ALIMENTACAO', '18')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('117', 'SALSINHA AO MOLHO DIVERSOS', 'ALIMENTACAO', '18')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('118', 'MILHO PIPOCA VELLY', 'ALIMENTACAO', '19')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('119', 'SALGADINHO BACON KRIK', 'ALIMENTACAO', '20')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('120', 'WAFER MORANGO DIVERSOS', 'ALIMENTACAO', '21')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('121', 'WAFER CHOCOLATE DIVERSOS', 'ALIMENTACAO', '21')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('122', 'CARVAO DE COCO P/NARGUILE DIVERSOS', 'DIVERSOS', '22')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('123', 'CARVAO P/CHURRASCO DIVERSOS', 'DIVERSOS', '23')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('124', 'GELO DIVERSOS', 'DIVERSOS', '24')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('125', 'PIRA KIDS DIVERSOS', 'ALIMENTACAO', '25')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('126', 'MILHOPA CEBOLA', 'ALIMENTACAO', '26')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('127', 'MILHOPA CHURRASCO', 'ALIMENTACAO', '26')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('128', 'MILHOPA QUEIJO', 'ALIMENTACAO', '26')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('134', 'MILHOPA GALINHA', 'ALIMENTACAO', '26')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('129', 'MILHOPA PIZZA', 'ALIMENTACAO', '26')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('130', 'MILHOPA PRESUNTO', 'ALIMENTACAO', '26')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('131', 'MOLHO DE PIMENTA GOTA', 'ALIMENTACAO', '27')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
+							+ " ('132', 'MOLHO DE PIMENTA DIVERSOS', 'ALIMENTACAO', '27')";
 					
 					lb.executeUpdate(sql);
 					
 					}
 //--------------------------------------------------------------------------------------------------------------------------------------------						
-					if (!lb.exists("CATEGORIA")) {
+				if (!lb.exists("CATEGORIA")) {
 
-						sql = " create table categoria ( " + "codigo int," + " descricao char(40) " + ")";
+					sql = " create table categoria ( " + "codigo int," + " descricao char(40) " + ")";
 
 					lb.execute(sql);
-					lb.execute("create index categoria01 ON categoria(codigo,descricao)");				
-					
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('01', 'REFRIGERANTES')";
+					lb.execute("create index categoria01 ON categoria(codigo,descricao)");
+
+					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES " + " ('01', 'REFRIGERANTE')";
 
 					lb.executeUpdate(sql);
-					
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('02', 'SUCOS')";
-					
-					lb.executeUpdate(sql);
-					
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('03', 'VODKAS')";
+
+					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES " + " ('02', 'SUCO')";
 
 					lb.executeUpdate(sql);
-					
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('04', 'CERVEJAS')";
+
+					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES " + " ('03', 'BEBIDA-ALCOOLICA')";
 
 					lb.executeUpdate(sql);
-										
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('05', 'VINHOS')";
-					
+
+					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES " + " ('04', 'AGUA')";
+
 					lb.executeUpdate(sql);
-					
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('06', 'WHISKYS')";
-					
+
+					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES " + " ('05', 'ALIMENTACAO')";
+
 					lb.executeUpdate(sql);
-					
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('07', 'CONHAQUES')";
-					
+
+					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES " + " ('06', 'DIVERSOS')";
+
 					lb.executeUpdate(sql);
-					
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('08', 'COQUITEIS')";
-					
-					lb.executeUpdate(sql);
-					
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('09', 'CHAMPANHES')";
-					
-					lb.executeUpdate(sql);
-					
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('10', 'TEQUILAS')";
-					
-					lb.executeUpdate(sql);
-								
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('11', 'GIMS')";
-					
-					lb.executeUpdate(sql);
-					
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('12', 'RUMS')";
-					
-					lb.executeUpdate(sql);
-										
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('13', 'LICORS' )";
-					
-					lb.executeUpdate(sql);
-					
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('14', 'DIGESTIVOS')";
-					
-					lb.executeUpdate(sql);
-					
-					sql = " INSERT INTO categoria (codigo, descricao)" + " VALUES "
-							+ " ('15', 'VERMOUTHS')";
-					
-					lb.executeUpdate(sql);
-					
-					}
+
+				}
 
 //--------------------------------------------------------------------------------------------------------------------------------------
 				if (!lb.exists("DESCRICAO")) {
@@ -533,48 +749,245 @@ public class Tabelas {
 
 					lb.execute(sql);
 					lb.execute("create index descricao01 ON descricao(codigo,descricao)");
+					
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('01', '100-ML')";
 
-					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('01', '200-ML')";
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('02', '150-ML')";
 
 					lb.executeUpdate(sql);
 
-					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('02', '300-ML')";
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('03', '200-ML')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('04', '220-ML')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('05', '250-ML')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('06', '269-ML')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('07', '270-ML')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('08', '275-ML')";
 
 					lb.executeUpdate(sql);
 
-					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('03', '400-ML')";
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('09', '300-ML')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('10', '330-ML')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('11', '350-ML')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('12', '355-ML')";
 
 					lb.executeUpdate(sql);
 
-					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('04', '500-ML')";
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('13', '400-ML')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('14', '450-ML')";
 
 					lb.executeUpdate(sql);
 
-					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('05', '600-ML')";
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('15', '500-ML')";
 
 					lb.executeUpdate(sql);
 
-					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('06', '700-ML')";
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('16', '600-ML')";
 
 					lb.executeUpdate(sql);
 
-					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('07', '1-LT')";
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('17', '700-ML')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('18', '750-ML')";
+
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('19', '880-ML')";
 
 					lb.executeUpdate(sql);
 
-					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('08', '1,5-LT')";
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('20', '1-LT')";
 
 					lb.executeUpdate(sql);
 
-					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('09', '2-LT')";
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('21', '1,5-LT')";
 
 					lb.executeUpdate(sql);
 
-					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('10', '2,5-LT')";
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('22', '2-LT')";
 
 					lb.executeUpdate(sql);
 
-					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('11', '3-LT')";
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('23', '2,5-LT')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('24', '3-LT')";
+					
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('25', '20-LT')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricao (codigo, descricao)" + " VALUES " + " ('26', '21-LT')";
+					
+					lb.executeUpdate(sql);
+					
+				}
+//-------------------------------------------------------------------------------------------------------------------------------------
+				if (!lb.exists("DESCRICAOPESO")) {
+
+					sql = " create table descricaopeso ( " + "codigo int," + " descricao char(20) " + ")";
+
+					lb.execute(sql);
+					lb.execute("create index descricaopeso01 ON descricaopeso(codigo,descricao)");
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('01', '10-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('02', '15-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('03', '20-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('04', '30-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('05', '40-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('06', '50-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('07', '60-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('08', '70-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('09', '78-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('10', '80-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('11', '90-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('12', '100-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('13', '120-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('14', '125-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('15', '200-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('16', '300-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('17', '400-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('18', '500-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('19', '600-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('20', '700-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('21', '800-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('22', '900-G')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('23', '1-KL')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('24', '2-KL')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('25', '3-KL')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('26', '4-KL')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('27', '5-KL')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('28', '6-KL')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('29', '7-KL')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('30', '8-KL')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('31', '9-KL')";
+
+					lb.executeUpdate(sql);
+
+					sql = " INSERT INTO descricaopeso (codigo, descricao)" + " VALUES " + " ('32', '10-KL')";
 
 					lb.executeUpdate(sql);
 
@@ -589,77 +1002,147 @@ public class Tabelas {
 					lb.execute("create index produto01 ON produto(codigo,produto,categoria)");
 
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('01', 'REFRIGERANTE', 'REFRIGERANTES')";
+							+ " ('01', 'REFRIGERANTE', 'REFRIGERANTE')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('02', 'SUCO', 'SUCOS')";
+							+ " ('02', 'SUCO', 'SUCO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('03', 'VODKA', 'VODKAS')";
+							+ " ('03', 'VODKA', 'BEBIDA-ALCOOLICA')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('04', 'CERVEJA', 'CERVEJAS')";
+							+ " ('04', 'CERVEJA', 'BEBIDA-ALCOOLICA')";
 
 					lb.executeUpdate(sql);
 										
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('05', 'VINHO', 'VINHOS')";
+							+ " ('05', 'VINHO', 'BEBIDA-ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('06', 'WHISKY', 'WHISKYS')";
+							+ " ('06', 'WHISKY', 'BEBIDA-ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('07', 'CONHAQUE', 'CONHAQUES')";
+							+ " ('07', 'CONHAQUE', 'BEBIDA-ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('08', 'COQUITEI', 'COQUITEIS')";
+							+ " ('08', 'COQUITEI', 'BEBIDA-ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('09', 'CHAMPANHE', 'CHAMPANHES')";
+							+ " ('09', 'CHAMPANHE', 'BEBIDA-ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('10', 'TEQUILA', 'TEQUILAS')";
+							+ " ('10', 'TEQUILA', 'BEBIDA-ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 								
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('11', 'GIM', 'GIMS')";
+							+ " ('11', 'GIM', 'BEBIDA-ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('12', 'RUM', 'RUMS')";
+							+ " ('12', 'RUM', 'BEBIDA-ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 										
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('13', 'LICOR','LICORS')";
+							+ " ('13', 'LICOR','BEBIDA-ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('14', 'DIGESTIVO', 'DIGESTIVOS')";
+							+ " ('14', 'VERMOUTH', 'BEBIDA-ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('15', 'VERMOUTH', 'VERMOUTHS')";
+							+ " ('15', 'BATATA', 'ALIMENTACAO')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('16', 'PETICITOS', 'ALIMENTACAO')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('17', 'SARDINHA', 'ALIMENTACAO')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('18', 'SALSINHA', 'ALIMENTACAO')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('19', 'MILHO PIPOCA', 'ALIMENTACAO')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('20', 'SALGADINHO', 'ALIMENTACAO')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('21', 'WAFER', 'ALIMENTACAO')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('22', 'CARVAO-NARGUILE', 'DIVERSOS')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('23', 'CARVAO-CHURRASCO', 'DIVERSOS')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('24', 'GELO', 'DIVERSOS')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('25', 'PIRA', 'ALIMENTACAO')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('26', 'MILHOPA', 'ALIMENTACAO')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('27', 'MOLHO DE PIMENTA', 'ALIMENTACAO')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('28', 'AGUA', 'AGUA')";
+					
+					lb.executeUpdate(sql);
+					
+					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
+							+ " ('29', 'PINGA', 'BEBIDA-ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 

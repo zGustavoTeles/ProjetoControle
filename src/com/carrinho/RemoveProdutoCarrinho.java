@@ -100,6 +100,7 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 			editQuantidade.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblQuantidade);
 			editQuantidade.setBackColor(Color.WHITE);
 			editQuantidade.setForeColor(0x003366);
+			editQuantidade.setValidChars("0 1 2 3 4 5 6 7 8 9");
 			
 			lblTotal = new Label("TOTAL:            ");
 			add(lblTotal);

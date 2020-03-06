@@ -305,7 +305,8 @@ public class Carrinho extends totalcross.ui.Window{
 					dataSaidaTemp = rs.getDate("DATASAIDA");
 					
 					lb2 = new LitebasePack();
-					sql2 = " SELECT QUANTIDADE, CODIGO, DATAENTRADA FROM ESTOQUE ";
+					sql2 = " SELECT QUANTIDADE, CODIGO, DATAENTRADA FROM ESTOQUE "
+						 + " WHERE CODIGO = " + codigoProdTemp;
 
 					rs2 = lb2.executeQuery(sql2);
 					rs2.first();
@@ -319,7 +320,7 @@ public class Carrinho extends totalcross.ui.Window{
 					quantidadeVendida = quantidadeTemp;
 
 					quantidadeEstoque = qntEstoqueCalculo - quantidadeVendida;
-
+										
 					sql = "DELETE FROM ESTOQUE WHERE CODIGO = " + codigoProdTemp;
 
 					lb.executeUpdate(sql);
@@ -332,12 +333,14 @@ public class Carrinho extends totalcross.ui.Window{
 						lb.executeUpdate(sql);
 						
 					} else {
-
+						
+						Auxiliares.artMsgbox("ERRO", "PASSEI POR AQUI 2");
+						
 						sql = "INSERT INTO 	ESTOQUE " + "(" + " CODIGO, PRODUTO, MARCA, VALOR, QUANTIDADE, "
-								+ " CATEGORIA, MARCA, DESCRICAO, DATAENTRADA " + ")" + " VALUES " + "( '"
-								+ codigoProdTemp + "' , '" + produtoTemp + "', '" + marcaTemp + "', '" + valorTemp
-								+ "', '" + quantidadeEstoque + "', '" + categoriaTemp + "','" + marcaTemp + "', '"
-								+ descricaoTemp + "', '" + dataString + "'" + ")";
+								+ " CATEGORIA, DESCRICAO, DATAENTRADA " + ")" + " VALUES " + "( '" + codigoProdTemp
+								+ "' , '" + produtoTemp + "', '" + marcaTemp + "', '" + valorTemp + "', '"
+								+ quantidadeEstoque + "', '" + categoriaTemp + "','" + descricaoTemp + "', '"
+								+ dataString + "'" + ")";
 
 						lb.executeUpdate(sql);
 					}

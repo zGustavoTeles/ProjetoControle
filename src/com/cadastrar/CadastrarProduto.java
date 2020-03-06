@@ -38,12 +38,13 @@ public class CadastrarProduto extends totalcross.ui.Window{
 	private ArtButton						btnCadastrar;
 	private ArtButton 						btnVoltar;
 	private ImageControl					imgAdicionar;
+	
+	public int								codigoProduto;
 
 	public CadastrarProduto() {
 		setBackColor(0x003366);
 		initUI();
 		carregaCmbCategoria();
-		carregaCmbDescricao();
 	}
 	
 	public void initUI() {
@@ -167,7 +168,8 @@ public class CadastrarProduto extends totalcross.ui.Window{
 
 						String[] ArtButtonArray = { "Sim", "Não" };
 
-						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja cadastrar o produto no estoque?", ArtButtonArray);
+						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja cadastrar o produto no estoque?",
+								ArtButtonArray);
 
 						if (i == 1) {
 							return;
@@ -186,13 +188,15 @@ public class CadastrarProduto extends totalcross.ui.Window{
 				} else if (evt.target == cmbCategoria) {
 					cmbMarca.removeAll();
 					cmbProduto.removeAll();
+					cmbDescricao.removeAll();
 					carregaCmbMarca();
 					carregaCmbProduto();
+					carregaCmbDescricao();
 
 				}
 
 			}
-			
+
 		}catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela cadastrarProduto\n" + e);
 			}
@@ -318,8 +322,10 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			try {
 				try {
 					lb = new LitebasePack();
-					sql = " SELECT DESCRICAO, CATEGORIA FROM MARCA "
-						+ " WHERE CATEGORIA = " + "'" + cmbCategoria.getSelectedItem() + "'";;
+					sql = " SELECT M.DESCRICAO, M.CATEGORIA, P.CODIGO "
+						+ " FROM MARCA M, PRODUTO P "
+						+ " WHERE M.CODIGOPROD = P.CODIGO "	
+						+ " AND CATEGORIA = " + "'" + cmbCategoria.getSelectedItem() + "'";;
 
 					rs = lb.executeQuery(sql);
 					rs.first();
@@ -351,15 +357,30 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			try {
 				try {
 					lb = new LitebasePack();
-					sql = " SELECT DESCRICAO FROM DESCRICAO ";
 
-					rs = lb.executeQuery(sql);
-					rs.first();
-					for (int i = 0; rs.getRowCount() > i; i++) {
-						String[] b = new String[1];
-						b[0] = rs.getString("DESCRICAO");
-						cmbDescricao.add(b);
-						rs.next();
+					if (cmbCategoria.getSelectedItem().equals("ALIMENTACAO")) {
+						sql = " SELECT DESCRICAO FROM DESCRICAOPESO ";
+
+						rs = lb.executeQuery(sql);
+						rs.first();
+						for (int i = 0; rs.getRowCount() > i; i++) {
+							String[] b = new String[1];
+							b[0] = rs.getString("DESCRICAO");
+							cmbDescricao.add(b);
+							rs.next();
+						}
+					} else {
+
+						sql = " SELECT DESCRICAO FROM DESCRICAO ";
+
+						rs = lb.executeQuery(sql);
+						rs.first();
+						for (int i = 0; rs.getRowCount() > i; i++) {
+							String[] b = new String[1];
+							b[0] = rs.getString("DESCRICAO");
+							cmbDescricao.add(b);
+							rs.next();
+						}
 					}
 				} finally {
 					if (lb != null)
