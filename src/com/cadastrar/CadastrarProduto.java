@@ -186,11 +186,11 @@ public class CadastrarProduto extends totalcross.ui.Window{
 					}
 
 				} else if (evt.target == cmbCategoria) {
-					cmbMarca.removeAll();
 					cmbProduto.removeAll();
+					cmbMarca.removeAll();
 					cmbDescricao.removeAll();
-					carregaCmbMarca();
 					carregaCmbProduto();
+					carregaCmbMarca();
 					carregaCmbDescricao();
 
 				}
@@ -322,10 +322,10 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			try {
 				try {
 					lb = new LitebasePack();
-					sql = " SELECT M.DESCRICAO, M.CATEGORIA, P.CODIGO "
+					sql = " SELECT M.DESCRICAO, M.CATEGORIA, M.CODIGOPROD, P.CODIGO "
 						+ " FROM MARCA M, PRODUTO P "
 						+ " WHERE M.CODIGOPROD = P.CODIGO "	
-						+ " AND CATEGORIA = " + "'" + cmbCategoria.getSelectedItem() + "'";;
+						+ " AND M.CATEGORIA = " + "'" + cmbCategoria.getSelectedItem() + "'";;
 
 					rs = lb.executeQuery(sql);
 					rs.first();
