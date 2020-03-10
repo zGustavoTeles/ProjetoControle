@@ -169,7 +169,7 @@ public class Venda extends totalcross.ui.Window{
 						} else {
 
 							Auxiliares.artMsgbox("CONTROLE",
-									"Esse produto encontra-se no carrinho. Por favor\n finalize a venda para inseri-lo novamente");
+									"Esse produto encontra-se no carrinho.\nPor favor finalize a venda para inseri-lo\nnovamente!");
 						}
 
 					} else {
@@ -261,7 +261,9 @@ public class Venda extends totalcross.ui.Window{
 		try {
 			try {
 				lb = new LitebasePack();
-				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " + "'%" + editBuscar.getText() + "%'";
+				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " 
+				    + "'%" + editBuscar.getText() + "%'"
+				    + "OR MARCA LIKE "  + "'%" + editBuscar.getText() + "%'";
 
 				rs = lb.executeQuery(sql);
 				rs.first();

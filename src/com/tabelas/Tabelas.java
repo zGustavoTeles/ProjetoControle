@@ -1184,7 +1184,7 @@ public class Tabelas {
 				if (!lb.exists("EMPRESA")) {
 
 					sql = " create table empresa ( " + "codigo int," + " nome char(40), " + " cnpj char(30), "
-						+ " usuario char(40) " + ")";
+						+ " usuario char(40), " + " datacadastro date " + ")";
 
 					lb.execute(sql);
 					lb.execute("create index empresa01 ON empresa(codigo,nome)");

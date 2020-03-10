@@ -10,6 +10,7 @@ import totalcross.ui.Label;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
+import totalcross.util.Date;
 
 public class CadastrarEmpresa extends totalcross.ui.Window {
 
@@ -164,10 +165,16 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 
 				lb.executeUpdate(sql);
 				
+				String dataCadastro;
+				Date year = new Date();
+				Date month = new Date();
+				Date day = new Date();
 
-				sql = "INSERT INTO EMPRESA " + "(" + " CODIGO, NOME, CNPJ, USUARIO " + ")" + " VALUES " + "( '" + editCodigo.getText()
-						+ "' , '" + editEmpresa.getText() + "', '" + editCnpj.getText() + "', '" + editUsuario.getText()
-						+ "'" + ")";
+				dataCadastro = Date.formatDate(year.getYear(), month.getMonth(), day.getDay());
+				
+				sql = "INSERT INTO EMPRESA " + "(" + " CODIGO, NOME, CNPJ, USUARIO, DATACADASTRO " + ")" + " VALUES " + "( '" + editCodigo.getText()
+						+ "' , '" + editEmpresa.getText() + "', '" + editCnpj.getText() + "', '" + editUsuario.getText() + "', '" + dataCadastro + "'"
+					    + ")";
 
 				lb.executeUpdate(sql);
 

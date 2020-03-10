@@ -334,8 +334,6 @@ public class Carrinho extends totalcross.ui.Window{
 						
 					} else {
 						
-						Auxiliares.artMsgbox("ERRO", "PASSEI POR AQUI 2");
-						
 						sql = "INSERT INTO 	ESTOQUE " + "(" + " CODIGO, PRODUTO, MARCA, VALOR, QUANTIDADE, "
 								+ " CATEGORIA, DESCRICAO, DATAENTRADA " + ")" + " VALUES " + "( '" + codigoProdTemp
 								+ "' , '" + produtoTemp + "', '" + marcaTemp + "', '" + valorTemp + "', '"

@@ -136,6 +136,8 @@ public class CadastrarProduto extends totalcross.ui.Window{
 	        
 	        reposition();
 	        
+//	        buscaPrimeiroLogin();
+	        
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO", "Erro ao construir a tela cadastrarProduto\n" + e);
 
@@ -189,10 +191,12 @@ public class CadastrarProduto extends totalcross.ui.Window{
 					cmbProduto.removeAll();
 					cmbMarca.removeAll();
 					cmbDescricao.removeAll();
-					carregaCmbProduto();
-					carregaCmbMarca();
+					carregaCmbProduto();			
 					carregaCmbDescricao();
 
+				}else if (evt.target == cmbProduto) {
+					cmbMarca.removeAll();
+					carregaCmbMarca();
 				}
 
 			}
@@ -236,9 +240,6 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			editValor.clear();
 
 			carregaCmbCategoria();
-			carregaCmbDescricao();
-			carregaCmbMarca();
-			carregaCmbProduto();
 
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO", "Erro ao cadastrarProdutoNoEstoque\n" + e);
@@ -318,14 +319,23 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			String sql = "";
 			LitebasePack lb = null;
 			ResultSet rs = null;
+			ResultSet rs2 = null;
 
 			try {
 				try {
 					lb = new LitebasePack();
-					sql = " SELECT M.DESCRICAO, M.CATEGORIA, M.CODIGOPROD, P.CODIGO "
-						+ " FROM MARCA M, PRODUTO P "
-						+ " WHERE M.CODIGOPROD = P.CODIGO "	
-						+ " AND M.CATEGORIA = " + "'" + cmbCategoria.getSelectedItem() + "'";;
+					
+					sql ="SELECT CODIGO FROM PRODUTO "
+						+" WHERE PRODUTO = " + "'" + cmbProduto.getSelectedItem() + "'";	
+					
+					rs2 = lb.executeQuery(sql);
+					rs2.first();
+					codigoProduto = rs2.getInt("CODIGO");
+					
+					
+					sql = " SELECT DESCRICAO, CODIGOPROD"
+						+ " FROM MARCA"
+						+ " WHERE CODIGOPROD = " + codigoProduto;
 
 					rs = lb.executeQuery(sql);
 					rs.first();
@@ -369,7 +379,33 @@ public class CadastrarProduto extends totalcross.ui.Window{
 							cmbDescricao.add(b);
 							rs.next();
 						}
-					} else {
+					} else if (cmbCategoria.getSelectedItem().equals("DIVERSOS")) {
+
+						sql = " SELECT DESCRICAO FROM DESCRICAO ";
+
+						rs = lb.executeQuery(sql);
+						rs.first();
+						for (int i = 0; rs.getRowCount() > i; i++) {
+							String[] b = new String[1];
+							b[0] = rs.getString("DESCRICAO");
+							cmbDescricao.add(b);
+							rs.next();
+						}
+
+						sql = " SELECT DESCRICAO FROM DESCRICAOPESO ";
+
+						rs = lb.executeQuery(sql);
+						rs.first();
+						for (int i = 0; rs.getRowCount() > i; i++) {
+							String[] b = new String[1];
+							b[0] = rs.getString("DESCRICAO");
+							cmbDescricao.add(b);
+							rs.next();
+						}
+
+					}
+
+					else {
 
 						sql = " SELECT DESCRICAO FROM DESCRICAO ";
 
@@ -412,6 +448,48 @@ public class CadastrarProduto extends totalcross.ui.Window{
 
 		result = result + arg;
 		return result;
+	}
+	
+	public void buscaPrimeiroLogin() {
+		{
+			String sql = "";
+			LitebasePack lb = null;
+			ResultSet rs = null;
+
+			try {
+				try {
+					lb = new LitebasePack();
+					sql = " SELECT DATACADASTRO FROM EMPRESA";
+
+					rs = lb.executeQuery(sql);
+					rs.first();
+					
+					String dataAtual;
+					Date year = new Date();
+					Date month = new Date();
+					Date day = new Date();
+
+					dataAtual = Date.formatDate(day.getDay(), month.getMonth(), year.getYear() );
+					
+					if(dataAtual.equals(rs.getDate("DATACADASTRO").toString())){
+						Auxiliares.artMsgbox("CONTROLE", "Bem Vindo a Tela de Cadastro de Produtos!\n-> Por favor prencha todos os campos.\n"
+								+ "-> No valor do produto só será aceito números inteiros\n-> Não será permitido o uso de ',' ou outros sinais.\n"
+								+ "-> Lembre-se de inserir o valor corretamente. Ex: '25.22'\n"
+								+ "-> Caso insira um valor como: '.25.22', o sistema não irá calcular\n"
+								+ "o valor da venda corretamente!");
+					}
+					
+				} finally {
+					if (lb != null)
+						lb.closeAll();
+
+				}
+			} catch (Exception e) {
+				Auxiliares.artMsgbox("ERRO", "Erro ao buscaPrimeiroLogin\n" + e);
+
+			}
+
+		}
 	}
 
 	public static int getDataInt(String formato) throws Exception {

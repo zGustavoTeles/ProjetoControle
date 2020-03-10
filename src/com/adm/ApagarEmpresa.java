@@ -30,7 +30,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 
 		try {
 			
-			lblAviso = new Label("POR FAVOR SELECIONE A EMPRESA QUE DESEJA\n APAGAR DO SISTEMA SISTEMA:");
+			lblAviso = new Label("POR FAVOR SELECIONE A EMPRESA QUE DESEJA\n APAGAR DO SISTEMA:");
 			add(lblAviso);
 			lblAviso.setRect(CENTER, TOP + 2, PREFERRED, PREFERRED);
 			lblAviso.setBackColor(0x003366);

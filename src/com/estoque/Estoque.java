@@ -262,12 +262,14 @@ public class Estoque extends totalcross.ui.Window{
 		try {
 			try {
 				lb = new LitebasePack();
-				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " + "'%" + editBuscar.getText() + "%'";
+				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " 
+				    + "'%" + editBuscar.getText() + "%'"
+				    + "OR MARCA LIKE "  + "'%" + editBuscar.getText() + "%'";
 
 				rs = lb.executeQuery(sql);
 				rs.first();
 				for (int i = 0; rs.getRowCount() > i; i++) {
-					String[] b = new String[7];
+					String[] b = new String[8];
 					b[0] = Convert.toString(rs.getInt("CODIGO"));
 					b[1] = rs.getString("PRODUTO");
 					b[2] = Convert.toString(rs.getInt("QUANTIDADE"));
@@ -275,16 +277,17 @@ public class Estoque extends totalcross.ui.Window{
 					b[4] = rs.getString("CATEGORIA");
 					b[5] = rs.getString("DESCRICAO");
 					b[6] = rs.getString("VALOR");
+					b[7] = rs.getString("DATAENTRADA");
 					gridProdutos.add(b);
 					rs.next();
 				}
 			} finally {
-				if (lb != null)
+ 				if (lb != null)
 					lb.closeAll();
 
 			}
 		} catch (Exception e) {
-			Auxiliares.artMsgbox("ERRO", "Erro carregaGridProdutosBusca\n" + e);
+			Auxiliares.artMsgbox("ERRO", "Erro ao carregaGridProdutosBusca\n" + e);
 
 		}
 
