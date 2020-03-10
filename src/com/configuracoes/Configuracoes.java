@@ -1,6 +1,7 @@
 package com.configuracoes;
 
 import com.auxiliares.Auxiliares;
+import com.email.Email;
 import com.informacao.Informacao;
 
 import nx.componentes.ArtButton;
@@ -14,6 +15,7 @@ public class Configuracoes extends totalcross.ui.Window {
 	private ArtButton		    btnInformacoes;
 	private ArtButton 			btnApagarDados;
 	private ArtButton			btnConfigEmpresa;
+	private ArtButton			btnEnviarEmail;
 	private ArtButton 			btnVoltar;
 
 	public Configuracoes() {
@@ -27,7 +29,7 @@ public class Configuracoes extends totalcross.ui.Window {
 
 			btnInformacoes = new ArtButton("INFORMAÇÕES");
 			add(btnInformacoes);
-			btnInformacoes.setRect(CENTER, TOP + 150, width - 200, PREFERRED + 80);
+			btnInformacoes.setRect(CENTER, TOP + 120, width - 200, PREFERRED + 80);
 			btnInformacoes.setBackColor(0x003366);
 			btnInformacoes.setForeColor(Color.WHITE);
 			
@@ -42,6 +44,12 @@ public class Configuracoes extends totalcross.ui.Window {
 			btnApagarDados.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
 			btnApagarDados.setBackColor(0x003366);
 			btnApagarDados.setForeColor(Color.WHITE);
+			
+			btnEnviarEmail = new ArtButton("ENVIAR EMAIL");
+			add(btnEnviarEmail);
+			btnEnviarEmail.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
+			btnEnviarEmail.setBackColor(0x003366);
+			btnEnviarEmail.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
@@ -78,6 +86,9 @@ public class Configuracoes extends totalcross.ui.Window {
 				} else if (evt.target == btnConfigEmpresa) {
 					InfoEmpresa alterarEmpresa = new InfoEmpresa();
 					alterarEmpresa.popup();
+				}else if (evt.target == btnEnviarEmail) {
+					Email email = new Email();
+					email.popup();
 				}
 
 			}
