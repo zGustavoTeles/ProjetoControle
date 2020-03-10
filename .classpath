@@ -3,5 +3,5 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/TotalCross3 344/dist/tc.jar" sourcepath="C:/TotalCross3 344/src"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="output" path="src"/>
 </classpath>
