@@ -104,6 +104,7 @@ public class Estoque extends totalcross.ui.Window{
 		gridProdutos.disableSort = false;
 		gridProdutos.canClickSelectAll = true;
 		gridProdutos.boldCheck = false;
+		gridProdutos.enableColumnResize = false;
 		gridProdutos.setRect(Container.LEFT + 1, Container.AFTER + 10,
 				Container.FILL - 1, Container.FIT, btnBuscar);
 		

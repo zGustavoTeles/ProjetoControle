@@ -59,7 +59,8 @@ public class Email extends totalcross.ui.Window{
 			imgSuporte.centerImage = true;
 			add(imgSuporte, CENTER, AFTER + 5, PREFERRED, PREFERRED, lblInfoEmail);
 
-			multInfoEmail = new MultiEdit(4, 0);
+//			multInfoEmail = new MultiEdit(4, 0);
+			multInfoEmail = new MultiEdit();
 			add(multInfoEmail);
 			multInfoEmail.setValidChars("1234567890abcdefghijklmnopqrstuvwxyz. ,:{}[]\\/!@#$%&()_-+*|^´`");
 			multInfoEmail.setBackColor(Color.WHITE);
@@ -98,9 +99,15 @@ public class Email extends totalcross.ui.Window{
 
 				} else if (evt.target == btnEnviarEmail) {
 
+					if (multInfoEmail.getText().equals("")) {
+						Auxiliares.artMsgbox("CONTROLE", "Deve-se inscrever algo na mensagem!");
+						return;
+					}
+
 					String[] ArtButtonArray = { "Sim", "Não" };
 
-					int i = Auxiliares.artMsgbox("CONTROLE", "Deseja enviar a mensagem para o suporte?", ArtButtonArray);
+					int i = Auxiliares.artMsgbox("CONTROLE", "Deseja enviar a mensagem para o suporte?",
+							ArtButtonArray);
 
 					if (i == 1) {
 						return;

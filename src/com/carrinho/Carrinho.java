@@ -142,6 +142,7 @@ public class Carrinho extends totalcross.ui.Window{
 			gridCarrinho.disableSort = false;
 			gridCarrinho.canClickSelectAll = true;
 			gridCarrinho.boldCheck = false;
+			gridCarrinho.enableColumnResize = false;
 			gridCarrinho.setRect(Container.LEFT + 1, Container.AFTER + 10,
 					Container.FILL - 1, Container.FIT, lblTotal);
 			

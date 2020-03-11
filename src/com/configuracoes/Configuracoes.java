@@ -45,7 +45,7 @@ public class Configuracoes extends totalcross.ui.Window {
 			btnApagarDados.setBackColor(0x003366);
 			btnApagarDados.setForeColor(Color.WHITE);
 			
-			btnEnviarEmail = new ArtButton("ENVIAR EMAIL");
+			btnEnviarEmail = new ArtButton("SUPORTE");
 			add(btnEnviarEmail);
 			btnEnviarEmail.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
 			btnEnviarEmail.setBackColor(0x003366);

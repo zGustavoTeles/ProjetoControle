@@ -3,9 +3,12 @@ package com.relatorio;
 import com.agenda.Agenda;
 import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
+import com.venda.Venda;
+
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
+import totalcross.ui.Button;
 import totalcross.ui.Container;
 import totalcross.ui.Edit;
 import totalcross.ui.Grid;
@@ -13,6 +16,7 @@ import totalcross.ui.Label;
 import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
+import totalcross.ui.event.GridEvent;
 import totalcross.ui.event.PenEvent;
 import totalcross.ui.gfx.Color;
 
@@ -25,8 +29,19 @@ public class Relatorio extends totalcross.ui.Window{
 	private Grid							gridProdutos;
 	private ArtButton 						btnVoltar;
 	private ArtButton						btnBuscar;
-	
+	private ArtButton						btnDetalhar;
 	public Agenda							agenda;
+	
+	public static String					codigoVenda = "";
+	public static String					produto = "";
+	public static String					quantidade = "";
+	public static String				    valor = "";
+	public static String					dataVenda = "";
+	public static String					marca = "";
+	public static String  					descricao;
+	public static String  					tipoPagamento;
+	public static String  					categoria;
+	
 	public Relatorio(){
 		 setBackColor(0x003366);
 		 initUI();
@@ -71,18 +86,26 @@ public class Relatorio extends totalcross.ui.Window{
 			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
+			
+			btnDetalhar = new ArtButton("DETALHAR");
+			add(btnDetalhar);
+			btnDetalhar.setRect(LEFT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
+			btnDetalhar.setBackColor(0xDF7401);
+			btnDetalhar.setForeColor(Color.WHITE);
 
-			int gridWidths[] = new int[7];
+			int gridWidths[] = new int[9];
 			gridWidths[0] = 100;
 			gridWidths[1] = 2;
 			gridWidths[2] = 100;
 			gridWidths[3] = 100;
 			gridWidths[4] = 8;
 			gridWidths[5] = 5;
-			gridWidths[6] = 5;
+			gridWidths[6] = 30;
+			gridWidths[7] = 30;
+			gridWidths[8] = 20;
 
-			String[] caps = { "DATA", "COD.V", "PRODUTO", "MARCA", "DESC.", "QNT", "VALOR" };
-			int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT };
+			String[] caps = { "DATA", "COD.", "PRODUTO", "MARCA", "DESC.", "QNT", "TIPO.PAG.", "CATEGORIA", "VALOR" };
+			int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT };
 			gridProdutos = new Grid(caps, gridWidths, aligns, false);
 			add(gridProdutos);
 			gridProdutos.setBackColor(Color.WHITE);
@@ -94,8 +117,9 @@ public class Relatorio extends totalcross.ui.Window{
 			gridProdutos.disableSort = false;
 			gridProdutos.canClickSelectAll = true;
 			gridProdutos.boldCheck = false;
+			gridProdutos.enableColumnResize = false;
 			gridProdutos.setRect(Container.LEFT + 1, Container.AFTER + 10, Container.FILL - 1, Container.FIT, lblData);
-			
+
 			reposition();
 			
 		} catch (Exception e) {
@@ -115,18 +139,25 @@ public class Relatorio extends totalcross.ui.Window{
 
 				} else if (evt.target == btnBuscar) {
 					if (editDataUm.getText().equals("") || editDataDois.getText().equals("")) {
-						
-						Auxiliares.artMsgbox("CONTROLE",
-								"Preencha todos os campos de data à serem pesquisados!");
+
+						Auxiliares.artMsgbox("CONTROLE", "Preencha todos os campos de data à serem pesquisados!");
 						return;
-						
+
 					} else {
 						pesquisaVendasPorPeriodo();
 						editDataUm.setText("");
 						editDataDois.setText("");
 					}
+				} else if (evt.target == btnDetalhar) {
+					if (gridProdutos.getSelectedItem() == null) {
+						Auxiliares.artMsgbox("CONTROLE", "Deve-se selecionar uma venda!");
+						return;
+					} else {
+						DetalharVenda detalharVenda = new DetalharVenda();
+						detalharVenda.popup();
+					}
 				}
-				
+
 				break;
 			case PenEvent.PEN_DOWN:
 
@@ -136,8 +167,30 @@ public class Relatorio extends totalcross.ui.Window{
 				} else if (evt.target == editDataDois) {
 					Agenda.setDateByCalendarBox(editDataDois);
 				}
+				break;
+			case GridEvent.SELECTED_EVENT:
+				if (evt.target == gridProdutos) {
+
+					try {
+
+						dataVenda = gridProdutos.getSelectedItem()[0];
+						codigoVenda = gridProdutos.getSelectedItem()[1];
+						produto = gridProdutos.getSelectedItem()[2];
+						marca = gridProdutos.getSelectedItem()[3];
+						descricao = gridProdutos.getSelectedItem()[4];
+						quantidade = gridProdutos.getSelectedItem()[5];
+						tipoPagamento = gridProdutos.getSelectedItem()[6];
+						categoria = gridProdutos.getSelectedItem()[7];
+						valor = gridProdutos.getSelectedItem()[8];
+
+					} catch (Exception e) {
+						Auxiliares.artMsgbox("CONTROLE", "Clique em um Item!");
+					}
+
+				}
+
 			}
-			
+
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela relatorio\n" + e);
 		}
@@ -162,14 +215,16 @@ public class Relatorio extends totalcross.ui.Window{
 				rs = lb.executeQuery(sql);
 				rs.first();
 				for (int i = 0; rs.getRowCount() > i; i++) {
-					String[] b = new String[7];
+					String[] b = new String[9];
 					b[0] = rs.getString("DATASAIDA");
 					b[1] = Convert.toString(rs.getInt("CODIGO"));
 					b[2] = rs.getString("PRODUTO");
 					b[3] = rs.getString("MARCA");
 					b[4] = rs.getString("DESCRICAO");
 					b[5] = Convert.toString(rs.getInt("QUANTIDADE"));
-					b[6] = rs.getString("VALOR") + " $$";
+					b[6] = rs.getString("TIPOPAGAMENTO");
+					b[7] = rs.getString("CATEGORIA");
+					b[8] = rs.getString("VALOR") + " $$";
 					gridProdutos.add(b);
 					rs.next();
 				}

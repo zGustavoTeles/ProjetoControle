@@ -99,10 +99,10 @@ public class Venda extends totalcross.ui.Window{
 				gridWidths[0] = 40;
 				gridWidths[1] = 50;
 				gridWidths[2] = 40;
-				gridWidths[3] = 100;
+				gridWidths[3] = 110;
 				gridWidths[4] = 100;
 				gridWidths[5] = 10;
-				gridWidths[6] = 5;
+				gridWidths[6] = 2;
 	
 			String[] caps = { "COD.", "PRODUTO", "QNT", "MARCA", "CATEGORIA","DESC", " VALOR"};
 			int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT};
@@ -115,6 +115,8 @@ public class Venda extends totalcross.ui.Window{
 			gridProdutos.disableSort = false;
 			gridProdutos.canClickSelectAll = true;
 			gridProdutos.boldCheck = false;
+			gridProdutos.enableColumnResize = false;
+//			gridProdutos.captionsBackColor = Color.BLACK;
 			gridProdutos.setRect(Container.LEFT + 1, Container.AFTER + 10,
 					Container.FILL - 1, Container.FIT, btnBuscar);
 			
