@@ -5,12 +5,14 @@ import com.litebase.LitebasePack;
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.ui.ComboBox;
+import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
 import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.event.PenEvent;
 import totalcross.ui.gfx.Color;
+import totalcross.ui.image.Image;
 
 public class ApagarEmpresa extends totalcross.ui.Window {
 
@@ -18,6 +20,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 	private ComboBox			cmbEmpresa;
 	private ArtButton			btnApagar;
 	private ArtButton 			btnVoltar;  
+	private ImageControl		imgApagarEmpresa;
 	
 	private int					codigoEmpresa = 0;
 
@@ -36,15 +39,20 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 			lblAviso.setBackColor(0x003366);
 			lblAviso.setForeColor(Color.WHITE);
 			
+			imgApagarEmpresa = new ImageControl(new Image("img/removerCarrinho.png"));
+			imgApagarEmpresa.scaleToFit = true;
+			imgApagarEmpresa.centerImage = true;
+			add(imgApagarEmpresa, CENTER, AFTER, SCREENSIZE + 40, SCREENSIZE + 40,lblAviso);
+			
 			cmbEmpresa = new ComboBox();
 			add(cmbEmpresa);
-			cmbEmpresa.setRect(LEFT, AFTER + 25, FILL + 5, PREFERRED);		
+			cmbEmpresa.setRect(LEFT, AFTER + 10, FILL + 5, PREFERRED, imgApagarEmpresa);		
 			
 			btnApagar = new ArtButton("APAGAR");
 			add(btnApagar);
-			btnApagar.setRect(CENTER, AFTER + 350, width - 350, PREFERRED, cmbEmpresa);
+			btnApagar.setRect(LEFT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
 			btnApagar.setBackColor(0xDF0101);
-			btnApagar.setForeColor(Color.WHITE);	
+			btnApagar.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);

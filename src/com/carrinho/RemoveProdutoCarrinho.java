@@ -7,11 +7,13 @@ import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
 import totalcross.ui.Edit;
+import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
 import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
+import totalcross.ui.image.Image;
 
 public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 
@@ -28,7 +30,7 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 	public Edit 				editProduto;
 	public ArtButton		    btnRemover;
 	public ArtButton 			btnVoltar;
-	
+	private ImageControl		imgRemoverCarrinho;
 	public String				valorProdutoSt;
 	public int					totalCarrinho = 0;
 	public int  				quantidadeTemp = 0;
@@ -43,47 +45,46 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 
 		try {
 			
-			lblAviso = new Label(" POR FAVOR INSIRA A QUANTIDADE DO PRODUTO\n QUE DESEJA REMOVER DO CARRINHO:");
-			add(lblAviso);
-			lblAviso.setRect(CENTER, TOP, PREFERRED, PREFERRED);
-			lblAviso.setBackColor(0x003366);
-			lblAviso.setForeColor(Color.WHITE);
+			imgRemoverCarrinho = new ImageControl(new Image("img/removerCarrinho.png"));
+			imgRemoverCarrinho.scaleToFit = true;
+			imgRemoverCarrinho.centerImage = true;
+			add(imgRemoverCarrinho, CENTER, TOP - 20, SCREENSIZE + 40, SCREENSIZE + 40);
 			
 			lblProduto = new Label("PRODUTO:      ");
 			add(lblProduto);
-			lblProduto.setRect(LEFT + 150, AFTER + 70, PREFERRED, PREFERRED, lblAviso);
+			lblProduto.setRect(LEFT + 90, AFTER + 10, PREFERRED, PREFERRED, imgRemoverCarrinho);
 			lblProduto.setBackColor(0x003366);
 			lblProduto.setForeColor(Color.WHITE);
 
 			editProduto = new Edit();
 			add(editProduto);
-			editProduto.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblProduto);
+			editProduto.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblProduto);
 			editProduto.setBackColor(Color.WHITE);
 			editProduto.setForeColor(0x003366);
 			editProduto.setEditable(false);
 			
 			lblCodigo = new Label("CÓDIGO:          ");
 			add(lblCodigo);
-			lblCodigo.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editProduto);
+			lblCodigo.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editProduto);
 			lblCodigo.setBackColor(0x003366);
 			lblCodigo.setForeColor(Color.WHITE);
 
 			editCodigo = new Edit();
 			add(editCodigo);
-			editCodigo.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblCodigo);
+			editCodigo.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblCodigo);
 			editCodigo.setBackColor(Color.WHITE);
 			editCodigo.setForeColor(0x003366);
 			editCodigo.setEditable(false);
 			
 			lblQntCarrinho = new Label("CARRINHO:     ");
 			add(lblQntCarrinho);
-			lblQntCarrinho.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editCodigo);
+			lblQntCarrinho.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editCodigo);
 			lblQntCarrinho.setBackColor(0x003366);
 			lblQntCarrinho.setForeColor(Color.WHITE);
 
 			editQntCarrinho = new Edit();
 			add(editQntCarrinho);
-			editQntCarrinho.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblQntCarrinho);
+			editQntCarrinho.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblQntCarrinho);
 			editQntCarrinho.setBackColor(Color.WHITE);
 			editQntCarrinho.setForeColor(0x003366);
 			editQntCarrinho.setEditable(false);
@@ -91,26 +92,26 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 			
 			lblQuantidade = new Label("QUANTIDADE: ");
 			add(lblQuantidade);
-			lblQuantidade.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editQntCarrinho);
+			lblQuantidade.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editQntCarrinho);
 			lblQuantidade.setBackColor(0x003366);
 			lblQuantidade.setForeColor(Color.WHITE);
 			
 			editQuantidade = new Edit();
 			add(editQuantidade);
-			editQuantidade.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblQuantidade);
+			editQuantidade.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblQuantidade);
 			editQuantidade.setBackColor(Color.WHITE);
 			editQuantidade.setForeColor(0x003366);
 			editQuantidade.setValidChars("0 1 2 3 4 5 6 7 8 9");
 			
 			lblTotal = new Label("TOTAL:            ");
 			add(lblTotal);
-			lblTotal.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editQuantidade);
+			lblTotal.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editQuantidade);
 			lblTotal.setBackColor(0x003366);
 			lblTotal.setForeColor(Color.WHITE);	
 
 			editTotal = new Edit();
 			add(editTotal);
-			editTotal.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblTotal);
+			editTotal.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblTotal);
 			editTotal.setBackColor(Color.WHITE);
 			editTotal.setForeColor(0x003366);
 			editTotal.setText(Carrinho.totalProduto);
@@ -118,7 +119,7 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 			
 			btnRemover = new ArtButton("REMOVER");
 			add(btnRemover);
-			btnRemover.setRect(CENTER, AFTER + 50, SCREENSIZE - 4, PREFERRED + 15, editTotal);
+			btnRemover.setRect(LEFT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
 			btnRemover.setBackColor(0xDF0101);
 			btnRemover.setForeColor(Color.WHITE);
 

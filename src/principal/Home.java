@@ -30,7 +30,7 @@ public class Home extends MainWindow{
 		public static Edit              editUsuario;
 		public static Edit				editCodigo;
 		
-		public Label					lblCodigo;
+		public Label					lblCodigo; 
 		public Label					lblEmpresa;
 		public Label            		lblCnpj;
 		public Label					lblUsuario;

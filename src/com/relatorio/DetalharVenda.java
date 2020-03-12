@@ -67,7 +67,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			imgVenda = new ImageControl(new Image("img/venda.png"));
 			imgVenda.scaleToFit = true;
 			imgVenda.centerImage = true;
-			add(imgVenda, CENTER, TOP - 50, SCREENSIZE + 50, SCREENSIZE + 50, lblAviso);
+			add(imgVenda, CENTER, TOP - 50, SCREENSIZE + 50, SCREENSIZE + 50);
 			
 			lblProduto = new Label("PRODUTO:     ");
 			add(lblProduto);
@@ -97,7 +97,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			editMarca.setText(Relatorio.marca);
 			editMarca.setEditable(false);
 			
-			lblDescricao = new Label("DESCRICAO:  ");
+			lblDescricao = new Label("DESCRICAO:   ");
 			add(lblDescricao);
 			lblDescricao.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editMarca);
 			lblDescricao.setBackColor(0x003366);
@@ -122,10 +122,10 @@ public class DetalharVenda extends totalcross.ui.Window {
 			editCategoria.setRect(AFTER, SAME, FILL - 100, PREFERRED, lblCategoria);
 			editCategoria.setBackColor(Color.WHITE);
 			editCategoria.setForeColor(0x003366);
-			editCategoria.setText(Relatorio.produto);
+			editCategoria.setText(Relatorio.categoria);
 			editCategoria.setEditable(false);
 
-			lblTipoPagamento = new Label("PAGAMENTO  ");
+			lblTipoPagamento = new Label("PAGAMENTO ");
 			add(lblTipoPagamento);
 			lblTipoPagamento.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editCategoria);
 			lblTipoPagamento.setBackColor(0x003366);

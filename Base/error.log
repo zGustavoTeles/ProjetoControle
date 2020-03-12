@@ -1,0 +1,27 @@
+
+opening for read totalcross/res/mp3/chime.mp3
+#0 - the file given: totalcross/res/mp3/chime.mp3
+#1 - dataPath: totalcross/res/mp3/chime.mp3
+#2 - MainWindow's path from current folder: samples/apps/sqlconsole/totalcross/res/mp3/chime.mp3
+#3 - classpath
+#4 - jar file
+file not found
+
+6480 - Exception: class litebase.DriverException
+Message: File not found: c:/projetos/projet~1/base/NXNX-relatorio.db
+Stack trace:
+litebase.DriverException: File not found: c:/projetos/projet~1/base/NXNX-relatorio.db
+litebase.LitebaseConnection.executeQuery(Unknown Source)
+samples.apps.sqlconsole.SQLConsole.processSQL(SQLConsole.java:353)
+samples.apps.sqlconsole.SQLConsole.execute(SQLConsole.java:456)
+samples.apps.sqlconsole.SQLConsole.onEvent(SQLConsole.java:534)
+totalcross.ui.Control._onEvent(Control.java:1478)
+totalcross.ui.Control.postEvent(Control.java:1101)
+totalcross.ui.Control.postPressedEvent(Control.java:436)
+totalcross.ui.Button.onEvent(Button.java:470)
+totalcross.ui.Control._onEvent(Control.java:1478)
+totalcross.ui.Control.postEvent(Control.java:1101)
+totalcross.ui.Window._postEvent(Window.java:1012)
+totalcross.TCEventThread.privatePumpEvents(TCEventThread.java:92)
+totalcross.TCEventThread.run(TCEventThread.java:51)
+

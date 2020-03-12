@@ -6,10 +6,12 @@ import com.litebase.LitebasePack;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
 import totalcross.ui.Edit;
+import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
+import totalcross.ui.image.Image;
 import totalcross.util.Date;
 
 public class CadastrarEmpresa extends totalcross.ui.Window {
@@ -27,6 +29,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 	public ArtButton		    btnCadastrar;
 	public ArtButton			btnGerarCodigo;
 	public ArtButton 			btnVoltar;
+	public ImageControl		    imgCadastrarEmpresa;
 
 	public CadastrarEmpresa() {
 		setBackColor(0x003366);
@@ -43,11 +46,16 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			lblAviso.setBackColor(0x003366);
 			lblAviso.setForeColor(Color.WHITE);
 			
+			imgCadastrarEmpresa = new ImageControl(new Image("img/cadastrar.png"));
+			imgCadastrarEmpresa.scaleToFit = true;
+			imgCadastrarEmpresa.centerImage = true;
+			add(imgCadastrarEmpresa, CENTER, AFTER, SCREENSIZE + 40, SCREENSIZE + 40,lblAviso);
+			
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);
 			lblEmpresa.setBackColor(0x003366);
 			lblEmpresa.setForeColor(Color.WHITE);
-			lblEmpresa.setRect(LEFT, AFTER + 20, PREFERRED, PREFERRED, lblAviso);
+			lblEmpresa.setRect(LEFT, AFTER - 20, PREFERRED, PREFERRED, imgCadastrarEmpresa);
 
 			add(editEmpresa = new Edit(), LEFT, AFTER + 20, PREFERRED, PREFERRED, lblEmpresa);
 			editEmpresa.setBackColor(Color.WHITE);
@@ -86,9 +94,9 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			
 			btnCadastrar = new ArtButton("CADASTRAR");
 			add(btnCadastrar);
-			btnCadastrar.setRect(CENTER, AFTER + 50, width - 350, PREFERRED, editSenha);
+			btnCadastrar.setRect(LEFT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
 			btnCadastrar.setBackColor(0x009933);
-			btnCadastrar.setForeColor(Color.WHITE);		
+			btnCadastrar.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);

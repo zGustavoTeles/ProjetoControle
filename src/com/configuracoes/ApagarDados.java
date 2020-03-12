@@ -7,11 +7,13 @@ import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
 import totalcross.ui.Edit;
+import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
 import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
+import totalcross.ui.image.Image;
 
 public class ApagarDados extends totalcross.ui.Window {
 
@@ -22,6 +24,7 @@ public class ApagarDados extends totalcross.ui.Window {
 	public Edit 				editCodigo;
 	public ArtButton		    btnApagar;
 	public ArtButton 			btnVoltar;
+	public ImageControl		    imgApagarDados;
 	
 	private int 				codigoEmpresa;
 
@@ -40,35 +43,40 @@ public class ApagarDados extends totalcross.ui.Window {
 			lblAviso.setBackColor(0x003366);
 			lblAviso.setForeColor(Color.WHITE);
 			
+			imgApagarDados = new ImageControl(new Image("img/apagarDados.png"));
+			imgApagarDados.scaleToFit = true;
+			imgApagarDados.centerImage = true;
+			add(imgApagarDados, CENTER, AFTER + 10, SCREENSIZE + 40, SCREENSIZE + 40, lblAviso);
+			
 			lblEmpresa = new Label("EMPRESA:    ");
 			add(lblEmpresa);
-			lblEmpresa.setRect(LEFT + 150, CENTER - 100, PREFERRED, PREFERRED);
+			lblEmpresa.setRect(LEFT + 90, AFTER + 30, PREFERRED, PREFERRED, imgApagarDados);
 			lblEmpresa.setBackColor(0x003366);
 			lblEmpresa.setForeColor(Color.WHITE);
 
 			editEmpresa = new Edit();
 			add(editEmpresa);
-			editEmpresa.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblEmpresa);
+			editEmpresa.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblEmpresa);
 			editEmpresa.setBackColor(Color.WHITE);
 			editEmpresa.setForeColor(0x003366);
 			editEmpresa.setEditable(false);
 
 			lblCodigo = new Label("CÓDIGO:       ");
 			add(lblCodigo);
-			lblCodigo.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editEmpresa);
+			lblCodigo.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editEmpresa);
 			lblCodigo.setBackColor(0x003366);
 			lblCodigo.setForeColor(Color.WHITE);
 			
 			editCodigo = new Edit();
 			editCodigo.setMode(TAB_ONLY_BORDER);
 			add(editCodigo);
-			editCodigo.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblCodigo);
+			editCodigo.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblCodigo);
 			editCodigo.setBackColor(Color.WHITE);
 			editCodigo.setForeColor(0x003366);
 
 			btnApagar = new ArtButton("APAGAR");
 			add(btnApagar);
-			btnApagar.setRect(CENTER, AFTER + 80, width - 350, PREFERRED, editCodigo);
+			btnApagar.setRect(LEFT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
 			btnApagar.setBackColor(0xDF0101);
 			btnApagar.setForeColor(Color.WHITE);
 

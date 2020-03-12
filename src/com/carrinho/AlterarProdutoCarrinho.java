@@ -11,11 +11,13 @@ import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
 import totalcross.ui.Edit;
+import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
 import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
+import totalcross.ui.image.Image;
 import totalcross.util.Date;
 
 public class AlterarProdutoCarrinho extends totalcross.ui.Window {
@@ -42,7 +44,7 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 	private ArtButton 			 btnAlterar;
 	private ArtButton 			 btnVoltar;
 	private ComboBox			 cmbTipoPagamento;
-	
+	private ImageControl		 imgAlterar;
 	public double 				 valorProduto = 0.0;
 	public double				 total = 0.0;
 	public int				     qntEstoqueFinal = 0;
@@ -68,99 +70,98 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 
 		try {
 			
-			lblAviso = new Label(" POR FAVOR INSIRA A QUANTIDADE DO\n PRODUTO QUE DESEJA ALTERAR DO CARRINHO:");
-			add(lblAviso);
-			lblAviso.setRect(CENTER, TOP, PREFERRED, PREFERRED);
-			lblAviso.setBackColor(0x003366);
-			lblAviso.setForeColor(Color.WHITE);
+			imgAlterar = new ImageControl(new Image("img/alterar.png"));
+			imgAlterar.scaleToFit = true;
+			imgAlterar.centerImage = true;
+			add(imgAlterar, CENTER, TOP - 15, SCREENSIZE + 40, SCREENSIZE + 40);
 			
 			lblCategoria = new Label("CATEGORIA:   ");
 			add(lblCategoria);
-			lblCategoria.setRect(LEFT + 150, AFTER + 70, PREFERRED, PREFERRED, lblAviso);
+			lblCategoria.setRect(LEFT + 90, AFTER - 10, PREFERRED, PREFERRED, imgAlterar);
 			lblCategoria.setBackColor(0x003366);
 			lblCategoria.setForeColor(Color.WHITE);
 
 			editCategoria = new Edit();
 			add(editCategoria);
-			editCategoria.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblCategoria);
+			editCategoria.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblCategoria);
 			editCategoria.setBackColor(Color.WHITE);
 			editCategoria.setForeColor(0x003366);
 			editCategoria.setEditable(false);
 			
 			lblMarca = new Label("MARCA:           ");
 			add(lblMarca);
-			lblMarca.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editCategoria);
+			lblMarca.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editCategoria);
 			lblMarca.setBackColor(0x003366);
 			lblMarca.setForeColor(Color.WHITE);
 
 			editMarca = new Edit();
 			add(editMarca);
-			editMarca.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblMarca);
+			editMarca.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblMarca);
 			editMarca.setBackColor(Color.WHITE);
 			editMarca.setForeColor(0x003366);
 			editMarca.setEditable(false);
 			
 			lblDescricao = new Label("DESCRICAO:   ");
 			add(lblDescricao);
-			lblDescricao.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editMarca);
+			lblDescricao.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editMarca);
 			lblDescricao.setBackColor(0x003366);
 			lblDescricao.setForeColor(Color.WHITE);
 
 			editDescricao = new Edit();
 			add(editDescricao);
-			editDescricao.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblDescricao);
+			editDescricao.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblDescricao);
 			editDescricao.setBackColor(Color.WHITE);
 			editDescricao.setForeColor(0x003366);
 			editDescricao.setEditable(false);		
 
 			lblProduto = new Label("PRODUTO:      ");
 			add(lblProduto);
-			lblProduto.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editDescricao);
+			lblProduto.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editDescricao);
 			lblProduto.setBackColor(0x003366);
 			lblProduto.setForeColor(Color.WHITE);
 
 			editProduto = new Edit();
 			add(editProduto);
-			editProduto.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblProduto);
+			editProduto.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblProduto);
 			editProduto.setBackColor(Color.WHITE);
 			editProduto.setForeColor(0x003366);
 			editProduto.setEditable(false);
 
 			lblCodigo = new Label("CÓDIGO:          ");
 			add(lblCodigo);
-			lblCodigo.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editProduto);
+			lblCodigo.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editProduto);
 			lblCodigo.setBackColor(0x003366);
 			lblCodigo.setForeColor(Color.WHITE);
 
 			editCodigo = new Edit();
 			add(editCodigo);
-			editCodigo.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblCodigo);
+			editCodigo.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblCodigo);
 			editCodigo.setBackColor(Color.WHITE);
 			editCodigo.setForeColor(0x003366);
 			editCodigo.setEditable(false);
 
 			lblEstoque = new Label("ESTOQUE:       ");
 			add(lblEstoque);
-			lblEstoque.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editCodigo);
+			lblEstoque.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editCodigo);
 			lblEstoque.setBackColor(0x003366);
 			lblEstoque.setForeColor(Color.WHITE);
 
 			editEstoque = new Edit();
 			add(editEstoque);
-			editEstoque.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblEstoque);
+			editEstoque.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblEstoque);
 			editEstoque.setBackColor(Color.WHITE);
 			editEstoque.setForeColor(0x003366);
 			editEstoque.setEditable(false);
-			
+
 			lblQuantidade = new Label("QUANTIDADE: ");
 			add(lblQuantidade);
-			lblQuantidade.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, lblEstoque);
+			lblQuantidade.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, lblEstoque);
 			lblQuantidade.setBackColor(0x003366);
 			lblQuantidade.setForeColor(Color.WHITE);
 
 			editQuantidade = new Edit();
 			add(editQuantidade);
-			editQuantidade.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblQuantidade);
+			editQuantidade.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblQuantidade);
 			editQuantidade.setBackColor(Color.WHITE);
 			editQuantidade.setForeColor(0x003366);
 			editQuantidade.setValidChars("0 1 2 3 4 5 6 7 8 9");
@@ -168,38 +169,38 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 
 			lblValor = new Label("VALOR:            ");
 			add(lblValor);
-			lblValor.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, lblQuantidade);
+			lblValor.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, lblQuantidade);
 			lblValor.setBackColor(0x003366);
 			lblValor.setForeColor(Color.WHITE);
 
 			editValor = new Edit();
 			add(editValor);
-			editValor.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblValor);
+			editValor.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblValor);
 			editValor.setBackColor(Color.WHITE);
 			editValor.setForeColor(0x003366);
 			editValor.setEditable(false);
 
 			lblTotal = new Label("TOTAL:            ");
 			add(lblTotal);
-			lblTotal.setRect(LEFT + 150, AFTER + 15, PREFERRED, PREFERRED, editValor);
+			lblTotal.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editValor);
 			lblTotal.setBackColor(0x003366);
-			lblTotal.setForeColor(Color.WHITE);	
+			lblTotal.setForeColor(Color.WHITE);
 
 			editTotal = new Edit();
 			add(editTotal);
-			editTotal.setRect(AFTER, SAME, FILL - 150, PREFERRED, lblTotal);
+			editTotal.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblTotal);
 			editTotal.setBackColor(Color.WHITE);
 			editTotal.setForeColor(0x003366);
-			editTotal.setText(Carrinho.totalProduto);
 			editTotal.setEditable(false);
+			editTotal.setText(Carrinho.totalProduto);
 			
 			cmbTipoPagamento = new ComboBox();
 			add(cmbTipoPagamento);
 			cmbTipoPagamento.setRect(LEFT + 150, AFTER + 15, FILL - 140, PREFERRED, editTotal);
-
+			
 			btnAlterar = new ArtButton("ALTERAR");
 			add(btnAlterar);
-			btnAlterar.setRect(CENTER, AFTER + 50, SCREENSIZE - 4, PREFERRED + 15, cmbTipoPagamento);
+			btnAlterar.setRect(LEFT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
 			btnAlterar.setBackColor(0x009933);
 			btnAlterar.setForeColor(Color.WHITE);
 
