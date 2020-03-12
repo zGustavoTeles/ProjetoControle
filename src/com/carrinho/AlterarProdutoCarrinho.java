@@ -73,7 +73,7 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 			imgAlterar = new ImageControl(new Image("img/alterar.png"));
 			imgAlterar.scaleToFit = true;
 			imgAlterar.centerImage = true;
-			add(imgAlterar, CENTER, TOP - 15, SCREENSIZE + 40, SCREENSIZE + 40);
+			add(imgAlterar, CENTER, TOP - 20, SCREENSIZE + 30, SCREENSIZE + 30);
 			
 			lblCategoria = new Label("CATEGORIA:   ");
 			add(lblCategoria);
@@ -212,6 +212,7 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 			
 			reposition();
 			
+			editQuantidade.requestFocus();
 			carregaCmbTipoPagamento();
 			
 			if (Carrinho.tipoPagamentoProduto.equals("DINHEIRO")) {

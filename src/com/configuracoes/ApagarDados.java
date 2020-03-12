@@ -88,6 +88,7 @@ public class ApagarDados extends totalcross.ui.Window {
 			
 			reposition();
 			
+			editCodigo.requestFocus();
 			setEmpresa();
 			
 		} catch (Exception e) {

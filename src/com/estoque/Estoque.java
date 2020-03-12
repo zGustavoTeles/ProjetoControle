@@ -82,14 +82,14 @@ public class Estoque extends totalcross.ui.Window{
             btnVoltar.setForeColor(Color.WHITE);
             
             int gridWidths[] = new int[8];
-			gridWidths[0] = 30;
-			gridWidths[1] = 100;
-			gridWidths[2] = 40;
-			gridWidths[3] = 100;
-			gridWidths[4] = 100;
-			gridWidths[5] = 10;
-			gridWidths[6] = 5;
-			gridWidths[7] = 100;
+			gridWidths[0] = 5;
+			gridWidths[1] = 190;
+			gridWidths[2] = 100;
+			gridWidths[3] = 190;
+			gridWidths[4] = 190;
+			gridWidths[5] = 100;
+			gridWidths[6] = 140;
+			gridWidths[7] = 120;
 
 		String[] caps = { "COD.", "PRODUTO", "QNT", "MARCA", "CATEGORIA","DESC", " VALOR", "ENTRADA"};
 		int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT};

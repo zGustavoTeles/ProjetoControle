@@ -121,17 +121,17 @@ public class Carrinho extends totalcross.ui.Window{
             btnRemover.setForeColor(Color.WHITE);
 
             int gridWidths[] = new int[9];
-				gridWidths[0] = 10;
-				gridWidths[1] = 50;
-				gridWidths[2] = 10;
-				gridWidths[3] = 50;
-				gridWidths[4] = 10;
-				gridWidths[5] = 50;
-				gridWidths[6] = 20;
-				gridWidths[7] = 50;
-				gridWidths[8] = 20;
+				gridWidths[0] = 5;
+				gridWidths[1] = 190;
+				gridWidths[2] = 100;
+				gridWidths[3] = 5;
+				gridWidths[4] = 190;
+				gridWidths[5] = 190;
+				gridWidths[6] = 100;
+				gridWidths[7] = 100;
+				gridWidths[8] = 140;
 	
-			String[] caps = { "COD.", "PRODUTO", "QNT", "COD.P..", "MARCA", "CAT.","DESC.", "PAG.", " TOTAL"};
+			String[] caps = { "COD.", "PRODUTO", "QNT", "COD.P.", "MARCA", "CATEGORIA","DESC.", "PAG.", " TOTAL "};
 			int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT};
 			gridCarrinho = new Grid(caps, gridWidths, aligns, false);
 			add(gridCarrinho);

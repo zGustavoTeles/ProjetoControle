@@ -4,7 +4,6 @@ import com.agenda.Agenda;
 import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
 import com.venda.Venda;
-
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
@@ -19,6 +18,8 @@ import totalcross.ui.event.Event;
 import totalcross.ui.event.GridEvent;
 import totalcross.ui.event.PenEvent;
 import totalcross.ui.gfx.Color;
+import totalcross.util.Date;
+import totalcross.sys.Settings;
 
 public class Relatorio extends totalcross.ui.Window{
 	
@@ -30,7 +31,9 @@ public class Relatorio extends totalcross.ui.Window{
 	private ArtButton 						btnVoltar;
 	private ArtButton						btnBuscar;
 	private ArtButton						btnDetalhar;
-	public Agenda							agenda;
+	
+	public String							dataI;
+	public String							dataII;
 	
 	public static String					codigoVenda = "";
 	public static String					produto = "";
@@ -94,15 +97,15 @@ public class Relatorio extends totalcross.ui.Window{
 			btnDetalhar.setForeColor(Color.WHITE);
 
 			int gridWidths[] = new int[9];
-			gridWidths[0] = 100;
-			gridWidths[1] = 2;
-			gridWidths[2] = 100;
-			gridWidths[3] = 100;
-			gridWidths[4] = 8;
-			gridWidths[5] = 5;
-			gridWidths[6] = 30;
-			gridWidths[7] = 30;
-			gridWidths[8] = 20;
+			gridWidths[0] = 120;
+			gridWidths[1] = 5;
+			gridWidths[2] = 190;
+			gridWidths[3] = 190;
+			gridWidths[4] = 100;
+			gridWidths[5] = 100;
+			gridWidths[6] = 170;
+			gridWidths[7] = 190;
+			gridWidths[8] = 140;
 
 			String[] caps = { "DATA", "COD.", "PRODUTO", "MARCA", "DESC.", "QNT", "TIPO.PAG.", "CATEGORIA", "VALOR" };
 			int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT };
@@ -203,14 +206,17 @@ public class Relatorio extends totalcross.ui.Window{
 		ResultSet rs	   = null;
 
 		try {
-
+			
 			try {
 				gridProdutos.removeAllElements();
-
+				
+				dataI    = new Date(editDataUm.getText()).toString(Settings.DATE_YMD);
+				dataII   = new Date(editDataDois.getText()).toString(Settings.DATE_YMD);
+				
 				lb = new LitebasePack();
 				sql = " SELECT * FROM VENDAPRODUTO "
-					+ " WHERE DATASAIDA >= " + "'" + editDataUm.getText() + "'"
-					+ " AND DATASAIDA<= " + "'" + editDataDois.getText() + "'";
+					+ " WHERE DATASAIDA >= " + "'" + dataI + "'"
+					+ " AND DATASAIDA<= " + "'" + dataII + "'";
 
 				rs = lb.executeQuery(sql);
 				rs.first();

@@ -39,10 +39,10 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 			lblAviso.setBackColor(0x003366);
 			lblAviso.setForeColor(Color.WHITE);
 			
-			imgApagarEmpresa = new ImageControl(new Image("img/removerCarrinho.png"));
+			imgApagarEmpresa = new ImageControl(new Image("img/apagarEmpresa.png"));
 			imgApagarEmpresa.scaleToFit = true;
 			imgApagarEmpresa.centerImage = true;
-			add(imgApagarEmpresa, CENTER, AFTER, SCREENSIZE + 40, SCREENSIZE + 40,lblAviso);
+			add(imgApagarEmpresa, CENTER, AFTER - 5, SCREENSIZE + 40, SCREENSIZE + 40,lblAviso);
 			
 			cmbEmpresa = new ComboBox();
 			add(cmbEmpresa);

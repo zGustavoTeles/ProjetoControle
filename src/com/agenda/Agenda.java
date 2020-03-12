@@ -16,7 +16,7 @@ public class Agenda {
 		if (d == null) {
 			editreceived.setText("");
 		} else {
-			editreceived.setText(d.toString(Settings.DATE_YMD));
+			editreceived.setText(d.toString(Settings.DATE_DMY));
 		}
 	}
 

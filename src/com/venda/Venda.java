@@ -96,13 +96,13 @@ public class Venda extends totalcross.ui.Window{
 			btnCarrinho.setEnabled(false);
 
             int gridWidths[] = new int[7];
-				gridWidths[0] = 40;
-				gridWidths[1] = 50;
-				gridWidths[2] = 40;
-				gridWidths[3] = 110;
-				gridWidths[4] = 100;
-				gridWidths[5] = 10;
-				gridWidths[6] = 2;
+				gridWidths[0] = 5;
+				gridWidths[1] = 190;
+				gridWidths[2] = 100;
+				gridWidths[3] = 190;
+				gridWidths[4] = 190;
+				gridWidths[5] = 100;
+				gridWidths[6] = 140;
 	
 			String[] caps = { "COD.", "PRODUTO", "QNT", "MARCA", "CATEGORIA","DESC", " VALOR"};
 			int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT};

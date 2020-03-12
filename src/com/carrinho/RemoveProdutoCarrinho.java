@@ -48,7 +48,7 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 			imgRemoverCarrinho = new ImageControl(new Image("img/removerCarrinho.png"));
 			imgRemoverCarrinho.scaleToFit = true;
 			imgRemoverCarrinho.centerImage = true;
-			add(imgRemoverCarrinho, CENTER, TOP - 20, SCREENSIZE + 40, SCREENSIZE + 40);
+			add(imgRemoverCarrinho, CENTER, TOP - 20, SCREENSIZE + 30, SCREENSIZE + 30);
 			
 			lblProduto = new Label("PRODUTO:      ");
 			add(lblProduto);

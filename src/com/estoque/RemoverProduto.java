@@ -40,11 +40,11 @@ public class RemoverProduto extends totalcross.ui.Window {
 			imgRemoverEstoque = new ImageControl(new Image("img/removerEstoque.png"));
 			imgRemoverEstoque.scaleToFit = true;
 			imgRemoverEstoque.centerImage = true;
-			add(imgRemoverEstoque, CENTER, TOP - 20, SCREENSIZE + 40, SCREENSIZE + 40);
+			add(imgRemoverEstoque, CENTER, TOP - 30, SCREENSIZE + 40, SCREENSIZE + 40);
 			
 			lblProduto = new Label("PRODUTO:      ");
 			add(lblProduto);
-			lblProduto.setRect(LEFT + 90, AFTER + 70, PREFERRED, PREFERRED, lblAviso);
+			lblProduto.setRect(LEFT + 90, AFTER + 60, PREFERRED, PREFERRED, lblAviso);
 			lblProduto.setBackColor(0x003366);
 			lblProduto.setForeColor(Color.WHITE);
 

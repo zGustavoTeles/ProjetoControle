@@ -59,7 +59,6 @@ public class Email extends totalcross.ui.Window{
 			imgSuporte.centerImage = true;
 			add(imgSuporte, CENTER, AFTER + 5, PREFERRED, PREFERRED, lblInfoEmail);
 
-//			multInfoEmail = new MultiEdit(4, 0);
 			multInfoEmail = new MultiEdit();
 			add(multInfoEmail);
 			multInfoEmail.setValidChars("1234567890abcdefghijklmnopqrstuvwxyz. ,:{}[]\\/!@#$%&()_-+*|^´`");
@@ -78,8 +77,10 @@ public class Email extends totalcross.ui.Window{
 			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
-			
+
 			reposition();
+			
+			multInfoEmail.requestFocus();
 			
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela configuracoes\n" + e);
@@ -232,7 +233,7 @@ public class Email extends totalcross.ui.Window{
 		sb.append("&nbsp;");
 		sb.append("</p>");
 		sb.append("<p align=\"center\">");
-		sb.append("Copyright - Todos os direitos reservados ");
+		sb.append("Copyright©2020-Todos os direitos reservados ");
 		sb.append("</p></td>");
 		sb.append("</tr>");
 		sb.append("<tr>");

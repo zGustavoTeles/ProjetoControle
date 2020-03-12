@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <exe4j version="6.0.2" transformSequenceNumber="2">
-  <directoryPresets config="C:/TotalCross3 344/dist" />
+  <directoryPresets config="C:/Projetos/ProjetoControle/src" />
   <application name="CONTROLE" distributionSourceDir="C:/Projetos/ProjetoControle/executavel/CONTROLE-PC-BETA">
     <languages>
       <principalLanguage id="en" customLocalizationFile="" />
     </languages>
   </application>
-  <executable name="CONTROLE" type="2" iconSet="true" iconFile="C:/Projetos/ProjetoControle/executavel/img_executavel/icon.ico" executableDir="" redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="false" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false" singleInstanceActivate="true" dpiAware="java9+" amd64="false">
+  <executable name="CONTROLE" type="2" iconSet="true" iconFile="C:/Projetos/ProjetoControle/executavel/img_executavel/icon.ico" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="false" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false" singleInstanceActivate="true" dpiAware="java9+" amd64="false">
     <messageSet />
     <versionInfo include="false" fileVersion="" fileDescription="" legalCopyright="" internalName="" productName="" companyName="" productVersion="" />
   </executable>
@@ -16,15 +16,15 @@
       <versionLine x="20" y="40" text="version %VERSION%" fontSize="8" fontColor="0,0,0" bold="false" />
     </text>
   </splashScreen>
-  <java mainClass="totalcross.Launcher" mainMode="1" vmParameters="" arguments="/scr 480x700x24 /pos 200,200 /r 5443444B03CA07FBBE00A9AA principal.Home" allowVMPassthroughParameters="true" preferredVM="" bundleRuntime="true" minVersion="1.0" maxVersion="" allowBetaVM="false" jdkOnly="false">
+  <java mainClass="totalcross.Launcher" mainMode="1" vmParameters="" arguments="/scr  560x800x24 /pos 200,200  /r 5443444B03CA07FBBE00A9AA principal.Home" allowVMPassthroughParameters="true" preferredVM="" bundleRuntime="true" minVersion="1.0" maxVersion="" allowBetaVM="false" jdkOnly="false">
     <searchSequence>
       <registry />
       <envVar name="JAVA_HOME" />
       <envVar name="JDK_HOME" />
     </searchSequence>
     <classPath>
-      <archive location="C:/Projetos/ProjetoControle/src/Home.jar" failOnError="false" />
       <archive location="C:/TotalCross3 344/dist/tc.jar" failOnError="false" />
+      <archive location="C:/Projetos/ProjetoControle/src/Home.jar" failOnError="false" />
     </classPath>
     <modulePath />
     <nativeLibraryDirectories />
