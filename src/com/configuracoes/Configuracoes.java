@@ -1,5 +1,6 @@
 package com.configuracoes;
 
+import com.adm.Administrador;
 import com.auxiliares.Auxiliares;
 import com.email.Email;
 import com.informacao.Informacao;
@@ -15,7 +16,8 @@ public class Configuracoes extends totalcross.ui.Window {
 	private ArtButton		    btnInformacoes;
 	private ArtButton 			btnApagarDados;
 	private ArtButton			btnConfigEmpresa;
-	private ArtButton			btnEnviarEmail;
+	private ArtButton			btnSuporte;
+	private ArtButton			btnAdministrador;
 	private ArtButton 			btnVoltar;
 
 	public Configuracoes() {
@@ -29,7 +31,7 @@ public class Configuracoes extends totalcross.ui.Window {
 
 			btnInformacoes = new ArtButton("INFORMAÇÕES");
 			add(btnInformacoes);
-			btnInformacoes.setRect(CENTER, TOP + 120, width - 200, PREFERRED + 80);
+			btnInformacoes.setRect(CENTER, TOP + 60, width - 200, PREFERRED + 80);
 			btnInformacoes.setBackColor(0x003366);
 			btnInformacoes.setForeColor(Color.WHITE);
 			
@@ -45,11 +47,17 @@ public class Configuracoes extends totalcross.ui.Window {
 			btnApagarDados.setBackColor(0x003366);
 			btnApagarDados.setForeColor(Color.WHITE);
 			
-			btnEnviarEmail = new ArtButton("SUPORTE");
-			add(btnEnviarEmail);
-			btnEnviarEmail.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
-			btnEnviarEmail.setBackColor(0x003366);
-			btnEnviarEmail.setForeColor(Color.WHITE);
+			btnSuporte = new ArtButton("SUPORTE");
+			add(btnSuporte);
+			btnSuporte.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
+			btnSuporte.setBackColor(0x003366);
+			btnSuporte.setForeColor(Color.WHITE);
+			
+			btnAdministrador = new ArtButton("ADMINISTRADOR");
+			add(btnAdministrador);
+			btnAdministrador.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
+			btnAdministrador.setBackColor(0x003366);
+			btnAdministrador.setForeColor(Color.WHITE);
 
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
@@ -86,9 +94,14 @@ public class Configuracoes extends totalcross.ui.Window {
 				} else if (evt.target == btnConfigEmpresa) {
 					InfoEmpresa alterarEmpresa = new InfoEmpresa();
 					alterarEmpresa.popup();
-				}else if (evt.target == btnEnviarEmail) {
+					
+				}else if (evt.target == btnSuporte) {
 					Email email = new Email();
 					email.popup();
+					
+				}else if (evt.target == btnAdministrador) {
+					Administrador administrador = new Administrador();
+					administrador.popup();
 				}
 
 			}

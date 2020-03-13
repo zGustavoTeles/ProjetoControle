@@ -1,27 +1,24 @@
 package principal;
 
+import com.adm.Administrador;
+import com.auxiliares.Auxiliares;
+import com.cadastrarEmpresa.Cadastrar;
+import com.litebase.LitebasePack;
+import com.menu.Menu;
+import com.tabelas.Tabelas;
+
+import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
 import totalcross.sys.Settings;
-import totalcross.ui.Container;
 import totalcross.ui.Edit;
 import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
 import totalcross.ui.MainWindow;
-import totalcross.ui.UIColors;
-import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 import totalcross.ui.gfx.Color;
-import totalcross.ui.image.*;
-import com.adm.Cadastrar;
-import com.adm.ValidaAdm;
-import com.auxiliares.Auxiliares;
-import com.litebase.LitebasePack;
-import com.menu.Menu;
-import com.sun.xml.internal.bind.util.Which;
-import litebase.ResultSet;
-import com.tabelas.Tabelas;
+import totalcross.ui.image.Image;
 
 public class Home extends MainWindow{
 	
@@ -39,6 +36,7 @@ public class Home extends MainWindow{
 		public ArtButton				btnBuscar;
 		public ArtButton				btnAtualizar;
 		public ArtButton       		    btnSair;
+//		public ArtButton       		    btnAdm;
 		public ImageControl				imgHome;
 		
 		
@@ -68,7 +66,7 @@ public class Home extends MainWindow{
 			imgHome.scaleToFit = true;
 			imgHome.centerImage = true;
 			add(imgHome, CENTER, TOP + 20, SCREENSIZE + 50, PREFERRED, btnAtualizar);
-
+			
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);
 			lblEmpresa.setBackColor(0x003366);
@@ -124,8 +122,8 @@ public class Home extends MainWindow{
 			add(btnCadastrar);
 			btnCadastrar.setBackColor(0x003366);
 			btnCadastrar.setForeColor(Color.WHITE);
-			btnCadastrar.setRect(CENTER,BEFORE, SCREENSIZE + 100, PREFERRED + 25, btnSair);
-			
+			btnCadastrar.setRect(CENTER, BEFORE, SCREENSIZE + 100, PREFERRED + 25, btnSair);
+
 			btnEntrar = new ArtButton("ENTRAR");
 			add(btnEntrar);
 			btnEntrar.setBackColor(0x003366);

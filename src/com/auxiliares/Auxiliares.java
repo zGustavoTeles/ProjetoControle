@@ -15,9 +15,12 @@ public class Auxiliares {
 	public static final String NOMEAPP       = "CONTROLE";
 	public static final String VERSAO		 = "1.0";
 	public static final String TELEFONE 	 = "(62) 98163-5089";
-	public static final String NOMESISTEMA   = "CONTROLE_MOBILE - BETA";
+//	public static final String NOMESISTEMA   = "CONTROLE_MOBILE - BETA";
+	public static final String NOMESISTEMA   = "CONTROLE_MOBILE - PREMIUM";
 //	public static final String NOMESISTEMA   = "CONTROLE_PC - BETA";
 	public static final String DESCRICAO     = "Copyright©2020-Todos os direitos reservados";
+	public static final String ADM			 = "true";
+//	public static final String ADM			 = "false";
 	
 
 	public static int artMsgbox(String titulo, String msg) {
