@@ -1,6 +1,7 @@
 package com.configuracoes;
 
 import com.adm.Administrador;
+import com.adm.ValidaAdministrador;
 import com.auxiliares.Auxiliares;
 import com.email.Email;
 import com.informacao.Informacao;
@@ -31,7 +32,7 @@ public class Configuracoes extends totalcross.ui.Window {
 
 			btnInformacoes = new ArtButton("INFORMAÇÕES");
 			add(btnInformacoes);
-			btnInformacoes.setRect(CENTER, TOP + 60, width - 200, PREFERRED + 80);
+			btnInformacoes.setRect(CENTER, TOP + 40, width - 200, PREFERRED + 80);
 			btnInformacoes.setBackColor(0x003366);
 			btnInformacoes.setForeColor(Color.WHITE);
 			
@@ -100,8 +101,8 @@ public class Configuracoes extends totalcross.ui.Window {
 					email.popup();
 					
 				}else if (evt.target == btnAdministrador) {
-					Administrador administrador = new Administrador();
-					administrador.popup();
+					ValidaAdministrador validaAdministrador = new ValidaAdministrador();
+					validaAdministrador.popup();
 				}
 
 			}

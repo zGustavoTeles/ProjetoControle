@@ -3,6 +3,7 @@ package com.adm;
 import com.auxiliares.Auxiliares;
 import com.email.Email;
 import com.informacao.Informacao;
+import com.litebase.LitebasePack;
 
 import nx.componentes.ArtButton;
 import totalcross.ui.dialog.MessageBox;
@@ -29,7 +30,7 @@ public class Administrador extends totalcross.ui.Window {
 
 			btnCadastrarProduto = new ArtButton("CADASTRAR PRODUTO");
 			add(btnCadastrarProduto);
-			btnCadastrarProduto.setRect(CENTER, TOP + 120, width - 200, PREFERRED + 80);
+			btnCadastrarProduto.setRect(CENTER, TOP + 80, width - 200, PREFERRED + 80);
 			btnCadastrarProduto.setBackColor(0x003366);
 			btnCadastrarProduto.setForeColor(Color.WHITE);
 			
@@ -73,7 +74,20 @@ public class Administrador extends totalcross.ui.Window {
 			case ControlEvent.PRESSED:
 
 				if (evt.target == btnVoltar) {
-					unpop();
+					String[] ArtButtonArray = { "Sim", "Não" };
+
+					int i = Auxiliares.artMsgbox("CONTROLE", "Deseja continuar deixando a senha salva?",
+							ArtButtonArray);
+
+					if (i == 1) {
+						apagaDadosLogin();
+						ValidaAdministrador.editSenha.setText("");
+						Auxiliares.artMsgbox("CONTROLE", "Senha apagada do sistema!");
+						unpop();
+
+					} else {
+						unpop();
+					}
 
 				} else if (evt.target == btnCadastrarProduto) {
 					CadastrarProdutoSistema cadastrarProdutoSistema = new CadastrarProdutoSistema();
@@ -98,6 +112,33 @@ public class Administrador extends totalcross.ui.Window {
 			Auxiliares.artMsgbox("ERRO", "Erro na validação da tela configuracoes\n" + e);
 		}
 
+	}
+	
+	public void apagaDadosLogin() {
+		String sql = "";
+		LitebasePack lb = null;
+
+		try {
+
+			try {
+				lb = new LitebasePack();
+				
+				sql = "DELETE ADMINISTRADOR";
+				lb.executeUpdate(sql);
+
+				sql = " INSERT INTO ADMINISTRADOR (CODIGO, SENHA)" + " VALUES " + " ('01', 'N')";
+				lb.executeUpdate(sql);
+
+			} finally {
+				if (lb != null)
+					lb.closeAll();
+			}
+
+		} catch (Exception e) {
+			Auxiliares.artMsgbox("ERRO", "Erro ao buscar apagaDadosLogin\n" + e);
+
+			return;
+		}
 	}
 
 }

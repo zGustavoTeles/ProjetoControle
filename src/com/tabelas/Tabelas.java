@@ -1189,6 +1189,14 @@ public class Tabelas {
 					lb.execute(sql);
 					lb.execute("create index empresa01 ON empresa(codigo,nome)");
 				}
+//-------------------------------------------------------------------------------------------------------------------------------------------
+				if (!lb.exists("ADMINISTRADOR")) {
+
+					sql = " create table administrador ( " + "codigo int," + " senha char(40) "+")";
+
+					lb.execute(sql);
+					lb.execute("create index administrador01 ON administrador(codigo,senha)");
+				}
 //--------------------------------------------------------------------------------------------------------------------------------------------
 				if (!lb.exists("TIPOPAGAMENTO")) {
 

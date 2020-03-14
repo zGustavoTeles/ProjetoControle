@@ -38,16 +38,16 @@ public class CadastrarCategoriaSistema extends totalcross.ui.Window {
 
 		try {
 			
-			imgCadastrarEmpresa = new ImageControl(new Image("img/removerEstoque.png"));
+			imgCadastrarEmpresa = new ImageControl(new Image("img/cadastrarCategoria.png"));
 			imgCadastrarEmpresa.scaleToFit = true;
 			imgCadastrarEmpresa.centerImage = true;
-			add(imgCadastrarEmpresa, CENTER, TOP - 50, SCREENSIZE + 40, SCREENSIZE + 40);
+			add(imgCadastrarEmpresa, CENTER, TOP - 40, SCREENSIZE + 40, SCREENSIZE + 40);
 			
 			lblCategoria = new Label("CATEGORIA: ");
 			add(lblCategoria);
 			lblCategoria.setBackColor(0x003366);
 			lblCategoria.setForeColor(Color.WHITE);
-			lblCategoria.setRect(LEFT, AFTER, PREFERRED, PREFERRED, imgCadastrarEmpresa);
+			lblCategoria.setRect(LEFT, AFTER + 40, PREFERRED, PREFERRED, imgCadastrarEmpresa);
 
 			add(editCategoria = new Edit(), LEFT, AFTER, PREFERRED, PREFERRED, lblCategoria);
 			editCategoria.setBackColor(Color.WHITE);
@@ -56,11 +56,11 @@ public class CadastrarCategoriaSistema extends totalcross.ui.Window {
 			
 			btnGerarCodigo = new ArtButton("CÓDIGO");
 			add(btnGerarCodigo);
-			btnGerarCodigo.setRect(LEFT, AFTER + 20, SCREENSIZE - 5, PREFERRED, editCategoria);
+			btnGerarCodigo.setRect(LEFT, AFTER + 40, SCREENSIZE - 5, PREFERRED, editCategoria);
 			btnGerarCodigo.setBackColor(0x003366);
 			btnGerarCodigo.setForeColor(Color.WHITE);	
 			
-			add(editCodigo = new Edit(), LEFT, AFTER + 5, PREFERRED, PREFERRED,btnGerarCodigo);
+			add(editCodigo = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED,btnGerarCodigo);
 			editCodigo.setBackColor(Color.WHITE);
 			editCodigo.setForeColor(0x003366);
 			editCodigo.setEditable(false);
@@ -78,6 +78,7 @@ public class CadastrarCategoriaSistema extends totalcross.ui.Window {
 			btnVoltar.setForeColor(Color.WHITE);
 			
 			reposition();
+			editCategoria.requestFocus();
 			
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO", "Erro ao construir o menu CadastrarCategoriaSistema\n" + e);
@@ -111,7 +112,7 @@ public class CadastrarCategoriaSistema extends totalcross.ui.Window {
 
 					} else {
 						cadastrarCategoria();
-						Auxiliares.artMsgbox("CONTROLE", "Categoria cadastrado com sucesso!");
+						Auxiliares.artMsgbox("CONTROLE", "Categoria cadastrada com sucesso!");
 						unpop();
 
 					}

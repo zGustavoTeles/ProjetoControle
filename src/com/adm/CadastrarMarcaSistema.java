@@ -51,16 +51,16 @@ public class CadastrarMarcaSistema extends totalcross.ui.Window {
 
 		try {
 			
-			imgCadastrarEmpresa = new ImageControl(new Image("img/removerEstoque.png"));
+			imgCadastrarEmpresa = new ImageControl(new Image("img/cadastrarMarca.png"));
 			imgCadastrarEmpresa.scaleToFit = true;
 			imgCadastrarEmpresa.centerImage = true;
-			add(imgCadastrarEmpresa, CENTER, TOP - 50, SCREENSIZE + 40, SCREENSIZE + 40);
+			add(imgCadastrarEmpresa, CENTER, TOP - 40, SCREENSIZE + 40, SCREENSIZE + 40);
 			
 			lblMarca = new Label("MARCA: ");
 			add(lblMarca);
 			lblMarca.setBackColor(0x003366);
 			lblMarca.setForeColor(Color.WHITE);
-			lblMarca.setRect(LEFT, AFTER, PREFERRED, PREFERRED, imgCadastrarEmpresa);
+			lblMarca.setRect(LEFT, AFTER + 20, PREFERRED, PREFERRED, imgCadastrarEmpresa);
 
 			add(editMarca = new Edit(), LEFT, AFTER, PREFERRED, PREFERRED, lblMarca);
 			editMarca.setBackColor(Color.WHITE);
@@ -69,7 +69,7 @@ public class CadastrarMarcaSistema extends totalcross.ui.Window {
 
 			lblCategoria = new Label("CATEGORIA:");
 			add(lblCategoria);
-			lblCategoria.setRect(LEFT, AFTER + 20, PREFERRED, PREFERRED, editMarca);
+			lblCategoria.setRect(LEFT, AFTER + 30, PREFERRED, PREFERRED, editMarca);
 			lblCategoria.setBackColor(0x003366);
 			lblCategoria.setForeColor(Color.WHITE);
 			
@@ -79,7 +79,7 @@ public class CadastrarMarcaSistema extends totalcross.ui.Window {
 
 			lblProduto = new Label("PRODUTO:");
 			add(lblProduto);
-			lblProduto.setRect(LEFT, AFTER + 20, PREFERRED, PREFERRED, cmbCategoria);
+			lblProduto.setRect(LEFT, AFTER + 30, PREFERRED, PREFERRED, cmbCategoria);
 			lblProduto.setBackColor(0x003366);
 			lblProduto.setForeColor(Color.WHITE);
 			
@@ -87,9 +87,9 @@ public class CadastrarMarcaSistema extends totalcross.ui.Window {
 			add(cmbProduto);
 			cmbProduto.setRect(LEFT, AFTER, FILL + 5, PREFERRED, lblProduto);
 
-			lblCodigoProduto = new Label("CODIGO:");
+			lblCodigoProduto = new Label("CÓDIGO:");
 			add(lblCodigoProduto);
-			lblCodigoProduto.setRect(LEFT, AFTER + 20, PREFERRED, PREFERRED,cmbProduto);
+			lblCodigoProduto.setRect(LEFT, AFTER + 30, PREFERRED, PREFERRED,cmbProduto);
 			lblCodigoProduto.setBackColor(0x003366);
 			lblCodigoProduto.setForeColor(Color.WHITE);
 			
@@ -100,11 +100,11 @@ public class CadastrarMarcaSistema extends totalcross.ui.Window {
 			
 			btnGerarCodigo = new ArtButton("CÓDIGO");
 			add(btnGerarCodigo);
-			btnGerarCodigo.setRect(LEFT, AFTER + 20, SCREENSIZE - 5, PREFERRED, editCodigo);
+			btnGerarCodigo.setRect(LEFT, AFTER + 30, SCREENSIZE - 5, PREFERRED, editCodigo);
 			btnGerarCodigo.setBackColor(0x003366);
 			btnGerarCodigo.setForeColor(Color.WHITE);	
 			
-			add(editCodigoProduto = new Edit(), LEFT, AFTER + 5, PREFERRED, PREFERRED);
+			add(editCodigoProduto = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED);
 			editCodigoProduto.setBackColor(Color.WHITE);
 			editCodigoProduto.setForeColor(0x003366);
 			editCodigoProduto.setEditable(false);
@@ -122,6 +122,7 @@ public class CadastrarMarcaSistema extends totalcross.ui.Window {
 			btnVoltar.setForeColor(Color.WHITE);
 			
 			reposition();
+			editMarca.requestFocus();
 			
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO", "Erro ao construir o menu CadastrarMarcaSistema\n" + e);
@@ -148,7 +149,7 @@ public class CadastrarMarcaSistema extends totalcross.ui.Window {
 						return;
 					}
 
-					int i = Auxiliares.artMsgbox("CONTROLE", "Deseja cadastrar o marca no sistema?", ArtButtonArray);
+					int i = Auxiliares.artMsgbox("CONTROLE", "Deseja cadastrar a marca no sistema?", ArtButtonArray);
 
 					if (i == 1) {
 						return;

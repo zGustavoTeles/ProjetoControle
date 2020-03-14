@@ -1,6 +1,5 @@
 package principal;
 
-import com.adm.Administrador;
 import com.auxiliares.Auxiliares;
 import com.cadastrarEmpresa.Cadastrar;
 import com.litebase.LitebasePack;

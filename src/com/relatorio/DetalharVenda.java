@@ -139,7 +139,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			editTipoPagamento.setText(Relatorio.tipoPagamento);
 			editTipoPagamento.setEditable(false);
 
-			lblDataVenda = new Label("DATA:              ");
+			lblDataVenda = new Label("DATA:             ");
 			add(lblDataVenda);
 			lblDataVenda.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editTipoPagamento);
 			lblDataVenda.setBackColor(0x003366);
@@ -153,7 +153,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			editDataVenda.setText(Relatorio.dataVenda);
 			editDataVenda.setEditable(false);
 
-			lblTotal = new Label("TOTAL:            ");
+			lblTotal = new Label("TOTAL:           ");
 			add(lblTotal);
 			lblTotal.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, lblDataVenda);
 			lblTotal.setBackColor(0x003366);

@@ -49,16 +49,16 @@ public class CadastrarDescricaoSistema extends totalcross.ui.Window {
 			
 			radioGrupo = new RadioGroupController();
 			
-			imgCadastrarEmpresa = new ImageControl(new Image("img/removerEstoque.png"));
+			imgCadastrarEmpresa = new ImageControl(new Image("img/cadastrarDescricao.png"));
 			imgCadastrarEmpresa.scaleToFit = true;
 			imgCadastrarEmpresa.centerImage = true;
-			add(imgCadastrarEmpresa, CENTER, TOP - 50, SCREENSIZE + 40, SCREENSIZE + 40);
+			add(imgCadastrarEmpresa, CENTER, TOP - 40, SCREENSIZE + 40, SCREENSIZE + 40);
 			
 			lblDescricao = new Label("DESCRICAO: ");
 			add(lblDescricao);
 			lblDescricao.setBackColor(0x003366);
 			lblDescricao.setForeColor(Color.WHITE);
-			lblDescricao.setRect(LEFT, AFTER, PREFERRED, PREFERRED, imgCadastrarEmpresa);
+			lblDescricao.setRect(LEFT, AFTER + 40, PREFERRED, PREFERRED, imgCadastrarEmpresa);
 
 			add(editDescricao = new Edit(), LEFT, AFTER, PREFERRED, PREFERRED, lblDescricao);
 			editDescricao.setBackColor(Color.WHITE);
@@ -67,11 +67,11 @@ public class CadastrarDescricaoSistema extends totalcross.ui.Window {
 			
 			btnGerarCodigo = new ArtButton("CÓDIGO");
 			add(btnGerarCodigo);
-			btnGerarCodigo.setRect(LEFT, AFTER + 20, SCREENSIZE - 5, PREFERRED, editDescricao);
+			btnGerarCodigo.setRect(LEFT, AFTER + 40, SCREENSIZE - 5, PREFERRED, editDescricao);
 			btnGerarCodigo.setBackColor(0x003366);
 			btnGerarCodigo.setForeColor(Color.WHITE);	
 			
-			add(editCodigo = new Edit(), LEFT, AFTER + 5, PREFERRED, PREFERRED,btnGerarCodigo);
+			add(editCodigo = new Edit(), LEFT, AFTER + 10, PREFERRED, PREFERRED,btnGerarCodigo);
 			editCodigo.setBackColor(Color.WHITE);
 			editCodigo.setForeColor(0x003366);
 			editCodigo.setEditable(false);
@@ -99,6 +99,7 @@ public class CadastrarDescricaoSistema extends totalcross.ui.Window {
 			btnVoltar.setForeColor(Color.WHITE);
 			
 			reposition();
+			editDescricao.requestFocus();
 			
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO", "Erro ao construir o menu CadastrarDescricaoSistema\n" + e);
@@ -137,7 +138,7 @@ public class CadastrarDescricaoSistema extends totalcross.ui.Window {
 
 					} else {
 						cadastraDescricao();
-						Auxiliares.artMsgbox("CONTROLE", "Descrição cadastrado com sucesso!");
+						Auxiliares.artMsgbox("CONTROLE", "Descrição cadastrada com sucesso!");
 						unpop();
 
 					}
