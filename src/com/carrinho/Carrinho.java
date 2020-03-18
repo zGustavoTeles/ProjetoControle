@@ -3,7 +3,7 @@ package com.carrinho;
 
 import com.auxiliares.Auxiliares;
 import com.bottom.BottomImg;
-import com.estoque.RemoverProduto;
+import com.estoque.AlterarProduto;
 import com.inserir.Inserir;
 import com.litebase.LitebasePack;
 import com.venda.Venda;
@@ -441,7 +441,7 @@ public class Carrinho extends totalcross.ui.Window{
 					totalCarrinho += Convert.toDouble(rs.getString("VALOR"));					
 				}
 				
-				lblTotal.setText("TOTAL: " + Convert.toCurrencyString(totalCarrinho, 2).replace(",", ".") + " $$");
+				lblTotal.setText("TOTAL: R$" + Convert.toCurrencyString(totalCarrinho, 2).replace(",", "."));
 
 			} catch (Exception e) {
 				Auxiliares.artMsgbox("ERRO", "Erro calculaItensCarrinho\n" + e);

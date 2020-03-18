@@ -3,6 +3,8 @@ package com.cadastrarEmpresa;
 import java.util.Random;
 import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
+
+import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
 import totalcross.ui.Edit;
@@ -138,10 +140,14 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 							return;
 
 						} else {
-							cadastrarNovaEmpresa();
+							boolean apagarEmpresaCadastrada = false;
+							apagarEmpresaCadastrada = cadastrarNovaEmpresa(apagarEmpresaCadastrada);
 
-							Auxiliares.artMsgbox("CONTROLE", "Empresa cadastrada com sucesso!");							
-							unpop();
+							if (apagarEmpresaCadastrada == true) {
+								Auxiliares.artMsgbox("CONTROLE", "Empresa cadastrada com sucesso!");
+								unpop();
+							}
+
 						}
 					}
 					
@@ -160,42 +166,84 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 
 	}
 	
-	public void cadastrarNovaEmpresa() {
+	public boolean cadastrarNovaEmpresa(boolean apagarEmpresaCadastrada) {
 		String sql = "";
 		LitebasePack lb = null;
-		
+		ResultSet rs = null;
+
 		try {
-			
+
 			try {
 
 				lb = new LitebasePack();
 
+				sql = "SELECT * FROM EMPRESA";
+				rs = lb.executeQuery(sql);
+				rs.first();
+
+				if (rs.getRowCount() > 0) {
+					String[] ArtButtonArray = { "Sim", "Não" };
+
+					int i = Auxiliares.artMsgbox("CONTROLE",
+							"Atualmente existe uma empresa cadastrada\nDeseja continuar?\nOBS: esse processo irá apagar a empresa cadastrada existente!",
+							ArtButtonArray);
+
+					if (i == 1) {
+						return apagarEmpresaCadastrada;
+
+					} else {
+
+						sql = "DELETE EMPRESA";
+
+						lb.executeUpdate(sql);
+
+						String dataCadastro;
+						Date year = new Date();
+						Date month = new Date();
+						Date day = new Date();
+
+						dataCadastro = Date.formatDate(year.getYear(), month.getMonth(), day.getDay());
+
+						sql = "INSERT INTO EMPRESA " + "(" + " CODIGO, NOME, CNPJ, USUARIO, DATACADASTRO " + ")"
+								+ " VALUES " + "( '" + editCodigo.getText() + "' , '" + editEmpresa.getText() + "', '"
+								+ editCnpj.getText() + "', '" + editUsuario.getText() + "', '" + dataCadastro + "'"
+								+ ")";
+
+						lb.executeUpdate(sql);
+
+						return apagarEmpresaCadastrada = true;
+
+					}
+				}
+
 				sql = "DELETE EMPRESA";
 
 				lb.executeUpdate(sql);
-				
+
 				String dataCadastro;
 				Date year = new Date();
 				Date month = new Date();
 				Date day = new Date();
 
 				dataCadastro = Date.formatDate(year.getYear(), month.getMonth(), day.getDay());
-				
-				sql = "INSERT INTO EMPRESA " + "(" + " CODIGO, NOME, CNPJ, USUARIO, DATACADASTRO " + ")" + " VALUES " + "( '" + editCodigo.getText()
-						+ "' , '" + editEmpresa.getText() + "', '" + editCnpj.getText() + "', '" + editUsuario.getText() + "', '" + dataCadastro + "'"
-					    + ")";
+
+				sql = "INSERT INTO EMPRESA " + "(" + " CODIGO, NOME, CNPJ, USUARIO, DATACADASTRO " + ")" + " VALUES "
+						+ "( '" + editCodigo.getText() + "' , '" + editEmpresa.getText() + "', '" + editCnpj.getText()
+						+ "', '" + editUsuario.getText() + "', '" + dataCadastro + "'" + ")";
 
 				lb.executeUpdate(sql);
 
+				return apagarEmpresaCadastrada = true;
+
 			} finally {
-				if(lb != null) {
-					lb.closeAll();	
+				if (lb != null) {
+					lb.closeAll();
 				}
 			}
-			
-			
+
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO", "Erro ao efetuar o cadastro\n" + e);
+			return apagarEmpresaCadastrada;
 		}
 	}
 

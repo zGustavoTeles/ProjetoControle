@@ -46,7 +46,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 			
 			cmbEmpresa = new ComboBox();
 			add(cmbEmpresa);
-			cmbEmpresa.setRect(LEFT, AFTER + 10, FILL + 5, PREFERRED, imgApagarEmpresa);		
+			cmbEmpresa.setRect(LEFT + 90, AFTER + 30, FILL - 90, PREFERRED, imgApagarEmpresa);		
 			
 			btnApagar = new ArtButton("APAGAR");
 			add(btnApagar);

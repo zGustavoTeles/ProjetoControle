@@ -5,6 +5,7 @@ import com.litebase.LitebasePack;
 
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
+import principal.Home;
 import totalcross.sys.Convert;
 import totalcross.ui.Edit;
 import totalcross.ui.ImageControl;
@@ -123,6 +124,12 @@ public class ApagarDados extends totalcross.ui.Window {
 							deletaDados();
 
 							Auxiliares.artMsgbox("CONTROLE", "Dados deletados!");
+
+							Home.editEmpresa.setText("");
+							Home.editCnpj.setText("");
+							Home.editUsuario.setText("");
+							Home.editCodigo.setText("");
+
 							unpop();
 							unpop();
 							unpop();
@@ -132,7 +139,7 @@ public class ApagarDados extends totalcross.ui.Window {
 						Auxiliares.artMsgbox("CONTROLE", "Por favor digite um código!");
 
 					} else {
-						Auxiliares.artMsgbox("CONTROLE", "Código da empresa incorreto!");						
+						Auxiliares.artMsgbox("CONTROLE", "Código da empresa incorreto!");
 						editCodigo.setText("");
 					}
 				}
@@ -153,65 +160,10 @@ public class ApagarDados extends totalcross.ui.Window {
 
 			try {
 				lb = new LitebasePack();
-//----------------------------------------------------------------------------------------------------------------------					
-				if (lb.exists("MARCA")) {
 
-					sql = " DROP TABLE marca ";
+				sql = " DELETE EMPRESA ";
 
-					lb.executeUpdate(sql);
-				}
-//-----------------------------------------------------------------------------------------------------------------------						
-				if (lb.exists("CATEGORIA")) {
-
-					sql = " DROP TABLE categoria ";
-
-					lb.executeUpdate(sql);
-				}
-
-//--------------------------------------------------------------------------------------------------------------------------
-				if (lb.exists("DESCRICAO")) {
-
-					sql = " DROP TABLE descricao ";
-
-					lb.executeUpdate(sql);
-				}
-
-//-------------------------------------------------------------------------------------------------------------------------	
-				if (lb.exists("PRODUTO")) {
-
-					sql = " DROP TABLE produto ";
-
-					lb.executeUpdate(sql);
-				}
-
-//----------------------------------------------------------------------------------------------------------------------------------------
-				if (lb.exists("ESTOQUE")) {
-
-					sql = " DROP TABLE estoque ";
-
-					lb.executeUpdate(sql);
-				}
-//-----------------------------------------------------------------------------------------------------------------------------------------
-				if (lb.exists("VENDAPRODUTO")) {
-
-					sql = " DROP TABLE vendaproduto ";
-
-					lb.executeUpdate(sql);
-				}
-//------------------------------------------------------------------------------------------------------------------------------------------
-				if (lb.exists("VENDAPRODUTOTEMP")) {
-
-					sql = " DROP TABLE vendaprodutotemp ";
-
-					lb.executeUpdate(sql);
-				}
-//------------------------------------------------------------------------------------------------------------------------------------------
-				if (lb.exists("EMPRESA")) {
-
-					sql = " DROP TABLE empresa ";
-
-					lb.executeUpdate(sql);
-				}
+				lb.executeUpdate(sql);
 
 			} finally {
 				if (lb != null)

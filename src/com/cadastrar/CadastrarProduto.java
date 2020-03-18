@@ -54,70 +54,70 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			imgAdicionar = new ImageControl(new Image("img/adicionar.png"));
 			imgAdicionar.scaleToFit = true;
 			imgAdicionar.centerImage = true;
-			add(imgAdicionar, CENTER, TOP + 5, PREFERRED, PREFERRED);
+			add(imgAdicionar,  CENTER, TOP - 20, SCREENSIZE + 50, SCREENSIZE + 50);
 			
-			lblCategoria = new Label("CATEGORIA:");
+			lblCategoria = new Label("CATEGORIA:  ");
 			add(lblCategoria);
-			lblCategoria.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, imgAdicionar);
+			lblCategoria.setRect(LEFT + 90, AFTER + 5, PREFERRED, PREFERRED, imgAdicionar);
 			lblCategoria.setBackColor(0x003366);
 			lblCategoria.setForeColor(Color.WHITE);
 			
 			cmbCategoria = new ComboBox();
 			add(cmbCategoria);
-			cmbCategoria.setRect(LEFT, AFTER + 5, FILL + 5, PREFERRED, lblCategoria);
+			cmbCategoria.setRect(AFTER + 5, SAME, FILL - 120, PREFERRED, lblCategoria);
 			
-			lblProduto = new Label("PRODUTO:");
+			lblProduto = new Label("PRODUTO:     ");
 			add(lblProduto);
-			lblProduto.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, cmbCategoria);
+			lblProduto.setRect(LEFT + 90, AFTER + 20, PREFERRED, PREFERRED, cmbCategoria);
 			lblProduto.setBackColor(0x003366);
 			lblProduto.setForeColor(Color.WHITE);
 			
 			cmbProduto = new ComboBox();
 			add(cmbProduto);
-			cmbProduto.setRect(LEFT, AFTER + 5, FILL + 5, PREFERRED, lblProduto);
+			cmbProduto.setRect(AFTER + 5, SAME, FILL - 120, PREFERRED, lblProduto);
 			
-			lblMarca = new Label("MARCA:");
+			lblMarca = new Label("MARCA:         ");
 			add(lblMarca);
-			lblMarca.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, cmbProduto);
+			lblMarca.setRect(LEFT + 90, AFTER + 20, PREFERRED, PREFERRED, cmbProduto);
 			lblMarca.setBackColor(0x003366);
 			lblMarca.setForeColor(Color.WHITE);
 						
 			cmbMarca = new ComboBox();			
 			add(cmbMarca);
-			cmbMarca.setRect(LEFT, AFTER + 5, FILL + 5, PREFERRED, lblMarca);	
+			cmbMarca.setRect(AFTER + 5, SAME, FILL - 120, PREFERRED, lblMarca);	
 			
-			lblDescricao = new Label("DESCRIÇÃO: ");
+			lblDescricao = new Label("DESCRIÇÃO:  ");
 			add(lblDescricao);
-			lblDescricao.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, cmbMarca);
+			lblDescricao.setRect(LEFT + 90, AFTER + 20, PREFERRED, PREFERRED, cmbMarca);
 			lblDescricao.setForeColor(Color.WHITE);
 			lblDescricao.setBackColor(0x003366);
 			
 			cmbDescricao = new ComboBox();			
 			add(cmbDescricao);
-			cmbDescricao.setRect(LEFT, AFTER + 5, FILL + 5, PREFERRED, lblDescricao);
+			cmbDescricao.setRect(AFTER + 5, SAME, FILL - 120, PREFERRED, lblDescricao);
 			
-			lblQuantidade = new Label("QUANTIDADE: ");
+			lblQuantidade = new Label("QUANTIDADE:");
 			add(lblQuantidade);
-			lblQuantidade.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, cmbDescricao);
+			lblQuantidade.setRect(LEFT + 90, AFTER + 20, PREFERRED, PREFERRED, cmbDescricao);
 			lblQuantidade.setForeColor(Color.WHITE);
 			lblQuantidade.setBackColor(0x003366);
 			
 			editQuantidade = new Edit();			
 			add(editQuantidade);
-			editQuantidade.setRect(LEFT, AFTER + 5, FILL + 5, PREFERRED, lblQuantidade);
+			editQuantidade.setRect(AFTER, SAME, FILL - 120, PREFERRED, lblQuantidade);
 			editQuantidade.setBackColor(Color.WHITE);
 			editQuantidade.setForeColor(0x003366);
 			editQuantidade.setValidChars("0 1 2 3 4 5 6 7 8 9");
 			
-			lblValor = new Label("VALOR: ");
+			lblValor = new Label("VALOR:           ");
 			add(lblValor);
-			lblValor.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, editQuantidade);
+			lblValor.setRect(LEFT + 90, AFTER + 20, PREFERRED, PREFERRED, editQuantidade);
 			lblValor.setForeColor(Color.WHITE);
 			lblValor.setBackColor(0x003366);
 			
 			editValor = new Edit();			
 			add(editValor);
-			editValor.setRect(LEFT, AFTER + 5, FILL + 5, PREFERRED, lblValor);
+			editValor.setRect(AFTER, SAME, FILL - 120, PREFERRED, lblValor);
 			editValor.setBackColor(Color.WHITE);
 			editValor.setForeColor(0x003366);
 			editValor.setValidChars("0 1 2 3 4 5 6 7 8 9 .");

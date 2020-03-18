@@ -5,6 +5,7 @@ import com.email.Email;
 import com.informacao.Informacao;
 import com.litebase.LitebasePack;
 
+import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
@@ -74,19 +75,28 @@ public class Administrador extends totalcross.ui.Window {
 			case ControlEvent.PRESSED:
 
 				if (evt.target == btnVoltar) {
-					String[] ArtButtonArray = { "Sim", "Não" };
+					boolean senhaSalva = false;
+					senhaSalva = validaSenhaSalva(senhaSalva);
 
-					int i = Auxiliares.artMsgbox("CONTROLE", "Deseja continuar deixando a senha salva?",
-							ArtButtonArray);
-
-					if (i == 1) {
-						apagaDadosLogin();
+					if (senhaSalva == false) {
 						ValidaAdministrador.editSenha.setText("");
-						Auxiliares.artMsgbox("CONTROLE", "Senha apagada do sistema!");
 						unpop();
-
 					} else {
-						unpop();
+
+						String[] ArtButtonArray = { "Sim", "Não" };
+
+						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja continuar deixando a senha salva?",
+								ArtButtonArray);
+
+						if (i == 1) {
+							apagaDadosLogin();
+							ValidaAdministrador.editSenha.setText("");
+							Auxiliares.artMsgbox("CONTROLE", "Senha apagada do sistema!");
+							unpop();
+
+						} else {
+							unpop();
+						}
 					}
 
 				} else if (evt.target == btnCadastrarProduto) {
@@ -138,6 +148,43 @@ public class Administrador extends totalcross.ui.Window {
 			Auxiliares.artMsgbox("ERRO", "Erro ao buscar apagaDadosLogin\n" + e);
 
 			return;
+		}
+	}
+	
+	public boolean validaSenhaSalva(boolean senhaSalva) {
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
+		try {
+
+			try {
+				lb = new LitebasePack();
+
+				sql = "SELECT SENHA FROM ADMINISTRADOR";
+
+				rs = lb.executeQuery(sql);
+				rs.first();
+				
+				if (rs.getRowCount() == 0) {
+					return senhaSalva;
+				}
+				
+				if (rs.getString("SENHA").equals("N")) {
+					return senhaSalva;
+				} else {
+					return senhaSalva = true;
+				}
+
+			} finally {
+				if (lb != null)
+					lb.closeAll();
+			}
+
+		} catch (Exception e) {
+			Auxiliares.artMsgbox("ERRO", "Erro ao buscar validaSenhaSalva\n" + e);
+
+			return senhaSalva;
 		}
 	}
 

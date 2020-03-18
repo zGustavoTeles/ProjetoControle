@@ -1,6 +1,7 @@
 package com.estoque;
 
 import com.auxiliares.Auxiliares;
+import com.carrinho.AlterarProdutoCarrinho;
 import com.litebase.LitebasePack;
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
@@ -23,6 +24,7 @@ public class Estoque extends totalcross.ui.Window{
 	private ArtButton 						btnVoltar;
 	private ArtButton						btnBuscar;
 	private ArtButton						btnRemover;
+	private ArtButton						btnAlterar;
 	private	ComboBox						cmbCategoria;
 	private Edit							editBuscar;
 	private Grid							gridProdutos;
@@ -71,9 +73,15 @@ public class Estoque extends totalcross.ui.Window{
 	        
 	        btnRemover = new ArtButton("REMOVER");
             add(btnRemover);
-            btnRemover.setRect(LEFT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
+            btnRemover.setRect(LEFT, BOTTOM, SCREENSIZE - 5, PREFERRED + 15);
             btnRemover.setBackColor(0xDF0101);
             btnRemover.setForeColor(Color.WHITE);
+            
+            btnAlterar = new ArtButton("ALTERAR");
+            add(btnAlterar);
+            btnAlterar.setRect(AFTER + 5, SAME, SCREENSIZE - 5, PREFERRED + 15, btnRemover);
+            btnAlterar.setBackColor(0xDF7401);
+            btnAlterar.setForeColor(Color.WHITE);
 	            
             btnVoltar = new ArtButton("VOLTAR");
             add(btnVoltar);
@@ -156,8 +164,21 @@ public class Estoque extends totalcross.ui.Window{
 					} else {
 						return;
 					}
+				} else if (evt.target == btnAlterar) {
+
+					if (gridProdutos.getSelectedItem() != null) {
+
+						gridProdutos.removeAllElements();
+						AlterarProduto alterarProduto = new AlterarProduto();
+						alterarProduto.popup();
+
+					} else {
+						Auxiliares.artMsgbox("CONTROLE", "Deve-se selecionar um item!");
+					}
+
 				}
 				break;
+				
 			case GridEvent.SELECTED_EVENT:
 				if (evt.target == gridProdutos) {
 

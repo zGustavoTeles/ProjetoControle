@@ -230,7 +230,7 @@ public class Relatorio extends totalcross.ui.Window{
 					b[5] = Convert.toString(rs.getInt("QUANTIDADE"));
 					b[6] = rs.getString("TIPOPAGAMENTO");
 					b[7] = rs.getString("CATEGORIA");
-					b[8] = rs.getString("VALOR") + " $$";
+					b[8] = "R$ " + rs.getString("VALOR");
 					gridProdutos.add(b);
 					rs.next();
 				}
