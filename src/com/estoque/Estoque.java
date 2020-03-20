@@ -2,6 +2,7 @@ package com.estoque;
 
 import com.auxiliares.Auxiliares;
 import com.carrinho.AlterarProdutoCarrinho;
+import com.inserir.Inserir;
 import com.litebase.LitebasePack;
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
@@ -133,30 +134,37 @@ public class Estoque extends totalcross.ui.Window{
 				if (evt.target == btnVoltar) {
 					unpop();
 
-				}else if(evt.target == btnRemover) {
-					
+				} else if (evt.target == btnRemover) {
+
 					if (gridProdutos.getSelectedItem() != null) {
 
-						gridProdutos.removeAllElements();
-						RemoverProduto removerProduto = new RemoverProduto();
-						removerProduto.popup();
+						boolean prodAdicionado = false;
+						prodAdicionado = validaProdutoCarrinho(prodAdicionado);
+
+						if (prodAdicionado == false) {
+							gridProdutos.removeAllElements();
+							RemoverProduto removerProduto = new RemoverProduto();
+							removerProduto.popup();
+						} else {
+
+							Auxiliares.artMsgbox("CONTROLE",
+									"Esse produto encontra-se no carrinho. Por favor finalize a venda para inseri-lo novamente!");
+						}
 
 					} else {
 						Auxiliares.artMsgbox("CONTROLE", "Deve-se selecionar um item!");
 					}
 
-				}
-				else if (evt.target == btnBuscar) {
+				} else if (evt.target == btnBuscar) {
 					if (editBuscar.getText().equals("")) {
 						Auxiliares.artMsgbox("CONTROLE", "O campo de busca deve ser preenchido!");
-						
+
 					} else {
 						gridProdutos.removeAllElements();
 						carregaGridProdutosBusca();
 					}
-					
-				}
-				else if (evt.target == cmbCategoria) {
+
+				} else if (evt.target == cmbCategoria) {
 					if (cmbCategoria.getItems() != null) {
 						editBuscar.setText("");
 						gridProdutos.removeAllElements();
@@ -168,9 +176,18 @@ public class Estoque extends totalcross.ui.Window{
 
 					if (gridProdutos.getSelectedItem() != null) {
 
-						gridProdutos.removeAllElements();
-						AlterarProduto alterarProduto = new AlterarProduto();
-						alterarProduto.popup();
+						boolean prodAdicionado = false;
+						prodAdicionado = validaProdutoCarrinho(prodAdicionado);
+
+						if (prodAdicionado == false) {
+							gridProdutos.removeAllElements();
+							AlterarProduto alterarProduto = new AlterarProduto();
+							alterarProduto.popup();
+						} else {
+
+							Auxiliares.artMsgbox("CONTROLE",
+									"Esse produto encontra-se no carrinho. Por favor finalize a venda para inseri-lo novamente!");
+						}
 
 					} else {
 						Auxiliares.artMsgbox("CONTROLE", "Deve-se selecionar um item!");
@@ -178,12 +195,12 @@ public class Estoque extends totalcross.ui.Window{
 
 				}
 				break;
-				
+
 			case GridEvent.SELECTED_EVENT:
 				if (evt.target == gridProdutos) {
 
 					try {
-						
+
 						codigo = gridProdutos.getSelectedItem()[0];
 						produto = gridProdutos.getSelectedItem()[1];
 						quantidade = gridProdutos.getSelectedItem()[2];
@@ -193,8 +210,8 @@ public class Estoque extends totalcross.ui.Window{
 					}
 
 				}
-		    break;
-			case ControlEvent.FOCUS_IN :
+				break;
+			case ControlEvent.FOCUS_IN:
 				if (evt.target == cmbCategoria) {
 					cmbCategoria.removeAll();
 					carregaCmbCategoria();
@@ -313,5 +330,44 @@ public class Estoque extends totalcross.ui.Window{
 
 		}
 
-	}		
+	}
+	
+	public boolean validaProdutoCarrinho(boolean prodAdicionado) {
+ 		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
+		try {
+
+			try {
+
+				lb = new LitebasePack();
+
+				sql = "SELECT * FROM VENDAPRODUTOTEMP WHERE CODIGOPROD = " + codigo;
+
+				rs = lb.executeQuery(sql);
+				rs.first();
+
+				if (rs.getRowCount() == 0) {
+					return prodAdicionado = false;
+
+				} else {
+					
+					return prodAdicionado = true;
+				}
+
+			}
+			finally {
+				if (lb != null) {
+					lb.closeAll();
+				}
+			}
+
+		} 
+		catch (Exception e) {
+			Auxiliares.artMsgbox("ERRO", "Erro validaProdutoCarrinho\n" + e);
+		}
+		return prodAdicionado;
+
+	}
 }

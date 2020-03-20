@@ -171,7 +171,7 @@ public class Venda extends totalcross.ui.Window{
 						} else {
 
 							Auxiliares.artMsgbox("CONTROLE",
-									"Esse produto encontra-se no carrinho.\nPor favor finalize a venda para inseri-lo\nnovamente!");
+									"Esse produto encontra-se no carrinho. Por favor finalize a venda para inseri-lo novamente!");
 						}
 
 					} else {

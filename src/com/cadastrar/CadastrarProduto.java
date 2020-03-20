@@ -4,11 +4,13 @@ package com.cadastrar;
 import java.util.Random;
 
 import com.auxiliares.Auxiliares;
+import com.bottom.BottomImg;
 import com.litebase.LitebasePack;
 
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
+import totalcross.ui.Button;
 import totalcross.ui.ComboBox;
 import totalcross.ui.Edit;
 import totalcross.ui.ImageControl;
@@ -37,6 +39,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 	private Edit 							editValor;
 	private ArtButton						btnCadastrar;
 	private ArtButton 						btnVoltar;
+	public  Button					        btnInformacao;
 	private ImageControl					imgAdicionar;
 	
 	public int								codigoProduto;
@@ -51,14 +54,17 @@ public class CadastrarProduto extends totalcross.ui.Window{
 		
 		try {
 			
+		    btnInformacao = BottomImg.imageOnly(new Image("img/informacao.png"));
+		    add(btnInformacao, RIGHT + 10, TOP + 10, SCREENSIZE + 14, PREFERRED);
+				
 			imgAdicionar = new ImageControl(new Image("img/adicionar.png"));
 			imgAdicionar.scaleToFit = true;
 			imgAdicionar.centerImage = true;
-			add(imgAdicionar,  CENTER, TOP - 20, SCREENSIZE + 50, SCREENSIZE + 50);
+			add(imgAdicionar,  CENTER, AFTER - 50, SCREENSIZE + 50, SCREENSIZE + 50, btnInformacao);
 			
 			lblCategoria = new Label("CATEGORIA:  ");
 			add(lblCategoria);
-			lblCategoria.setRect(LEFT + 90, AFTER + 5, PREFERRED, PREFERRED, imgAdicionar);
+			lblCategoria.setRect(LEFT + 90, AFTER - 10, PREFERRED, PREFERRED, imgAdicionar);
 			lblCategoria.setBackColor(0x003366);
 			lblCategoria.setForeColor(Color.WHITE);
 			
@@ -136,6 +142,8 @@ public class CadastrarProduto extends totalcross.ui.Window{
 	        
 	        reposition();
 	        
+	        editQuantidade.requestFocus();
+	        
 //	        buscaPrimeiroLogin();
 	        
 		} catch (Exception e) {
@@ -197,6 +205,10 @@ public class CadastrarProduto extends totalcross.ui.Window{
 				}else if (evt.target == cmbProduto) {
 					cmbMarca.removeAll();
 					carregaCmbMarca();
+					
+				} else if (evt.target == btnInformacao) {
+					Auxiliares.artMsgbox("CONTROLE",
+							"Essa é a tela de cadastro de produto. Preencha todos os campos corretamente.\nNo campo do valor só será aceito número e ponto.\nNão use valores como '0.23', pois o calculo pode não ficar correto. E lembre-se de não colocar espaço entre os números.");
 				}
 
 			}
