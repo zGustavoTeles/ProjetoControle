@@ -359,7 +359,7 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
-							+ " ('65', 'PÉRGOLA', 'BEBIDA-ALCOOLICA', '05')";
+							+ " ('65', 'PERGOLA', 'BEBIDA-ALCOOLICA', '05')";
 					
 					lb.executeUpdate(sql);
 //------------------PINGAS-------------------------------------------------------------------------------------------------------------
