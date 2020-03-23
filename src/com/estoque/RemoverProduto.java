@@ -145,7 +145,7 @@ public class RemoverProduto extends totalcross.ui.Window {
 
 					} 
 					else if (Convert.toInt(editQuantidade.getText()) > Convert.toInt(Estoque.quantidade)) {
-						Auxiliares.artMsgbox("CONTROLE", "Quantidade inserida maior que a quantidade\n em estoque!");
+						Auxiliares.artMsgbox("CONTROLE", "Quantidade inserida maior que a quantidade\nem estoque!");
 						editQuantidade.setText("");
 						
 						return;

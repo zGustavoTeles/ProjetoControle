@@ -326,25 +326,16 @@ public class Carrinho extends totalcross.ui.Window{
 
 					lb.executeUpdate(sql);
 					
-					if (quantidadeEstoque == 0 || quantidadeEstoque < 0) {
 						
-						sql = " DELETE FROM ESTOQUE " 
-					        + " WHERE CODIGO = " + codigoProdTemp;
-
-						lb.executeUpdate(sql);
-						
-					} else {
-						
-						sql = "INSERT INTO 	ESTOQUE " + "(" + " CODIGO, PRODUTO, MARCA, VALOR, QUANTIDADE, "
-								+ " CATEGORIA, DESCRICAO, DATAENTRADA " + ")" + " VALUES " + "( '" + codigoProdTemp
-								+ "' , '" + produtoTemp + "', '" + marcaTemp + "', '" + valorTemp + "', '"
-								+ quantidadeEstoque + "', '" + categoriaTemp + "','" + descricaoTemp + "', '"
-								+ dataString + "'" + ")";
+					sql = "INSERT INTO 	ESTOQUE " + "(" + " CODIGO, PRODUTO, MARCA, VALOR, QUANTIDADE, "
+						+ " CATEGORIA, DESCRICAO, DATAENTRADA " + ")" + " VALUES " + "( '" + codigoProdTemp
+						+ "' , '" + produtoTemp + "', '" + marcaTemp + "', '" + valorTemp + "', '"
+						+ quantidadeEstoque + "', '" + categoriaTemp + "','" + descricaoTemp + "', '"
+						+ dataString + "'" + ")";
 
 						lb.executeUpdate(sql);
 					}
 
-				}
 				
 			} finally {
 				if (lb != null)

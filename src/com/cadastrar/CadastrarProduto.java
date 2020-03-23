@@ -82,7 +82,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			add(cmbProduto);
 			cmbProduto.setRect(AFTER + 5, SAME, FILL - 120, PREFERRED, lblProduto);
 			
-			lblMarca = new Label("MARCA:         ");
+			lblMarca = new Label("MARCA:          ");
 			add(lblMarca);
 			lblMarca.setRect(LEFT + 90, AFTER + 20, PREFERRED, PREFERRED, cmbProduto);
 			lblMarca.setBackColor(0x003366);
@@ -162,8 +162,11 @@ public class CadastrarProduto extends totalcross.ui.Window{
 
 				} else if (evt.target == btnCadastrar) {
 
-					if (!editQuantidade.getText().equals("") && cmbCategoria.getSelectedItem() != null
-							&& cmbMarca.getSelectedItem() != null && cmbProduto.getSelectedItem() != null) {
+					if (!editValor.getText().equals("") && !editQuantidade.getText().equals("")
+							&& !cmbCategoria.getSelectedItem().toString().equals("")
+							&& !cmbMarca.getSelectedItem().toString().equals("")
+							&& !cmbProduto.getSelectedItem().toString().equals("")
+							&& !cmbDescricao.getSelectedItem().toString().equals("")) {
 
 						if (editValor.getText().equals(".0") || editValor.getText().equals(".1")
 								|| editValor.getText().equals(".2") || editValor.getText().equals(".3")
@@ -175,7 +178,25 @@ public class CadastrarProduto extends totalcross.ui.Window{
 									"Valor inserido incorreto!\n tente '2.23', por exemplo... ");
 							return;
 						}
+						
+						boolean produtoEstoque = false;
+						produtoEstoque = validaProdutoEstoque(produtoEstoque);
+						
+						if (produtoEstoque) {
+							Auxiliares.artMsgbox("CONTROLE",
+									"Produto já cadastrado no estoque!\nObs: Tente altera-lo na aba estoque");
 
+							cmbProduto.removeAll();
+							cmbMarca.removeAll();
+							cmbCategoria.removeAll();
+							cmbDescricao.removeAll();
+							editQuantidade.clear();
+							editValor.clear();
+
+							return;
+						}
+						
+						
 						String[] ArtButtonArray = { "Sim", "Não" };
 
 						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja cadastrar o produto no estoque?",
@@ -438,6 +459,45 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			} catch (Exception e) {
 				Auxiliares.artMsgbox("ERRO", "Erro ao carregaCmbDescricao\n" + e);
 
+			}
+
+		}
+	}
+	
+	public boolean validaProdutoEstoque( boolean produtoEstoque) {
+		{
+			String sql = "";
+			LitebasePack lb = null;
+			ResultSet rs = null;
+
+			try {
+				try {
+					lb = new LitebasePack();
+					
+					sql =" SELECT PRODUTO, DESCRICAO FROM ESTOQUE "
+						+" WHERE PRODUTO = " + "'" + cmbProduto.getSelectedItem() + "'"
+					    +" AND DESCRICAO = " + "'" + cmbDescricao.getSelectedItem() + "'";
+					
+					rs = lb.executeQuery(sql);
+					rs.first();
+					
+					if (rs.getRowCount() == 0) {
+						return produtoEstoque = false;
+
+					} else {
+						
+						return produtoEstoque = true;
+					}
+ 
+				} finally {
+					if (lb != null)
+						lb.closeAll();
+
+				}
+			} catch (Exception e) {
+				Auxiliares.artMsgbox("ERRO", "Erro ao carregaCmbMarca\n" + e);
+				
+				return produtoEstoque;
 			}
 
 		}
