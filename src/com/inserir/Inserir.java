@@ -88,7 +88,7 @@ public class Inserir extends totalcross.ui.Window {
 			editCategoria.setText(Venda.categoria);
 			editCategoria.setEditable(false);
 			
-			lblMarca = new Label("MARCA:           ");
+			lblMarca = new Label("MARCA:          ");
 			add(lblMarca);
 			lblMarca.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editCategoria);
 			lblMarca.setBackColor(0x003366);

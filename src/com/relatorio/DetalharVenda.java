@@ -83,7 +83,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			editProduto.setText(Relatorio.produto);
 			editProduto.setEditable(false);
 			
-			lblMarca = new Label("MARCA:         ");
+			lblMarca = new Label("MARCA:        ");
 			add(lblMarca);
 			lblMarca.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editProduto);
 			lblMarca.setBackColor(0x003366);
