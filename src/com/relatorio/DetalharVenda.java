@@ -69,7 +69,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			imgVenda.centerImage = true;
 			add(imgVenda, CENTER, TOP - 50, SCREENSIZE + 50, SCREENSIZE + 50);
 			
-			lblProduto = new Label("PRODUTO:     ");
+			lblProduto = new Label("PRODUTO:    ");
 			add(lblProduto);
 			lblProduto.setRect(LEFT + 90, AFTER + 20, PREFERRED, PREFERRED, imgVenda);
 			lblProduto.setBackColor(0x003366);
@@ -83,7 +83,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			editProduto.setText(Relatorio.produto);
 			editProduto.setEditable(false);
 			
-			lblMarca = new Label("MARCA:          ");
+			lblMarca = new Label("MARCA:         ");
 			add(lblMarca);
 			lblMarca.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editProduto);
 			lblMarca.setBackColor(0x003366);
@@ -97,7 +97,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			editMarca.setText(Relatorio.marca);
 			editMarca.setEditable(false);
 			
-			lblDescricao = new Label("DESCRICAO:   ");
+			lblDescricao = new Label("DESCRICAO: ");
 			add(lblDescricao);
 			lblDescricao.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editMarca);
 			lblDescricao.setBackColor(0x003366);
@@ -111,7 +111,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			editDescricao.setText(Relatorio.descricao);
 			editDescricao.setEditable(false);		
 
-			lblCategoria = new Label("CATEGORIA:   ");
+			lblCategoria = new Label("CATEGORIA: ");
 			add(lblCategoria);
 			lblCategoria.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editDescricao);
 			lblCategoria.setBackColor(0x003366);
@@ -125,7 +125,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			editCategoria.setText(Relatorio.categoria);
 			editCategoria.setEditable(false);
 
-			lblTipoPagamento = new Label("PAGAMENTO ");
+			lblTipoPagamento = new Label("PAGAMENTO");
 			add(lblTipoPagamento);
 			lblTipoPagamento.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editCategoria);
 			lblTipoPagamento.setBackColor(0x003366);
@@ -139,7 +139,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			editTipoPagamento.setText(Relatorio.tipoPagamento);
 			editTipoPagamento.setEditable(false);
 
-			lblDataVenda = new Label("DATA:             ");
+			lblDataVenda = new Label("DATA:            ");
 			add(lblDataVenda);
 			lblDataVenda.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editTipoPagamento);
 			lblDataVenda.setBackColor(0x003366);
@@ -153,7 +153,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			editDataVenda.setText(Relatorio.dataVenda);
 			editDataVenda.setEditable(false);
 
-			lblTotal = new Label("TOTAL:           ");
+			lblTotal = new Label("TOTAL:          ");
 			add(lblTotal);
 			lblTotal.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, lblDataVenda);
 			lblTotal.setBackColor(0x003366);

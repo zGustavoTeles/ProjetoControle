@@ -62,6 +62,7 @@ public class Estoque extends totalcross.ui.Window{
 			editBuscar = new Edit();
 			add(editBuscar);
 			editBuscar.capitalise = (Edit.ALL_UPPER);
+			editBuscar.setValidChars("abcdefghijklmnopqrstuvwxyz");
 			editBuscar.setRect(LEFT, AFTER + 5, width - 130, PREFERRED, lblBuscar);
 			editBuscar.setBackColor(Color.WHITE);
 			editBuscar.setForeColor(0x003366);
@@ -92,9 +93,9 @@ public class Estoque extends totalcross.ui.Window{
             
             int gridWidths[] = new int[8];
 			gridWidths[0] = 5;
-			gridWidths[1] = 190;
+			gridWidths[1] = 400;
 			gridWidths[2] = 100;
-			gridWidths[3] = 190;
+			gridWidths[3] = 300;
 			gridWidths[4] = 190;
 			gridWidths[5] = 100;
 			gridWidths[6] = 140;
@@ -156,13 +157,9 @@ public class Estoque extends totalcross.ui.Window{
 					}
 
 				} else if (evt.target == btnBuscar) {
-					if (editBuscar.getText().equals("")) {
-						Auxiliares.artMsgbox("CONTROLE", "O campo de busca deve ser preenchido!");
 
-					} else {
-						gridProdutos.removeAllElements();
-						carregaGridProdutosBusca();
-					}
+					gridProdutos.removeAllElements();
+					carregaGridProdutosBusca();
 
 				} else if (evt.target == cmbCategoria) {
 					if (cmbCategoria.getItems() != null) {
@@ -302,8 +299,10 @@ public class Estoque extends totalcross.ui.Window{
 			try {
 				lb = new LitebasePack();
 				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " 
-				    + "'%" + editBuscar.getText() + "%'"
-				    + "OR MARCA LIKE "  + "'%" + editBuscar.getText() + "%'";
+					    + "'%" + editBuscar.getText() + "%'"
+					    + "OR MARCA LIKE "  + "'%" + editBuscar.getText() + "%'"
+	 					+ "OR CATEGORIA LIKE "  + "'%" + editBuscar.getText() + "%'"
+					    + "OR DESCRICAO LIKE "  + "'%" + editBuscar.getText() + "%'";
 
 				rs = lb.executeQuery(sql);
 				rs.first();

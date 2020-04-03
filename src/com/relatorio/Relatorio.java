@@ -25,6 +25,8 @@ public class Relatorio extends totalcross.ui.Window{
 	
 	private Label							lblData;
 	private Label							lblA;
+	private Edit							editQuantidade;
+	private Edit							editTotal;
 	private Edit							editDataUm;
 	private Edit							editDataDois;
 	private Grid							gridProdutos;
@@ -83,7 +85,7 @@ public class Relatorio extends totalcross.ui.Window{
 			btnBuscar.setRect(AFTER + 5 , SAME, SCREENSIZE - 5, PREFERRED, editDataDois);
 			btnBuscar.setBackColor(0x003366);
 			btnBuscar.setForeColor(Color.WHITE);
-
+			
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
 			btnVoltar.setRect(RIGHT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
@@ -95,12 +97,28 @@ public class Relatorio extends totalcross.ui.Window{
 			btnDetalhar.setRect(LEFT, BOTTOM, SCREENSIZE - 4, PREFERRED + 15);
 			btnDetalhar.setBackColor(0xDF7401);
 			btnDetalhar.setForeColor(Color.WHITE);
+			
+			editQuantidade = new Edit();
+			add(editQuantidade);
+			editQuantidade.setEditable(false);
+			editQuantidade.setRect(LEFT + 2, BEFORE - 40, SCREENSIZE - 2, PREFERRED, btnDetalhar);
+			editQuantidade.setBackColor(0x003366);
+			editQuantidade.setForeColor(Color.BLACK);
+			editQuantidade.setText("QUANTIDADE:");
+			
+			editTotal = new Edit();
+			add(editTotal);
+			editTotal.setEditable(false);
+			editTotal.setRect(RIGHT - 5, BEFORE - 40, SCREENSIZE - 2, PREFERRED, btnVoltar);
+			editTotal.setBackColor(0x003366);
+			editTotal.setForeColor(Color.BLACK);
+			editTotal.setText("TOTAL: R$");
 
 			int gridWidths[] = new int[9];
 			gridWidths[0] = 120;
 			gridWidths[1] = 5;
-			gridWidths[2] = 190;
-			gridWidths[3] = 190;
+			gridWidths[2] = 400;
+			gridWidths[3] = 300;
 			gridWidths[4] = 100;
 			gridWidths[5] = 100;
 			gridWidths[6] = 170;
@@ -122,8 +140,9 @@ public class Relatorio extends totalcross.ui.Window{
 			gridProdutos.boldCheck = false;
 			gridProdutos.enableColumnResize = false;
 			gridProdutos.setRect(Container.LEFT + 1, Container.AFTER + 10, Container.FILL - 1, Container.FIT, lblData);
-
+			
 			reposition();
+
 			
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela relatorio\n" + e);
@@ -204,6 +223,8 @@ public class Relatorio extends totalcross.ui.Window{
 		String sql		   = "";
 		LitebasePack lb    = null;
 		ResultSet rs	   = null;
+		int quantidade     = 0;
+		double total	   = 0;
 
 		try {
 			
@@ -232,9 +253,15 @@ public class Relatorio extends totalcross.ui.Window{
 					b[7] = rs.getString("CATEGORIA");
 					b[8] = "R$ " + rs.getString("VALOR");
 					gridProdutos.add(b);
+					
+					quantidade += rs.getInt("QUANTIDADE");
+					total      += Convert.toDouble(rs.getString("VALOR"));
 					rs.next();
 				}
-
+				
+				editQuantidade.setText("QUANTIDADE: " + Convert.toString(quantidade));
+				editTotal.setText( "TOTAL: R$" + Convert.toCurrencyString(total, 2).replace(",", "."));
+				
 			} finally {
 				if (lb != null) {
 					lb.closeAll();

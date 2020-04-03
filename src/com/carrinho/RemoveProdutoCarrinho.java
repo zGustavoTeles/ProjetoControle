@@ -2,6 +2,7 @@ package com.carrinho;
 
 import com.auxiliares.Auxiliares;
 import com.litebase.LitebasePack;
+import com.venda.Venda;
 
 import litebase.ResultSet;
 import nx.componentes.ArtButton;
@@ -164,11 +165,10 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 						editQuantidade.setText("");
 						return;
 
-					} 
-					else if (Convert.toInt(editQuantidade.getText()) > quantidadeTemp) {
-					    Auxiliares.artMsgbox("CONTROLE", "Quantidade inserida maior que a quantidade\n em estoque!");
+					} else if (Convert.toInt(editQuantidade.getText()) > quantidadeTemp) {
+						Auxiliares.artMsgbox("CONTROLE", "Quantidade inserida maior que a quantidade\n em estoque!");
 						editQuantidade.setText("");
-						
+
 						return;
 
 					} else {
@@ -184,18 +184,36 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 						} else {
 
 							removeProdutoCarrinho();
+
+							if (Convert.toInt(editQntCarrinho.getText()) == 0
+									|| Convert.toInt(editQntCarrinho.getText()) < 0) {
+
+								deletaProdutoCarrinho();
+
+								boolean existeProdutoCarrinho = false;
+								existeProdutoCarrinho = existeProdutoCarrinho(existeProdutoCarrinho);
+
+								if (existeProdutoCarrinho) {
+									Auxiliares.artMsgbox("CONTROLE", "Produto removido do carrinho!");
+
+									unpop();
+									unpop();
+								} else {
+									Auxiliares.artMsgbox("CONTROLE", "Produto removido do carrinho!\nCarrinho vazio!");
+									Venda.btnCarrinho.setEnabled(false);
+									unpop();
+									unpop();
+								}
+
+							} else {
+								Auxiliares.artMsgbox("CONTROLE", "Produto removido do carrinho!");
+
+								unpop();
+								unpop();
+							}
+
 						}
 
-						if (Convert.toInt(editQntCarrinho.getText()) == 0
-								|| Convert.toInt(editQntCarrinho.getText()) < 0) {
-
-							deletaProdutoCarrinho();
-						}
-
-						Auxiliares.artMsgbox("CONTROLE", "Produto removido do carrinho!");
-
-						unpop();
-						unpop();
 					}
 				}
 				
@@ -261,6 +279,13 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 				    + " WHERE CODIGOPROD = " + editCodigo.getText();
 
 				lb.executeUpdate(sql);
+				
+				sql = " UPDATE VENDAPRODUTOTEMP " 
+					+ " SET VALOR = " + editTotal.getText()
+				    + " WHERE CODIGOPROD = " + editCodigo.getText();
+
+					lb.executeUpdate(sql);
+					
 
 			} finally {
 				if (lb != null)
@@ -303,19 +328,24 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 		try {
 			try {
 				lb = new LitebasePack();
-				sql = " SELECT * FROM ESTOQUE " 
+				sql = " SELECT CODIGOPROD, PRODUTO FROM VENDAPRODUTOTEMP " 
+				    + " WHERE CODIGOPROD = " + Carrinho.codigoProduto;
+
+				rs = lb.executeQuery(sql);
+				rs.first();
+
+				editCodigo.setText(Convert.toString(rs.getInt("CODIGOPROD")));
+				editProduto.setText(rs.getString("PRODUTO"));
+
+				sql = " SELECT QUANTIDADE, VALOR FROM ESTOQUE " 
 				    + " WHERE CODIGO = " + Carrinho.codigoProduto;
 
 				rs = lb.executeQuery(sql);
 				rs.first();
 
-				editCodigo.setText(Convert.toString(rs.getInt("CODIGO")));
-				editProduto.setText(rs.getString("PRODUTO"));
-				
-				
 				quantidadeTemp = rs.getInt("QUANTIDADE");
 				valorProdutoSt = rs.getString("VALOR");
-				
+
 			} finally {
 				if (lb != null)
 					lb.closeAll();
@@ -326,6 +356,43 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 
 		}
 
+	}
+	
+	public boolean existeProdutoCarrinho(boolean existeProdutoCarrinho) {
+		{
+			String sql = "";
+			LitebasePack lb = null;
+			ResultSet rs = null;
+
+			try {
+				try {
+					lb = new LitebasePack();
+
+					sql = "SELECT * FROM VENDAPRODUTOTEMP";
+
+					rs = lb.executeQuery(sql);
+					rs.first();
+
+					if (rs.getRowCount() == 0) {
+						return existeProdutoCarrinho = false;
+
+					} else {
+
+						return existeProdutoCarrinho = true;
+					}
+
+				} finally {
+					if (lb != null)
+						lb.closeAll();
+
+				}
+			} catch (Exception e) {
+				Auxiliares.artMsgbox("ERRO", "Erro ao carregaCmbMarca\n" + e);
+
+				return existeProdutoCarrinho;
+			}
+
+		}
 	}
 
 }

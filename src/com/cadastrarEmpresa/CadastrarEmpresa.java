@@ -93,6 +93,7 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			add(editCodigo = new Edit(), LEFT, AFTER + 20, PREFERRED, PREFERRED);
 			editCodigo.setBackColor(Color.WHITE);
 			editCodigo.setForeColor(0x003366);
+			editCodigo.setEditable(false);
 			
 			btnCadastrar = new ArtButton("CADASTRAR");
 			add(btnCadastrar);

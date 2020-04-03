@@ -165,11 +165,6 @@ public class RemoverProduto extends totalcross.ui.Window {
 
 							removeProdutoEstoque();
 
-							if (Convert.toInt(editEstoque.getText()) == 0 || Convert.toInt(editEstoque.getText()) < 0) {
-
-								deletaProdutoEstoque();
-							}
-
 							Auxiliares.artMsgbox("CONTROLE", "Produto removido do estoque!");
 
 							unpop();

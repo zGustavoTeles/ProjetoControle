@@ -122,10 +122,10 @@ public class Carrinho extends totalcross.ui.Window{
 
             int gridWidths[] = new int[9];
 				gridWidths[0] = 5;
-				gridWidths[1] = 190;
+				gridWidths[1] = 400;
 				gridWidths[2] = 100;
 				gridWidths[3] = 5;
-				gridWidths[4] = 190;
+				gridWidths[4] = 300;
 				gridWidths[5] = 190;
 				gridWidths[6] = 100;
 				gridWidths[7] = 100;

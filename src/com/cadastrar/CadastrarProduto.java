@@ -82,7 +82,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			add(cmbProduto);
 			cmbProduto.setRect(AFTER + 5, SAME, FILL - 120, PREFERRED, lblProduto);
 			
-			lblMarca = new Label("MARCA:          ");
+			lblMarca = new Label("MARCA:         ");
 			add(lblMarca);
 			lblMarca.setRect(LEFT + 90, AFTER + 20, PREFERRED, PREFERRED, cmbProduto);
 			lblMarca.setBackColor(0x003366);
@@ -474,9 +474,10 @@ public class CadastrarProduto extends totalcross.ui.Window{
 				try {
 					lb = new LitebasePack();
 					
-					sql =" SELECT PRODUTO, DESCRICAO FROM ESTOQUE "
-						+" WHERE PRODUTO = " + "'" + cmbProduto.getSelectedItem() + "'"
-					    +" AND DESCRICAO = " + "'" + cmbDescricao.getSelectedItem() + "'";
+					sql =" SELECT MARCA, DESCRICAO, PRODUTO FROM ESTOQUE "
+						+" WHERE MARCA =   " + "'" + cmbMarca.getSelectedItem() + "'"
+					    +" AND DESCRICAO = " + "'" + cmbDescricao.getSelectedItem() + "'"
+					    +" AND PRODUTO =   " + "'" + cmbProduto.getSelectedItem() + "'";;
 					
 					rs = lb.executeQuery(sql);
 					rs.first();

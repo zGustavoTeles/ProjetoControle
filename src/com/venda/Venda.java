@@ -23,13 +23,16 @@ import totalcross.ui.image.Image;
 
 public class Venda extends totalcross.ui.Window{
 	
-	private Label 							lblBuscar;
+	private Label 							lblProduto;
+	private Label							lblCodigo;
 	private Label							lblCategoria;
 	private ArtButton 						btnVoltar;
-	private ArtButton						btnBuscar;
+	private ArtButton						btnBuscaProduto;
+	private ArtButton						btnBuscaCodigo;
 	private ArtButton						btnInserir;
 	private ComboBox						cmbCategoria;
-	private Edit							editBuscar;
+	private Edit							editBuscaProduto;
+	private Edit							editBuscaCodigo;
 	public Grid							    gridProdutos;
 	
 	public static Button					btnCarrinho;
@@ -50,34 +53,55 @@ public class Venda extends totalcross.ui.Window{
 		
 		try {
 					
-			lblCategoria = new Label("CATEGORIA:");
-			add(lblCategoria);
-			lblCategoria.setRect(LEFT, TOP + 5, PREFERRED, PREFERRED);
-			lblCategoria.setBackColor(0x003366);
-			lblCategoria.setForeColor(Color.WHITE);
+//			lblCategoria = new Label("CATEGORIA:");
+//			add(lblCategoria);
+//			lblCategoria.setRect(LEFT, TOP + 5, PREFERRED, PREFERRED);
+//			lblCategoria.setBackColor(0x003366);
+//			lblCategoria.setForeColor(Color.WHITE);
+//			
+//			cmbCategoria = new ComboBox();
+//			add(cmbCategoria);
+//			cmbCategoria.setRect(LEFT, AFTER + 5, FILL + 5, PREFERRED, lblCategoria);
 			
-			cmbCategoria = new ComboBox();
-			add(cmbCategoria);
-			cmbCategoria.setRect(LEFT, AFTER + 5, FILL + 5, PREFERRED, lblCategoria);
+			lblProduto = new Label("PRODUTO");
+			add(lblProduto);
+			lblProduto.setRect(LEFT, TOP + 5, PREFERRED, PREFERRED);
+			lblProduto.setBackColor(0x003366);
+			lblProduto.setForeColor(Color.WHITE);
 			
-			lblBuscar = new Label("BUSCAR");
-			add(lblBuscar);
-			lblBuscar.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, cmbCategoria);
-			lblBuscar.setBackColor(0x003366);
-			lblBuscar.setForeColor(Color.WHITE);
-			
-			editBuscar = new Edit();
-			add(editBuscar);
-			editBuscar.capitalise = (Edit.ALL_UPPER);
-			editBuscar.setRect(LEFT, AFTER + 5, width - 130, PREFERRED, lblBuscar);
-			editBuscar.setBackColor(Color.WHITE);
-			editBuscar.setForeColor(0x003366);
+			editBuscaProduto = new Edit();
+			add(editBuscaProduto);
+			editBuscaProduto.capitalise = (Edit.ALL_UPPER);
+			editBuscaProduto.setValidChars("abcdefghijklmnopqrstuvwxyz");
+			editBuscaProduto.setRect(LEFT, AFTER + 5, width - 130, PREFERRED, lblProduto);
+			editBuscaProduto.setBackColor(Color.WHITE);
+			editBuscaProduto.setForeColor(0x003366);
 
-			btnBuscar = new ArtButton("BUSCAR");
-			add(btnBuscar);
-			btnBuscar.setRect(AFTER + 1, SAME, SCREENSIZE - 5, PREFERRED, editBuscar);
-			btnBuscar.setBackColor(0x003366);
-	        btnBuscar.setForeColor(Color.WHITE);
+			btnBuscaProduto = new ArtButton("BUSCAR");
+			add(btnBuscaProduto);
+			btnBuscaProduto.setRect(AFTER + 1, SAME, SCREENSIZE - 5, PREFERRED, editBuscaProduto);
+			btnBuscaProduto.setBackColor(0x003366);
+	        btnBuscaProduto.setForeColor(Color.WHITE);
+	        
+	        lblCodigo = new Label("CÓDIGO");
+			add(lblCodigo);
+			lblCodigo.setRect(LEFT, AFTER + 5, PREFERRED, PREFERRED, editBuscaProduto);
+			lblCodigo.setBackColor(0x003366);
+			lblCodigo.setForeColor(Color.WHITE);
+			
+			editBuscaCodigo = new Edit();
+			add(editBuscaCodigo);
+			editBuscaCodigo.capitalise = (Edit.ALL_UPPER);
+			editBuscaCodigo.setRect(LEFT, AFTER + 5, width - 130, PREFERRED, lblCodigo);
+			editBuscaCodigo.setBackColor(Color.WHITE);
+			editBuscaCodigo.setForeColor(0x003366);
+			editBuscaCodigo.setValidChars("0 1 2 3 4 5 6 7 8 9 /");
+
+			btnBuscaCodigo = new ArtButton("BUSCAR");
+			add(btnBuscaCodigo);
+			btnBuscaCodigo.setRect(AFTER + 1, SAME, SCREENSIZE - 5, PREFERRED, editBuscaCodigo);
+			btnBuscaCodigo.setBackColor(0x003366);
+			btnBuscaCodigo.setForeColor(Color.WHITE);
 	            
             btnVoltar = new ArtButton("VOLTAR");
             add(btnVoltar);
@@ -97,9 +121,9 @@ public class Venda extends totalcross.ui.Window{
 
             int gridWidths[] = new int[7];
 				gridWidths[0] = 5;
-				gridWidths[1] = 190;
+				gridWidths[1] = 400;
 				gridWidths[2] = 100;
-				gridWidths[3] = 190;
+				gridWidths[3] = 300;
 				gridWidths[4] = 190;
 				gridWidths[5] = 100;
 				gridWidths[6] = 140;
@@ -118,7 +142,7 @@ public class Venda extends totalcross.ui.Window{
 			gridProdutos.enableColumnResize = false;
 //			gridProdutos.captionsBackColor = Color.BLACK;
 			gridProdutos.setRect(Container.LEFT + 1, Container.AFTER + 10,
-					Container.FILL - 1, Container.FIT, btnBuscar);
+					Container.FILL - 1, Container.FIT, btnBuscaCodigo);
 			
 			reposition();
 			
@@ -140,32 +164,30 @@ public class Venda extends totalcross.ui.Window{
 				if (evt.target == btnVoltar) {
 					unpop();
 
-				} else if (evt.target == btnBuscar) {
-					if (editBuscar.getText().equals("")) {
-						Auxiliares.artMsgbox("CONTROLE", "O campo de busca deve ser preenchido!");
-						
-					} else {
-						gridProdutos.removeAllElements();
-						carregaGridProdutosBusca();
-					}
-					
+				} else if (evt.target == btnBuscaProduto) {
+					gridProdutos.removeAllElements();
+					buscaProdutoPorDescricao();
+
+				} else if (evt.target == btnBuscaCodigo) {
+					gridProdutos.removeAllElements();
+					buscaProdutoPorCodigo();
+
 				} else if (evt.target == cmbCategoria) {
 					if (cmbCategoria.getItems() != null) {
-						editBuscar.setText("");
+						editBuscaProduto.setText("");
 						gridProdutos.removeAllElements();
 						carregaGridProdutos();
-						
+
 					} else {
 						return;
 					}
 
 				} else if (evt.target == btnInserir) {
-					if (gridProdutos.getSelectedItem() != null) {						
+					if (gridProdutos.getSelectedItem() != null) {
 						boolean prodAdicionado = false;
 						prodAdicionado = validaProdutoCarrinho(prodAdicionado);
 
 						if (prodAdicionado == false) {
-							gridProdutos.removeAllElements();
 							Inserir inserir = new Inserir();
 							inserir.popup();
 						} else {
@@ -183,8 +205,8 @@ public class Venda extends totalcross.ui.Window{
 					Carrinho carrinho = new Carrinho();
 					carrinho.popup();
 				}
-				  break;
-			case ControlEvent.FOCUS_IN :
+				break;
+			case ControlEvent.FOCUS_IN:
 				if (evt.target == cmbCategoria) {
 					cmbCategoria.removeAll();
 					carregaCmbCategoria();
@@ -255,7 +277,7 @@ public class Venda extends totalcross.ui.Window{
 
 	}
 	
-	public void carregaGridProdutosBusca() {
+	public void buscaProdutoPorDescricao() {
 		String sql = "";
 		LitebasePack lb = null;
 		ResultSet rs = null;
@@ -264,8 +286,10 @@ public class Venda extends totalcross.ui.Window{
 			try {
 				lb = new LitebasePack();
 				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " 
-				    + "'%" + editBuscar.getText() + "%'"
-				    + "OR MARCA LIKE "  + "'%" + editBuscar.getText() + "%'";
+				    + "'%" + editBuscaProduto.getText() + "%'"
+				    + "OR MARCA LIKE "  + "'%" + editBuscaProduto.getText() + "%'"
+ 					+ "OR CATEGORIA LIKE "  + "'%" + editBuscaProduto.getText() + "%'"
+				    + "OR DESCRICAO LIKE "  + "'%" + editBuscaProduto.getText() + "%'";
 
 				rs = lb.executeQuery(sql);
 				rs.first();
@@ -283,6 +307,54 @@ public class Venda extends totalcross.ui.Window{
 				}
 			} finally {
  				if (lb != null)
+					lb.closeAll();
+
+			}
+		} catch (Exception e) {
+			Auxiliares.artMsgbox("ERRO", "Erro ao carregaGridProdutosBusca\n" + e);
+
+		}
+
+	}
+	
+	public void buscaProdutoPorCodigo() {
+		String sql = "";
+		LitebasePack lb = null;
+		ResultSet rs = null;
+
+		try {
+			try {
+
+				lb = new LitebasePack();
+
+				if (editBuscaCodigo.getText().equals("")) {
+					sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " 
+				        + "'%" + editBuscaProduto.getText() + "%'"
+					    + "OR MARCA LIKE " + "'%" + editBuscaProduto.getText() + "%'" + "OR CATEGORIA LIKE " + "'%"
+						+ editBuscaProduto.getText() + "%'" + "OR DESCRICAO LIKE " + "'%"
+						+ editBuscaProduto.getText() + "%'";
+				} else {
+
+					sql = " SELECT * FROM ESTOQUE WHERE CODIGO = " + editBuscaCodigo.getText();
+
+				}
+
+				rs = lb.executeQuery(sql);
+				rs.first();
+				for (int i = 0; rs.getRowCount() > i; i++) {
+					String[] b = new String[7];
+					b[0] = Convert.toString(rs.getInt("CODIGO"));
+					b[1] = rs.getString("PRODUTO");
+					b[2] = Convert.toString(rs.getInt("QUANTIDADE"));
+					b[3] = rs.getString("MARCA");
+					b[4] = rs.getString("CATEGORIA");
+					b[5] = rs.getString("DESCRICAO");
+					b[6] = rs.getString("VALOR");
+					gridProdutos.add(b);
+					rs.next();
+				}
+			} finally {
+				if (lb != null)
 					lb.closeAll();
 
 			}

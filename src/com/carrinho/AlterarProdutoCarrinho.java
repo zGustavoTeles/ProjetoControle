@@ -272,9 +272,9 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 
 						} else {
 
-							insereProdutoNoCarrinho();
+							alteraProdutoCarrinho();
 
-							Auxiliares.artMsgbox("CONTROLE", "Produto inserido no carrinho!");
+							Auxiliares.artMsgbox("CONTROLE", "Produto do carrinho alterado!");
 
 							unpop();
 							unpop();
@@ -319,7 +319,7 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 
 	}
 	
-	public void insereProdutoNoCarrinho() {
+	public void alteraProdutoCarrinho() {
 
 		String sql = "";
 		LitebasePack lb = null;
@@ -330,7 +330,11 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 				
 				lb = new LitebasePack();
 				
-				sql = "SELECT CODIGO, CODIGOPROD FROM VENDAPRODUTOTEMP";
+				sql ="SELECT CODIGO, CODIGOPROD, PRODUTO, DESCRICAO, MARCA FROM VENDAPRODUTOTEMP"
+					+" WHERE PRODUTO =   " + "'" + editProduto.getText() + "'"
+					+" AND DESCRICAO = " + "'" + editDescricao.getText() + "'"
+					+" AND MARCA =   " + "'" + editMarca.getText() + "'";;
+					    
 				rs = lb.executeQuery(sql);
 				rs.first();
 									
@@ -365,7 +369,7 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 			}
 
 		} catch (Exception e) {
-			Auxiliares.artMsgbox("ERRO", "Erro insereProdutoNoCarrinho\n" + e);
+			Auxiliares.artMsgbox("ERRO", "Erro alteraProdutoCarrinho\n" + e);
 		}
 
 	}
@@ -410,22 +414,29 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 		try {
 			try {
 				lb = new LitebasePack();
-				sql = " SELECT * FROM ESTOQUE " 
-				    + " WHERE CODIGO = " + Carrinho.codigoProduto;
+				sql = " SELECT * FROM VENDAPRODUTOTEMP " 
+				    + " WHERE CODIGOPROD = " + Carrinho.codigoProduto;
 
 				rs = lb.executeQuery(sql);
 				rs.first();
 
 				editCategoria.setText(rs.getString("CATEGORIA"));
-				editCodigo.setText(Convert.toString(rs.getInt("CODIGO")));
+				editCodigo.setText(Convert.toString(rs.getInt("CODIGOPROD")));
 				editDescricao.setText(rs.getString("DESCRICAO"));
 				editEstoque.setText(Convert.toString(rs.getInt("QUANTIDADE")));
 				editMarca.setText(rs.getString("MARCA"));
 				editProduto.setText(rs.getString("PRODUTO"));
-				editValor.setText(rs.getString("VALOR"));
+				
+
+				sql = " SELECT * FROM ESTOQUE "
+				    + " WHERE CODIGO = " + Carrinho.codigoProduto;
+
+				rs = lb.executeQuery(sql);
+				rs.first();
 
 				valorTemp = rs.getString("VALOR");
 				quantidadeTemp = rs.getInt("QUANTIDADE");
+				editValor.setText(rs.getString("VALOR"));
 
 			} finally {
 				if (lb != null)
