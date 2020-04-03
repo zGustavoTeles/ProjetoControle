@@ -412,7 +412,8 @@ public class CadastrarProduto extends totalcross.ui.Window{
 							cmbDescricao.add(b);
 							rs.next();
 						}
-					} else if (cmbCategoria.getSelectedItem().equals("DIVERSOS")) {
+					} else if (cmbCategoria.getSelectedItem().equals("DIVERSOS")
+							|| cmbCategoria.getSelectedItem().equals("SUCO")) {
 
 						sql = " SELECT DESCRICAO FROM DESCRICAO ";
 
