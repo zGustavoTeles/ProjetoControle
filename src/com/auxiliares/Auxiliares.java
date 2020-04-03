@@ -13,7 +13,7 @@ public class Auxiliares {
 	
 	
 	public static final String NOMEAPP       = "CONTROLE";
-	public static final String VERSAO		 = "1.01";
+	public static final String VERSAO		 = "1.02";
 	public static final String TELEFONE 	 = "(62) 98163-5089";
 //	public static final String NOMESISTEMA   = "CONTROLE_MOBILE - BETA";
 	public static final String NOMESISTEMA   = "CONTROLE_PC - BETA";

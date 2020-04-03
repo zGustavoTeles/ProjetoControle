@@ -145,6 +145,7 @@ public class Venda extends totalcross.ui.Window{
 					Container.FILL - 1, Container.FIT, btnBuscaCodigo);
 			
 			reposition();
+			editBuscaProduto.requestFocus();
 			
 			habilitaCarrinho();
 			

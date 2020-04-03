@@ -119,6 +119,7 @@ public class Estoque extends totalcross.ui.Window{
 				Container.FILL - 1, Container.FIT, btnBuscar);
 		
 		reposition();
+		editBuscar.requestFocus();
 		
 		} catch (Exception e) {
 			Auxiliares.artMsgbox("ERRO","Erro ao construir a tela Estoque\n" + e);
