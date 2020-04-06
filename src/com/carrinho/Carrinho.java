@@ -131,7 +131,7 @@ public class Carrinho extends totalcross.ui.Window{
 				gridWidths[7] = 100;
 				gridWidths[8] = 140;
 	
-			String[] caps = { "COD.", "PRODUTO", "QNT", "COD.P.", "MARCA", "CATEGORIA","DESC.", "PAG.", " TOTAL "};
+			String[] caps = { "COD.", "PRODUTO", "QNT", "DESC.", "MARCA", "CATEGORIA","COD.P.", "PAG.", " TOTAL "};
 			int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT};
 			gridCarrinho = new Grid(caps, gridWidths, aligns, false);
 			add(gridCarrinho);
@@ -217,7 +217,7 @@ public class Carrinho extends totalcross.ui.Window{
 					try {
 						
 						quantidadeProduto = gridCarrinho.getSelectedItem()[2];
-						codigoProduto = gridCarrinho.getSelectedItem()[3];
+						codigoProduto = gridCarrinho.getSelectedItem()[6];
 						tipoPagamentoProduto = gridCarrinho.getSelectedItem()[7];
 						totalProduto = gridCarrinho.getSelectedItem()[8];
 
@@ -253,14 +253,14 @@ public class Carrinho extends totalcross.ui.Window{
 					b[0] = Convert.toString(rs.getInt("CODIGO"));
 					b[1] = rs.getString("PRODUTO");
 					b[2] = Convert.toString(rs.getInt("QUANTIDADE"));
-					b[3] = Convert.toString(rs.getInt("CODIGOPROD"));
+					b[3] = rs.getString("DESCRICAO");
 					b[4] = rs.getString("MARCA");
 					b[5] = rs.getString("CATEGORIA");
-					b[6] = rs.getString("DESCRICAO");
+					b[6] =Convert.toString(rs.getInt("CODIGOPROD"));
 					b[7] = rs.getString("TIPOPAGAMENTO");
 					b[8] = rs.getString("VALOR");
 					gridCarrinho.add(b);
-					rs.next();
+					rs.next();										 
 				}
 			} finally {
 				if (lb != null)

@@ -46,7 +46,7 @@ public class InfoEmpresa extends totalcross.ui.Window {
 			imgInfo = new ImageControl(new Image("img/info.png"));
 			imgInfo.scaleToFit = true;
 			imgInfo.centerImage = true;
-			add(imgInfo,  CENTER, AFTER + 30, PREFERRED, PREFERRED, lblInformacao);
+			add(imgInfo,  CENTER, AFTER + 30, PREFERRED - 70, PREFERRED - 70, lblInformacao);
 			
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);

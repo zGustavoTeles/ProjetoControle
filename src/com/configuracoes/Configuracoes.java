@@ -32,31 +32,31 @@ public class Configuracoes extends totalcross.ui.Window {
 
 			btnInformacoes = new ArtButton("INFORMAÇÕES");
 			add(btnInformacoes);
-			btnInformacoes.setRect(CENTER, TOP + 40, width - 200, PREFERRED + 80);
+			btnInformacoes.setRect(CENTER, TOP + 30, width - 200, SCREENSIZE + 17);
 			btnInformacoes.setBackColor(0x003366);
 			btnInformacoes.setForeColor(Color.WHITE);
 			
 			btnConfigEmpresa = new ArtButton("EMPRESA");
 			add(btnConfigEmpresa);
-			btnConfigEmpresa.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
+			btnConfigEmpresa.setRect(CENTER, AFTER, width - 200, SCREENSIZE + 17);
 			btnConfigEmpresa.setBackColor(0x003366);
 			btnConfigEmpresa.setForeColor(Color.WHITE);
 
 			btnApagarDados = new ArtButton("APAGAR DADOS");
 			add(btnApagarDados);
-			btnApagarDados.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
+			btnApagarDados.setRect(CENTER, AFTER, width - 200, SCREENSIZE + 17);
 			btnApagarDados.setBackColor(0x003366);
 			btnApagarDados.setForeColor(Color.WHITE);
 			
 			btnSuporte = new ArtButton("SUPORTE");
 			add(btnSuporte);
-			btnSuporte.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
+			btnSuporte.setRect(CENTER, AFTER, width - 200, SCREENSIZE + 17);
 			btnSuporte.setBackColor(0x003366);
 			btnSuporte.setForeColor(Color.WHITE);
 			
 			btnAdministrador = new ArtButton("ADMINISTRADOR");
 			add(btnAdministrador);
-			btnAdministrador.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
+			btnAdministrador.setRect(CENTER, AFTER, width - 200, SCREENSIZE + 17);
 			btnAdministrador.setBackColor(0x003366);
 			btnAdministrador.setForeColor(Color.WHITE);
 

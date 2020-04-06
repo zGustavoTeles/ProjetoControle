@@ -111,32 +111,32 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
-							+ " ('16', 'DEL VALLE 100% SUCO', 'SUCO', '02')";
+							+ " ('16', 'DEL VALLE', 'SUCO', '02')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
-							+ " ('17', 'SUFRESH 100% SUCO', 'SUCO', '02')";
+							+ " ('17', 'SUFRESH', 'SUCO', '02')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
-							+ " ('18', 'TIAL 100% SUCO', 'SUCO', '02')";
+							+ " ('18', 'TIAL', 'SUCO', '02')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
-							+ " ('19', 'NOVA ALIANÇA 100% SUCO', 'SUCO', '02')";
+							+ " ('19', 'NOVA ALIANÇA', 'SUCO', '02')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
-							+ " ('20', 'CERES 100% JUICE BLEND', 'SUCO', '02')";
+							+ " ('20', 'CERES JUICE BLEND', 'SUCO', '02')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO marca (codigo, descricao, categoria, codigoProd)" + " VALUES "
-							+ " ('21', 'LINHA 100% JANDAIA', 'SUCO', '02')";
+							+ " ('21', 'LINHA JANDAIA', 'SUCO', '02')";
 					
 					lb.executeUpdate(sql);
 					
@@ -997,102 +997,102 @@ public class Tabelas {
 					lb.execute("create index produto01 ON produto(codigo,produto,categoria)");
 
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('01', 'REFRIGERANTE COLA-RETORNAVÉL', 'REFRIGERANTE')";
+							+ " ('01', 'REFRIGERANTE DE COLA RETORNAVÉL', 'REFRIGERANTE')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('01', 'REFRIGERANTE GUARANÁ-RETORNAVÉL', 'REFRIGERANTE')";
+							+ " ('01', 'REFRIGERANTE DE GUARANÁ RETORNAVÉL', 'REFRIGERANTE')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('01', 'REFRIGERANTE COLA', 'REFRIGERANTE')";
+							+ " ('01', 'REFRIGERANTE DE COLA', 'REFRIGERANTE')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('01', 'REFRIGERANTE LIMÃO', 'REFRIGERANTE')";
+							+ " ('01', 'REFRIGERANTE DE LIMÃO', 'REFRIGERANTE')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('01', 'REFRIGERANTE ABACAXI', 'REFRIGERANTE')";
+							+ " ('01', 'REFRIGERANTE DE ABACAXI', 'REFRIGERANTE')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('01', 'REFRIGERANTE GUARANÁ', 'REFRIGERANTE')";
+							+ " ('01', 'REFRIGERANTE DE GUARANÁ', 'REFRIGERANTE')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('01', 'REFRIGERANTE GUARANÁ COM AÇAI', 'REFRIGERANTE')";
+							+ " ('01', 'REFRIGERANTE DE GUARANÁ COM AÇAI', 'REFRIGERANTE')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('01', 'REFRIGERANTE UVA', 'REFRIGERANTE')";
+							+ " ('01', 'REFRIGERANTE DE UVA', 'REFRIGERANTE')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('01', 'REFRIGERANTE TUBAINA', 'REFRIGERANTE')";
+							+ " ('01', 'REFRIGERANTE DE TUBAINA', 'REFRIGERANTE')";
 
 					lb.executeUpdate(sql);
 										
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('01', 'REFRIGERANTE LARANJA', 'REFRIGERANTE')";
+							+ " ('01', 'REFRIGERANTE DE LARANJA', 'REFRIGERANTE')";
 					
 					lb.executeUpdate(sql);					
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('02', 'SUCO UVA', 'SUCO')";
+							+ " ('02', 'SUCO DE UVA', 'SUCO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('02', 'SUCO MARACUJÁ', 'SUCO')";
+							+ " ('02', 'SUCO DE MARACUJÁ', 'SUCO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('02', 'SUCO MANGA', 'SUCO')";
+							+ " ('02', 'SUCO DE MANGA', 'SUCO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('02', 'SUCO PÊSSEGO', 'SUCO')";
+							+ " ('02', 'SUCO DE PÊSSEGO', 'SUCO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('02', 'SUCO GOIABA', 'SUCO')";
+							+ " ('02', 'SUCO DE GOIABA', 'SUCO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('02', 'SUCO MAÇÃ', 'SUCO')";
+							+ " ('02', 'SUCO DE MAÇÃ', 'SUCO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('02', 'SUCO LARANJA', 'SUCO')";
+							+ " ('02', 'SUCO DE LARANJA', 'SUCO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('02', 'SUCO ABACAXI', 'SUCO')";
+							+ " ('02', 'SUCO DE ABACAXI', 'SUCO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('02', 'SUCO MORANGO', 'SUCO')";
+							+ " ('02', 'SUCO DE MORANGO', 'SUCO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('02', 'SUCO LIMÃO', 'SUCO')";
+							+ " ('02', 'SUCO DE LIMÃO', 'SUCO')";
 					
 					lb.executeUpdate(sql);
 					
@@ -1107,32 +1107,32 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('03', 'VODKA LIMÃO', 'BEBIDA ALCOOLICA')";
+							+ " ('03', 'VODKA DE LIMÃO', 'BEBIDA ALCOOLICA')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('03', 'VODKA FRUTAS-VERMELHAS', 'BEBIDA ALCOOLICA')";
+							+ " ('03', 'VODKA DE FRUTAS VERMELHAS', 'BEBIDA ALCOOLICA')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('03', 'VODKA FRUTAS-ROXAS', 'BEBIDA ALCOOLICA')";
+							+ " ('03', 'VODKA DE FRUTAS ROXAS', 'BEBIDA ALCOOLICA')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('03', 'VODKA MARACUJÁ', 'BEBIDA ALCOOLICA')";
+							+ " ('03', 'VODKA DE MARACUJÁ', 'BEBIDA ALCOOLICA')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('03', 'VODKA CEREJA', 'BEBIDA ALCOOLICA')";
+							+ " ('03', 'VODKA DE CEREJA', 'BEBIDA ALCOOLICA')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('03', 'VODKA KIWI', 'BEBIDA ALCOOLICA')";
+							+ " ('03', 'VODKA DE KIWI', 'BEBIDA ALCOOLICA')";
 
 					lb.executeUpdate(sql);
 					
@@ -1142,12 +1142,12 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('03', 'VODKA AÇAI', 'BEBIDA ALCOOLICA')";
+							+ " ('03', 'VODKA DE AÇAI', 'BEBIDA ALCOOLICA')";
 
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('03', 'VODKA MENTA', 'BEBIDA ALCOOLICA')";
+							+ " ('03', 'VODKA DE MENTA', 'BEBIDA ALCOOLICA')";
 
 					lb.executeUpdate(sql);
 					
@@ -1177,7 +1177,7 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('08', 'COQUITEI', 'BEBIDA ALCOOLICA')";
+							+ " ('08', 'COQUITEL', 'BEBIDA ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
@@ -1202,12 +1202,12 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 										
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('13', 'LICOR-UVA','BEBIDA ALCOOLICA')";
+							+ " ('13', 'LICOR DE UVA','BEBIDA ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('13', 'LICOR-MAÇÃ','BEBIDA ALCOOLICA')";
+							+ " ('13', 'LICOR DE MAÇÃ','BEBIDA ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
@@ -1222,22 +1222,22 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('15', 'BATATA CHURRASCO', 'ALIMENTACAO')";
+							+ " ('15', 'BATATA DE CHURRASCO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('15', 'BATATA CEBOLA E SALSA', 'ALIMENTACAO')";
+							+ " ('15', 'BATATA DE CEBOLA E SALSA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 										
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('15', 'BATATA COSTELINHA', 'ALIMENTACAO')";
+							+ " ('15', 'BATATA DE COSTELINHA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('15', 'BATATA CALABRESA', 'ALIMENTACAO')";
+							+ " ('15', 'BATATA DE CALABRESA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
@@ -1247,32 +1247,32 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('15', 'BATATA FRANGO', 'ALIMENTACAO')";
+							+ " ('15', 'BATATA DE FRANGO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('15', 'BATATA CARNE DE SOL', 'ALIMENTACAO')";
+							+ " ('15', 'BATATA DE CARNE DE SOL', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('15', 'BATATA QUEIJO', 'ALIMENTACAO')";
+							+ " ('15', 'BATATA DE QUEIJO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('15', 'BATATA PIMENTA', 'ALIMENTACAO')";
+							+ " ('15', 'BATATA DE PIMENTA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('15', 'BATATA BACON', 'ALIMENTACAO')";
+							+ " ('15', 'BATATA DE BACON', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('15', 'BATATA CEBOLA', 'ALIMENTACAO')";
+							+ " ('15', 'BATATA DE CEBOLA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
@@ -1287,67 +1287,67 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('16', 'PETICITOS CHURRASCO', 'ALIMENTACAO')";
+							+ " ('16', 'PETICITOS DE CHURRASCO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('16', 'PETICITOS CEBOLA E SALSA', 'ALIMENTACAO')";
+							+ " ('16', 'PETICITOS DE CEBOLA E SALSA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('16', 'PETICITOS FRANGO', 'ALIMENTACAO')";
+							+ " ('16', 'PETICITOS DE FRANGO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('16', 'PETICITOS COSTELINHA', 'ALIMENTACAO')";
+							+ " ('16', 'PETICITOS DE COSTELINHA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('16', 'PETICITOS CALABRESA', 'ALIMENTACAO')";
+							+ " ('16', 'PETICITOS DE CALABRESA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('16', 'PETICITOS BARBECUE', 'ALIMENTACAO')";
+							+ " ('16', 'PETICITOS DE BARBECUE', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('16', 'PETICITOS CARNE DE SOL', 'ALIMENTACAO')";
+							+ " ('16', 'PETICITOS DE CARNE DE SOL', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('16', 'PETICITOS QUEIJO', 'ALIMENTACAO')";
+							+ " ('16', 'PETICITOS DE QUEIJO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('16', 'PETICITOS PIMENTA', 'ALIMENTACAO')";
+							+ " ('16', 'PETICITOS DE PIMENTA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('16', 'PETICITOS BACON', 'ALIMENTACAO')";
+							+ " ('16', 'PETICITOS DE BACON', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('16', 'PETICITOS PIZZA', 'ALIMENTACAO')";
+							+ " ('16', 'PETICITOS DE PIZZA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('16', 'PETICITOS PRESUNTO', 'ALIMENTACAO')";
+							+ " ('16', 'PETICITOS DE PRESUNTO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('16', 'PETICITOS CEBOLA', 'ALIMENTACAO')";
+							+ " ('16', 'PETICITOS DE CEBOLA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
@@ -1357,12 +1357,12 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('17', 'SARDINHA OLEO', 'ALIMENTACAO')";
+							+ " ('17', 'SARDINHA DE OLEO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('17', 'SARDINHA TOMATE', 'ALIMENTACAO')";
+							+ " ('17', 'SARDINHA DE TOMATE', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
@@ -1387,72 +1387,72 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('19', 'MILHO PIPOCA', 'ALIMENTACAO')";
+							+ " ('19', 'MILHO DE PIPOCA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('20', 'SALGADINHO CHURRASCO', 'ALIMENTACAO')";
+							+ " ('20', 'SALGADINHO DE CHURRASCO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('20', 'SALGADINHO CEBOLA E SALSA', 'ALIMENTACAO')";
+							+ " ('20', 'SALGADINHO DE CEBOLA E SALSA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('20', 'SALGADINHO FRANGO', 'ALIMENTACAO')";
+							+ " ('20', 'SALGADINHO DE FRANGO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('20', 'SALGADINHO COSTELINHA', 'ALIMENTACAO')";
+							+ " ('20', 'SALGADINHO DE COSTELINHA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('20', 'SALGADINHO CALABRESA', 'ALIMENTACAO')";
+							+ " ('20', 'SALGADINHO DE CALABRESA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('20', 'SALGADINHO BARBECUE', 'ALIMENTACAO')";
+							+ " ('20', 'SALGADINHO DE BARBECUE', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('20', 'SALGADINHO CARNE DE SOL', 'ALIMENTACAO')";
+							+ " ('20', 'SALGADINHO DE CARNE DE SOL', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('20', 'SALGADINHO QUEIJO', 'ALIMENTACAO')";
+							+ " ('20', 'SALGADINHO DE QUEIJO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('20', 'SALGADINHO PIMENTA', 'ALIMENTACAO')";
+							+ " ('20', 'SALGADINHO DE PIMENTA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('20', 'SALGADINHO BACON', 'ALIMENTACAO')";
+							+ " ('20', 'SALGADINHO DE BACON', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('20', 'SALGADINHO CEBOLA', 'ALIMENTACAO')";
+							+ " ('20', 'SALGADINHO DE CEBOLA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('20', 'SALGADINHO PIZZA', 'ALIMENTACAO')";
+							+ " ('20', 'SALGADINHO DE PIZZA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('20', 'SALGADINHO PRESUNTO', 'ALIMENTACAO')";
+							+ " ('20', 'SALGADINHO DE PRESUNTO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
@@ -1462,22 +1462,22 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('21', 'WAFER MORANGO', 'ALIMENTACAO')";
+							+ " ('21', 'WAFER DE MORANGO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('21', 'WAFER CHOCOLATE', 'ALIMENTACAO')";
+							+ " ('21', 'WAFER DE CHOCOLATE', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('21', 'WAFER LIMÃO', 'ALIMENTACAO')";
+							+ " ('21', 'WAFER DE LIMÃO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('21', 'WAFER DOCE DE LEITE', 'ALIMENTACAO')";
+							+ " ('21', 'WAFER DE DOCE DE LEITE', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
@@ -1522,32 +1522,32 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('26', 'MILHOPA PRESUNTO', 'ALIMENTACAO')";
+							+ " ('26', 'MILHOPA DE PRESUNTO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('26', 'MILHOPA PIZZA', 'ALIMENTACAO')";
+							+ " ('26', 'MILHOPA DE PIZZA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('26', 'MILHOPA CHURRASCO', 'ALIMENTACAO')";
+							+ " ('26', 'MILHOPA DE CHURRASCO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('26', 'MILHOPA FRANGO', 'ALIMENTACAO')";
+							+ " ('26', 'MILHOPA DE FRANGO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('26', 'MILHOPA QUEIJO', 'ALIMENTACAO')";
+							+ " ('26', 'MILHOPA DE QUEIJO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('26', 'MILHOPA BACON', 'ALIMENTACAO')";
+							+ " ('26', 'MILHOPA DE BACON', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
@@ -1582,17 +1582,17 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('29', 'PINGA LIMÃO', 'BEBIDA ALCOOLICA')";
+							+ " ('29', 'PINGA COM LIMÃO', 'BEBIDA ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('29', 'PINGA C/RAIZ', 'BEBIDA ALCOOLICA')";
+							+ " ('29', 'PINGA COM RAIZ', 'BEBIDA ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('29', 'PINGA C/MEL', 'BEBIDA ALCOOLICA')";
+							+ " ('29', 'PINGA COM MEL', 'BEBIDA ALCOOLICA')";
 					
 					lb.executeUpdate(sql);
 					
@@ -1612,62 +1612,62 @@ public class Tabelas {
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('31', 'MIOJO GALINHA CAIPIRA', 'ALIMENTACAO')";
+							+ " ('31', 'MIOJO DE GALINHA CAIPIRA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('31', 'MIOJO PICANHA', 'ALIMENTACAO')";
+							+ " ('31', 'MIOJO DE PICANHA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('31', 'MIOJO CALABRESA', 'ALIMENTACAO')";
+							+ " ('31', 'MIOJO DE CALABRESA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('31', 'MIOJO CALDO DE FEIJÃO', 'ALIMENTACAO')";
+							+ " ('31', 'MIOJO DE CALDO DE FEIJÃO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('31', 'MIOJO CARNE COM TOMATE', 'ALIMENTACAO')";
+							+ " ('31', 'MIOJO DE CARNE COM TOMATE', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('31', 'MIOJO BACON', 'ALIMENTACAO')";
+							+ " ('31', 'MIOJO DE BACON', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('31', 'MIOJO CARNE', 'ALIMENTACAO')";
+							+ " ('31', 'MIOJO DE CARNE', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('31', 'MIOJO CAMARÃO', 'ALIMENTACAO')";
+							+ " ('31', 'MIOJO DE CAMARÃO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('31', 'MIOJO LEGUMES', 'ALIMENTACAO')";
+							+ " ('31', 'MIOJO DE LEGUMES', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('31', 'MIOJO FRANGO', 'ALIMENTACAO')";
+							+ " ('31', 'MIOJO DE FRANGO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('31', 'MIOJO FRANGO COM LIMÃO', 'ALIMENTACAO')";
+							+ " ('31', 'MIOJO DE FRANGO COM LIMÃO', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 					
 					sql = " INSERT INTO produto (codigo, produto, categoria)" + " VALUES "
-							+ " ('31', 'MIOJO PIMENTA', 'ALIMENTACAO')";
+							+ " ('31', 'MIOJO DE PIMENTA', 'ALIMENTACAO')";
 					
 					lb.executeUpdate(sql);
 

@@ -60,7 +60,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			imgAdicionar = new ImageControl(new Image("img/adicionar.png"));
 			imgAdicionar.scaleToFit = true;
 			imgAdicionar.centerImage = true;
-			add(imgAdicionar,  CENTER, AFTER - 50, SCREENSIZE + 50, SCREENSIZE + 50, btnInformacao);
+			add(imgAdicionar,  CENTER, AFTER - 50, SCREENSIZE + 30, SCREENSIZE + 50, btnInformacao);
 			
 			lblCategoria = new Label("CATEGORIA:  ");
 			add(lblCategoria);
@@ -113,7 +113,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			editQuantidade.setRect(AFTER, SAME, FILL - 120, PREFERRED, lblQuantidade);
 			editQuantidade.setBackColor(Color.WHITE);
 			editQuantidade.setForeColor(0x003366);
-			editQuantidade.setValidChars("0 1 2 3 4 5 6 7 8 9");
+			editQuantidade.setValidChars("0123456789");
 			
 			lblValor = new Label("VALOR:           ");
 			add(lblValor);
@@ -126,7 +126,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 			editValor.setRect(AFTER, SAME, FILL - 120, PREFERRED, lblValor);
 			editValor.setBackColor(Color.WHITE);
 			editValor.setForeColor(0x003366);
-			editValor.setValidChars("0 1 2 3 4 5 6 7 8 9 .");
+			editValor.setValidChars("0123456789.");
 
 			btnCadastrar = new ArtButton("CADASTRAR");
 	        add(btnCadastrar);

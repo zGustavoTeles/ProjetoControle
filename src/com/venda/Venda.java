@@ -72,14 +72,13 @@ public class Venda extends totalcross.ui.Window{
 			editBuscaProduto = new Edit();
 			add(editBuscaProduto);
 			editBuscaProduto.capitalise = (Edit.ALL_UPPER);
-			editBuscaProduto.setValidChars("abcdefghijklmnopqrstuvwxyz");
-			editBuscaProduto.setRect(LEFT, AFTER + 5, width - 130, PREFERRED, lblProduto);
+			editBuscaProduto.setRect(LEFT, AFTER + 5, width - 160, PREFERRED, lblProduto);
 			editBuscaProduto.setBackColor(Color.WHITE);
 			editBuscaProduto.setForeColor(0x003366);
 
 			btnBuscaProduto = new ArtButton("BUSCAR");
 			add(btnBuscaProduto);
-			btnBuscaProduto.setRect(AFTER + 1, SAME, SCREENSIZE - 5, PREFERRED, editBuscaProduto);
+			btnBuscaProduto.setRect(AFTER + 1, SAME, SCREENSIZE - 7, PREFERRED, editBuscaProduto);
 			btnBuscaProduto.setBackColor(0x003366);
 	        btnBuscaProduto.setForeColor(Color.WHITE);
 	        
@@ -92,14 +91,14 @@ public class Venda extends totalcross.ui.Window{
 			editBuscaCodigo = new Edit();
 			add(editBuscaCodigo);
 			editBuscaCodigo.capitalise = (Edit.ALL_UPPER);
-			editBuscaCodigo.setRect(LEFT, AFTER + 5, width - 130, PREFERRED, lblCodigo);
+			editBuscaCodigo.setRect(LEFT, AFTER + 5, width - 160, PREFERRED, lblCodigo);
 			editBuscaCodigo.setBackColor(Color.WHITE);
 			editBuscaCodigo.setForeColor(0x003366);
-			editBuscaCodigo.setValidChars("0 1 2 3 4 5 6 7 8 9 /");
+			editBuscaCodigo.setValidChars("0123456789");
 
 			btnBuscaCodigo = new ArtButton("BUSCAR");
 			add(btnBuscaCodigo);
-			btnBuscaCodigo.setRect(AFTER + 1, SAME, SCREENSIZE - 5, PREFERRED, editBuscaCodigo);
+			btnBuscaCodigo.setRect(AFTER + 1, SAME, SCREENSIZE - 7, PREFERRED, editBuscaCodigo);
 			btnBuscaCodigo.setBackColor(0x003366);
 			btnBuscaCodigo.setForeColor(Color.WHITE);
 	            
@@ -128,7 +127,7 @@ public class Venda extends totalcross.ui.Window{
 				gridWidths[5] = 100;
 				gridWidths[6] = 140;
 	
-			String[] caps = { "COD.", "PRODUTO", "QNT", "MARCA", "CATEGORIA","DESC", " VALOR"};
+			String[] caps = { "COD.", "PRODUTO", "DESC", "MARCA", "CATEGORIA","QNT", " VALOR"};
 			int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT};
 			gridProdutos = new Grid(caps, gridWidths, aligns, false);
 			add(gridProdutos);
@@ -221,10 +220,10 @@ public class Venda extends totalcross.ui.Window{
 
 						codigo = gridProdutos.getSelectedItem()[0];
 						produto = gridProdutos.getSelectedItem()[1];
-						quantidade = gridProdutos.getSelectedItem()[2];
+						quantidade = gridProdutos.getSelectedItem()[5];
 						marca = gridProdutos.getSelectedItem()[3];
 						categoria = gridProdutos.getSelectedItem()[4];
-						descricao = gridProdutos.getSelectedItem()[5];
+						descricao = gridProdutos.getSelectedItem()[2];
 						valor = gridProdutos.getSelectedItem()[6];
 
 					} catch (Exception e) {
@@ -257,10 +256,10 @@ public class Venda extends totalcross.ui.Window{
 					String[] b = new String[7];
 					b[0] = Convert.toString(rs.getInt("CODIGO"));
 					b[1] = rs.getString("PRODUTO");
-					b[2] = Convert.toString(rs.getInt("QUANTIDADE"));
+					b[2] = rs.getString("DESCRICAO");
 					b[3] = rs.getString("MARCA");
 					b[4] = rs.getString("CATEGORIA");
-					b[5] = rs.getString("DESCRICAO");
+					b[5] = Convert.toString(rs.getInt("QUANTIDADE"));
 					b[6] = rs.getString("VALOR");
 					gridProdutos.add(b);
 					rs.next();
@@ -285,6 +284,7 @@ public class Venda extends totalcross.ui.Window{
 
 		try {
 			try {
+				editBuscaCodigo.setText("");
 				lb = new LitebasePack();
 				sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " 
 				    + "'%" + editBuscaProduto.getText() + "%'"
@@ -298,10 +298,10 @@ public class Venda extends totalcross.ui.Window{
 					String[] b = new String[7];
 					b[0] = Convert.toString(rs.getInt("CODIGO"));
 					b[1] = rs.getString("PRODUTO");
-					b[2] = Convert.toString(rs.getInt("QUANTIDADE"));
+					b[2] = rs.getString("DESCRICAO");
 					b[3] = rs.getString("MARCA");
 					b[4] = rs.getString("CATEGORIA");
-					b[5] = rs.getString("DESCRICAO");
+					b[5] = Convert.toString(rs.getInt("QUANTIDADE"));
 					b[6] = rs.getString("VALOR");
 					gridProdutos.add(b);
 					rs.next();
@@ -325,15 +325,16 @@ public class Venda extends totalcross.ui.Window{
 
 		try {
 			try {
-
+				
+				editBuscaProduto.setText("");
 				lb = new LitebasePack();
 
 				if (editBuscaCodigo.getText().equals("")) {
 					sql = " SELECT * FROM ESTOQUE WHERE PRODUTO LIKE " 
-				        + "'%" + editBuscaProduto.getText() + "%'"
+				        + "'%" + editBuscaCodigo.getText() + "%'"
 					    + "OR MARCA LIKE " + "'%" + editBuscaProduto.getText() + "%'" + "OR CATEGORIA LIKE " + "'%"
-						+ editBuscaProduto.getText() + "%'" + "OR DESCRICAO LIKE " + "'%"
-						+ editBuscaProduto.getText() + "%'";
+						+ editBuscaCodigo.getText() + "%'" + "OR DESCRICAO LIKE " + "'%"
+						+ editBuscaCodigo.getText() + "%'";
 				} else {
 
 					sql = " SELECT * FROM ESTOQUE WHERE CODIGO = " + editBuscaCodigo.getText();
@@ -346,10 +347,10 @@ public class Venda extends totalcross.ui.Window{
 					String[] b = new String[7];
 					b[0] = Convert.toString(rs.getInt("CODIGO"));
 					b[1] = rs.getString("PRODUTO");
-					b[2] = Convert.toString(rs.getInt("QUANTIDADE"));
+					b[2] = rs.getString("DESCRICAO");
 					b[3] = rs.getString("MARCA");
 					b[4] = rs.getString("CATEGORIA");
-					b[5] = rs.getString("DESCRICAO");
+					b[5] = Convert.toString(rs.getInt("QUANTIDADE"));
 					b[6] = rs.getString("VALOR");
 					gridProdutos.add(b);
 					rs.next();
@@ -360,8 +361,8 @@ public class Venda extends totalcross.ui.Window{
 
 			}
 		} catch (Exception e) {
-			Auxiliares.artMsgbox("ERRO", "Erro ao carregaGridProdutosBusca\n" + e);
-
+			Auxiliares.artMsgbox("ERRO", "Erro ao carregaGridProdutosBusca\n" + e +"\nPor favor digite um código válido!");
+			editBuscaCodigo.setText("");
 		}
 
 	}

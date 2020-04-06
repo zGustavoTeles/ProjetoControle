@@ -33,7 +33,7 @@ public class Menu extends totalcross.ui.Window {
 
 			btnVenda = new ArtButton("VENDA");
 			add(btnVenda);
-			btnVenda.setRect(CENTER, TOP + 5, width - 200, SCREENSIZE + 15);
+			btnVenda.setRect(CENTER, TOP + 5, width - 400, SCREENSIZE + 16);
 			btnVenda.setBackColor(0x003366);
 			btnVenda.setForeColor(Color.WHITE);
 
@@ -41,31 +41,31 @@ public class Menu extends totalcross.ui.Window {
 			add(btnCadastrar);
 			btnCadastrar.setBackColor(0x003366);
 			btnCadastrar.setForeColor(Color.WHITE);
-			btnCadastrar.setRect(CENTER, AFTER + 15, width - 200, SCREENSIZE + 15, btnVenda);
+			btnCadastrar.setRect(CENTER, AFTER, width - 400, SCREENSIZE + 16, btnVenda);
 
 			btnEstoque = new ArtButton("ESTOQUE");
 			add(btnEstoque);
 			btnEstoque.setBackColor(0x003366);
 			btnEstoque.setForeColor(Color.WHITE);
-			btnEstoque.setRect(CENTER, AFTER + 15, width - 200, SCREENSIZE + 15, btnCadastrar);
+			btnEstoque.setRect(CENTER, AFTER, width - 400, SCREENSIZE + 16, btnCadastrar);
 
 			btnRelatorio = new ArtButton("RELATÓRIO");
 			add(btnRelatorio);
 			btnRelatorio.setBackColor(0x003366);
 			btnRelatorio.setForeColor(Color.WHITE);
-			btnRelatorio.setRect(CENTER, AFTER + 15, width - 200, SCREENSIZE + 15, btnEstoque);
+			btnRelatorio.setRect(CENTER, AFTER, width - 400, SCREENSIZE + 16, btnEstoque);
 			
 			btnConfiguracao = new ArtButton("CONFIGURAÇÃO");
 			add(btnConfiguracao);
 			btnConfiguracao.setBackColor(0x003366);
 			btnConfiguracao.setForeColor(Color.WHITE);
-			btnConfiguracao.setRect(CENTER, AFTER + 15, width - 200, SCREENSIZE + 15, btnRelatorio);
+			btnConfiguracao.setRect(CENTER, AFTER, width - 400, SCREENSIZE + 16, btnRelatorio);
 			
 			btnVoltar = new ArtButton("VOLTAR");
 			add(btnVoltar);
 			btnVoltar.setBackColor(0x003366);
 			btnVoltar.setForeColor(Color.WHITE);
-			btnVoltar.setRect(CENTER, AFTER + 15, width - 200, SCREENSIZE + 15, btnConfiguracao);
+			btnVoltar.setRect(CENTER, AFTER, width - 400, SCREENSIZE + 16, btnConfiguracao);
 
 			reposition();
 			

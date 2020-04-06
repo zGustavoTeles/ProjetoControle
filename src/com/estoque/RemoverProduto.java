@@ -40,7 +40,7 @@ public class RemoverProduto extends totalcross.ui.Window {
 			imgRemoverEstoque = new ImageControl(new Image("img/removerEstoque.png"));
 			imgRemoverEstoque.scaleToFit = true;
 			imgRemoverEstoque.centerImage = true;
-			add(imgRemoverEstoque, CENTER, TOP - 30, SCREENSIZE + 40, SCREENSIZE + 40);
+			add(imgRemoverEstoque, CENTER, TOP - 30, SCREENSIZE + 20, SCREENSIZE + 40);
 			
 			lblProduto = new Label("PRODUTO:      ");
 			add(lblProduto);

@@ -62,14 +62,13 @@ public class Estoque extends totalcross.ui.Window{
 			editBuscar = new Edit();
 			add(editBuscar);
 			editBuscar.capitalise = (Edit.ALL_UPPER);
-			editBuscar.setValidChars("abcdefghijklmnopqrstuvwxyz");
-			editBuscar.setRect(LEFT, AFTER + 5, width - 130, PREFERRED, lblBuscar);
+			editBuscar.setRect(LEFT, AFTER + 5, width - 160, PREFERRED, lblBuscar);
 			editBuscar.setBackColor(Color.WHITE);
 			editBuscar.setForeColor(0x003366);
 
 			btnBuscar = new ArtButton("BUSCAR");
 			add(btnBuscar);
-			btnBuscar.setRect(AFTER + 1, SAME, SCREENSIZE - 5, PREFERRED, editBuscar);
+			btnBuscar.setRect(AFTER + 1, SAME, SCREENSIZE - 7, PREFERRED, editBuscar);
 			btnBuscar.setBackColor(0x003366);
 	        btnBuscar.setForeColor(Color.WHITE);
 	        
@@ -101,7 +100,7 @@ public class Estoque extends totalcross.ui.Window{
 			gridWidths[6] = 140;
 			gridWidths[7] = 120;
 
-		String[] caps = { "COD.", "PRODUTO", "QNT", "MARCA", "CATEGORIA","DESC", " VALOR", "ENTRADA"};
+		String[] caps = { "COD.", "PRODUTO", "DESC", "MARCA", "CATEGORIA","QNT", " VALOR", "ENTRADA"};
 		int[] aligns = { Grid.LEFT, Grid.CENTER, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT, Grid.LEFT};
 		gridProdutos = new Grid(caps, gridWidths, aligns, false);
 		add(gridProdutos);
@@ -201,7 +200,7 @@ public class Estoque extends totalcross.ui.Window{
 
 						codigo = gridProdutos.getSelectedItem()[0];
 						produto = gridProdutos.getSelectedItem()[1];
-						quantidade = gridProdutos.getSelectedItem()[2];
+						quantidade = gridProdutos.getSelectedItem()[5];
 
 					} catch (Exception e) {
 						Auxiliares.artMsgbox("CONTROLE", "Clique em um Item!");
@@ -238,14 +237,15 @@ public class Estoque extends totalcross.ui.Window{
 					String[] b = new String[8];
 					b[0] = Convert.toString(rs.getInt("CODIGO"));
 					b[1] = rs.getString("PRODUTO");
-					b[2] = Convert.toString(rs.getInt("QUANTIDADE"));
+					b[2] = rs.getString("DESCRICAO");
 					b[3] = rs.getString("MARCA");
 					b[4] = rs.getString("CATEGORIA");
-					b[5] = rs.getString("DESCRICAO");
+					b[5] = Convert.toString(rs.getInt("QUANTIDADE"));
 					b[6] = rs.getString("VALOR");
 					b[7] = rs.getString("DATAENTRADA");
 					gridProdutos.add(b);
 					rs.next();
+	
 				}
 			} finally {
 				if (lb != null)
@@ -311,10 +311,10 @@ public class Estoque extends totalcross.ui.Window{
 					String[] b = new String[8];
 					b[0] = Convert.toString(rs.getInt("CODIGO"));
 					b[1] = rs.getString("PRODUTO");
-					b[2] = Convert.toString(rs.getInt("QUANTIDADE"));
+					b[2] = rs.getString("DESCRICAO");
 					b[3] = rs.getString("MARCA");
 					b[4] = rs.getString("CATEGORIA");
-					b[5] = rs.getString("DESCRICAO");
+					b[5] = Convert.toString(rs.getInt("QUANTIDADE"));
 					b[6] = rs.getString("VALOR");
 					b[7] = rs.getString("DATAENTRADA");
 					gridProdutos.add(b);

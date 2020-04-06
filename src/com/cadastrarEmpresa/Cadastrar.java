@@ -30,13 +30,13 @@ public class Cadastrar extends totalcross.ui.Window {
 
 			btnCadastrarEmpresa = new ArtButton("CADASTRAR EMPRESA");
 			add(btnCadastrarEmpresa);
-			btnCadastrarEmpresa.setRect(CENTER, TOP + 150, width - 200, PREFERRED + 80);
+			btnCadastrarEmpresa.setRect(CENTER, TOP + 150, width - 200, SCREENSIZE + 20);
 			btnCadastrarEmpresa.setBackColor(0x003366);
 			btnCadastrarEmpresa.setForeColor(Color.WHITE);
 			
 			btnApagarEmpresa = new ArtButton("APAGAR EMPRESA");
 			add(btnApagarEmpresa);
-			btnApagarEmpresa.setRect(CENTER, AFTER + 15, width - 200, PREFERRED + 80);
+			btnApagarEmpresa.setRect(CENTER, AFTER, width - 200, SCREENSIZE + 20);
 			btnApagarEmpresa.setBackColor(0x003366);
 			btnApagarEmpresa.setForeColor(Color.WHITE);
 

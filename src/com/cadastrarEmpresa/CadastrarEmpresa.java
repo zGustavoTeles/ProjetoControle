@@ -51,13 +51,13 @@ public class CadastrarEmpresa extends totalcross.ui.Window {
 			imgCadastrarEmpresa = new ImageControl(new Image("img/cadastrar.png"));
 			imgCadastrarEmpresa.scaleToFit = true;
 			imgCadastrarEmpresa.centerImage = true;
-			add(imgCadastrarEmpresa, CENTER, AFTER - 5, SCREENSIZE + 40, SCREENSIZE + 40,lblAviso);
+			add(imgCadastrarEmpresa, CENTER, AFTER - 5, SCREENSIZE + 20, SCREENSIZE + 40,lblAviso);
 			
 			lblEmpresa = new Label("EMPRESA: ");
 			add(lblEmpresa);
 			lblEmpresa.setBackColor(0x003366);
 			lblEmpresa.setForeColor(Color.WHITE);
-			lblEmpresa.setRect(LEFT, AFTER - 20, PREFERRED, PREFERRED, imgCadastrarEmpresa);
+			lblEmpresa.setRect(LEFT, AFTER - 50, PREFERRED, PREFERRED, imgCadastrarEmpresa);
 
 			add(editEmpresa = new Edit(), LEFT, AFTER + 20, PREFERRED, PREFERRED, lblEmpresa);
 			editEmpresa.setBackColor(Color.WHITE);

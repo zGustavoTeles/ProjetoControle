@@ -72,7 +72,7 @@ public class Inserir extends totalcross.ui.Window {
 			imgInserir = new ImageControl(new Image("img/inserir.png"));
 			imgInserir.scaleToFit = true;
 			imgInserir.centerImage = true;
-			add(imgInserir, CENTER, TOP - 30, SCREENSIZE + 30, SCREENSIZE + 30);
+			add(imgInserir, CENTER, TOP - 30, SCREENSIZE + 10, SCREENSIZE + 30);
 			
 			lblCategoria = new Label("CATEGORIA:   ");
 			add(lblCategoria);

@@ -42,7 +42,7 @@ public class ApagarEmpresa extends totalcross.ui.Window {
 			imgApagarEmpresa = new ImageControl(new Image("img/apagarEmpresa.png"));
 			imgApagarEmpresa.scaleToFit = true;
 			imgApagarEmpresa.centerImage = true;
-			add(imgApagarEmpresa, CENTER, AFTER - 5, SCREENSIZE + 40, SCREENSIZE + 40,lblAviso);
+			add(imgApagarEmpresa, CENTER, AFTER - 5, SCREENSIZE + 20, SCREENSIZE + 40,lblAviso);
 			
 			cmbEmpresa = new ComboBox();
 			add(cmbEmpresa);

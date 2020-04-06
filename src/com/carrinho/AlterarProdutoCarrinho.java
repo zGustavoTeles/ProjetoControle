@@ -73,7 +73,7 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 			imgAlterar = new ImageControl(new Image("img/alterar.png"));
 			imgAlterar.scaleToFit = true;
 			imgAlterar.centerImage = true;
-			add(imgAlterar, CENTER, TOP - 20, SCREENSIZE + 30, SCREENSIZE + 30);
+			add(imgAlterar, CENTER, TOP - 20, SCREENSIZE + 15, SCREENSIZE + 30);
 			
 			lblCategoria = new Label("CATEGORIA:   ");
 			add(lblCategoria);

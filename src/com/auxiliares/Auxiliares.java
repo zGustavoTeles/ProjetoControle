@@ -13,7 +13,7 @@ public class Auxiliares {
 	
 	
 	public static final String NOMEAPP       = "CONTROLE";
-	public static final String VERSAO		 = "1.02";
+	public static final String VERSAO		 = "1.04";
 	public static final String TELEFONE 	 = "(62) 98163-5089";
 //	public static final String NOMESISTEMA   = "CONTROLE_MOBILE - BETA";
 	public static final String NOMESISTEMA   = "CONTROLE_PC - BETA";
@@ -25,7 +25,7 @@ public class Auxiliares {
 	public static int artMsgbox(String titulo, String msg) {
 		msg = Convert.insertLineBreak(2 * (Settings.screenWidth / 4), MainWindow.getMainWindow().fm, msg);
 		ArtMessageBox amb = new ArtMessageBox(titulo, msg);
-		amb.setRect(Container.CENTER, Container.CENTER, Container.SCREENSIZE + 80, Container.SCREENSIZE + 50);
+		amb.setRect(Container.CENTER, Container.CENTER, Container.SCREENSIZE + 50, Container.SCREENSIZE + 50);
 		amb.popup();
 		return amb.getPressedButonIndex();
 	}
@@ -33,7 +33,7 @@ public class Auxiliares {
 	public static int artMsgbox(String titulo, String msg, String[] captions) {
 		msg = Convert.insertLineBreak(2 * (Settings.screenWidth / 4), MainWindow.getMainWindow().fm, msg);
 		ArtMessageBox amb = new ArtMessageBox(titulo, msg, captions);
-		amb.setRect(Container.CENTER, Container.CENTER, Container.SCREENSIZE + 80, Container.SCREENSIZE + 50);
+		amb.setRect(Container.CENTER, Container.CENTER, Container.SCREENSIZE + 50, Container.SCREENSIZE + 50);
 		amb.popup();
 		return amb.getPressedButonIndex();
 	}

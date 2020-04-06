@@ -67,7 +67,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			imgVenda = new ImageControl(new Image("img/venda.png"));
 			imgVenda.scaleToFit = true;
 			imgVenda.centerImage = true;
-			add(imgVenda, CENTER, TOP - 50, SCREENSIZE + 50, SCREENSIZE + 50);
+			add(imgVenda, CENTER, TOP - 50, SCREENSIZE + 30, SCREENSIZE + 50);
 			
 			lblProduto = new Label("PRODUTO:    ");
 			add(lblProduto);
@@ -83,7 +83,7 @@ public class DetalharVenda extends totalcross.ui.Window {
 			editProduto.setText(Relatorio.produto);
 			editProduto.setEditable(false);
 			
-			lblMarca = new Label("MARCA:        ");
+			lblMarca = new Label("MARCA:         ");
 			add(lblMarca);
 			lblMarca.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editProduto);
 			lblMarca.setBackColor(0x003366);

@@ -67,7 +67,7 @@ public class ArtMessageBox extends Window {
 				btnOk.setBackColor(0x04B431);
 				
 			} else if (titulo.equalsIgnoreCase("ERRO")) {
-				lblTitulo.setForeColor(Color.WHITE);
+				lblTitulo.setForeColor(0xDF0101);
 				btnOk.setForeColor(Color.WHITE);
 				btnOk.setBackColor(0xDF0101);
 
@@ -144,10 +144,10 @@ public class ArtMessageBox extends Window {
 			add(lblMessage, LEFT + 6, AFTER + 6, PREFERRED, PREFERRED);
 			
 			if (isCaptions) {
-				add(btnSim, LEFT + 6, BOTTOM - 6, SCREENSIZE + 35, PREFERRED + 8);
-				add(btnNao, RIGHT - 6, BOTTOM - 6, SCREENSIZE + 35, PREFERRED + 8);
+				add(btnSim, LEFT + 6, BOTTOM - 6, SCREENSIZE + 20, PREFERRED + 8);
+				add(btnNao, RIGHT - 6, BOTTOM - 6, SCREENSIZE + 20, PREFERRED + 8);
 			} else {
-				add(btnOk, CENTER,  BOTTOM - 6, SCREENSIZE + 35, PREFERRED + 8);
+				add(btnOk, CENTER,  BOTTOM - 6, SCREENSIZE + 20, PREFERRED + 8);
 			}
 
 		}

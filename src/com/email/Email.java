@@ -57,7 +57,7 @@ public class Email extends totalcross.ui.Window{
 			imgSuporte = new ImageControl(new Image("img/suporte.png"));
 			imgSuporte.scaleToFit = true;
 			imgSuporte.centerImage = true;
-			add(imgSuporte, CENTER, AFTER + 5, PREFERRED, PREFERRED, lblInfoEmail);
+			add(imgSuporte, CENTER, AFTER + 5, PREFERRED - 40, PREFERRED - 40, lblInfoEmail);
 
 			multInfoEmail = new MultiEdit();
 			add(multInfoEmail);
