@@ -16,7 +16,7 @@
       <versionLine x="20" y="40" text="version %VERSION%" fontSize="8" fontColor="0,0,0" bold="false" />
     </text>
   </splashScreen>
-  <java mainClass="totalcross.Launcher" mainMode="1" vmParameters="" arguments="/scr 980x700x24 /pos 250,30 /r 5443444B03CA07FBBE00A9AA principal.Home" allowVMPassthroughParameters="true" preferredVM="" bundleRuntime="true" minVersion="1.0" maxVersion="" allowBetaVM="false" jdkOnly="false">
+  <java mainClass="totalcross.Launcher" mainMode="1" vmParameters="" arguments="/scr 980x700x24 /pos 230,20 /r 5443444B03CA07FBBE00A9AA principal.Home" allowVMPassthroughParameters="true" preferredVM="" bundleRuntime="true" minVersion="1.0" maxVersion="" allowBetaVM="false" jdkOnly="false">
     <searchSequence>
       <registry />
       <envVar name="JAVA_HOME" />

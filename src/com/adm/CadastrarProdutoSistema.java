@@ -52,7 +52,7 @@ public class CadastrarProdutoSistema extends totalcross.ui.Window {
 			imgCadastrarEmpresa = new ImageControl(new Image("img/cadastrarProduto.png"));
 			imgCadastrarEmpresa.scaleToFit = true;
 			imgCadastrarEmpresa.centerImage = true;
-			add(imgCadastrarEmpresa, CENTER, TOP - 40, SCREENSIZE + 40, SCREENSIZE + 40,lblAviso);
+			add(imgCadastrarEmpresa, CENTER, TOP + 10, SCREENSIZE + 20, SCREENSIZE + 20,lblAviso);
 			
 			lblProduto = new Label("PRODUTO: ");
 			add(lblProduto);

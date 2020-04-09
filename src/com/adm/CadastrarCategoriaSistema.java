@@ -41,13 +41,13 @@ public class CadastrarCategoriaSistema extends totalcross.ui.Window {
 			imgCadastrarEmpresa = new ImageControl(new Image("img/cadastrarCategoria.png"));
 			imgCadastrarEmpresa.scaleToFit = true;
 			imgCadastrarEmpresa.centerImage = true;
-			add(imgCadastrarEmpresa, CENTER, TOP - 40, SCREENSIZE + 40, SCREENSIZE + 40);
+			add(imgCadastrarEmpresa, CENTER, TOP + 10, SCREENSIZE + 20, SCREENSIZE + 20);
 			
 			lblCategoria = new Label("CATEGORIA: ");
 			add(lblCategoria);
 			lblCategoria.setBackColor(0x003366);
 			lblCategoria.setForeColor(Color.WHITE);
-			lblCategoria.setRect(LEFT, AFTER + 40, PREFERRED, PREFERRED, imgCadastrarEmpresa);
+			lblCategoria.setRect(LEFT, AFTER, PREFERRED, PREFERRED, imgCadastrarEmpresa);
 
 			add(editCategoria = new Edit(), LEFT, AFTER, PREFERRED, PREFERRED, lblCategoria);
 			editCategoria.setBackColor(Color.WHITE);
