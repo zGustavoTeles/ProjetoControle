@@ -97,12 +97,15 @@ public class Configuracoes extends totalcross.ui.Window {
 					alterarEmpresa.popup();
 					
 				}else if (evt.target == btnSuporte) {
-					Email email = new Email();
-					email.popup();
+//					Email email = new Email();
+//					email.popup();
+					Auxiliares.artMsgbox("CONTROLE", "Esse módulo encontra-se indisponível\nCaso queira utilizá-lo entre em contato\nNúmero: (62) 9 8163-5089\nEmail: gmateus.dev@gmail.com");
 					
 				}else if (evt.target == btnAdministrador) {
-					ValidaAdministrador validaAdministrador = new ValidaAdministrador();
-					validaAdministrador.popup();
+//					ValidaAdministrador validaAdministrador = new ValidaAdministrador();
+//					validaAdministrador.popup();
+					Administrador administrador = new Administrador();
+					administrador.popup();
 				}
 
 			}

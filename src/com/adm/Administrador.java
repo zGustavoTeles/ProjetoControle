@@ -75,29 +75,30 @@ public class Administrador extends totalcross.ui.Window {
 			case ControlEvent.PRESSED:
 
 				if (evt.target == btnVoltar) {
-					boolean senhaSalva = false;
-					senhaSalva = validaSenhaSalva(senhaSalva);
-
-					if (senhaSalva == false) {
-						ValidaAdministrador.editSenha.setText("");
-						unpop();
-					} else {
-
-						String[] ArtButtonArray = { "Sim", "Não" };
-
-						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja continuar deixando a senha salva?",
-								ArtButtonArray);
-
-						if (i == 1) {
-							apagaDadosLogin();
-							ValidaAdministrador.editSenha.setText("");
-							Auxiliares.artMsgbox("CONTROLE", "Senha apagada do sistema!");
-							unpop();
-
-						} else {
-							unpop();
-						}
-					}
+//					boolean senhaSalva = false;
+//					senhaSalva = validaSenhaSalva(senhaSalva);
+//
+//					if (senhaSalva == false) {
+//						ValidaAdministrador.editSenha.setText("");
+//						unpop();
+//					} else {
+//
+//						String[] ArtButtonArray = { "Sim", "Não" };
+//
+//						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja continuar deixando a senha salva?",
+//								ArtButtonArray);
+//
+//						if (i == 1) {
+//							apagaDadosLogin();
+//							ValidaAdministrador.editSenha.setText("");
+//							Auxiliares.artMsgbox("CONTROLE", "Senha apagada do sistema!");
+//							unpop();
+//
+//						} else {
+//							unpop();
+//						}
+//					}
+					unpop();
 
 				} else if (evt.target == btnCadastrarProduto) {
 					CadastrarProdutoSistema cadastrarProdutoSistema = new CadastrarProdutoSistema();

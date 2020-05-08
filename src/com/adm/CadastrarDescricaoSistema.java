@@ -126,7 +126,7 @@ public class CadastrarDescricaoSistema extends totalcross.ui.Window {
 					}
 
 					if (!radioDescricao.isChecked() && !radioDescricaoPeso.isChecked()) {
-						Auxiliares.artMsgbox("CONTROLE", "Marca alguma opção\n'ML-LT' ou 'GM-KL'!");
+						Auxiliares.artMsgbox("CONTROLE", "É preciso marcar alguma opção\n'ML-LT' ou 'GM-KL'!");
 						return;
 					}
 
