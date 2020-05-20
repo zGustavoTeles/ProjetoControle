@@ -42,7 +42,7 @@ public class Configuracoes extends totalcross.ui.Window {
 			btnConfigEmpresa.setBackColor(0x003366);
 			btnConfigEmpresa.setForeColor(Color.WHITE);
 
-			btnApagarDados = new ArtButton("APAGAR DADOS");
+			btnApagarDados = new ArtButton("APAGAR VENDA");
 			add(btnApagarDados);
 			btnApagarDados.setRect(CENTER, AFTER, width - 200, SCREENSIZE + 17);
 			btnApagarDados.setBackColor(0x003366);
@@ -89,7 +89,7 @@ public class Configuracoes extends totalcross.ui.Window {
 					informacao.popup();
 
 				} else if (evt.target == btnApagarDados) {
-					ApagarDados apagarDados = new ApagarDados();
+					ApagarVenda apagarDados = new ApagarVenda();
 					apagarDados.popup();
 					
 				} else if (evt.target == btnConfigEmpresa) {

@@ -149,7 +149,7 @@ public class Estoque extends totalcross.ui.Window{
 						} else {
 
 							Auxiliares.artMsgbox("CONTROLE",
-									"Esse produto encontra-se no carrinho. Por favor finalize a venda para inseri-lo novamente!");
+									"Esse produto encontra-se no carrinho. Por favor finalize a venda para remove-lo do estoque!");
 						}
 
 					} else {
@@ -183,7 +183,7 @@ public class Estoque extends totalcross.ui.Window{
 						} else {
 
 							Auxiliares.artMsgbox("CONTROLE",
-									"Esse produto encontra-se no carrinho. Por favor finalize a venda para inseri-lo novamente!");
+									"Esse produto encontra-se no carrinho. Por favor finalize a venda para altera-lo do estoque!");
 						}
 
 					} else {

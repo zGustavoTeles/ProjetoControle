@@ -122,7 +122,7 @@ public class ValidaAdministrador extends totalcross.ui.Window {
 						}
 
 					} else if (editSenha.getText().equals("")) {
-						Auxiliares.artMsgbox("CONTROLE", "Por favor digite um senha!");
+						Auxiliares.artMsgbox("CONTROLE", "Por favor digite uma senha!");
 
 					} else {
 						Auxiliares.artMsgbox("CONTROLE", "Senha incorreta!");

@@ -229,7 +229,7 @@ public class CadastrarProduto extends totalcross.ui.Window{
 					
 				} else if (evt.target == btnInformacao) {
 					Auxiliares.artMsgbox("CONTROLE",
-							"Essa é a tela de cadastro de produto. Preencha todos os campos corretamente.\nNo campo do valor só será aceito número e ponto.\nNão use valores como '0.23', pois o calculo pode não ficar correto. E lembre-se de não colocar espaço entre os números.");
+							"Essa é a tela de cadastro de produto. Preencha todos os campos corretamente.\nNo campo do valor só será aceito número e ponto.\nNão use valores como '00.15.50', pois o calculo pode não ficar correto. E lembre-se de não colocar espaço entre os números.");
 				}
 
 			}

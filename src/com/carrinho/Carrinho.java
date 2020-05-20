@@ -48,9 +48,10 @@ public class Carrinho extends totalcross.ui.Window{
 	public Date 				 			dataEntrada;
 	public String							dataString;
 	public String							dataSaidaString;
+	public String							valorProduto;
 	
 	public String							produtoTemp;
-	public String							valorTemp;
+	public String							totalTemp;
 	public String							categoriaTemp;
 	public String							marcaTemp;
 	public String                           descricaoTemp;
@@ -296,7 +297,6 @@ public class Carrinho extends totalcross.ui.Window{
 				while (rs.next()) {
 					codigoTemp = rs.getInt("CODIGO");
 					produtoTemp = rs.getString("PRODUTO");
-					valorTemp = rs.getString("VALOR");
 					codigoProdTemp = rs.getInt("CODIGOPROD");
 					quantidadeTemp = rs.getInt("QUANTIDADE");
 					categoriaTemp = rs.getString("CATEGORIA");
@@ -306,7 +306,7 @@ public class Carrinho extends totalcross.ui.Window{
 					dataSaidaTemp = rs.getDate("DATASAIDA");
 					
 					lb2 = new LitebasePack();
-					sql2 = " SELECT QUANTIDADE, CODIGO, DATAENTRADA FROM ESTOQUE "
+					sql2 = " SELECT QUANTIDADE, CODIGO, DATAENTRADA, VALOR FROM ESTOQUE "
 						 + " WHERE CODIGO = " + codigoProdTemp;
 
 					rs2 = lb2.executeQuery(sql2);
@@ -314,6 +314,7 @@ public class Carrinho extends totalcross.ui.Window{
 					
 					qntEstoqueCalculo = rs2.getInt("QUANTIDADE");
 					dataEntrada = rs2.getDate("DATAENTRADA");
+					valorProduto = rs2.getString("VALOR");
 					
 					dataString = dataEntrada.toString(Settings.DATE_YMD);
 									
@@ -329,7 +330,7 @@ public class Carrinho extends totalcross.ui.Window{
 						
 					sql = "INSERT INTO 	ESTOQUE " + "(" + " CODIGO, PRODUTO, MARCA, VALOR, QUANTIDADE, "
 						+ " CATEGORIA, DESCRICAO, DATAENTRADA " + ")" + " VALUES " + "( '" + codigoProdTemp
-						+ "' , '" + produtoTemp + "', '" + marcaTemp + "', '" + valorTemp + "', '"
+						+ "' , '" + produtoTemp + "', '" + marcaTemp + "', '" + valorProduto + "', '"
 						+ quantidadeEstoque + "', '" + categoriaTemp + "','" + descricaoTemp + "', '"
 						+ dataString + "'" + ")";
 
@@ -365,7 +366,7 @@ public class Carrinho extends totalcross.ui.Window{
 				while (rs.next()) {
 					codigoTemp = rs.getInt("CODIGO");
 					produtoTemp = rs.getString("PRODUTO");
-					valorTemp = rs.getString("VALOR");
+					totalTemp = rs.getString("VALOR");
 					codigoProdTemp = rs.getInt("CODIGOPROD");
 					quantidadeTemp = rs.getInt("QUANTIDADE");
 					categoriaTemp = rs.getString("CATEGORIA");
@@ -378,7 +379,7 @@ public class Carrinho extends totalcross.ui.Window{
 					
 					sql = "INSERT INTO VENDAPRODUTO " + "(" + " CODIGO, PRODUTO, VALOR, CODIGOPROD, QUANTIDADE, "
 							+ " CATEGORIA, MARCA, DESCRICAO,TIPOPAGAMENTO, DATASAIDA " + ")" + " VALUES " + "( '" + codigoTemp
-							+ "' , '" + produtoTemp + "', '" + valorTemp + "', '" +  codigoProdTemp + "', '" + quantidadeTemp + "', '"
+							+ "' , '" + produtoTemp + "', '" + totalTemp + "', '" +  codigoProdTemp + "', '" + quantidadeTemp + "', '"
 							+ categoriaTemp + "','" + marcaTemp + "', '" + descricaoTemp + "', '" + tipoPagamento + "', '" + dataSaidaString + "'"
 							+ ")";
 

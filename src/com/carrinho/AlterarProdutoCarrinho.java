@@ -101,7 +101,7 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 			editMarca.setForeColor(0x003366);
 			editMarca.setEditable(false);
 			
-			lblDescricao = new Label("DESCRICAO:   ");
+			lblDescricao = new Label("DESCRICÃO:   ");
 			add(lblDescricao);
 			lblDescricao.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editMarca);
 			lblDescricao.setBackColor(0x003366);
@@ -257,7 +257,9 @@ public class AlterarProdutoCarrinho extends totalcross.ui.Window {
 
 						if (Convert.toInt(quantidadeInserida) > quantidadeTemp) {
 							Auxiliares.artMsgbox("CONTROLE",
-									"Quantidade inserida maior que a quantidade\n em estoque!");
+									"Quantidade inserida maior que a quantidade em estoque!");
+							
+							editQuantidade.requestFocus();
 							return;
 
 						}

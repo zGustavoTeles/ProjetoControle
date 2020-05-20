@@ -167,8 +167,6 @@ public class Relatorio extends totalcross.ui.Window{
 
 					} else {
 						pesquisaVendasPorPeriodo();
-						editDataUm.setText("");
-						editDataDois.setText("");
 					}
 				} else if (evt.target == btnDetalhar) {
 					if (gridProdutos.getSelectedItem() == null) {

@@ -147,7 +147,7 @@ public class AlterarProduto extends totalcross.ui.Window {
 						String[] ArtButtonArray = { "Sim", "Não" };
 
 						int i = Auxiliares.artMsgbox("CONTROLE", "Deseja alterar inserindo " + editQuantidade.getText()
-								+ " unidade(s) deste produto no estoque?", ArtButtonArray);
+								+ " unidade(s) deste\nproduto no estoque?", ArtButtonArray);
 
 						if (i == 1) {
 							return;

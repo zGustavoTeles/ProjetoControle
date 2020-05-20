@@ -1,6 +1,7 @@
 package com.estoque;
 
 import com.auxiliares.Auxiliares;
+import com.carrinho.Carrinho;
 import com.litebase.LitebasePack;
 import nx.componentes.ArtButton;
 import totalcross.sys.Convert;
@@ -145,7 +146,11 @@ public class RemoverProduto extends totalcross.ui.Window {
 
 					} 
 					else if (Convert.toInt(editQuantidade.getText()) > Convert.toInt(Estoque.quantidade)) {
-						Auxiliares.artMsgbox("CONTROLE", "Quantidade inserida maior que a quantidade\nem estoque!");
+						Auxiliares.artMsgbox("CONTROLE", "Quantidade inserida maior que a quantidade em estoque!");
+						
+						editQuantidade.setText("");
+						editEstoque.setText(Estoque.quantidade);
+						
 						editQuantidade.setText("");
 						
 						return;

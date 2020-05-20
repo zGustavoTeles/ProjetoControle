@@ -102,7 +102,7 @@ public class Inserir extends totalcross.ui.Window {
 			editMarca.setText(Venda.marca);
 			editMarca.setEditable(false);
 			
-			lblDescricao = new Label("DESCRICAO:   ");
+			lblDescricao = new Label("DESCRIÇÃO:   ");
 			add(lblDescricao);
 			lblDescricao.setRect(LEFT + 90, AFTER + 15, PREFERRED, PREFERRED, editMarca);
 			lblDescricao.setBackColor(0x003366);
@@ -196,7 +196,7 @@ public class Inserir extends totalcross.ui.Window {
 			editTotal.setRect(AFTER, SAME, FILL - 80, PREFERRED, lblTotal);
 			editTotal.setBackColor(Color.WHITE);
 			editTotal.setForeColor(0x003366);
-			editTotal.setText(Venda.valor);
+			editTotal.setText("0.00");
 			editTotal.setEditable(false);
 			
 			cmbTipoPagamento = new ComboBox();
@@ -252,7 +252,13 @@ public class Inserir extends totalcross.ui.Window {
 						quantidadeInserida = editQuantidade.getText();
 
 						if (Convert.toInt(quantidadeInserida) > Convert.toInt(Venda.quantidade)) {
-							Auxiliares.artMsgbox("CONTROLE", "Quantidade inserida maior que o limite do estoque!");
+							Auxiliares.artMsgbox("CONTROLE", "Quantidade inserida maior que a quantidade em estoque!");
+							
+							editQuantidade.setText("");
+							editEstoque.setText(Venda.quantidade);
+							editTotal.setText("0.00");
+							
+							editQuantidade.requestFocus();
 							return;
 
 						}

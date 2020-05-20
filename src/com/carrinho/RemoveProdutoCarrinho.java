@@ -165,13 +165,18 @@ public class RemoveProdutoCarrinho extends totalcross.ui.Window {
 						editQuantidade.setText("");
 						return;
 
-					} else if (Convert.toInt(editQuantidade.getText()) > quantidadeTemp) {
-						Auxiliares.artMsgbox("CONTROLE", "Quantidade inserida maior que a quantidade\n em estoque!");
+					} else if (Convert.toInt(editQntCarrinho.getText()) < 0) {
+						Auxiliares.artMsgbox("CONTROLE", "Quantidade inserida maior que a quantidade no carrinho!");
+						
 						editQuantidade.setText("");
+						editQntCarrinho.setText(Carrinho.quantidadeProduto);
+						editTotal.setText(Carrinho.totalProduto);
+						
+						editQuantidade.requestFocus();
 
 						return;
 
-					} else {
+					}else {
 
 						String[] ArtButtonArray = { "Sim", "Não" };
 
