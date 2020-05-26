@@ -1,6 +1,7 @@
 package com.configuracoes;
 
 import com.adm.Administrador;
+import com.adm.Cadastrar;
 import com.adm.ValidaAdministrador;
 import com.auxiliares.Auxiliares;
 import com.email.Email;
@@ -104,8 +105,11 @@ public class Configuracoes extends totalcross.ui.Window {
 				}else if (evt.target == btnAdministrador) {
 //					ValidaAdministrador validaAdministrador = new ValidaAdministrador();
 //					validaAdministrador.popup();
-					Administrador administrador = new Administrador();
-					administrador.popup();
+//					Administrador administrador = new Administrador();
+//					administrador.popup();
+					
+					Administrador adm = new Administrador();
+					adm.popup();
 				}
 
 			}

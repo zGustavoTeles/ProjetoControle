@@ -97,7 +97,7 @@ public class ValidaAdministrador extends totalcross.ui.Window {
 						senhaSalva = validaSenhaSalva(senhaSalva);
 
 						if (senhaSalva == true) {
-							Administrador administrador = new Administrador();
+							Cadastrar administrador = new Cadastrar();
 							administrador.popup();
 							return;
 						}
@@ -110,14 +110,14 @@ public class ValidaAdministrador extends totalcross.ui.Window {
 
 						if (i == 1) {
 							apagaDadosLogin();
-							Administrador administrador = new Administrador();
+							Cadastrar administrador = new Cadastrar();
 							administrador.popup();
 							return;
 
 						} else {
 
 							salvaDadosLogin();
-							Administrador administrador = new Administrador();
+							Cadastrar administrador = new Cadastrar();
 							administrador.popup();
 						}
 
