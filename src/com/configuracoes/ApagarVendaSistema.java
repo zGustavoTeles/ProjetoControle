@@ -356,20 +356,23 @@ public class ApagarVendaSistema extends totalcross.ui.Window {
 				if (Convert.toInt(editVendido.getText()) == 0 || Convert.toInt(editVendido.getText()) < 0) {
 
 					sql = " DELETE VENDAPRODUTO " 
-					    + " WHERE CODIGOPROD = " + ApagarVenda.codigoProduto;
+					    + " WHERE CODIGOPROD = " + ApagarVenda.codigoProduto
+					    + " AND CODIGO = " + ApagarVenda.codigoVenda;
 
 					lb.executeUpdate(sql);
 				} else {
 
 					sql = " UPDATE VENDAPRODUTO " 
 					    + " SET QUANTIDADE = " + editVendido.getText() 
-					    + " WHERE CODIGOPROD = " + ApagarVenda.codigoProduto;
+					    + " WHERE CODIGOPROD = " + ApagarVenda.codigoProduto
+					    + " AND CODIGO = " + ApagarVenda.codigoVenda;
 
 					lb.executeUpdate(sql);
 					
 					sql = " UPDATE VENDAPRODUTO " 
 						+ " SET VALOR = " + editTotal.getText()
-					    + " WHERE CODIGOPROD = " + ApagarVenda.codigoProduto;
+					    + " WHERE CODIGOPROD = " + ApagarVenda.codigoProduto
+					    + " AND CODIGO = " + ApagarVenda.codigoVenda;
 
 						lb.executeUpdate(sql);
 				}
